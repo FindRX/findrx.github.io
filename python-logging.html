@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Python: Logging</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 04, 2017</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/python-logging.html" rel="bookmark" title="Permanent Link to &quot;Python: Logging&quot;">Python: Logging</a>
+                </h2>
+
+                
+                
+
+                <p>Logging is performed by calling methods on instances of the Logger class. </p>
+<p>Each instance has a name, and they are conceptually arranged in a namespace hierarchy using dots (periods) as separators. </p>
+<p>The root of the hierarchy of loggers is called the root logger.</p>
+<ul>
+<li>The root logger’s name is printed as ‘root’ in the logged output.</li>
+</ul>
+<p>By default: </p>
+<ul>
+<li>the output destination is <code>sys.stderr</code>.</li>
+<li>The default format set by <code>logging.basicConfig()</code> for messages is:<ul>
+<li><code>severity:logger name:message</code></li>
+</ul>
+</li>
+<li>The level of the root logger is <em>WARNING</em>.</li>
+</ul>
+<p>If a level is not explicitly set on a logger, the level of its parent is used instead as its effective level.</p>
+<p>Child loggers propagate messages up to the handlers associated with their ancestor loggers.</p>
+<h2>configuring logging for a library</h2>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/python-logging.html">posted at 15:40</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">python</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                WhileRX
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

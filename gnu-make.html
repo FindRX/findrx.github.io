@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | GNU Make</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Oct 27, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/gnu-make.html" rel="bookmark" title="Permanent Link to &quot;GNU Make&quot;">GNU Make</a>
+                </h2>
+
+                
+                
+
+                <h2>Introduction</h2>
+<p>Here what I am talking about is <em>GNU Make</em>.</p>
+<p>When <code>make</code> is typed in a shell, <code>make</code> will try to find following files in order: "GNUmakefile", "makefile" and "Makefile". if none of these three exists, an error happens and <code>make</code> exits. But if you type <code>make xxx</code>, <code>make</code> can still work without a makefile under the circumstance when there are any built-in implicit rules which can be used to remake the target <code>xxx</code>.</p>
+<p>Mostly, people will choose "Makefile" rather than the two others.</p>
+<p>There are two kinds of syntax in makefile. One for makefile itself. The other is for shell.
+if there is a tab at the beginning of a line, the line is a part of recipe which belongs to a rule.
+Recipe will be passed to shell and interpreted by the shell.</p>
+<p>Makefile consists of five kinds of things: </p>
+<ul>
+<li>explicit rules</li>
+<li>implicit rules</li>
+<li>variable definitions</li>
+<li>directives</li>
+<li>comments</li>
+</ul>
+<p>Suffix rules are obsolete because of pattern rules.</p>
+<p>Implicit rules are pattern rules built in <code>make</code> by default, when you write a pattern rule in your makefile, then the pattern rule is a explicit rule.</p>
+<h2>Comments and backslash-newline</h2>
+<p>Comments and backslash-newline combination are the simplest part. let's get it clear first.</p>
+<p>In the context of makefile (outside a recipe): </p>
+<ul>
+<li><code>#</code> in a line starts a comment, it and the rest of the line are ignored. </li>
+<li>A line containing just a comment (with perhaps space before it) is effectively blank, and is ignored.</li>
+<li>Backslash continues a comment across multiple lines. <ul>
+<li>If you need a backslash at the end of a line or anywhere else, using double backslash <code>\\</code>.</li>
+</ul>
+</li>
+<li>If you need a literal <code>#</code> character, using backslash to escape it, e.g., <code>\#</code>.</li>
+<li>Any instance of <code>#</code> is treated literally in a variable reference or function call.</li>
+<li>Within the <code>define</code> derective, the <code>#</code> will be saved literrally in the value of the variable. when the variable is expanded, they will be treated as make comments or recipe text, depending on the context in which the variable is evaluated.</li>
+</ul>
+<p>If <code>#</code> is within recipe, it will be passed to shell and the shell decide how to interpret it.</p>
+<p>Outside a recipe, even within a comment, the backslash-newlines are converted to a single space character. once that's done, all whitespaces around the backslash-newline are condensed into a single space, including all whitespace preceding the backslash, all whitespaces at the beginning of the line after the backslash-newline, and any consecutive backslash-newline combinations.</p>
+<p>Within a recipe, both backslash-newline are preserved and passed to the shell. How to interpret it depends on the shell.</p>
+<h2>Generating C headers prerequisites automatically</h2>
+<p>the code is : </p>
+<div class="highlight"><pre><span></span><span class="nv">sources</span> <span class="o">=</span> foo.c bar.c
+
+<span class="cp">ifneq ($(MAKECMDGOALS),clean)</span>
+<span class="cp">include $(sources:.c=.d)</span>
+<span class="cp">endif</span>
+
+<span class="nf">%.d</span><span class="o">:</span> %.<span class="n">c</span>
+    @set -e<span class="p">;</span> rm -f <span class="nv">$@</span><span class="p">;</span> <span class="se">\</span>
+        <span class="k">$(</span>CC<span class="k">)</span> -M <span class="k">$(</span>CPPFLAGS<span class="k">)</span> $&lt; &gt; <span class="nv">$@</span>.<span class="nv">$$$$</span><span class="p">;</span> <span class="se">\</span>
+        sed <span class="s1">&#39;s,\($*\)\.o[ :]*,\1.o $@ : ,g&#39;</span> &lt; <span class="nv">$@</span>.<span class="nv">$$$$</span> &gt; <span class="nv">$@</span><span class="p">;</span> <span class="se">\</span>
+        rm -f <span class="nv">$@</span>.<span class="nv">$$$$</span>
+</pre></div>
+
+
+<p>To understand how this works, we need to understand several concepts first:</p>
+<ul>
+<li>GNU Make does it work in two phases. During the first phase, it reads all the makefiles and constructs a dependency graph of all the targets and their prerequisites. During the second phase, make uses these internal structures to determine what targets need to be rebuilt and invoke the rules necessary to do so.</li>
+<li>After reading in all the makefiles, make will consider each as a goal target and attempt to update it. If a makefile can be remade, it will be updated. After all makefiles have been checked, if any have actually been changed, make starts with a clean slate and reads all the makefiles over again, if necessary, over again and again.</li>
+<li>The <code>include</code> directive tells make to suspend reading the current makefile and read one or more other makefiles before continuing.</li>
+</ul>
+<p>So, the procedure would be like this:</p>
+<ol>
+<li>With <code>include ${sources:.c=.d}</code>, make will suspend reading the current makefiles and attempt to read all the <code>*.d</code> files before continuing.</li>
+<li>If no <code>*.d</code> exists, make will find the rule <code>%.d : %.c</code> which can be used to generate it.<ol>
+<li>What the rule does is analysising the C source file and generating the dependency file which contains source code like <code>main.o main.d : main.c defs.h</code>.</li>
+<li>Then make will read these <code>*.d</code> makefiles again</li>
+</ol>
+</li>
+<li>If <code>*.d</code> files exist, make just read all the things in them; and after reading in all the makefiles, make will try to update all the makefiles including these <code>*.d</code> files, so if any headers modified, the <code>*.d</code> will be remade, and then, make will start with a clean slate and do all the things over again.</li>
+</ol>
+<h2>Variables</h2>
+<p>Variable defined with <code>override</code> directive beats command line, which beats environment override (<code>-e</code> option), which beats variable defined in the makefile, which beats the origin environment variables.</p>
+<div class="highlight"><pre><span></span>1. environment variables
+2. variables defined in makefile 
+3. environment variables when using `make` with `-e` option 
+4. variables defined as an option of `make` 
+5. variables defined in makefile having `override` directive before.
+</pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/gnu-make.html">posted at 11:18</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/gnu.html" rel="tag">GNU</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                WhileRX
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
