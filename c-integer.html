@@ -42,7 +42,7 @@
 <p>The representation of a value for an object having integer type is the particular encoding of the value in the bit pattern contained in the storage allocated for the object.</p>
 <p><code>CHAR_BIT</code> in <code>limits.h</code> gives the number of bits in a byte, which is at least 8.</p>
 <h3>Unsigned integer</h3>
-<p><em>C requires that unsigned integer represents value with a pure binary system with on offset.</em> (This is a key point to understand C integer.)</p>
+<p><em>C requires that unsigned integer represents value with a pure binary system with an offset.</em> (This is a key point to understand C integer.)</p>
 <ul>
 <li>the right-most has the weight 2<sup>0</sup>.</li>
 <li>the next bit to the left has the weight 2<sup>1</sup> and so forth.</li>
@@ -50,7 +50,7 @@
 <p>By definition in C language:</p>
 <ul>
 <li>A computations involving unsigned operands can never overflow.</li>
-<li>A reslt that cannot be represented by the resulting unsigned integer type is reduced modulo the number that is one greater than the largest value that can be represented by the resulting type.</li>
+<li>A result that cannot be represented by the resulting unsigned integer type is reduced modulo the number that is one greater than the largest value that can be represented by the resulting type.</li>
 <li>For addition and multiplication, this is the same as pretending that there are additional high-order (most significant) bits appended to make sufficient room for the representation and then discarding these bits.</li>
 </ul>
 <p>When comparing unsigned integers, using <code>i &gt; UINT_MAX - j</code> instead of <code>i + j &gt; UINT_MAX</code>, using <code>i - j &lt; 0</code> instead of <code>i &lt; j</code>.</p>
@@ -107,8 +107,17 @@ For conversions of an unsigned integer type to a smaller width, the value is red
 <p><strong>Maybe I should never do any conversions.</strong></p>
 <h2>Integer Operations</h2>
 <p>Integer addition can result in an signed overflow or unsigned wraparound if the sum cannot be represented in the allocated bits.</p>
-<p>When integers are divided, the result of <code>/</code> is the algebraic quotient with any fractional part discarded.</p>
-<p>If the quotient <code>a/b</code> is representable, then <code>(a / b) * b + a % b</code> shall equal <code>a</code>; otherwise, the behavior of both <code>a/b</code> and <code>a%b</code> is undefined.</p>
+<p>Let's say that we need to figure out the result of <code>-5 / 10</code>.</p>
+<p>C89, not totally (§3.3.5/6). It can be either <code>-5</code> or <code>5</code>, because <code>-5 / 10</code> can return <code>0</code> or <code>-1</code> (% is defined in terms of a linear equation <code>a = (a/b)*b + a%b</code>):</p>
+<ol>
+<li>When integers are divided and the division is inexact, if both operands are positive the result of the <code>/</code> operator is the largest integer less than the algebraic quotient and the result of the <code>%</code> operator is positive. </li>
+<li>If either operand is negative, whether the result of the <code>/</code> operator is the largest integer less than the algebraic quotient or the smallest integer greater than the algebraic quotient is implementation-defined, as is the sign of the result of the <code>%</code> operator. </li>
+<li>If the quotient <code>a/b</code> is representable, the expression <code>(a/b)*b + a%b</code> shall equal <code>a</code>.</li>
+</ol>
+<p>C99, yes (§6.5.5/6), the result must be -5:</p>
+<ol>
+<li>When integers are divided, the result of the <code>/</code> operator is the algebraic quotient with any fractional part discarded.88) If the quotient <code>a/b</code> is representable, the expression <code>(a/b)*b + a%b</code> shall equal <code>a</code>.  <sub>88) This is often called "truncation toward zero"</sub></li>
+</ol>
 <p>A division error is generated if:</p>
 <ol>
 <li>the divsor is zero.</li>
@@ -162,6 +171,7 @@ For conversions of an unsigned integer type to a smaller width, the value is red
 </ul>
 </li>
 </ul>
+<h2>END</h2>
                 <div class="clear"></div>
 
                 <div class="info">

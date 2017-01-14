@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WhileRX | Hash Table</title>
+    <title>WhileRX | Hash Table (easy)</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -33,7 +33,7 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/hash-table.html" rel="bookmark" title="Permanent Link to &quot;Hash Table&quot;">Hash Table</a>
+                    <a href="/hash-table-easy.html" rel="bookmark" title="Permanent Link to &quot;Hash Table (easy)&quot;">Hash Table (easy)</a>
                 </h2>
 
                 
@@ -41,110 +41,6 @@
 
                 <p>If the key's range is not too large, array is a perfect hash-table.</p>
 <p>If the key's range is small enough, a <code>char/int</code> integer is a perfect hash-table.</p>
-<p>Following are several hash table implementation in C, they will be the basic structure underneath solutions.</p>
-<div class="highlight"><pre><span></span><span class="c1">// Solution A:</span>
-
-<span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span> <span class="n">Ht</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">He</span> <span class="o">**</span><span class="n">list</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="nf">createHT</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span><span class="p">));</span>
-    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
-    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="p">));</span>
-    <span class="k">return</span> <span class="n">ht</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">freeHT</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="n">q</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-            <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-            <span class="n">p</span> <span class="o">=</span> <span class="n">q</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">free</span><span class="p">(</span><span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">);</span>
-    <span class="n">free</span><span class="p">(</span><span class="n">ht</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">deleteHT</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">He</span> <span class="o">**</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">]);</span>
-    <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">((</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-            <span class="n">free</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">);</span>
-            <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kt">bool</span> <span class="nf">find_or_insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span><span class="p">));</span>
-    <span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
-    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
-    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="c1">// Solution B:</span>
-
-<span class="c1">// Same as Solution A</span>
-<span class="k">struct</span> <span class="n">Ht</span><span class="p">;</span>
-<span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="nf">createHT</span><span class="p">();</span>
-<span class="kt">void</span> <span class="nf">freeHT</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">);</span>
-<span class="kt">void</span> <span class="nf">deleteHT</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">);</span>
-
-<span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">ind</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kt">int</span> <span class="nf">findHT</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">ind</span><span class="p">;</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">insertHT</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span><span class="p">));</span>
-    <span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
-    <span class="n">p</span><span class="o">-&gt;</span><span class="n">ind</span> <span class="o">=</span> <span class="n">index</span><span class="p">;</span>
-    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
-    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
 <h3><a href="https://leetcode.com/problems/two-sum/">1. Two Sum</a></h3>
 <p>Given a list of integers, return indices of two numbers such that they add up to a specific target.</p>
 <ul>
@@ -158,20 +54,58 @@
 <li>return [0, 1].</li>
 </ul>
 <p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="c1">//based on solution B.</span>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">ind</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">**</span><span class="n">list</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="nf">create</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span><span class="p">));</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">ht</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">ind</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span><span class="p">));</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">ind</span> <span class="o">=</span> <span class="n">index</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="kt">int</span><span class="o">*</span> <span class="nf">twoSum</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numsSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
-    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">createHT</span><span class="p">();</span>
-    <span class="n">insertHT</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">create</span><span class="p">();</span>
+    <span class="n">insert</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numsSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">_ind</span> <span class="o">=</span> <span class="n">findHT</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="kt">int</span> <span class="n">_ind</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">_ind</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">_ind</span><span class="p">;</span>
             <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="n">insertHT</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">insert</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
@@ -197,111 +131,17 @@
 <p>Summary:</p>
 <ol>
 <li>If we think the complexity of HashTable is O(N), then the solutions are O(N).</li>
-<li>Except HashTable, we can also use the Brute Force whose complexity is O(N<sup>2</sup>)</li>
+<li>Except HashTable, we can also use the Brute Force whose complexity is O(N<sup>2</sup>), or sort it first and then use two points O(NlgN).</li>
 <li>The time consumed by C solution is 3ms, beat 90%.</li>
 <li>The python solution is quite slow 322ms, only beat 67%, I don't know why, maybe the time is meaningless in python.</li>
 </ol>
-<h3><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a></h3>
-<p>Given a string, find the length of the longest substring without repeating characters.</p>
-<p>Examples:</p>
-<ol>
-<li>Given "abcabcbb", the answer is "abc", which the length is 3.</li>
-<li>Given "bbbbb", the answer is "b", with the length of 1.</li>
-<li>Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.</li>
-</ol>
-<p>C Solution (Two points and HashTable):</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="o">*</span><span class="n">l</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">l</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span> <span class="o">*</span><span class="n">r</span><span class="p">;</span> <span class="n">r</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">l</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">&gt;</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">?</span> <span class="nl">res</span> <span class="p">:</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span><span class="p">;</span>
-            <span class="n">l</span> <span class="o">=</span> <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">&gt;</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">?</span> <span class="nl">res</span> <span class="p">:</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>C Solution (DP):</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="o">*</span><span class="n">l</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">l</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span> <span class="o">*</span><span class="n">r</span><span class="p">;</span> <span class="n">r</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">l</span><span class="p">)</span> <span class="n">l</span> <span class="o">=</span> <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="n">res</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>Python Solution:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :type s: str</span>
-<span class="sd">        :rtype: int</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">res</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">ci</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">ci</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span> <span class="o">=</span> <span class="n">ci</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="k">else</span><span class="p">:</span> <span class="n">res</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="n">ci</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span>
-        <span class="k">return</span> <span class="n">res</span>
-</pre></div>
-
-
-<p>Summary:</p>
-<ol>
-<li>Two points and a HashTable can solve the problem; but HashTable works as a dictionary rather than a set.<ul>
-<li>The point is acting when finding a duplicate.</li>
-<li>9ms</li>
-</ul>
-</li>
-<li>DP solution. The point is checking the longest substring which ends at each character. 9ms</li>
-<li>Python solution is similar to DP. 109ms</li>
-<li>Couldn't be better, I think. the Runtime is kinda meaningless.</li>
-</ol>
-<h3><a href="https://leetcode.com/problems/4sum/">18. 4Sum</a></h3>
-<p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.</p>
-<ul>
-<li>The solution set must not contain duplicate quadruplets.</li>
-</ul>
-<p>Example:</p>
-<ul>
-<li>Given array S = [1, 0, -1, 0, -2, 2], and target = 0.</li>
-<li>A solution set is: [ [-1,  0, 0, 1], [-2, -1, 1, 2], [-2,  0, 0, 2] ]</li>
-</ul>
-<p>Solution: <a href="/sum.html">Sum</a></p>
-<p>Summary:</p>
-<ol>
-<li>First, figure out how to solve 2 Sum, then 3 Sum, then 4 Sum.</li>
-<li>Two ways: hashtable or two points(sort first).</li>
-</ol>
-<h3><a href="https://leetcode.com/problems/substring-with-concatenation-of-all-words/">30. Substring with Concatenation of All Words</a></h3>
-<p>You are given a string, <code>s</code>, and a list of words, <code>words</code>, that are all of the same length. Find all starting indices of substring(s) in s that is a concatenation of each word in words exactly once and without any intervening characters.</p>
-<p>For example:</p>
-<ul>
-<li>given: <code>s</code>: "barfoothefoobarman" <code>words</code>: ["foo", "bar"]</li>
-<li>You should return the indices: [0,9].<ul>
-<li>order does not matter.</li>
-</ul>
-</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span>
-</pre></div>
-
-
-<p>Summary:</p>
 <h3><a href="https://leetcode.com/problems/valid-sudoku/">36. Valid Sudoku</a></h3>
+<p>Determine if a Sudoku is valid, according to: <a href="http://sudoku.com.au/TheRules.aspx">Sudoku Puzzles - The Rules</a>.</p>
+<p>The Sudoku board could be partially filled, where empty cells are filled with the character '.'.</p>
+<ul>
+<li>A valid Sudoku board (partially filled) is not necessarily solvable. Only the filled cells need to be validated.</li>
+</ul>
+<p><img alt="valid sudoku" src="/images/valid-sudoku.png"></p>
 <p>Solution:</p>
 <div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isValidSudoku</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span> <span class="n">board</span><span class="p">,</span> <span class="kt">int</span> <span class="n">boardRowSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">boardColSize</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">sign</span><span class="p">[</span><span class="mi">27</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
@@ -321,8 +161,81 @@
 </pre></div>
 
 
+<p>Summary:</p>
+<ol>
+<li>There are 27 blocks which need to test.</li>
+<li>The key point is the relation between flag's index and i &amp; j.</li>
+<li>3ms, 49.45%</li>
+</ol>
+<h3><a href="https://leetcode.com/problems/single-number/">136. Single Number</a></h3>
+<p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
+<ul>
+<li>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">singleNumber</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numsSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numsSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">res</span> <span class="o">^=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>6ms, 32.17%</li>
+<li>Same as following Problem 389. Find the Difference.</li>
+</ol>
 <h3><a href="https://leetcode.com/problems/two-sum-iii-data-structure-design/">170. Two Sum III - Data structure design</a></h3>
-<p>Solution: <a href="/sum.html">Sum</a></p>
+<p>Design and implement a TwoSum class. It should support the following operations: add and find.</p>
+<p>add - Add the number to an internal data structure.
+find - Find if there exists any pair of numbers which sum is equal to the value.</p>
+<p>Example:</p>
+<ul>
+<li>add(1); add(3); add(5);</li>
+<li>find(4) -&gt; true</li>
+<li>find(7) -&gt; false</li>
+</ul>
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TwoSum</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        initialize your data structure here</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nums</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add the number to an internal data structure.</span>
+<span class="sd">        :rtype: nothing</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nums</span><span class="p">[</span><span class="n">number</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nums</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Find if there exists any pair of numbers which sum is equal to the value.</span>
+<span class="sd">        :type value: int</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nums</span><span class="p">:</span>
+            <span class="n">theother</span> <span class="o">=</span> <span class="n">value</span> <span class="o">-</span> <span class="n">num</span>
+            <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="n">theother</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nums</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">True</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">theother</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nums</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>Hashtable (dictionary), 742ms, 63.67%.</li>
+<li>This solution is for more add, less find. otherwise, during add, we can pre-sum and save the result into a hashtable.</li>
+</ol>
 <h3><a href="https://leetcode.com/problems/happy-number/">202. Happy Number</a></h3>
 <p>Write an algorithm to determine if a number is "happy".</p>
 <p>A happy number is a number defined by the following process: </p>
@@ -339,8 +252,39 @@
 <li>1<sup>2</sup> + 0<sup>2</sup> + 0<sup>2</sup> = 1</li>
 </ul>
 <p>C Solution with HashTable:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isHappy</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">createHT</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">**</span><span class="n">list</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="nf">create</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span><span class="p">));</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">ht</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">find_or_insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span><span class="p">));</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">isHappy</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">create</span><span class="p">();</span>
     <span class="kt">int</span> <span class="n">iht</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">};</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">find_or_insert</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
@@ -380,10 +324,36 @@
 <ol>
 <li>HashTable is used to detect the cycle.</li>
 <li>And in this case, keys are not too large, so an array could do the job.</li>
-<li>0ms, 16%</li>
+<li>The first: 3ms, 4.72%; the second: 0ms, 16%</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/count-primes/">204. Count Primes</a></h3>
-<p>Solution: <a href="/math.html">math</a></p>
+<p>Count the number of prime numbers less than a non-negative number, n.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">countPrimes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">flag</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">res</span><span class="o">--</span><span class="p">;</span>
+                <span class="n">flag</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>'1' is not a prime.</li>
+<li>This is called Sieve of Eratosthenes, so beautiful.</li>
+<li>32ms, 98.1%</li>
+</ol>
 <h3><a href="https://leetcode.com/problems/isomorphic-strings/">205. Isomorphic Strings</a></h3>
 <p>Given two strings s and t, determine if they are isomorphic.</p>
 <p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
@@ -415,12 +385,44 @@
 <li>The solution is beautiful.</li>
 <li>'i + 1' is required, in case 'aa' and 'ab'.</li>
 <li>0ms, 64.71%</li>
+<li>Same as following 290. Word Pattern</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/contains-duplicate/">217. Contains Duplicate</a></h3>
 <p>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
 <p>Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">containsDuplicate</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numsSize</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">createHT</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">**</span><span class="n">list</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="nf">create</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span><span class="p">));</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">ht</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">find_or_insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span><span class="p">));</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">containsDuplicate</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numsSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">create</span><span class="p">();</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numsSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">find_or_insert</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
@@ -433,19 +435,66 @@
 <p>Summary:</p>
 <ol>
 <li>This is what HashTable does. nothing to say.</li>
-<li>16ms, 54.55%</li>
+<li>39ms, 39.73%</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/contains-duplicate-ii/">219. Contains Duplicate ||</a></h3>
 <p>Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.</p>
 <p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">containsNearbyDuplicate</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numsSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">**</span><span class="n">list</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="nf">create</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span><span class="p">));</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">ht</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">find_or_insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span><span class="p">));</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">delete</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">**</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">]);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">((</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="n">free</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">);</span>
+            <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>   
+        <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">containsNearbyDuplicate</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numsSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">createHT</span><span class="p">();</span>
+    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">create</span><span class="p">();</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numsSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">find_or_insert</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">deleteHT</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">k</span><span class="p">]);</span>
+            <span class="n">delete</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">k</span><span class="p">]);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
@@ -456,7 +505,7 @@
 <p>Summary:</p>
 <ol>
 <li>There are two ways, first is delete the old element, second is remember the index.</li>
-<li>16ms, 73.21%</li>
+<li>19ms, 70.97%</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/valid-anagram/">242. Valid Anagram</a></h3>
 <p>Given two strings s and t, write a function to determine if t is an anagram of s.</p>
@@ -503,6 +552,7 @@
 <ol>
 <li>nothing special.</li>
 <li>3ms, 37.59%</li>
+<li>similar to 438. Find All Anagrams in a String.</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/strobogrammatic-number/">246. Strobogrammatic Number</a></h3>
 <p>A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).</p>
@@ -868,6 +918,7 @@
 <li>Fortunately, array could perform the dictionary, so I only need to implement a set HashTable.</li>
 <li>0ms, 6.67%</li>
 <li>If I use python or java or c++ to solve the problem, I could split str first and then use two dictionary to compare. The code could be concise, but not as efficient as c solution.</li>
+<li>Same as the above problem 205. Isomorphic Strings.</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/bulls-and-cows/">299. Bulls and Cows</a></h3>
 <p>You are playing the following Bulls and Cows game with your friend: You write down a number and ask your friend to guess what the number is. 
@@ -1251,6 +1302,7 @@ Your friend will use successive guesses and hints to eventually derive the secre
 <ol>
 <li>0ms, 14.02%</li>
 <li>This problem should be solved with bit manipulation, so not a typical HashTable problem.</li>
+<li>Same to above problem: 136. Single Number</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/longest-palindrome/">409. Longest Palindrome</a></h3>
 <p>Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.</p>
@@ -1375,6 +1427,7 @@ Your friend will use successive guesses and hints to eventually derive the secre
 <ol>
 <li>16ms, 76.74%</li>
 <li>Maybe anagram problems can all use this idea: use a diff, one direction for add, the other for del.</li>
+<li>Similar to 242. Valid Anagram</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/number-of-boomerangs/">447. Number of Boomerangs</a></h3>
 <p>Given n points in the plane that are all pairwise distinct, a "boomerang" is a tuple of points (i, j, k) such that the distance between i and j equals the distance between i and k (the order of the tuple matters).</p>
@@ -1464,7 +1517,7 @@ Your friend will use successive guesses and hints to eventually derive the secre
 <li>Answer: 16</li>
 <li>Explanation: The perimeter is the 16 yellow stripes in the image below:</li>
 </ul>
-<p><img alt="photo" src="/images/island.png"></p>
+<p><img alt="photo" src="/images/island-perimeter.png"></p>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">islandPerimeter</span><span class="p">(</span><span class="kt">int</span><span class="o">**</span> <span class="n">grid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">gridRowSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">gridColSize</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -1501,14 +1554,14 @@ Your friend will use successive guesses and hints to eventually derive the secre
 
 <p>Summary:</p>
 <ol>
-<li>The first: , The second: 72ms, 54.89%</li>
+<li>The first: 89ms, 18.48%, The second: 72ms, 54.89%</li>
 <li>Is this a hashtable problem?</li>
 </ol>
 <h2>END</h2>
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/hash-table.html">posted at 16:44</a>
+                    <a href="/hash-table-easy.html">posted at 16:44</a>
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/hashtable.html" class="tags">hashtable</a>
