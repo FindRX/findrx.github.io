@@ -45,10 +45,15 @@
 <li>recursive and iterate</li>
 </ul>
 <h3><a href="https://leetcode.com/problems/add-two-numbers/">2. Add Two Numbers</a></h3>
-<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
-Output: 7 -&gt; 0 -&gt; 8</p>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<ul>
+<li>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Input: <code>2 -&gt; 4 -&gt; 3</code> + <code>5 -&gt; 6 -&gt; 4</code></li>
+<li>Output: <code>7 -&gt; 0 -&gt; 8</code></li>
+</ul>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Definition for singly-linked list.</span>
@@ -84,18 +89,18 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 <p>Summary:</p>
 <ol>
 <li>19ms, 39.69%</li>
-<li>If I don't use dummy, I have to use a head. dummy is better.</li>
+<li>I need to remember the new list's head and I need to track the list's tail, then a dummy head like this is perfect.</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">19. Remove Nth Node From End of List</a></h3>
-<p>Given a linked list, remove the nth node from the end of list and return its head.</p>
+<p>Given a linked list, remove the n<sup>th</sup> node from the end of list and return its head.</p>
 <ul>
 <li>Given n will always be valid.</li>
 <li>Try to do this in one pass.</li>
 </ul>
 <p>Example:</p>
 <ul>
-<li>Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.</li>
-<li>After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.</li>
+<li>Given linked list: <code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>, and <code>n = 2</code>.</li>
+<li>After removing the second node from the end, the linked list becomes <code>1-&gt;2-&gt;3-&gt;5</code>.</li>
 </ul>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -123,7 +128,7 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 
 <p>Summary:</p>
 <ol>
-<li>Dummy is necessary, in case only one node and n = 1. Making code more concise.</li>
+<li>Dummy is necessary, in case that the head is the one need to delete. This is a corner case, with using dummy head, code is much more concise.</li>
 <li>3ms, 5.11%</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/merge-two-sorted-lists/">21. Merge Two Sorted Lists</a></h3>
@@ -157,7 +162,7 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 
 <p>Summary:</p>
 <ol>
-<li>Good dummy, nice dummy.</li>
+<li>With using dummy head, I don't write extra code to handle the first node.</li>
 <li>3ms, 22.71%</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/merge-k-sorted-lists/">23. Merge k Sorted Lists</a></h3>
@@ -213,7 +218,7 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 </ol>
 </li>
 <li>Obviously, the second solution is better.</li>
-<li>Heap is also a valid solution, the complexity is O(listsSize * lg(listsSize) * N), too.</li>
+<li>Heap is also a valid solution, the complexity is O(listsSize * lg(listsSize) * N), too. check <a href="/heap.html">heap</a>.</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/swap-nodes-in-pairs/">24. Swap Nodes in Pairs</a></h3>
 <p>Given a linked list, swap every two adjacent nodes and return its head.</p>
@@ -222,7 +227,7 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 </ul>
 <p>Example:</p>
 <ul>
-<li>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</li>
+<li>Given <code>1-&gt;2-&gt;3-&gt;4</code>, you should return the list as <code>2-&gt;1-&gt;4-&gt;3</code>.</li>
 </ul>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -235,10 +240,10 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 <span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">swapPairs</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">**</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">head</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">tmp</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
-        <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">right</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">right</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">right</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">right</span><span class="p">;</span>
         <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">((</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">head</span><span class="p">;</span>
@@ -266,8 +271,9 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 
 <p>Summary:</p>
 <ol>
-<li>The first: 3ms, 0%. The second: .</li>
-<li>The second is much more readable. But I prefer the first one.</li>
+<li>The first and second: 3ms, 0%.</li>
+<li>The second is much more readable. But it does't use constant space. Recursive is not O(1) space complexity.</li>
+<li>I prefer the first one, here I can use dummy head, too, pointer-pointer is more concise.</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/">25. Reverse Nodes in k-Group</a></h3>
 <p>Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.</p>
@@ -279,11 +285,12 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 </ul>
 <p>Example,</p>
 <ul>
-<li>Given this linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5</li>
-<li>For k = 2, you should return: 2-&gt;1-&gt;4-&gt;3-&gt;5</li>
-<li>For k = 3, you should return: 3-&gt;2-&gt;1-&gt;4-&gt;5</li>
+<li>Given this linked list: <code>1-&gt;2-&gt;3-&gt;4-&gt;5</code></li>
+<li>For k = 2, you should return: <code>2-&gt;1-&gt;4-&gt;3-&gt;5</code></li>
+<li>For k = 3, you should return: <code>3-&gt;2-&gt;1-&gt;4-&gt;5</code></li>
 </ul>
 <p>C Solution:</p>
+<p>Recursive.</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Definition for singly-linked list.</span>
 <span class="cm"> * struct ListNode {</span>
@@ -298,15 +305,49 @@ Output: 7 -&gt; 0 -&gt; 8</p>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">r</span><span class="p">)</span> <span class="k">return</span> <span class="n">head</span><span class="p">;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="n">dummy</span><span class="p">;</span>
-    <span class="n">dummy</span><span class="p">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">!=</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">tmp</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">dummy</span><span class="p">.</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">dummy</span><span class="p">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">l</span><span class="p">;</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">reverseKGroup</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Non-Recursive.</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">reverseKGroup</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">curhead</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">dummy</span><span class="p">,</span> <span class="o">*</span><span class="n">tail</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">dummy</span><span class="p">;</span>
+    <span class="n">dummy</span><span class="p">.</span><span class="n">next</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">curhead</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">nexthead</span> <span class="o">=</span> <span class="n">curhead</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">&amp;&amp;</span> <span class="n">nexthead</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">nexthead</span> <span class="o">=</span> <span class="n">nexthead</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">curhead</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="n">nexthead</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">l</span><span class="p">;</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">tail</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">l</span><span class="p">;</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">curhead</span><span class="p">;</span>
+        <span class="n">curhead</span> <span class="o">=</span> <span class="n">nexthead</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">tail</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">curhead</span><span class="p">;</span>
     <span class="k">return</span> <span class="n">dummy</span><span class="p">.</span><span class="n">next</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -314,14 +355,15 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 
 <p>Summary: </p>
 <ol>
-<li>Sometimes, dummy and pointer-to-pointer both can solve the problem. I'm not sure which one is better.</li>
-<li>6ms, 37.97%</li>
+<li>Recursive is much more readable, but the space is not constant.</li>
+<li>Recursive: 6ms, 37.97%</li>
+<li>Non-Recursive: 9ms, 21.95%</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/rotate-list/">61. Rotate List</a></h3>
 <p>Given a list, rotate the list to the right by k places, where k is non-negative.</p>
 <p>Example:</p>
 <ul>
-<li>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code> and k = 2,</li>
+<li>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code> and <code>k = 2</code>,</li>
 <li>return <code>4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</code>.</li>
 </ul>
 <p>C Solution:</p>
@@ -361,8 +403,8 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 <p>Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.</p>
 <p>For example:</p>
 <ul>
-<li>Given 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5, return 1-&gt;2-&gt;5.</li>
-<li>Given 1-&gt;1-&gt;1-&gt;2-&gt;3, return 2-&gt;3.</li>
+<li>Given <code>1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5</code>, return <code>1-&gt;2-&gt;5</code>.</li>
+<li>Given <code>1-&gt;1-&gt;1-&gt;2-&gt;3</code>, return <code>2-&gt;3</code>.</li>
 </ul>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -397,8 +439,8 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 <p>Given a sorted linked list, delete all duplicates such that each element appear only once.</p>
 <p>For example:</p>
 <ul>
-<li>Given 1-&gt;1-&gt;2, return 1-&gt;2.</li>
-<li>Given 1-&gt;1-&gt;2-&gt;3-&gt;3, return 1-&gt;2-&gt;3.</li>
+<li>Given <code>1-&gt;1-&gt;2</code>, return <code>1-&gt;2</code>.</li>
+<li>Given <code>1-&gt;1-&gt;2-&gt;3-&gt;3</code>, return <code>1-&gt;2-&gt;3</code>.</li>
 </ul>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -431,8 +473,8 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 </ul>
 <p>For example:</p>
 <ul>
-<li>Given 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2 and x = 3,</li>
-<li>return 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5.</li>
+<li>Given <code>1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2</code> and <code>x = 3</code>,</li>
+<li>return <code>1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5</code>.</li>
 </ul>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -466,7 +508,7 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 <p>Summary:</p>
 <ol>
 <li>3ms, 5.48%.</li>
-<li>nothing special.</li>
+<li>I need to remember the two lists' head and I need to track the tail,  using dummy and a pointer to this dummy is perfect.</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/reverse-linked-list-ii/">92. Reverse Linked List II</a></h3>
 <p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
@@ -475,7 +517,7 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 </ul>
 <p>For example:</p>
 <ul>
-<li>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code>, m = 2 and n = 4,</li>
+<li>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code>, <code>m = 2</code> and <code>n = 4</code>,</li>
 <li>return <code>1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</code>.</li>
 </ul>
 <p>C Solution:</p>
@@ -507,6 +549,7 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 <ol>
 <li>3ms, 1.3%</li>
 <li>n-- is used base on <code>1 &lt;= m &lt;= n &lt;= length of list</code>.</li>
+<li>Dummy is necessary because the head may be reversed.</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/">109. Convert Sorted List to Binary Search Tree</a></h3>
 <p>Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.</p>
@@ -551,7 +594,7 @@ Output: 7 -&gt; 0 -&gt; 8</p>
 
 <p>Summary:</p>
 <ol>
-<li>slow is secord range pointer. beatuiful.</li>
+<li>slow is pointer-pointer. Nice.</li>
 <li>9ms, 36.84%</li>
 <li>recursiveness is all what trees has.</li>
 </ol>
@@ -676,7 +719,7 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 </ul>
 <p>For example:</p>
 <ul>
-<li>Given {1,2,3,4}, reorder it to {1,4,2,3}.</li>
+<li>Given <code>1,2,3,4</code>, reorder it to <code>1,4,2,3</code>.</li>
 </ul>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -719,7 +762,7 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 <li>find the point, reverse the last part, merge.</li>
 <li>use tmp, it's necessary.</li>
 </ol>
-<h3><a href="https://leetcode.com/problems/insertion-sort-list/">Insertion Sort List</a></h3>
+<h3><a href="https://leetcode.com/problems/insertion-sort-list/">147. Insertion Sort List</a></h3>
 <p>Sort a linked list using insertion sort.</p>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -790,12 +833,66 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 </pre></div>
 
 
+<p>Constant space complexity:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="nf">merge</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">A</span> <span class="o">&amp;&amp;</span> <span class="n">B</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">A</span><span class="p">;</span>
+            <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">B</span><span class="p">;</span>
+            <span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">A</span> <span class="o">?</span> <span class="nl">A</span> <span class="p">:</span> <span class="n">B</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">head</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="nf">find</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">head</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">head</span> <span class="o">&amp;&amp;</span> <span class="o">--</span><span class="n">len</span><span class="p">)</span> <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">sortList</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="n">dummy</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="n">dummy</span><span class="p">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">len</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">cur</span> <span class="o">=</span> <span class="n">dummy</span><span class="p">.</span><span class="n">next</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">tail</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">dummy</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">cur</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">left</span> <span class="o">=</span> <span class="n">cur</span><span class="p">;</span>
+            <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">right</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">tail</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">dummy</span><span class="p">.</span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ol>
-<li>merge sort.</li>
-<li>I try to write quick_sort, but TLE.</li>
-<li>22ms, 55.22%</li>
-<li>But this is not O(1) space complexity.</li>
+<li>merge sort: from top to bottom, from bottom to top.</li>
+<li>The first: 22ms, 55.22%, The secord: 16ms, 91.55%.</li>
+<li>The first one is recursive, the space complexity is not O(1).</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/">160. Intersection of Two Linked Lists</a></h3>
 <p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
@@ -890,8 +987,8 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 <p>Remove all elements from a linked list of integers that have value val.</p>
 <p>Example</p>
 <ul>
-<li>Given: 1 --&gt; 2 --&gt; 6 --&gt; 3 --&gt; 4 --&gt; 5 --&gt; 6, val = 6</li>
-<li>Return: 1 --&gt; 2 --&gt; 3 --&gt; 4 --&gt; 5</li>
+<li>Given: <code>1 --&gt; 2 --&gt; 6 --&gt; 3 --&gt; 4 --&gt; 5 --&gt; 6</code>, <code>val = 6</code></li>
+<li>Return: <code>1 --&gt; 2 --&gt; 3 --&gt; 4 --&gt; 5</code></li>
 </ul>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -919,7 +1016,7 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 <p>Summary:</p>
 <ol>
 <li>9ms, 25.69%</li>
-<li>double pointer is beautiful.</li>
+<li>If you need to find a node and then delete it, double pointer is what you want. Of course, you can use pre pointer, but that's not beautiful.</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/reverse-linked-list/">206. Reverse Linked List</a></h3>
 <p>Reverse a singly linked list.</p>
@@ -932,22 +1029,22 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 <span class="cm"> * };</span>
 <span class="cm"> */</span>
 <span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">reverseList</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">dummy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">tail</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">tail</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">dummy</span><span class="p">;</span>
-        <span class="n">dummy</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
-        <span class="n">head</span> <span class="o">=</span> <span class="n">tail</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">_head</span><span class="p">;</span>
+        <span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="n">dummy</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">_head</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>Summary:</p>
 <ol>
-<li>Sometimes, dummy head is not need, maybe just a normal pointer.</li>
 <li>3ms, 5.9%</li>
+<li>Remember.</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/palindrome-linked-list/">234. Palindrome Linked List</a></h3>
 <p>Given a singly linked list, determine if it is a palindrome.</p>
@@ -963,25 +1060,21 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 <span class="cm"> * };</span>
 <span class="cm"> */</span>
 <span class="kt">bool</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">l</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">r</span> <span class="o">&amp;&amp;</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="n">l</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">slow</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">fast</span> <span class="o">&amp;&amp;</span> <span class="n">fast</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">slow</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">slow</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">slow</span><span class="p">;</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">dummy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">tail</span> <span class="o">=</span> <span class="n">l</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">l</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">l</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">dummy</span><span class="p">;</span>
-        <span class="n">dummy</span> <span class="o">=</span> <span class="n">l</span><span class="p">;</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fast</span><span class="p">)</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">slow</span> <span class="o">&amp;&amp;</span> <span class="n">slow</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">left</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">left</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">head</span> <span class="o">!=</span> <span class="n">tail</span> <span class="o">&amp;&amp;</span> <span class="n">dummy</span> <span class="o">&amp;&amp;</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">dummy</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">dummy</span> <span class="o">=</span> <span class="n">dummy</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">head</span> <span class="o">!=</span> <span class="n">tail</span> <span class="o">||</span> <span class="n">dummy</span> <span class="o">&amp;&amp;</span> <span class="n">dummy</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">!</span><span class="n">slow</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -989,11 +1082,12 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 <p>Summary:</p>
 <ol>
 <li>12ms, 71.87%</li>
-<li>Find middle, reverse the right half, compare.</li>
+<li>reverse the left side during finding the middle node, compare.</li>
+<li>Sometimes, don't consider the corner case too much in the beginning. Consider it later.</li>
 </ol>
 <h3><a href="https://leetcode.com/problems/delete-node-in-a-linked-list/">237. Delete Node in a Linked List</a></h3>
 <p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
-<p>Supposed the linked list is 1 -&gt; 2 -&gt; 3 -&gt; 4 and you are given the third node with value 3, the linked list should become 1 -&gt; 2 -&gt; 4 after calling your function.</p>
+<p>Supposed the linked list is <code>1 -&gt; 2 -&gt; 3 -&gt; 4</code> and you are given the third node with value <code>3</code>, the linked list should become <code>1 -&gt; 2 -&gt; 4</code> after calling your function.</p>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Definition for singly-linked list.</span>
@@ -1071,7 +1165,8 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 </ul>
 <p>Example:</p>
 <ul>
-<li>Input: 1-&gt;2-&gt;3 Output: 1-&gt;2-&gt;4</li>
+<li>Input: <code>1-&gt;2-&gt;3</code> </li>
+<li>Output: <code>1-&gt;2-&gt;4</code></li>
 </ul>
 <p>C Solution:</p>
 <p>Dummy head.</p>
@@ -1190,7 +1285,7 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 
 <p>Summary:</p>
 <ol>
-<li>dummy head and double pointer can both be used when the last element need some operations.</li>
+<li>dummy head and double pointer can both be used when the pre-element need some operations.</li>
 <li>The first two: 3ms, 0%</li>
 <li>The thired: 0ms, 0%</li>
 </ol>
@@ -1237,7 +1332,6 @@ directory.check(2);
 <span class="sd">        @param maxNumbers - The maximum numbers that can be stored in the phone directory.</span>
 <span class="sd">        :type maxNumbers: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inuse</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">valid</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">maxNumbers</span>
@@ -1249,13 +1343,11 @@ directory.check(2);
 <span class="sd">        :rtype: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">inuse</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">begin</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
         <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inuse</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">val</span>
 
     <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
@@ -1264,7 +1356,7 @@ directory.check(2);
 <span class="sd">        :type number: int</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">number</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inuse</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">&lt;=</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="ow">or</span> <span class="n">number</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid</span>
 
 
     <span class="k">def</span> <span class="nf">release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
@@ -1273,8 +1365,7 @@ directory.check(2);
 <span class="sd">        :type number: int</span>
 <span class="sd">        :rtype: void</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">number</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inuse</span><span class="p">:</span> 
-            <span class="bp">self</span><span class="o">.</span><span class="n">inuse</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
 
 
@@ -1290,7 +1381,7 @@ directory.check(2);
 
 <p>Summary: </p>
 <ol>
-<li>python is much easy.</li>
+<li>It's much easier to use python.</li>
 <li>Is this related to linked list?</li>
 <li>125ms, 80.65%</li>
 </ol>
@@ -1302,8 +1393,8 @@ directory.check(2);
 </ul>
 <p>Example:</p>
 <ul>
-<li>Input: (7 -&gt; 2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</li>
-<li>Output: 7 -&gt; 8 -&gt; 0 -&gt; 7</li>
+<li>Input: <code>7 -&gt; 2 -&gt; 4 -&gt; 3</code> + <code>5 -&gt; 6 -&gt; 4</code></li>
+<li>Output: <code>7 -&gt; 8 -&gt; 0 -&gt; 7</code></li>
 </ul>
 <p>C Solution:</p>
 <p>If I can modify the imput.</p>
