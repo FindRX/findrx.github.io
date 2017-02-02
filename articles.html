@@ -16,6 +16,7 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
+                <li class="selected"><a href="/articles.html">Articles</a></li>
                 <li><a href="/tags">Tags</a></li>
                 <li><a href="/categories">Categories</a></li>
                 <li><a href="/archives">Archives</a></li>
@@ -65,18 +66,54 @@
                 
                 
 
-                <p>Logging is performed by calling methods on instances of the Logger class. </p>
-<p>Each instance has a name, and they are conceptually arranged in a namespace hierarchy using dots (periods) as separators. </p>
-<p>The root of the hierarchy of loggers is called the root logger.</p>
-<ul>
-<li>The root logger’s name is printed …</li></ul>
+                <p>Before using <code>logging.info</code> or something samiliar, you can configure <strong><em>logging</em></strong> or not.</p>
+<p>If you don't configure it manually, the default configuration will be used.</p>
+<h2>Let's check what happens when executing <code>logging.info</code> directly without any pre-configurations</h2>
+<p>There is a <strong><em>root</em></strong> object which will be used if no configration specified …</p>
                 <div class="clear"></div>
 
                 <div class="info">
                     <a href="/python-logging.html">posted at 15:40</a>
                     &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">python</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/read-code.html" class="tags">Read-Code</a>
                 </div>
 		<a href="/python-logging.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/pelican.html" rel="bookmark" title="Permanent Link to &quot;Pelican&quot;">Pelican</a>
+                </h2>
+
+                
+                
+
+                <p><code>/usr/local/bin/pelican</code>:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/python3.5</span>
+
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">pelican</span> <span class="kn">import</span> <span class="n">main</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;(-script\.pyw|\.exe)?$&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+
+
+<p><code>main()</code> is in <code>/usr/local/lib/python3.5/site-packages/pelican/__init__.py</code>.</p>
+<div class="highlight"><pre><span></span><span class="k">def …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/pelican.html">posted at 14:40</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">python</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/read-code.html" class="tags">Read-Code</a>
+                </div>
+		<a href="/pelican.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Dec 31, 2016</h4>
 
             <article class="post">
@@ -238,34 +275,15 @@
                     &nbsp;&middot;&nbsp;<a href="/category/gnu.html" rel="tag">GNU</a>
                 </div>
 		<a href="/gnu-make.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Sep 23, 2016</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/two-pointers.html" rel="bookmark" title="Permanent Link to &quot;Two Pointers&quot;">Two Pointers</a>
-                </h2>
-
-                
-                
-
-                <ul>
-<li><a href="/longest-substring-without-repeating-characters.html">Longest Substring Without Repeating Characters</a></li>
-</ul>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="/two-pointers.html">posted at 10:23</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">leetcode</a>
-                </div>
-		<a href="/two-pointers.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
                 <div class="pages">
 
-                    <a href="/page/2" class="next_page">Next&nbsp;&rarr;</a>
+                <a href="/articles2.html" class="next_page">Next&nbsp;&rarr;</a>
+
+
+
                     <span>Page 1 of 2</span>
                 </div>
 
