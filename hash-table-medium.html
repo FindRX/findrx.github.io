@@ -18,6 +18,7 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
                 <li><a href="/tags">Tags</a></li>
                 <li><a href="/categories">Categories</a></li>
                 <li><a href="/archives">Archives</a></li>
@@ -38,74 +39,9 @@
                 
                 
 
-                <h3><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a></h3>
-<p>Given a string, find the length of the longest substring without repeating characters.</p>
-<p>Examples:</p>
-<ol>
-<li>Given "abcabcbb", the answer is "abc", which the length is 3.</li>
-<li>Given "bbbbb", the answer is "b", with the length of 1.</li>
-<li>Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.</li>
-</ol>
-<p>C Solution (Two points and HashTable):</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="o">*</span><span class="n">l</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">l</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span> <span class="o">*</span><span class="n">r</span><span class="p">;</span> <span class="n">r</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">l</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">&gt;</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">?</span> <span class="nl">res</span> <span class="p">:</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span><span class="p">;</span>
-            <span class="n">l</span> <span class="o">=</span> <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">&gt;</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">?</span> <span class="nl">res</span> <span class="p">:</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>C Solution (DP):</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="o">*</span><span class="n">l</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">l</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span> <span class="o">*</span><span class="n">r</span><span class="p">;</span> <span class="n">r</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">l</span><span class="p">)</span> <span class="n">l</span> <span class="o">=</span> <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="n">res</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>Python Solution:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :type s: str</span>
-<span class="sd">        :rtype: int</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">res</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">ci</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">ci</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span> <span class="o">=</span> <span class="n">ci</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="k">else</span><span class="p">:</span> <span class="n">res</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="n">ci</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span>
-        <span class="k">return</span> <span class="n">res</span>
-</pre></div>
-
-
-<p>Summary:</p>
-<ol>
-<li>Two points and a HashTable can solve the problem; but HashTable works as a dictionary rather than a set.<ul>
-<li>The point is acting when finding a duplicate.</li>
-<li>9ms</li>
+                <ul>
+<li><a href="/longest-substring-without-repeating-characters.html">Longest Substring Without Repeating Characters</a></li>
 </ul>
-</li>
-<li>DP solution. The point is checking the longest substring which ends at each character. 9ms</li>
-<li>Python solution is similar to DP. 109ms</li>
-<li>Couldn't be better, I think. the Runtime is kinda meaningless.</li>
-</ol>
 <h3><a href="https://leetcode.com/problems/4sum/">18. 4Sum</a></h3>
 <p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.</p>
 <ul>

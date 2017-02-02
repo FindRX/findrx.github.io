@@ -17,6 +17,7 @@
             <ul>
                 <li class="ephemeral selected"><a href="/tag/heap.html">heap</a></li>
                 <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
                 <li><a href="/tags">Tags</a></li>
                 <li><a href="/categories">Categories</a></li>
                 <li><a href="/archives">Archives</a></li>
@@ -40,12 +41,16 @@
                 <h3><a href="https://leetcode.com/problems/merge-k-sorted-lists/">23. Merge k Sorted Lists</a></h3>
 <p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
 <p>C Solution:</p>
-<div class="highlight"><pre><span></span>
-</pre></div>
-
-
-<p>Summary:</p>
-<p>1.</p>
+<p>Using heap.</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">**</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span> <span class="k">return …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
@@ -61,7 +66,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-                WhileRX
+				Understand Deeply
             </footer>
         </div>
         <div class="clear"></div>

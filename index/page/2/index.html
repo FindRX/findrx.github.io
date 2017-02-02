@@ -26,7 +26,92 @@
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">            <h4 class="date">Aug 11, 2016</h4>
+        <div id="content">            <h4 class="date">Sep 22, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/math-easy.html" rel="bookmark" title="Permanent Link to &quot;Math (easy)&quot;">Math (easy)</a>
+                </h2>
+
+                
+                
+
+                <h3><a href="https://leetcode.com/problems/reverse-integer/">7. Reverse Integer</a></h3>
+<p>Reverse digits of an integer.</p>
+<ul>
+<li>Example1: x = 123, return 321</li>
+<li>Example2: x = -123, return -321</li>
+</ul>
+<p>C Solution: </p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">reverse</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">INT_MIN</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="p">;</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">limit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">tlimit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0 …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/math-easy.html">posted at 06:44</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/math.html" class="tags">math</a>
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">leetcode</a>
+                </div>
+		<a href="/math-easy.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Aug 23, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/linked-list.html" rel="bookmark" title="Permanent Link to &quot;Linked List&quot;">Linked List</a>
+                </h2>
+
+                
+                
+
+                <p>For Linked list, several techniques are used:</p>
+<ul>
+<li>dummy head and double pointers</li>
+<li>recursive and iterate</li>
+</ul>
+<h3><a href="https://leetcode.com/problems/add-two-numbers/">2. Add Two Numbers</a></h3>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/linked-list.html">posted at 10:23</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/linkedlist.html" class="tags">linkedlist</a>
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">leetcode</a>
+                </div>
+		<a href="/linked-list.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Aug 21, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/divide-and-conquer.html" rel="bookmark" title="Permanent Link to &quot;Divide and Conquer&quot;">Divide and Conquer</a>
+                </h2>
+
+                
+                
+
+                
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/divide-and-conquer.html">posted at 08:43</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">divide and conquer</a>
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">leetcode</a>
+                </div>
+		<a href="/divide-and-conquer.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Aug 11, 2016</h4>
 
             <article class="post">
                 <h2 class="title">
@@ -39,12 +124,16 @@
                 <h3><a href="https://leetcode.com/problems/merge-k-sorted-lists/">23. Merge k Sorted Lists</a></h3>
 <p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
 <p>C Solution:</p>
-<div class="highlight"><pre><span></span>
-</pre></div>
-
-
-<p>Summary:</p>
-<p>1.</p>
+<p>Using heap.</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">**</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span> <span class="k">return …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
