@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | The Skyline Problem</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Binary-Indexed-Tree,Segment-Tree,Heap,Divide-and-Conquer" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/the-skyline-problem.html" rel="bookmark" title="Permanent Link to &quot;The Skyline Problem&quot;">The Skyline Problem</a>
+                </h2>
+
+                
+                
+
+                <p>A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Now suppose you are <strong>given the locations and height of all the buildings</strong> as shown on a cityscape photo (Figure A), write a program to <strong>output the skyline</strong> formed by these buildings collectively (Figure B).</p>
+<p><img alt="Figure A" src="/images/the-skyline-problem-1.jpg"> <img alt="Figure B" src="/images/the-skyline-problem-2.jpg"></p>
+<p>The geometric information of each building is represented by a triplet of integers <code>[Li, Ri, Hi]</code>, where <code>Li</code> and <code>Ri</code> are the x coordinates of the left and right edge of the ith building, respectively, and <code>Hi</code> is its height. It is guaranteed that <code>0 ≤ Li</code>, <code>Ri ≤ INT_MAX</code>, <code>0 &lt; Hi ≤ INT_MAX</code>, and <code>Ri - Li &gt; 0</code>. You may assume all buildings are perfect rectangles grounded on an absolutely flat surface at height 0.</p>
+<p>For instance, the dimensions of all buildings in Figure A are recorded as: <code>[ [2 9 10], [3 7 15], [5 12 12], [15 20 10], [19 24 8] ]</code> .</p>
+<p>The output is a list of "<strong>key points</strong>" (red dots in Figure B) in the format of <code>[ [x1,y1], [x2, y2], [x3, y3], ... ]</code> that uniquely defines a skyline. <strong>A key point is the left endpoint of a horizontal line segment</strong>. Note that the last key point, where the rightmost building ends, is merely used to mark the termination of the skyline, and always has zero height. Also, the ground in between any two adjacent buildings should be considered part of the skyline contour.</p>
+<p>For instance, the skyline in Figure B should be represented as:<code>[ [2 10], [3 15], [7 12], [12 0], [15 10], [20 8], [24, 0] ]</code>.</p>
+<p>Notes:</p>
+<ul>
+<li>The number of buildings in any input list is guaranteed to be in the range [0, 10000].</li>
+<li>The input list is already sorted in ascending order by the left x position Li.</li>
+<li>The output list must be sorted by the x position.</li>
+<li>There must be no consecutive horizontal lines of equal height in the output skyline. <ul>
+<li>For instance, [...[2 3], [4 5], [7 5], [11 5], [12 7]...] is not acceptable; </li>
+<li>the three lines of height 5 should be merged into one in the final output as such: [...[2 3], [4 5], [12 7], ...]</li>
+</ul>
+</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Return an array of arrays of size *returnSize.</span>
+<span class="cm"> * Note: The returned array must be malloced, assume caller calls free().</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">save</span><span class="p">(</span><span class="kt">int</span> <span class="o">***</span><span class="n">res</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">returnSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">li</span><span class="p">,</span> <span class="kt">int</span> <span class="n">high</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">returnSize</span> <span class="o">&amp;&amp;</span> <span class="n">li</span> <span class="o">==</span> <span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)[</span><span class="o">*</span><span class="n">returnSize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">high</span> <span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)[</span><span class="o">*</span><span class="n">returnSize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+        <span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)[</span><span class="o">*</span><span class="n">returnSize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">high</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">size</span> <span class="o">==</span> <span class="o">*</span><span class="n">returnSize</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1000</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">realloc</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">,</span> <span class="o">*</span><span class="n">size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)[</span><span class="o">*</span><span class="n">returnSize</span><span class="p">]</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)[</span><span class="o">*</span><span class="n">returnSize</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">li</span><span class="p">;</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)[</span><span class="o">*</span><span class="n">returnSize</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">high</span><span class="p">;</span>
+    <span class="o">++*</span><span class="n">returnSize</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">limit</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">,</span> <span class="kt">int</span> <span class="n">high</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ri</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">heap</span><span class="p">[</span><span class="o">*</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">high</span><span class="p">;</span>
+    <span class="n">limit</span><span class="p">[</span><span class="o">*</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">ri</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">top</span><span class="p">)</span><span class="o">++</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">root</span> <span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">])</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">];</span>
+        <span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">limit</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">limit</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">limit</span><span class="p">[</span><span class="n">cur</span><span class="p">];</span>
+        <span class="n">limit</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">pop</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">limit</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="o">*</span><span class="n">top</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="n">limit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">limit</span><span class="p">[</span><span class="o">*</span><span class="n">top</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="o">--*</span><span class="n">top</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">root</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="o">*</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="o">*</span><span class="n">top</span> <span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="p">[</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">heap</span><span class="p">[</span><span class="n">left</span><span class="p">])</span> <span class="n">left</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">heap</span><span class="p">[</span><span class="n">left</span><span class="p">])</span> <span class="k">break</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="n">left</span><span class="p">];</span>
+        <span class="n">heap</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">limit</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">limit</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">limit</span><span class="p">[</span><span class="n">left</span><span class="p">];</span>
+        <span class="n">limit</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">root</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">clear</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">limit</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">,</span> <span class="kt">int</span> <span class="n">li</span><span class="p">,</span> <span class="kt">int</span> <span class="o">***</span><span class="n">res</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">returnSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">top</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_limit</span> <span class="o">=</span> <span class="n">limit</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">li</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">_limit</span> <span class="o">&lt;</span> <span class="n">li</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pop</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">top</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">top</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">save</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">returnSize</span><span class="p">,</span> <span class="n">_limit</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">_limit</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">save</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">returnSize</span><span class="p">,</span> <span class="n">_limit</span><span class="p">,</span> <span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+            <span class="n">_limit</span> <span class="o">=</span> <span class="n">limit</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="o">**</span> <span class="nf">getSkyline</span><span class="p">(</span><span class="kt">int</span><span class="o">**</span> <span class="n">buildings</span><span class="p">,</span> <span class="kt">int</span> <span class="n">buildingsRowSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">buildingsColSize</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">returnSize</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="o">*</span><span class="n">heap</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">((</span><span class="n">buildingsRowSize</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)),</span> <span class="n">top</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">limit</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">((</span><span class="n">buildingsRowSize</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+
+    <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">**</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">));</span>
+    <span class="o">*</span><span class="n">returnSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">buildingsRowSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">li</span> <span class="o">=</span> <span class="n">buildings</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">ri</span> <span class="o">=</span> <span class="n">buildings</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">high</span> <span class="o">=</span> <span class="n">buildings</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+
+        <span class="n">clear</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">top</span><span class="p">,</span> <span class="n">li</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">res</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">size</span><span class="p">,</span> <span class="n">returnSize</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">top</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">save</span><span class="p">(</span><span class="o">&amp;</span><span class="n">res</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">size</span><span class="p">,</span> <span class="n">returnSize</span><span class="p">,</span> <span class="n">li</span><span class="p">,</span> <span class="n">high</span><span class="p">);</span>
+            <span class="n">insert</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">top</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">ri</span><span class="p">);</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kt">int</span> <span class="n">curhigh</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">curlimit</span> <span class="o">=</span> <span class="n">limit</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">curhigh</span> <span class="o">==</span> <span class="n">high</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">limit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ri</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">?</span> <span class="nl">ri</span> <span class="p">:</span> <span class="n">limit</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">curhigh</span> <span class="o">&gt;</span> <span class="n">high</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">insert</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">top</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">ri</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">save</span><span class="p">(</span><span class="o">&amp;</span><span class="n">res</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">size</span><span class="p">,</span> <span class="n">returnSize</span><span class="p">,</span> <span class="n">li</span><span class="p">,</span> <span class="n">high</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">curlimit</span> <span class="o">==</span> <span class="n">li</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">high</span><span class="p">;</span>
+                <span class="n">limit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ri</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="n">insert</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">top</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">ri</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">clear</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">top</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">res</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">size</span><span class="p">,</span> <span class="n">returnSize</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>The key point is to use heap to track the ceiling of the skyline.</li>
+<li>But it's O(1) time complexity to delete any nodes except the first one in heap.</li>
+<li>So I have to find a better way to maintain the heap, that's what <code>clear</code> function do.</li>
+<li>hard is hard.</li>
+<li>9ms, 100%</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/the-skyline-problem/">218. The Skyline Problem</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/the-skyline-problem.html">posted at 00:03</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/binary-indexed-tree.html" class="tags">Binary-Indexed-Tree</a>
+                    &nbsp;<a href="/tag/segment-tree.html" class="tags">Segment-Tree</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

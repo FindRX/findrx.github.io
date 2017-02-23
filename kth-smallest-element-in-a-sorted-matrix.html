@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Kth Smallest Element in a Sorted Matrix</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Heap,Binary-Search" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/kth-smallest-element-in-a-sorted-matrix.html" rel="bookmark" title="Permanent Link to &quot;Kth Smallest Element in a Sorted Matrix&quot;">Kth Smallest Element in a Sorted Matrix</a>
+                </h2>
+
+                
+                
+
+                <p>Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.</p>
+<ul>
+<li>it is the kth smallest element in the sorted order, not the kth distinct element.</li>
+<li>You may assume k is always valid, 1 ≤ k ≤ n2.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>matrix = [
+   [ 1,  5,  9],
+   [10, 11, 13],
+   [12, 13, 15]
+],
+k = 8,
+return 13.
+</pre></div>
+
+
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span>struct Heap {
+    int top;
+    int size;
+    int *vals;
+    int *r;
+    int *c;
+};
+struct Heap *create() {
+    struct Heap *obj = malloc(sizeof(struct Heap));
+    obj-&gt;size = 1000;
+    obj-&gt;top = 1;
+    obj-&gt;vals = malloc(obj-&gt;size * sizeof(int));
+    obj-&gt;r = malloc(obj-&gt;size * sizeof(int));
+    obj-&gt;c = malloc(obj-&gt;size * sizeof(int));
+    return obj;
+}
+void pop(struct Heap *heap, int *r, int *c) {
+    *r = heap-&gt;r[1];
+    *c = heap-&gt;c[1];
+    heap-&gt;vals[1] = heap-&gt;vals[--heap-&gt;top];
+    heap-&gt;r[1] = heap-&gt;r[heap-&gt;top];
+    heap-&gt;c[1] = heap-&gt;c[heap-&gt;top];
+    int root = 1, left = 2;
+    while (left &lt; heap-&gt;top) {
+        int target = left, right = left + 1;
+        if (right &lt; heap-&gt;top &amp;&amp; heap-&gt;vals[right] &lt; heap-&gt;vals[left]) target = right;
+        if (heap-&gt;vals[root] &lt;= heap-&gt;vals[target]) return;
+        int tmp = heap-&gt;vals[root];
+        heap-&gt;vals[root] = heap-&gt;vals[target];
+        heap-&gt;vals[target] = tmp;
+
+        tmp = heap-&gt;r[root];
+        heap-&gt;r[root] = heap-&gt;r[target];
+        heap-&gt;r[target] = tmp;
+
+        tmp = heap-&gt;c[root];
+        heap-&gt;c[root] = heap-&gt;c[target];
+        heap-&gt;c[target] = tmp;
+
+        root = target;
+        left = root * 2;
+    }
+}
+void push(struct Heap *heap, int val, int r, int c) {
+    if (heap-&gt;size == heap-&gt;top) {
+        heap-&gt;size += 1000;
+        heap-&gt;vals = realloc(heap-&gt;vals, heap-&gt;size * sizeof(int));
+        heap-&gt;r = realloc(heap-&gt;r, heap-&gt;size * sizeof(int));
+        heap-&gt;r = realloc(heap-&gt;c, heap-&gt;size * sizeof(int));
+    }
+    heap-&gt;vals[heap-&gt;top] = val;
+    heap-&gt;r[heap-&gt;top] = r;
+    heap-&gt;c[heap-&gt;top] = c;
+    int cur = heap-&gt;top++, root = cur / 2;
+    while (root &amp;&amp; heap-&gt;vals[root] &gt; heap-&gt;vals[cur]) {
+        int tmp = heap-&gt;vals[root];
+        heap-&gt;vals[root] = heap-&gt;vals[cur];
+        heap-&gt;vals[cur] = tmp;
+
+        tmp = heap-&gt;r[root];
+        heap-&gt;r[root] = heap-&gt;r[cur];
+        heap-&gt;r[cur] = tmp;
+
+        tmp = heap-&gt;c[root];
+        heap-&gt;c[root] = heap-&gt;c[cur];
+        heap-&gt;c[cur] = tmp;
+
+        cur = root;
+        root = cur / 2;
+    }
+}
+int kthSmallest(int** matrix, int matrixRowSize, int matrixColSize, int k) {
+    struct Heap *heap = create();
+    push(heap, matrix[0][0], 0, 0);
+    int r, c, i;
+    for (i = 0; i &lt; k; i++) {
+        pop(heap, &amp;r, &amp;c);
+        if (r &lt; matrixRowSize - 1) push(heap, matrix[r + 1][c], r + 1, c);
+        if (!r &amp;&amp; c &lt; matrixColSize - 1) push(heap, matrix[r][c + 1], r , c + 1);
+    }
+    return matrix[r][c];
+}
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>16ms, 81.25%</li>
+<li>Similar to the privious problem.</li>
+<li>Using binary search could be a better choice here, because what we are doing is to search one element, rather than a part.</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/">378. Kth Smallest Element in a Sorted Matrix</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/kth-smallest-element-in-a-sorted-matrix.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

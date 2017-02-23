@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Unique Word Abbreviation</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Hash-Table,Design" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/unique-word-abbreviation.html" rel="bookmark" title="Permanent Link to &quot;Unique Word Abbreviation&quot;">Unique Word Abbreviation</a>
+                </h2>
+
+                
+                
+
+                <p>An abbreviation of a word follows the form <first letter><number><last letter>. Below are some examples of word abbreviations:</p>
+<ul>
+<li>it                      --&gt; it    (no abbreviation)</li>
+<li>d|o|g                   --&gt; d1g</li>
+<li>i|nternationalizatio|n  --&gt; i18n</li>
+<li>l|ocalizatio|n          --&gt; l10n</li>
+</ul>
+<p>Assume you have a dictionary and given a word, find whether its abbreviation is unique in the dictionary. A word's abbreviation is unique if no other word from the dictionary has the same abbreviation.</p>
+<p>Example: </p>
+<ul>
+<li>Given dictionary = [ "deer", "door", "cake", "card" ]</li>
+<li>isUnique("dear") -&gt; false</li>
+<li>isUnique("cart") -&gt; true</li>
+<li>isUnique("cane") -&gt; false</li>
+<li>isUnique("make") -&gt; true</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">start</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">middle</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">end</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">multi</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">ValidWordAbbr</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">**</span><span class="n">list</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">ValidWordAbbr</span><span class="o">*</span> <span class="nf">ValidWordAbbrCreate</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span> <span class="n">dictionary</span><span class="p">,</span> <span class="kt">int</span> <span class="n">dictionarySize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ValidWordAbbr</span> <span class="o">*</span><span class="n">vwa</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">ValidWordAbbr</span><span class="p">));</span>
+    <span class="n">vwa</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="n">vwa</span><span class="o">-&gt;</span><span class="n">list</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">vwa</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="p">));</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dictionarySize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="kt">char</span> <span class="n">start</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+        <span class="kt">char</span> <span class="n">end</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="n">len</span> <span class="o">-=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">start</span> <span class="o">*</span> <span class="mi">321</span> <span class="o">+</span> <span class="n">len</span> <span class="o">*</span> <span class="mi">21</span> <span class="o">+</span> <span class="n">end</span><span class="p">;</span>
+        <span class="n">ind</span> <span class="o">%=</span> <span class="n">vwa</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">vwa</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">start</span> <span class="o">==</span> <span class="n">start</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">end</span> <span class="o">==</span> <span class="n">end</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">middle</span> <span class="o">==</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">multi</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">str</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="n">p</span><span class="o">-&gt;</span><span class="n">multi</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span> 
+            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span><span class="p">));</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">start</span> <span class="o">=</span> <span class="n">start</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">end</span> <span class="o">=</span> <span class="n">end</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">middle</span> <span class="o">=</span> <span class="n">len</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">multi</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">str</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">vwa</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+        <span class="n">vwa</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">vwa</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">isUnique</span><span class="p">(</span><span class="k">struct</span> <span class="n">ValidWordAbbr</span><span class="o">*</span> <span class="n">vwa</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">word</span><span class="p">);</span>
+    <span class="kt">char</span> <span class="n">start</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">end</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="n">len</span> <span class="o">-=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">start</span> <span class="o">*</span> <span class="mi">321</span> <span class="o">+</span> <span class="n">len</span> <span class="o">*</span> <span class="mi">21</span> <span class="o">+</span> <span class="n">end</span><span class="p">;</span>
+    <span class="n">ind</span> <span class="o">%=</span> <span class="n">vwa</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">vwa</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">start</span> <span class="o">==</span> <span class="n">start</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">end</span> <span class="o">==</span> <span class="n">end</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">middle</span> <span class="o">==</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">multi</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">str</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">ValidWordAbbrFree</span><span class="p">(</span><span class="k">struct</span> <span class="n">ValidWordAbbr</span><span class="o">*</span> <span class="n">vwa</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vwa</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">vwa</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">*</span><span class="n">q</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">q</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">vwa</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">);</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">vwa</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>If 'd1g' only contains 'dog', then isunique('dog') return true and isunique('dtg') return false.</li>
+<li>Using C to solve problems related to HashTable and string is painful.</li>
+<li>49ms, 100% (depend on hash function and hashtable size)</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/unique-word-abbreviation/">288. Unique Word Abbreviation</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/unique-word-abbreviation.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

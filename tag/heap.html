@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WhileRX | articles tagged "heap"</title>
+    <title>WhileRX | articles tagged "Heap"</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -15,7 +15,7 @@
     <header>
         <nav>
             <ul>
-                <li class="ephemeral selected"><a href="/tag/heap.html">heap</a></li>
+                <li class="ephemeral selected"><a href="/tag/heap.html">Heap</a></li>
                 <li><a href="/">Home</a></li>
                 <li><a href="/articles.html">Articles</a></li>
                 <li><a href="/tags">Tags</a></li>
@@ -28,40 +28,273 @@
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">            <h4 class="date">Aug 11, 2016</h4>
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/heap.html" rel="bookmark" title="Permanent Link to &quot;Heap&quot;">Heap</a>
+                    <a href="/sort-characters-by-frequency.html" rel="bookmark" title="Permanent Link to &quot;Sort Characters By Frequency&quot;">Sort Characters By Frequency</a>
                 </h2>
 
                 
                 
 
-                <h3><a href="https://leetcode.com/problems/merge-k-sorted-lists/">23. Merge k Sorted Lists</a></h3>
-<p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
-<p>C Solution:</p>
-<p>Using heap.</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">**</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span> <span class="k">return …</span></pre></div>
+                <p>Given a string, sort it in decreasing order based on the frequency of characters.</p>
+<p>Example 1:</p>
+<ul>
+<li>Input: "tree"</li>
+<li>Output: "eert"</li>
+<li>Explanation:<ul>
+<li>'e' appears twice while 'r' and 't' both appear once.</li>
+<li>So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.</li>
+</ul>
+</li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Input …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/heap.html">posted at 09:15</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
+                    <a href="/sort-characters-by-frequency.html">posted at 00:07</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
-                    &nbsp;<a href="/tag/heap.html" class="tags selected">heap</a>
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">leetcode</a>
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags selected">Heap</a>
                 </div>
-		<a href="/heap.html#disqus_thread">Click to read and post comments</a>
+		<a href="/sort-characters-by-frequency.html#disqus_thread">Click to read and post comments</a>
             </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/trapping-rain-water-ii.html" rel="bookmark" title="Permanent Link to &quot;Trapping Rain Water II&quot;">Trapping Rain Water II</a>
+                </h2>
+
+                
+                
+
+                <p>Given an <code>m x n</code> matrix of positive integers representing the height of each unit cell in a 2D elevation map, compute the volume of water it is able to trap after raining.</p>
+<ul>
+<li>Both m and n are less than 110. </li>
+<li>The height of each unit cell is greater than …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/trapping-rain-water-ii.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-first-Search</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags selected">Heap</a>
+                </div>
+		<a href="/trapping-rain-water-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/kth-smallest-element-in-a-sorted-matrix.html" rel="bookmark" title="Permanent Link to &quot;Kth Smallest Element in a Sorted Matrix&quot;">Kth Smallest Element in a Sorted Matrix</a>
+                </h2>
+
+                
+                
+
+                <p>Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.</p>
+<ul>
+<li>it is the kth smallest element in the sorted order, not the kth distinct element.</li>
+<li>You may assume k is always valid, 1 ≤ k …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/kth-smallest-element-in-a-sorted-matrix.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags selected">Heap</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                </div>
+		<a href="/kth-smallest-element-in-a-sorted-matrix.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/find-k-pairs-with-smallest-sums.html" rel="bookmark" title="Permanent Link to &quot;Find K Pairs with Smallest Sums&quot;">Find K Pairs with Smallest Sums</a>
+                </h2>
+
+                
+                
+
+                <p>You are given two integer arrays nums1 and nums2 sorted in ascending order and an integer k.</p>
+<p>Define a pair (u,v) which consists of one element from the first array and one element from the second array.</p>
+<p>Find the k pairs (u1,v1),(u2,v2) ...(uk,vk) with the …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/find-k-pairs-with-smallest-sums.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags selected">Heap</a>
+                </div>
+		<a href="/find-k-pairs-with-smallest-sums.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/rearrange-string-k-distance-apart.html" rel="bookmark" title="Permanent Link to &quot;Rearrange String k Distance Apart&quot;">Rearrange String k Distance Apart</a>
+                </h2>
+
+                
+                
+
+                <p>Given a non-empty string str and an integer k, rearrange the string such that the same characters are at least distance k from each other.</p>
+<p>All input strings are given in lowercase letters. If it is not possible to rearrange the string, return an empty string "".</p>
+<p>Example 1:</p>
+<div class="highlight"><pre><span></span>str = &quot;aabbcc …</pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/rearrange-string-k-distance-apart.html">posted at 00:05</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags selected">Heap</a>
+                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
+                </div>
+		<a href="/rearrange-string-k-distance-apart.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/design-twitter.html" rel="bookmark" title="Permanent Link to &quot;Design Twitter&quot;">Design Twitter</a>
+                </h2>
+
+                
+                
+
+                <p>Design a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user's news feed. Your design should support the following methods:</p>
+<ul>
+<li><strong>postTweet(userId, tweetId)</strong>: Compose a new tweet.</li>
+<li><strong>getNewsFeed(userId)</strong>: Retrieve the 10 most …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/design-twitter.html">posted at 00:05</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags selected">Heap</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                </div>
+		<a href="/design-twitter.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/top-k-frequent-elements.html" rel="bookmark" title="Permanent Link to &quot;Top K Frequent Elements&quot;">Top K Frequent Elements</a>
+                </h2>
+
+                
+                
+
+                <p>Given a non-empty array of integers, return the k most frequent elements.</p>
+<ul>
+<li>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.</li>
+<li>Your algorithm's time complexity must be better than O(n log n), where n is the array's size.</li>
+</ul>
+<p>For example:</p>
+<ul>
+<li>Given [1,1,1,2 …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/top-k-frequent-elements.html">posted at 00:05</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags selected">Heap</a>
+                </div>
+		<a href="/top-k-frequent-elements.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/super-ugly-number.html" rel="bookmark" title="Permanent Link to &quot;Super Ugly Number&quot;">Super Ugly Number</a>
+                </h2>
+
+                
+                
+
+                <p>Write a program to find the n<sup>th</sup> super ugly number.</p>
+<p>Super ugly numbers are positive numbers whose all prime factors are in the given prime list primes of size k. </p>
+<ul>
+<li><code>1</code> is a super ugly number for any given primes.</li>
+<li>The given numbers in primes are in ascending order …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/super-ugly-number.html">posted at 00:05</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags selected">Heap</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/super-ugly-number.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/find-median-from-data-stream.html" rel="bookmark" title="Permanent Link to &quot;Find Median from Data Stream&quot;">Find Median from Data Stream</a>
+                </h2>
+
+                
+                
+
+                <p>Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.</p>
+<p>Examples: 
+<code>[2,3,4]</code> , the median is <code>3</code></p>
+<p><code>[2,3]</code>, the median is <code>(2 + 3) / 2 …</code></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/find-median-from-data-stream.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags selected">Heap</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                </div>
+		<a href="/find-median-from-data-stream.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/ugly-number-ii.html" rel="bookmark" title="Permanent Link to &quot;Ugly Number II&quot;">Ugly Number II</a>
+                </h2>
+
+                
+                
+
+                <p>Write a program to find the n<sup>th</sup> ugly number.</p>
+<p>Ugly numbers are positive numbers whose prime factors only include <code>2</code>, <code>3</code>, <code>5</code>. For example, <code>1, 2, 3, 4, 5, 6, 8, 9, 10, 12</code> is the sequence of the first 10 ugly numbers.</p>
+<p>Note that 1 is typically treated …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/ugly-number-ii.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags selected">Heap</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
+                </div>
+		<a href="/ugly-number-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>
+
+                <div class="clear"></div>
+                <div class="pages">
+
+                <a href="/tag/heap2.html" class="next_page">Next&nbsp;&rarr;</a>
+
+
+
+                    <span>Page 1 of 2</span>
+                </div>
 
             <div class="clear"></div>
             <footer>

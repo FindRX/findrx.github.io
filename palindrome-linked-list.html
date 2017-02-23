@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Palindrome Linked List</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Linked-List,Two-Pointers" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/palindrome-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Palindrome Linked List&quot;">Palindrome Linked List</a>
+                </h2>
+
+                
+                
+
+                <p>Given a singly linked list, determine if it is a palindrome.</p>
+<ul>
+<li>Could you do it in O(n) time and O(1) space?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">slow</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">fast</span> <span class="o">&amp;&amp;</span> <span class="n">fast</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">slow</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">slow</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">slow</span><span class="p">;</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fast</span><span class="p">)</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">slow</span> <span class="o">&amp;&amp;</span> <span class="n">slow</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">left</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">left</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">!</span><span class="n">slow</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>12ms, 71.87%</li>
+<li>reverse the left side during finding the middle node, compare.</li>
+<li>Sometimes, don't consider the corner case too much in the beginning. Consider it later.</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/palindrome-linked-list/">234. Palindrome Linked List</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/palindrome-linked-list.html">posted at 00:03</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Meeting Rooms II</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Heap,Greedy,Sort" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/meeting-rooms-ii.html" rel="bookmark" title="Permanent Link to &quot;Meeting Rooms II&quot;">Meeting Rooms II</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array of meeting time intervals consisting of start and end times [[s<sub>1</sub>,e<sub>1</sub>],[s<sub>2</sub>,e<sub>2</sub>],...] (s<sub>i</sub> &lt; e<sub>i</sub>), find the minimum number of conference rooms required.</p>
+<p>For example:</p>
+<ul>
+<li>Given <code>[[0, 30],[5, 10],[15, 20]]</code>,</li>
+<li>return <code>2</code>.</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for an interval.</span>
+<span class="cm"> * struct Interval {</span>
+<span class="cm"> *     int start;</span>
+<span class="cm"> *     int end;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">quick_sort</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+            <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">nums</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">nums</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">len</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">minMeetingRooms</span><span class="p">(</span><span class="k">struct</span> <span class="n">Interval</span><span class="o">*</span> <span class="n">intervals</span><span class="p">,</span> <span class="kt">int</span> <span class="n">intervalsSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">start</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">intervalsSize</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">end</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">intervalsSize</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">intervalsSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">start</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">start</span><span class="p">;</span>
+        <span class="n">end</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">end</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">intervalsSize</span><span class="p">);</span>
+    <span class="n">quick_sort</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">intervalsSize</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">room</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">intervalsSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">start</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="n">room</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">else</span> <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">room</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Heap Solution:</p>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>Greedy. I am not sure I understand it throughly.</li>
+<li>This problem can be solved with heap, but that's not necessary. </li>
+<li>Heap solution:<ol>
+<li>sort the intevals by start.</li>
+<li>build a heap of ends.</li>
+<li>loop through starts, compare with the minimum end, maintain heap.</li>
+</ol>
+</li>
+<li>This problem is not a good practice for heap.</li>
+<li>9ms, 66.67%</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/meeting-rooms-ii/">253. Meeting Rooms II</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/meeting-rooms-ii.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
+                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

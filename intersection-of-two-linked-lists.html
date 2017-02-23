@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Intersection of Two Linked Lists</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Linked-List" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/intersection-of-two-linked-lists.html" rel="bookmark" title="Permanent Link to &quot;Intersection of Two Linked Lists&quot;">Intersection of Two Linked Lists</a>
+                </h2>
+
+                
+                
+
+                <p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
+<ul>
+<li>If the two linked lists have no intersection at all, return null.</li>
+<li>The linked lists must retain their original structure after the function returns.</li>
+<li>You may assume there are no cycles anywhere in the entire linked structure.</li>
+<li>Your code should preferably run in O(n) time and use only O(1) memory.</li>
+</ul>
+<p>For example: </p>
+<ul>
+<li>the following two linked lists:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">A</span><span class="o">:</span>          <span class="n">a1</span> <span class="err">→</span> <span class="n">a2</span>
+                   <span class="err">↘</span>
+                     <span class="n">c1</span> <span class="err">→</span> <span class="n">c2</span> <span class="err">→</span> <span class="n">c3</span>
+                   <span class="err">↗</span>            
+<span class="n">B</span><span class="o">:</span>     <span class="n">b1</span> <span class="err">→</span> <span class="n">b2</span> <span class="err">→</span> <span class="n">b3</span>
+</pre></div>
+
+
+<ul>
+<li>begin to intersect at node c1.</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="nf">getIntersectionNode</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">headA</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">headB</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">headA</span> <span class="o">||</span> <span class="o">!</span><span class="n">headB</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">headA</span><span class="p">,</span> <span class="o">*</span><span class="n">q</span> <span class="o">=</span> <span class="n">headB</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">lenA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">lenB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">lenA</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">lenB</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="n">q</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lenA</span> <span class="o">&gt;</span> <span class="n">lenB</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">lenA</span> <span class="o">-</span> <span class="n">lenB</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">m</span><span class="o">--</span><span class="p">)</span> <span class="n">headA</span> <span class="o">=</span> <span class="n">headA</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">lenA</span> <span class="o">&lt;</span> <span class="n">lenB</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">lenB</span> <span class="o">-</span> <span class="n">lenA</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">m</span><span class="o">--</span><span class="p">)</span> <span class="n">headB</span> <span class="o">=</span> <span class="n">headB</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">headA</span> <span class="o">!=</span> <span class="n">headB</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">headA</span> <span class="o">=</span> <span class="n">headA</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">headB</span> <span class="o">=</span> <span class="n">headB</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">headA</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>A much better way:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="nf">getIntersectionNode</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">headA</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">headB</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">headA</span> <span class="o">||</span> <span class="o">!</span><span class="n">headB</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">headA</span><span class="p">,</span> <span class="o">*</span><span class="n">q</span> <span class="o">=</span> <span class="n">headB</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="k">else</span> <span class="n">p</span> <span class="o">=</span> <span class="n">headB</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="k">else</span> <span class="n">q</span> <span class="o">=</span> <span class="n">headA</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>Two pass is necessary.</li>
+<li>The second solution is a small cliff.</li>
+<li>The first: 22ms, 98.06%. The second: 23ms, 95.48%</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/intersection-of-two-linked-lists/">160. Intersection of Two Linked Lists</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/intersection-of-two-linked-lists.html">posted at 00:02</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

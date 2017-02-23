@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Happy Number</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Math,Hash-Table" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/happy-number.html" rel="bookmark" title="Permanent Link to &quot;Happy Number&quot;">Happy Number</a>
+                </h2>
+
+                
+                
+
+                <p>Write an algorithm to determine if a number is "happy".</p>
+<p>A happy number is a number defined by the following process: </p>
+<ol>
+<li>Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. </li>
+<li>Those numbers for which this process ends in 1 are happy numbers.</li>
+</ol>
+<p>Example: </p>
+<ul>
+<li>19 is a happy number</li>
+<li>1<sup>2</sup> + 9<sup>2</sup> = 82</li>
+<li>8<sup>2</sup> + 2<sup>2</sup> = 68</li>
+<li>6<sup>2</sup> + 8<sup>2</sup> = 100</li>
+<li>1<sup>2</sup> + 0<sup>2</sup> + 0<sup>2</sup> = 1</li>
+</ul>
+<p>C Solution with HashTable:</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">**</span><span class="n">list</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="nf">create</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span><span class="p">));</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">ht</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">find_or_insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">val</span> <span class="o">%</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ind</span> <span class="o">=</span> <span class="o">-</span><span class="n">ind</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">He</span><span class="p">));</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">];</span>
+    <span class="n">ht</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">isHappy</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Ht</span> <span class="o">*</span><span class="n">ht</span> <span class="o">=</span> <span class="n">create</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">iht</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">};</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">find_or_insert</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">iht</span><span class="p">[</span><span class="n">n</span> <span class="o">%</span> <span class="mi">10</span><span class="p">];</span>
+            <span class="n">n</span> <span class="o">/=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution with Array as HashTable</p>
+<div class="highlight"><pre><span></span><span class="cp">#define HTSIZE (9 * 9 * 63)</span>
+<span class="kt">bool</span> <span class="nf">isHappy</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ht</span><span class="p">[</span><span class="n">HTSIZE</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">iht</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">};</span>
+    <span class="k">do</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">iht</span><span class="p">[</span><span class="n">n</span> <span class="o">%</span> <span class="mi">10</span><span class="p">];</span>
+            <span class="n">n</span> <span class="o">/=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ht</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">ht</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>HashTable is used to detect the cycle.</li>
+<li>And in this case, keys are not too large, so an array could do the job.</li>
+<li>The first: 3ms, 4.72%; the second: 0ms, 16%</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/happy-number/">202. Happy Number</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/happy-number.html">posted at 00:03</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

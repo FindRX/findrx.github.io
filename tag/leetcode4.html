@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | articles tagged "LeetCode" | Page 4</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="ephemeral selected"><a href="/tag/leetcode4.html">LeetCode</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/power-of-three.html" rel="bookmark" title="Permanent Link to &quot;Power of Three&quot;">Power of Three</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer, write a function to determine if it is a power of three.</p>
+<p>Follow up:
+* Could you do it without using any loop / recursion?</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfThree</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">n</span> <span class="o">/=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Maybe better, but not …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/power-of-three.html">posted at 00:05</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/power-of-three.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/super-ugly-number.html" rel="bookmark" title="Permanent Link to &quot;Super Ugly Number&quot;">Super Ugly Number</a>
+                </h2>
+
+                
+                
+
+                <p>Write a program to find the n<sup>th</sup> super ugly number.</p>
+<p>Super ugly numbers are positive numbers whose all prime factors are in the given prime list primes of size k. </p>
+<ul>
+<li><code>1</code> is a super ugly number for any given primes.</li>
+<li>The given numbers in primes are in ascending order …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/super-ugly-number.html">posted at 00:05</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/super-ugly-number.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/bulls-and-cows.html" rel="bookmark" title="Permanent Link to &quot;Bulls and Cows&quot;">Bulls and Cows</a>
+                </h2>
+
+                
+                
+
+                <p>You are playing the following Bulls and Cows game with your friend: You write down a number and ask your friend to guess what the number is. 
+Each time your friend makes a guess, you provide a hint that indicates how many digits in said guess match your secret number …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/bulls-and-cows.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                </div>
+		<a href="/bulls-and-cows.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/find-median-from-data-stream.html" rel="bookmark" title="Permanent Link to &quot;Find Median from Data Stream&quot;">Find Median from Data Stream</a>
+                </h2>
+
+                
+                
+
+                <p>Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.</p>
+<p>Examples: 
+<code>[2,3,4]</code> , the median is <code>3</code></p>
+<p><code>[2,3]</code>, the median is <code>(2 + 3) / 2 …</code></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/find-median-from-data-stream.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                </div>
+		<a href="/find-median-from-data-stream.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/word-pattern.html" rel="bookmark" title="Permanent Link to &quot;Word Pattern&quot;">Word Pattern</a>
+                </h2>
+
+                
+                
+
+                <p>Given a pattern and a string str, find if str follows the same pattern.</p>
+<p>Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.</p>
+<ul>
+<li>You may assume pattern contains only lowercase letters, and str contains lowercase letters …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/word-pattern.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                </div>
+		<a href="/word-pattern.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/unique-word-abbreviation.html" rel="bookmark" title="Permanent Link to &quot;Unique Word Abbreviation&quot;">Unique Word Abbreviation</a>
+                </h2>
+
+                
+                
+
+                <p>An abbreviation of a word follows the form <first letter><number><last letter>. Below are some examples of word abbreviations:</p>
+<ul>
+<li>it                      --&gt; it    (no abbreviation)</li>
+<li>d|o|g                   --&gt; d1g</li>
+<li>i|nternationalizatio|n  --&gt; i18n</li>
+<li>l|ocalizatio|n          --&gt; l10n</li>
+</ul>
+<p>Assume you have a dictionary and given a word, find whether its abbreviation is unique in the dictionary. A …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/unique-word-abbreviation.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                </div>
+		<a href="/unique-word-abbreviation.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/palindrome-permutation.html" rel="bookmark" title="Permanent Link to &quot;Palindrome Permutation&quot;">Palindrome Permutation</a>
+                </h2>
+
+                
+                
+
+                <p>Given a string, determine if a permutation of the string could form a palindrome.</p>
+<p>Example:</p>
+<ul>
+<li>"code" -&gt; False, "aab" -&gt; True, "carerac" -&gt; True.</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">canPermutePalindrome</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="o">*</span><span class="n">s</span><span class="p">;</span> <span class="n">s</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">s</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">res</span><span class="o">--</span><span class="p">;</span>
+            <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">res</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/palindrome-permutation.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                </div>
+		<a href="/palindrome-permutation.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/ugly-number-ii.html" rel="bookmark" title="Permanent Link to &quot;Ugly Number II&quot;">Ugly Number II</a>
+                </h2>
+
+                
+                
+
+                <p>Write a program to find the n<sup>th</sup> ugly number.</p>
+<p>Ugly numbers are positive numbers whose prime factors only include <code>2</code>, <code>3</code>, <code>5</code>. For example, <code>1, 2, 3, 4, 5, 6, 8, 9, 10, 12</code> is the sequence of the first 10 ugly numbers.</p>
+<p>Note that 1 is typically treated …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/ugly-number-ii.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
+                </div>
+		<a href="/ugly-number-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/ugly-number.html" rel="bookmark" title="Permanent Link to &quot;Ugly Number&quot;">Ugly Number</a>
+                </h2>
+
+                
+                
+
+                <p>Write a program to check whether a given number is an ugly number.</p>
+<p>Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.</p>
+<p>Note that 1 is typically treated …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/ugly-number.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/ugly-number.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/3sum-smaller.html" rel="bookmark" title="Permanent Link to &quot;3Sum Smaller&quot;">3Sum Smaller</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 &lt;= i &lt; j &lt; k &lt; n that satisfy the condition nums[i] + nums[j] + nums[k] &lt; target.</p>
+<p>Example: </p>
+<ul>
+<li>Given nums = [-2, 0, 1, 3], and target = 2.</li>
+<li>Return 2. </li>
+<li>Because there …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/3sum-smaller.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/3sum-smaller.html#disqus_thread">Click to read and post comments</a>
+            </article>
+
+                <div class="clear"></div>
+                <div class="pages">
+
+                <a href="/tag/leetcode3.html" class="prev_page">&larr;&nbsp;Previous</a>
+                <a href="/tag/leetcode5.html" class="next_page">Next&nbsp;&rarr;</a>
+
+
+
+                    <span>Page 4 of 10</span>
+                </div>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

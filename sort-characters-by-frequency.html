@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Sort Characters By Frequency</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Hash-Table,Heap" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/sort-characters-by-frequency.html" rel="bookmark" title="Permanent Link to &quot;Sort Characters By Frequency&quot;">Sort Characters By Frequency</a>
+                </h2>
+
+                
+                
+
+                <p>Given a string, sort it in decreasing order based on the frequency of characters.</p>
+<p>Example 1:</p>
+<ul>
+<li>Input: "tree"</li>
+<li>Output: "eert"</li>
+<li>Explanation:<ul>
+<li>'e' appears twice while 'r' and 't' both appear once.</li>
+<li>So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.</li>
+</ul>
+</li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Input: "cccaaa" </li>
+<li>Output: "cccaaa"</li>
+<li>Explanation:<ul>
+<li>Both 'c' and 'a' appear three times, so "aaaccc" is also a valid answer.</li>
+<li>Note that "cacaca" is incorrect, as the same characters must be together.</li>
+</ul>
+</li>
+</ul>
+<p>Example 3:</p>
+<ul>
+<li>Input: "Aabb" </li>
+<li>Output: "bbAa"</li>
+<li>Explanation:<ul>
+<li>"bbaA" is also a valid answer, but "Aabb" is incorrect.</li>
+<li>Note that 'A' and 'a' are treated as two different characters.</li>
+</ul>
+</li>
+</ul>
+<p>Python Solution:</p>
+<p>Heap:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">frequencySort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">freq_list</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="n">freq</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">freq</span><span class="p">]</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">freq_list</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="n">freq_list</span><span class="p">:</span>
+            <span class="n">count</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">freq_list</span><span class="p">)</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">c</span><span class="p">]</span> <span class="o">*</span> <span class="o">-</span><span class="n">count</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Bucket:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">frequencySort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">freq</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">freq</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">count</span><span class="p">:</span>
+                <span class="n">count</span><span class="p">[</span><span class="n">freq</span><span class="p">[</span><span class="n">c</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">count</span><span class="p">[</span><span class="n">freq</span><span class="p">[</span><span class="n">c</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">freq</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">count</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">count</span><span class="p">])</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>The first: 132ms, 25.04%. The second: 129ms, 27.11%</li>
+<li>It's easy, both are O(N)</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/sort-characters-by-frequency/">451. Sort Characters By Frequency</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/sort-characters-by-frequency.html">posted at 00:07</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

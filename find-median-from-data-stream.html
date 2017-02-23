@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Find Median from Data Stream</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Heap,Design" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/find-median-from-data-stream.html" rel="bookmark" title="Permanent Link to &quot;Find Median from Data Stream&quot;">Find Median from Data Stream</a>
+                </h2>
+
+                
+                
+
+                <p>Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.</p>
+<p>Examples: 
+<code>[2,3,4]</code> , the median is <code>3</code></p>
+<p><code>[2,3]</code>, the median is <code>(2 + 3) / 2 = 2.5</code></p>
+<p>Design a data structure that supports the following two operations:</p>
+<ul>
+<li><code>void addNum(int num)</code> - Add a integer number from the data stream to the data structure.</li>
+<li><code>double findMedian()</code> - Return the median of all elements so far.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>addNum(1)
+addNum(2)
+findMedian() -&gt; 1.5
+addNum(3) 
+findMedian() -&gt; 2
+</pre></div>
+
+
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Heap</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">heap</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">top</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">cmp</span><span class="p">)(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="n">q</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">MedianFinder</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="nf">smaller</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">bigger</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="nf">create</span><span class="p">(</span><span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">cmp</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Heap</span><span class="p">));</span>
+    <span class="n">res</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="n">res</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">res</span><span class="o">-&gt;</span><span class="n">heap</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="n">res</span><span class="o">-&gt;</span><span class="n">cmp</span> <span class="o">=</span> <span class="n">cmp</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/** initialize your data structure here. */</span>
+<span class="n">MedianFinder</span><span class="o">*</span> <span class="nf">medianFinderCreate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">MedianFinder</span> <span class="o">*</span><span class="n">obj</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">MedianFinder</span><span class="p">));</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="n">smaller</span><span class="p">);</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">q</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="n">bigger</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">obj</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">pop</span><span class="p">(</span><span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="o">--</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">root</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">child</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">child</span> <span class="o">&lt;</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">child</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">&amp;&amp;</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">cmp</span><span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">child</span><span class="p">],</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">child</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span> <span class="n">child</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">cmp</span><span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">],</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">child</span><span class="p">]))</span> <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">child</span><span class="p">];</span>
+        <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">child</span><span class="p">;</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">root</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">push</span><span class="p">(</span><span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">==</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1000</span><span class="p">;</span>
+        <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span> <span class="o">=</span> <span class="n">realloc</span><span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">,</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">top</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">root</span> <span class="o">&amp;&amp;</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">cmp</span><span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">],</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">];</span>
+        <span class="n">h</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">medianFinderAddNum</span><span class="p">(</span><span class="n">MedianFinder</span><span class="o">*</span> <span class="n">obj</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">push</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+    <span class="n">push</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">q</span><span class="p">,</span> <span class="n">pop</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span><span class="p">));</span>
+    <span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span><span class="p">;</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span> <span class="o">=</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">q</span><span class="p">;</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">q</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">medianFinderFindMedian</span><span class="p">(</span><span class="n">MedianFinder</span><span class="o">*</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">==</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span> <span class="k">return</span> <span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">&gt;</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span> <span class="k">return</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">medianFinderFree</span><span class="p">(</span><span class="n">MedianFinder</span><span class="o">*</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">);</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">heap</span><span class="p">);</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">p</span><span class="p">);</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">q</span><span class="p">);</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Your MedianFinder struct will be instantiated and called as such:</span>
+<span class="cm"> * struct MedianFinder* obj = medianFinderCreate();</span>
+<span class="cm"> * medianFinderAddNum(obj, num);</span>
+<span class="cm"> * double param_2 = medianFinderFindMedian(obj);</span>
+<span class="cm"> * medianFinderFree(obj);</span>
+<span class="cm"> */</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>Using two heap, left heap records the max of the half, right heap records the min of the other half.</li>
+<li>The time complexity is O(lg(N)) for add, O(1) for find.</li>
+<li>119ms, 75%.</li>
+<li>From the very beginning to the end, keep the difference of the length of the two heaps under 1.<ul>
+<li>With swaping the pointers of the two heaps after adding.</li>
+<li>Better than enough.</li>
+</ul>
+</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/find-median-from-data-stream/">295. Find Median from Data Stream</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/find-median-from-data-stream.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

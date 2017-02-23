@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | articles tagged "Two-Pointers"</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="ephemeral selected"><a href="/tag/two-pointers.html">Two-Pointers</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/intersection-of-two-arrays-ii.html" rel="bookmark" title="Permanent Link to &quot;Intersection of Two Arrays II&quot;">Intersection of Two Arrays II</a>
+                </h2>
+
+                
+                
+
+                <p>Given two arrays, write a function to compute their intersection.</p>
+<ul>
+<li>Each element in the result should appear as many times as it shows in both arrays.</li>
+<li>The result can be in any order.</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2, 2].</li>
+</ul>
+<p>Follow up:</p>
+<ul>
+<li>What if …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/intersection-of-two-arrays-ii.html">posted at 00:05</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags selected">Two-Pointers</a>
+                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
+                </div>
+		<a href="/intersection-of-two-arrays-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/intersection-of-two-arrays.html" rel="bookmark" title="Permanent Link to &quot;Intersection of Two Arrays&quot;">Intersection of Two Arrays</a>
+                </h2>
+
+                
+                
+
+                <p>Given two arrays, write a function to compute their intersection.</p>
+<ul>
+<li>Each element in the result must be unique.</li>
+<li>The result can be in any order.</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">HE</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">HE</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="n">HT</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">size …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/intersection-of-two-arrays.html">posted at 00:05</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags selected">Two-Pointers</a>
+                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
+                </div>
+		<a href="/intersection-of-two-arrays.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/palindrome-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Palindrome Linked List&quot;">Palindrome Linked List</a>
+                </h2>
+
+                
+                
+
+                <p>Given a singly linked list, determine if it is a palindrome.</p>
+<ul>
+<li>Could you do it in O(n) time and O(1) space?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">slow</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">left …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/palindrome-linked-list.html">posted at 00:03</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags selected">Two-Pointers</a>
+                </div>
+		<a href="/palindrome-linked-list.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/two-sum-ii-input-array-is-sorted.html" rel="bookmark" title="Permanent Link to &quot;Two Sum II - Input array is sorted&quot;">Two Sum II - Input array is sorted</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2 …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/two-sum-ii-input-array-is-sorted.html">posted at 00:02</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags selected">Two-Pointers</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                    &nbsp;<a href="/tag/k-sum.html" class="tags">K-Sum</a>
+                </div>
+		<a href="/two-sum-ii-input-array-is-sorted.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/linked-list-cycle-ii.html" rel="bookmark" title="Permanent Link to &quot;Linked List Cycle II&quot;">Linked List Cycle II</a>
+                </h2>
+
+                
+                
+
+                <p>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.</p>
+<ul>
+<li>Do not modify the linked list.</li>
+<li>Can you solve it without using extra space?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="nf">detectCycle</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/linked-list-cycle-ii.html">posted at 00:02</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags selected">Two-Pointers</a>
+                </div>
+		<a href="/linked-list-cycle-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/linked-list-cycle.html" rel="bookmark" title="Permanent Link to &quot;Linked List Cycle&quot;">Linked List Cycle</a>
+                </h2>
+
+                
+                
+
+                <p>Given a linked list, determine if it has a cycle in it.</p>
+<ul>
+<li>Can you solve it without using extra space?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">_head</span> <span class="o">&amp;&amp;</span> <span class="n">_head …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/linked-list-cycle.html">posted at 00:02</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags selected">Two-Pointers</a>
+                </div>
+		<a href="/linked-list-cycle.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/partition-list.html" rel="bookmark" title="Permanent Link to &quot;Partition List&quot;">Partition List</a>
+                </h2>
+
+                
+                
+
+                <p>Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.</p>
+<ul>
+<li>You should preserve the original relative order of the nodes in each of the two partitions.</li>
+</ul>
+<p>For example:</p>
+<ul>
+<li>Given <code>1-&gt;4-&gt;3-&gt;2-&gt;5- …</code></li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/partition-list.html">posted at 00:01</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags selected">Two-Pointers</a>
+                </div>
+		<a href="/partition-list.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/rotate-list.html" rel="bookmark" title="Permanent Link to &quot;Rotate List&quot;">Rotate List</a>
+                </h2>
+
+                
+                
+
+                <p>Given a list, rotate the list to the right by k places, where k is non-negative.</p>
+<p>Example:</p>
+<ul>
+<li>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code> and <code>k = 2</code>,</li>
+<li>return <code>4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</code>.</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">rotateRight …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/rotate-list.html">posted at 00:01</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags selected">Two-Pointers</a>
+                </div>
+		<a href="/rotate-list.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/remove-nth-node-from-end-of-list.html" rel="bookmark" title="Permanent Link to &quot;Remove Nth Node From End of List&quot;">Remove Nth Node From End of List</a>
+                </h2>
+
+                
+                
+
+                <p>Given a linked list, remove the n<sup>th</sup> node from the end of list and return its head.</p>
+<ul>
+<li>Given n will always be valid.</li>
+<li>Try to do this in one pass.</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Given linked list: <code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>, and <code>n = 2</code>.</li>
+<li>After removing the second node from the …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/remove-nth-node-from-end-of-list.html">posted at 00:00</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags selected">Two-Pointers</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                </div>
+		<a href="/remove-nth-node-from-end-of-list.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/4sum.html" rel="bookmark" title="Permanent Link to &quot;4Sum&quot;">4Sum</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.</p>
+<ul>
+<li>The solution set must not contain duplicate quadruplets.</li>
+</ul>
+<p>Example: </p>
+<ul>
+<li>Given array S = [1 …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/4sum.html">posted at 00:00</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags selected">Two-Pointers</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/k-sum.html" class="tags">K-Sum</a>
+                </div>
+		<a href="/4sum.html#disqus_thread">Click to read and post comments</a>
+            </article>
+
+                <div class="clear"></div>
+                <div class="pages">
+
+                <a href="/tag/two-pointers2.html" class="next_page">Next&nbsp;&rarr;</a>
+
+
+
+                    <span>Page 1 of 2</span>
+                </div>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

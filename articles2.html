@@ -27,156 +27,274 @@
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">            <h4 class="date">Sep 23, 2016</h4>
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/two-pointers.html" rel="bookmark" title="Permanent Link to &quot;Two Pointers&quot;">Two Pointers</a>
+                    <a href="/minimum-moves-to-equal-array-elements.html" rel="bookmark" title="Permanent Link to &quot;Minimum Moves to Equal Array Elements&quot;">Minimum Moves to Equal Array Elements</a>
                 </h2>
 
                 
                 
 
-                <ul>
-<li><a href="/longest-substring-without-repeating-characters.html">Longest Substring Without Repeating Characters</a></li>
-</ul>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="/two-pointers.html">posted at 10:23</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">leetcode</a>
-                </div>
-		<a href="/two-pointers.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Sep 22, 2016</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/math-easy.html" rel="bookmark" title="Permanent Link to &quot;Math (easy)&quot;">Math (easy)</a>
-                </h2>
-
-                
-                
-
-                <h3><a href="https://leetcode.com/problems/reverse-integer/">7. Reverse Integer</a></h3>
-<p>Reverse digits of an integer.</p>
+                <p>Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1.</p>
+<p>Example:</p>
 <ul>
-<li>Example1: x = 123, return 321</li>
-<li>Example2: x = -123, return -321</li>
-</ul>
-<p>C Solution: </p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">reverse</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">INT_MIN</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="p">;</span>
-        <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">limit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">tlimit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0 …</span></pre></div>
+<li>Input: [1,2,3]</li>
+<li>Output: 3</li>
+<li>Explanation: Only three moves are needed (remember each move increments two elements …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/math-easy.html">posted at 06:44</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
+                    <a href="/minimum-moves-to-equal-array-elements.html">posted at 00:07</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
-                    &nbsp;<a href="/tag/math.html" class="tags">math</a>
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">leetcode</a>
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
                 </div>
-		<a href="/math-easy.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Aug 23, 2016</h4>
-
+		<a href="/minimum-moves-to-equal-array-elements.html#disqus_thread">Click to read and post comments</a>
+            </article>
             <article class="post">
                 <h2 class="title">
-                    <a href="/linked-list.html" rel="bookmark" title="Permanent Link to &quot;Linked List&quot;">Linked List</a>
+                    <a href="/sort-characters-by-frequency.html" rel="bookmark" title="Permanent Link to &quot;Sort Characters By Frequency&quot;">Sort Characters By Frequency</a>
                 </h2>
 
                 
                 
 
-                <p>For Linked list, several techniques are used:</p>
+                <p>Given a string, sort it in decreasing order based on the frequency of characters.</p>
+<p>Example 1:</p>
 <ul>
-<li>dummy head and double pointers</li>
-<li>recursive and iterate</li>
+<li>Input: "tree"</li>
+<li>Output: "eert"</li>
+<li>Explanation:<ul>
+<li>'e' appears twice while 'r' and 't' both appear once.</li>
+<li>So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.</li>
 </ul>
-<h3><a href="https://leetcode.com/problems/add-two-numbers/">2. Add Two Numbers</a></h3>
-<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers …</p>
+</li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Input …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/linked-list.html">posted at 10:23</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
+                    <a href="/sort-characters-by-frequency.html">posted at 00:07</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
-                    &nbsp;<a href="/tag/linkedlist.html" class="tags">linkedlist</a>
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">leetcode</a>
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
                 </div>
-		<a href="/linked-list.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Aug 21, 2016</h4>
-
+		<a href="/sort-characters-by-frequency.html#disqus_thread">Click to read and post comments</a>
+            </article>
             <article class="post">
                 <h2 class="title">
-                    <a href="/divide-and-conquer.html" rel="bookmark" title="Permanent Link to &quot;Divide and Conquer&quot;">Divide and Conquer</a>
+                    <a href="/number-of-boomerangs.html" rel="bookmark" title="Permanent Link to &quot;Number of Boomerangs&quot;">Number of Boomerangs</a>
                 </h2>
 
                 
                 
 
-                
+                <p>Given n points in the plane that are all pairwise distinct, a "boomerang" is a tuple of points (i, j, k) such that the distance between i and j equals the distance between i and k (the order of the tuple matters).</p>
+<p>Find the number of boomerangs. You may assume …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/divide-and-conquer.html">posted at 08:43</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
+                    <a href="/number-of-boomerangs.html">posted at 00:07</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
-                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">divide and conquer</a>
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">leetcode</a>
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                 </div>
-		<a href="/divide-and-conquer.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Aug 11, 2016</h4>
-
+		<a href="/number-of-boomerangs.html#disqus_thread">Click to read and post comments</a>
+            </article>
             <article class="post">
                 <h2 class="title">
-                    <a href="/heap.html" rel="bookmark" title="Permanent Link to &quot;Heap&quot;">Heap</a>
+                    <a href="/add-two-number-ii.html" rel="bookmark" title="Permanent Link to &quot;Add Two Number II&quot;">Add Two Number II</a>
                 </h2>
 
                 
                 
 
-                <h3><a href="https://leetcode.com/problems/merge-k-sorted-lists/">23. Merge k Sorted Lists</a></h3>
-<p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
-<p>C Solution:</p>
-<p>Using heap.</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">**</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span> <span class="k">return …</span></pre></div>
+                <p>You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<ul>
+<li>You may assume the two numbers do not contain any leading zero, except …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/heap.html">posted at 09:15</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">algorithm</a>
+                    <a href="/add-two-number-ii.html">posted at 00:07</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
-                    &nbsp;<a href="/tag/heap.html" class="tags">heap</a>
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">leetcode</a>
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
                 </div>
-		<a href="/heap.html#disqus_thread">Click to read and post comments</a>
+		<a href="/add-two-number-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/arranging-coins.html" rel="bookmark" title="Permanent Link to &quot;Arranging Coins&quot;">Arranging Coins</a>
+                </h2>
+
+                
+                
+
+                <p>You have a total of n coins that you want to form in a staircase shape, where every k-th row must have exactly k coins.</p>
+<p>Given n, find the total number of full staircase rows that can be formed.</p>
+<p>n is a non-negative integer and fits within the range of …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/arranging-coins.html">posted at 00:07</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/arranging-coins.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/find-all-anagrams-in-a-string.html" rel="bookmark" title="Permanent Link to &quot;Find All Anagrams in a String&quot;">Find All Anagrams in a String</a>
+                </h2>
+
+                
+                
+
+                <p>Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.</p>
+<ul>
+<li>Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.</li>
+<li>The order of output does not matter.</li>
+</ul>
+<p>Example …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/find-all-anagrams-in-a-string.html">posted at 00:07</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                </div>
+		<a href="/find-all-anagrams-in-a-string.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/add-strings.html" rel="bookmark" title="Permanent Link to &quot;Add Strings&quot;">Add Strings</a>
+                </h2>
+
+                
+                
+
+                <p>Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.</p>
+<p>Note:</p>
+<ul>
+<li>The length of both num1 and num2 is &lt; 5100.</li>
+<li>Both num1 and num2 contains only digits 0-9.</li>
+<li>Both num1 and num2 does not contain any leading zero.</li>
+<li>You must not use any …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/add-strings.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/add-strings.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/longest-palindrome.html" rel="bookmark" title="Permanent Link to &quot;Longest Palindrome&quot;">Longest Palindrome</a>
+                </h2>
+
+                
+                
+
+                <p>Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.</p>
+<ul>
+<li>This is case sensitive, for example "Aa" is not considered a palindrome here.</li>
+<li>Assume the length of given string will not exceed 1,010.</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Input …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/longest-palindrome.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                </div>
+		<a href="/longest-palindrome.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/trapping-rain-water-ii.html" rel="bookmark" title="Permanent Link to &quot;Trapping Rain Water II&quot;">Trapping Rain Water II</a>
+                </h2>
+
+                
+                
+
+                <p>Given an <code>m x n</code> matrix of positive integers representing the height of each unit cell in a 2D elevation map, compute the volume of water it is able to trap after raining.</p>
+<ul>
+<li>Both m and n are less than 110. </li>
+<li>The height of each unit cell is greater than …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/trapping-rain-water-ii.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-first-Search</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                </div>
+		<a href="/trapping-rain-water-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/nth-digit.html" rel="bookmark" title="Permanent Link to &quot;Nth Digit&quot;">Nth Digit</a>
+                </h2>
+
+                
+                
+
+                <p>Find the n<sup>th</sup> digit of the infinite integer sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...</p>
+<p>Note:</p>
+<ul>
+<li>n is positive and will fit within the range of a 32-bit signed integer (n &lt; 231).</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Input: 3 Output: 3</li>
+<li>Input: 11 Output: 0<ul>
+<li>Explanation: The 11th …</li></ul></li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/nth-digit.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/nth-digit.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
                 <div class="pages">
 
                 <a href="/articles.html" class="prev_page">&larr;&nbsp;Previous</a>
+                <a href="/articles3.html" class="next_page">Next&nbsp;&rarr;</a>
 
 
 
-                    <span>Page 2 of 2</span>
+                    <span>Page 2 of 11</span>
                 </div>
 
             <div class="clear"></div>

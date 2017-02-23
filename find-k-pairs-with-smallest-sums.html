@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Find K Pairs with Smallest Sums</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Heap" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/find-k-pairs-with-smallest-sums.html" rel="bookmark" title="Permanent Link to &quot;Find K Pairs with Smallest Sums&quot;">Find K Pairs with Smallest Sums</a>
+                </h2>
+
+                
+                
+
+                <p>You are given two integer arrays nums1 and nums2 sorted in ascending order and an integer k.</p>
+<p>Define a pair (u,v) which consists of one element from the first array and one element from the second array.</p>
+<p>Find the k pairs (u1,v1),(u2,v2) ...(uk,vk) with the smallest sums.</p>
+<p>Example 1:</p>
+<ul>
+<li>Given nums1 = [1,7,11], nums2 = [2,4,6],  k = 3</li>
+<li>Return: [1,2],[1,4],[1,6]</li>
+<li>The first 3 pairs are returned from the sequence:</li>
+<li>[1,2],[1,4],[1,6],[7,2],[7,4],[11,2],[7,6],[11,4],[11,6]</li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Given nums1 = [1,1,2], nums2 = [1,2,3],  k = 2</li>
+<li>Return: [1,1],[1,1]</li>
+<li>The first 2 pairs are returned from the sequence:</li>
+<li>[1,1],[1,1],[1,2],[2,1],[1,2],[2,2],[1,3],[1,3],[2,3]</li>
+</ul>
+<p>Example 3:</p>
+<ul>
+<li>Given nums1 = [1,2], nums2 = [3],  k = 3 </li>
+<li>Return: [1,3],[2,3]</li>
+<li>All possible pairs are returned from the sequence:</li>
+<li>[1,3],[2,3]</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Return an array of arrays of size *returnSize.</span>
+<span class="cm"> * The sizes of the arrays are returned as *columnSizes array.</span>
+<span class="cm"> * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">Heap</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">vals</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">left</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">top</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="nf">create</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="n">obj</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Heap</span><span class="p">));</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">vals</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">obj</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">push</span><span class="p">(</span><span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">==</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1000</span><span class="p">;</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span> <span class="o">=</span> <span class="n">realloc</span><span class="p">(</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">,</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">realloc</span><span class="p">(</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">realloc</span><span class="p">(</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+    <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span><span class="o">++</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">root</span> <span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">cur</span><span class="p">])</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">cur</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="n">cur</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="n">cur</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">pop</span><span class="p">(</span><span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="o">--</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">];</span>
+    <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">];</span>
+    <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">root</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">target</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">&lt;</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">left</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">right</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">target</span><span class="p">])</span> <span class="k">return</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">target</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">vals</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="n">target</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="n">target</span><span class="p">];</span>
+        <span class="n">heap</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">target</span><span class="p">;</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">root</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="o">**</span> <span class="nf">kSmallestPairs</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nums1Size</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">nums2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nums2Size</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span><span class="o">**</span> <span class="n">columnSizes</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">returnSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">nums1</span>  <span class="o">||</span> <span class="o">!</span><span class="n">nums1Size</span> <span class="o">||</span> <span class="o">!</span><span class="n">nums2</span> <span class="o">||</span> <span class="o">!</span><span class="n">nums2Size</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="o">**</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">));</span>
+    <span class="o">*</span><span class="n">columnSizes</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="o">*</span><span class="n">returnSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">struct</span> <span class="n">Heap</span> <span class="o">*</span><span class="n">heap</span> <span class="o">=</span> <span class="n">create</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">push</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">nums1</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums2</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pop</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+        <span class="n">res</span><span class="p">[</span><span class="o">*</span><span class="n">returnSize</span><span class="p">]</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+        <span class="n">res</span><span class="p">[</span><span class="o">*</span><span class="n">returnSize</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums1</span><span class="p">[</span><span class="n">r</span><span class="p">];</span>
+        <span class="n">res</span><span class="p">[</span><span class="o">*</span><span class="n">returnSize</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums2</span><span class="p">[</span><span class="n">c</span><span class="p">];</span>
+        <span class="p">(</span><span class="o">*</span><span class="n">columnSizes</span><span class="p">)[</span><span class="o">*</span><span class="n">returnSize</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="o">++*</span><span class="n">returnSize</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="n">nums1Size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">push</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">nums1</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums2</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">r</span> <span class="o">&amp;&amp;</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">nums2Size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">push</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">nums1</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums2</span><span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>It's a matrix, when you think in this way, things become clear.</li>
+<li>During walking in a matrix, to avoid the duplicates, only the elements in first row spread to the next column.</li>
+<li>This is a typical heap problem. Good.</li>
+<li>9ms, 100%</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/find-k-pairs-with-smallest-sums/">373. Find K Pairs with Smallest Sums</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/find-k-pairs-with-smallest-sums.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

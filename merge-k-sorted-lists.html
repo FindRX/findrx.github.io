@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Merge K Sorted Lists</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Linked-List,Heap,Divide-and-Conquer" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/merge-k-sorted-lists.html" rel="bookmark" title="Permanent Link to &quot;Merge K Sorted Lists&quot;">Merge K Sorted Lists</a>
+                </h2>
+
+                
+                
+
+                <p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
+<p>C Solution:</p>
+<p>Using heap.</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">**</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="n">heap</span><span class="p">[(</span><span class="o">*</span><span class="n">top</span><span class="p">)</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="o">*</span><span class="n">top</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">root</span> <span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">];</span>
+        <span class="n">heap</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">];</span>
+        <span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="nf">pop</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">**</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">else</span> <span class="n">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="o">--*</span><span class="n">top</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="o">*</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="o">*</span><span class="n">top</span> <span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="p">[</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">heap</span><span class="p">[</span><span class="n">left</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">heap</span><span class="p">[</span><span class="n">left</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&gt;=</span> <span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="n">left</span><span class="p">];</span>
+        <span class="n">heap</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">=</span> <span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">];</span>
+        <span class="n">heap</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">mergeKLists</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">**</span> <span class="n">lists</span><span class="p">,</span> <span class="kt">int</span> <span class="n">listsSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">**</span><span class="n">heap</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">((</span><span class="n">listsSize</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="p">));</span>
+    <span class="kt">int</span> <span class="n">top</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">listsSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">insert</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">top</span><span class="p">,</span> <span class="n">lists</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="n">dummy</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">dummy</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">top</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">pop</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">top</span><span class="p">);</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">dummy</span><span class="p">.</span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Using merge sort.</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="nf">merge2Lists</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">l1</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">l2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="n">dummy</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">dummy</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&amp;&amp;</span> <span class="n">l2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">l1</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">l2</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">l1</span><span class="p">;</span>
+            <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">l2</span><span class="p">;</span>
+            <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">l1</span> <span class="o">?</span> <span class="nl">l1</span> <span class="p">:</span> <span class="n">l2</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">dummy</span><span class="p">.</span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">mergeKLists</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">**</span> <span class="n">lists</span><span class="p">,</span> <span class="kt">int</span> <span class="n">listsSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="n">dummy</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">dummy</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">listsSize</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">listsSize</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">lists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge2Lists</span><span class="p">(</span><span class="n">lists</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span><span class="p">],</span> <span class="n">lists</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">listsSize</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">lists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lists</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span><span class="p">];</span>
+            <span class="n">listsSize</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="n">listsSize</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">lists</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>Two methods: <ol>
+<li>each time loop through all the lists to find the minimum one, then append to the result list. Whose complexity is O(listsSize<sup>2</sup> * N).</li>
+<li>each time merge two lists until the last one. Whose complexity is O(listsSize * lg(listsSize) * N)</li>
+<li>Using Min-Heap whose size is listsSize. O(listsSize * lg(listsSize) * N)</li>
+</ol>
+</li>
+<li>heap: 12ms, 73.33%. merge sort: 9ms, 83.33%</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/merge-k-sorted-lists/">23. Merge k Sorted Lists</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/merge-k-sorted-lists.html">posted at 00:00</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

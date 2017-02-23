@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Insert Delete GetRandom O(1) - Duplicates allowed</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Array,Hash-Table,Design" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/insert-delete-getrandom-o1-duplicates-allowed.html" rel="bookmark" title="Permanent Link to &quot;Insert Delete GetRandom O(1) - Duplicates allowed&quot;">Insert Delete GetRandom O(1) - Duplicates allowed</a>
+                </h2>
+
+                
+                
+
+                <p>Design a data structure that supports all following operations in average O(1) time.</p>
+<p><strong><em>Note: Duplicate elements are allowed.</em></strong></p>
+<ol>
+<li><code>insert(val)</code>: Inserts an item val to the collection.</li>
+<li><code>remove(val)</code>: Removes an item val from the collection if present.</li>
+<li><code>getRandom</code>: Returns a random element from current collection of elements. The probability of each element being returned is <strong><em>linearly related</em></strong> to the number of same value the collection contains.</li>
+</ol>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>// Init an empty collection.
+RandomizedCollection collection = new RandomizedCollection();
+
+// Inserts 1 to the collection. Returns true as the collection did not contain 1.
+collection.insert(1);
+
+// Inserts another 1 to the collection. Returns false as the collection contained 1. Collection now contains [1,1].
+collection.insert(1);
+
+// Inserts 2 to the collection, returns true. Collection now contains [1,1,2].
+collection.insert(2);
+
+// getRandom should return 1 with the probability 2/3, and returns 2 with the probability 1/3.
+collection.getRandom();
+
+// Removes 1 from the collection, returns true. Collection now contains [1,2].
+collection.remove(1);
+
+// getRandom should return 1 and 2 both equally likely.
+collection.getRandom();
+</pre></div>
+
+
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RandomizedCollection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize your data structure here.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vals</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inserts a value to the collection. Returns true if the collection did not already contain the specified element.</span>
+<span class="sd">        :type val: int</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">[</span><span class="n">val</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Removes a value from the collection. Returns true if the collection contained the specified element.</span>
+<span class="sd">        :type val: int</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">[</span><span class="n">val</span><span class="p">]:</span> <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">last</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">last</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">[</span><span class="n">last</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">[</span><span class="n">last</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+
+    <span class="k">def</span> <span class="nf">getRandom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get a random element from the collection.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">)</span>
+
+
+
+<span class="c1"># Your RandomizedCollection object will be instantiated and called as such:</span>
+<span class="c1"># obj = RandomizedCollection()</span>
+<span class="c1"># param_1 = obj.insert(val)</span>
+<span class="c1"># param_2 = obj.remove(val)</span>
+<span class="c1"># param_3 = obj.getRandom()</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>If I implement this solution in C, I ganna get a lot of trouble.</li>
+<li>Sometimes, using Python instead of C.</li>
+<li>185ms, 42.11%</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/">381. Insert Delete GetRandom O(1) - Duplicates allowed</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/insert-delete-getrandom-o1-duplicates-allowed.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

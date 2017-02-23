@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Rearrange String k Distance Apart</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Hash-Table,Heap,Greedy" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/rearrange-string-k-distance-apart.html" rel="bookmark" title="Permanent Link to &quot;Rearrange String k Distance Apart&quot;">Rearrange String k Distance Apart</a>
+                </h2>
+
+                
+                
+
+                <p>Given a non-empty string str and an integer k, rearrange the string such that the same characters are at least distance k from each other.</p>
+<p>All input strings are given in lowercase letters. If it is not possible to rearrange the string, return an empty string "".</p>
+<p>Example 1:</p>
+<div class="highlight"><pre><span></span>str = &quot;aabbcc&quot;, k = 3
+Result: &quot;abcabc&quot;
+The same letters are at least distance 3 from each other.
+</pre></div>
+
+
+<p>Example 2:</p>
+<div class="highlight"><pre><span></span>str = &quot;aaabc&quot;, k = 3 
+Answer: &quot;&quot;
+It is not possible to rearrange the string.
+</pre></div>
+
+
+<p>Example 3:</p>
+<div class="highlight"><pre><span></span>str = &quot;aaadbbcc&quot;, k = 2
+Answer: &quot;abacabcd&quot;
+Another possible answer is: &quot;abcabcda&quot;
+The same letters are at least distance 2 from each other.
+</pre></div>
+
+
+<p>Solution:</p>
+<div class="highlight"><pre><span></span>struct Queue {
+    char *c;
+    int *vals;
+    int head;
+    int tail;
+    int num;
+    int size;
+};
+
+struct Queue *createQueue(int k) {
+    struct Queue *obj = malloc(sizeof(struct Queue));
+    obj-&gt;vals = malloc(k * sizeof(int));
+    obj-&gt;c = malloc(k);
+    obj-&gt;head = 0;
+    obj-&gt;tail = 0;
+    obj-&gt;num = 0;
+    obj-&gt;size = k;
+    return obj;
+}
+
+void popQueue(struct Queue *obj, int *val, char *c) {
+    if (obj-&gt;head == obj-&gt;size) obj-&gt;head = 0;
+    obj-&gt;num--;
+    *val = obj-&gt;vals[obj-&gt;head];
+    *c = obj-&gt;c[obj-&gt;head];
+    obj-&gt;head++;
+}
+
+void pushQueue(struct Queue *obj, int val, char c) {
+    if (obj-&gt;tail == obj-&gt;size) obj-&gt;tail = 0;
+    obj-&gt;vals[obj-&gt;tail] = val;
+    obj-&gt;c[obj-&gt;tail] = c;
+    obj-&gt;tail++;
+    obj-&gt;num++;
+}
+
+struct Heap {
+    int *vals;
+    int top;
+    char *c;
+};
+
+struct Heap *createHeap(int k) {
+    struct Heap *obj = malloc(sizeof(struct Heap));
+    obj-&gt;vals = malloc((k + 1) * sizeof(int));
+    obj-&gt;top = 1;
+    obj-&gt;c = malloc(k + 1);
+    return obj;
+}
+
+void pushHeap(struct Heap *obj, int count, char c) {
+    obj-&gt;vals[obj-&gt;top] = count;
+    obj-&gt;c[obj-&gt;top] = c;
+    obj-&gt;top++;
+    int cur = obj-&gt;top - 1, root = cur / 2;
+    while (root &amp;&amp; obj-&gt;vals[root] &lt; obj-&gt;vals[cur]) {
+        int tmp = obj-&gt;vals[root];
+        obj-&gt;vals[root] = obj-&gt;vals[cur];
+        obj-&gt;vals[cur] = tmp;
+        c = obj-&gt;c[root];
+        obj-&gt;c[root] = obj-&gt;c[cur];
+        obj-&gt;c[cur] = c;
+        cur = root;
+        root = cur / 2;
+    }
+}
+
+void popHeap(struct Heap *obj) {
+    --obj-&gt;top;
+    obj-&gt;vals[1] = obj-&gt;vals[obj-&gt;top];
+    obj-&gt;c[1] = obj-&gt;c[obj-&gt;top];
+    int root = 1, child = 2;
+    while (child &lt; obj-&gt;top) {
+        if (child + 1 &lt; obj-&gt;top &amp;&amp; obj-&gt;vals[child + 1] &gt; obj-&gt;vals[child]) child++;
+        if (obj-&gt;vals[root] &gt;= obj-&gt;vals[child]) return;
+        int tmp = obj-&gt;vals[root];
+        obj-&gt;vals[root] = obj-&gt;vals[child];
+        obj-&gt;vals[child] = tmp;
+        char c = obj-&gt;c[root];
+        obj-&gt;c[root] = obj-&gt;c[child];
+        obj-&gt;c[child] = c;
+        root = child;
+        child = root * 2;
+    }
+}
+
+char* rearrangeString(char* str, int k) {
+    if (k &lt; 2) return str;
+    struct Queue *queue = createQueue(k);
+    struct Heap *heap = createHeap(27);
+    int count[26] = {0}, i;
+    for (i = 0; str[i]; i++) {
+        count[str[i] - &#39;a&#39;]++;
+    }
+    for (i = 0; i &lt; 26; i++) {
+        if (count[i]) pushHeap(heap, count[i], i + &#39;a&#39;);
+    }
+    for (i = 0; str[i]; i++) {
+        if (queue-&gt;num == queue-&gt;size) {
+            int _count; 
+            char _c;
+            popQueue(queue, &amp;_count, &amp;_c);
+            pushHeap(heap, _count, _c);
+        }
+        if (heap-&gt;top == 1 || !heap-&gt;vals[1]) return &quot;&quot;;
+        int count = heap-&gt;vals[1] - 1;
+        str[i] = heap-&gt;c[1];
+        popHeap(heap);
+        pushQueue(queue, count, str[i]);
+    }
+    return str;
+}
+</pre></div>
+
+
+<p>Python using Queue lib.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Queue</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">rearrangeString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="nb">str</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">heap</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="n">counter</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">counter</span><span class="p">]</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">qq</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">qq</span><span class="o">.</span><span class="n">full</span><span class="p">():</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">qq</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">heap</span><span class="p">:</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">count</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">count</span><span class="p">:</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">qq</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Python using custom queue implemented with list.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Queue</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">rearrangeString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="nb">str</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">heap</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="n">counter</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">counter</span><span class="p">]</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">qq</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">qq</span><span class="p">)</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span> 
+                <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">qq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">qq</span> <span class="o">=</span> <span class="n">qq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">heap</span><span class="p">:</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">count</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">count</span><span class="p">:</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">qq</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>A queue and a heap. Greedy behind.</li>
+<li>C: 6ms, 100%. </li>
+<li>Python: The first: 739ms, 16.55%. The second: 216ms, 81.46%.</li>
+<li>Hard is hard.</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/rearrange-string-k-distance-apart/">358. Rearrange String k Distance Apart</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/rearrange-string-k-distance-apart.html">posted at 00:05</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Design Phone Directory</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Linked-List,Design" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/design-phone-directory.html" rel="bookmark" title="Permanent Link to &quot;Design Phone Directory&quot;">Design Phone Directory</a>
+                </h2>
+
+                
+                
+
+                <p>Design a Phone Directory which supports the following operations:</p>
+<ul>
+<li>get: Provide a number which is not assigned to anyone.</li>
+<li>check: Check if a number is available or not.</li>
+<li>release: Recycle or release a number.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>// Init a phone directory containing a total of 3 numbers: 0, 1, and 2.
+PhoneDirectory directory = new PhoneDirectory(3);
+
+// It can return any available phone number. Here we assume it returns 0.
+directory.get();
+
+// Assume it returns 1.
+directory.get();
+
+// The number 2 is available, so return true.
+directory.check(2);
+
+// It returns 2, the only number that is left.
+directory.get();
+
+// The number 2 is no longer available, so return false.
+directory.check(2);
+
+// Release number 2 back to the pool.
+directory.release(2);
+
+// Number 2 is available again, return true.
+directory.check(2);
+</pre></div>
+
+
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PhoneDirectory</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxNumbers</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize your data structure here</span>
+<span class="sd">        @param maxNumbers - The maximum numbers that can be stored in the phone directory.</span>
+<span class="sd">        :type maxNumbers: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valid</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">maxNumbers</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Provide a number which is not assigned to anyone.</span>
+<span class="sd">        @return - Return an available number. Return -1 if none is available.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">val</span>
+
+    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if a number is available or not.</span>
+<span class="sd">        :type number: int</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">&lt;=</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="ow">or</span> <span class="n">number</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid</span>
+
+
+    <span class="k">def</span> <span class="nf">release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recycle or release a number.</span>
+<span class="sd">        :type number: int</span>
+<span class="sd">        :rtype: void</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+
+
+
+
+<span class="c1"># Your PhoneDirectory object will be instantiated and called as such:</span>
+<span class="c1"># obj = PhoneDirectory(maxNumbers)</span>
+<span class="c1"># param_1 = obj.get()</span>
+<span class="c1"># param_2 = obj.check(number)</span>
+<span class="c1"># obj.release(number)</span>
+</pre></div>
+
+
+<p>Summary: </p>
+<ol>
+<li>It's much easier to use python.</li>
+<li>Is this related to linked list?</li>
+<li>125ms, 80.65%</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/design-phone-directory/">379. Design Phone Directory</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/design-phone-directory.html">posted at 00:06</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

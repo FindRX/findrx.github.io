@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WhileRX | Ugly Number II</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Math,Heap,Dynamic-Programming" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">WhileRX</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/ugly-number-ii.html" rel="bookmark" title="Permanent Link to &quot;Ugly Number II&quot;">Ugly Number II</a>
+                </h2>
+
+                
+                
+
+                <p>Write a program to find the n<sup>th</sup> ugly number.</p>
+<p>Ugly numbers are positive numbers whose prime factors only include <code>2</code>, <code>3</code>, <code>5</code>. For example, <code>1, 2, 3, 4, 5, 6, 8, 9, 10, 12</code> is the sequence of the first 10 ugly numbers.</p>
+<p>Note that 1 is typically treated as an ugly number, and n does not exceed 1690.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cp">#define MIN(a, b) ((a) &lt; (b) ? (a) : (b))</span>
+<span class="kt">int</span> <span class="nf">nthUglyNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">dp</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i3</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i5</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r5</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i5</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">r2</span> <span class="o">&lt;=</span> <span class="n">last</span><span class="p">)</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="o">++</span><span class="n">i2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">r3</span> <span class="o">&lt;=</span> <span class="n">last</span><span class="p">)</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="o">++</span><span class="n">i3</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">r5</span> <span class="o">&lt;=</span> <span class="n">last</span><span class="p">)</span> <span class="n">r5</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="o">++</span><span class="n">i5</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">MIN</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">);</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">MIN</span><span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">r5</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>This is a dynamic programming problem, rather than a heap.</li>
+<li>It is not suit and not good to use heap.</li>
+<li>6ms, 38.89%</li>
+<li>Be careful about the duplicates.</li>
+</ol>
+<p>LeetCode: <a href="https://leetcode.com/problems/ugly-number-ii/">264. Ugly Number II</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/ugly-number-ii.html">posted at 00:04</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'whilerx';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-86125180-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
