@@ -29,43 +29,31 @@
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">            <h4 class="date">Feb 04, 2017</h4>
+        <div id="content">            <h4 class="date">Feb 27, 2017</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/book-learning-python.html" rel="bookmark" title="Permanent Link to &quot;Book: Learning Python&quot;">Book: Learning Python</a>
+                    <a href="/requests-session.html" rel="bookmark" title="Permanent Link to &quot;Requests: Session&quot;">Requests: Session</a>
                 </h2>
 
                 
                 
 
-                
+                <p>First, let's check what <code>requests.get('https://github.com')</code> does.</p>
+<p>From <code>__init__.py</code>, I get <code>from .api import request, get, head, post, patch, put, delete, options</code>.</p>
+<p>In <code>api.py</code>, <code>get</code> is defined as following:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sessions</span>
+
+<span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/book-learning-python.html">posted at 19:11</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">Python</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/read-book.html" class="tags">Read-Book</a>
-                </div>
-		<a href="/book-learning-python.html#disqus_thread">Click to read and post comments</a>
-            </article>
-            <article class="post">
-                <h2 class="title">
-                    <a href="/pep-8-style-guide-for-python-code.html" rel="bookmark" title="Permanent Link to &quot;PEP 8 -- Style Guide for Python Code&quot;">PEP 8 -- Style Guide for Python Code</a>
-                </h2>
-
-                
-                
-
-                
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="/pep-8-style-guide-for-python-code.html">posted at 19:11</a>
+                    <a href="/requests-session.html">posted at 17:57</a>
                     &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">Python</a>
                 </div>
-		<a href="/pep-8-style-guide-for-python-code.html#disqus_thread">Click to read and post comments</a>
+		<a href="/requests-session.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Feb 01, 2017</h4>
 
             <article class="post">
@@ -229,6 +217,37 @@
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                 </div>
 		<a href="/island-perimeter.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
+                    <a href="/hamming-distance.html" rel="bookmark" title="Permanent Link to &quot;Hamming Distance&quot;">Hamming Distance</a>
+                </h2>
+
+                
+                
+
+                <p>The <a href="https://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</a> between two integers is the number of positions at which the corresponding bits are different.</p>
+<p>Given two integers <code>x</code> and <code>y</code>, calculate the Hamming distance.</p>
+<ul>
+<li>Note: 0 ≤ x, y &lt; 231.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><span class="n">Input</span><span class="o">:</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">Output</span><span class="o">:</span> <span class="mi">2</span>
+
+<span class="n">Explanation</span><span class="o">:</span>
+<span class="mi">1</span>   <span class="o">(</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span><span class="o">)</span>
+<span class="mi">4</span>   <span class="o">(</span><span class="mi">0</span> <span class="mi">1 …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/hamming-distance.html">posted at 00:07</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                </div>
+		<a href="/hamming-distance.html#disqus_thread">Click to read and post comments</a>
             </article>
             <article class="post">
                 <h2 class="title">

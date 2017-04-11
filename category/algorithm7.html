@@ -33,6 +33,39 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/factorial-trailing-zeroes.html" rel="bookmark" title="Permanent Link to &quot;Factorial Trailing Zeroes&quot;">Factorial Trailing Zeroes</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer n, return the number of trailing zeroes in n!.</p>
+<p>Note: Your solution should be in logarithmic time complexity.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">trailingZeroes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="n">res</span> <span class="o">+=</span> <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>The point is finding the logic behind. And this is what …</li></ol>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/factorial-trailing-zeroes.html">posted at 00:02</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/factorial-trailing-zeroes.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
                     <a href="/excel-sheet-column-number.html" rel="bookmark" title="Permanent Link to &quot;Excel Sheet Column Number&quot;">Excel Sheet Column Number</a>
                 </h2>
 
@@ -314,42 +347,6 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
                     &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
                 </div>
 		<a href="/linked-list-cycle-ii.html#disqus_thread">Click to read and post comments</a>
-            </article>
-            <article class="post">
-                <h2 class="title">
-                    <a href="/linked-list-cycle.html" rel="bookmark" title="Permanent Link to &quot;Linked List Cycle&quot;">Linked List Cycle</a>
-                </h2>
-
-                
-                
-
-                <p>Given a linked list, determine if it has a cycle in it.</p>
-<ul>
-<li>Can you solve it without using extra space?</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="kt">bool</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">_head</span> <span class="o">&amp;&amp;</span> <span class="n">_head …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="/linked-list-cycle.html">posted at 00:02</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                </div>
-		<a href="/linked-list-cycle.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>

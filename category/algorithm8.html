@@ -33,6 +33,42 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/linked-list-cycle.html" rel="bookmark" title="Permanent Link to &quot;Linked List Cycle&quot;">Linked List Cycle</a>
+                </h2>
+
+                
+                
+
+                <p>Given a linked list, determine if it has a cycle in it.</p>
+<ul>
+<li>Can you solve it without using extra space?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">_head</span> <span class="o">&amp;&amp;</span> <span class="n">_head …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/linked-list-cycle.html">posted at 00:02</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                </div>
+		<a href="/linked-list-cycle.html#disqus_thread">Click to read and post comments</a>
+            </article>
+            <article class="post">
+                <h2 class="title">
                     <a href="/copy-list-with-random-pointer.html" rel="bookmark" title="Permanent Link to &quot;Copy List with Random Pointer&quot;">Copy List with Random Pointer</a>
                 </h2>
 
@@ -299,30 +335,6 @@
                     &nbsp;<a href="/tag/math.html" class="tags">Math</a>
                 </div>
 		<a href="/add-binary.html#disqus_thread">Click to read and post comments</a>
-            </article>
-            <article class="post">
-                <h2 class="title">
-                    <a href="/plus-one.html" rel="bookmark" title="Permanent Link to &quot;Plus One&quot;">Plus One</a>
-                </h2>
-
-                
-                
-
-                <p>Given a non-negative integer represented as a non-empty array of digits, plus one to the integer.</p>
-<p>You may assume the integer do not contain any leading zero, except the number 0 itself.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list.</p>
-<p>C …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="/plus-one.html">posted at 00:01</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                </div>
-		<a href="/plus-one.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
