@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WhileRX | Requests: Session</title>
+    <title>Wait at Will | Requests: Session</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -24,7 +24,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">WhileRX</a></h1>
+            <h1><a href="/">Wait at Will</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -70,7 +70,7 @@
 
 <span class="k">class</span> <span class="nc">Session</span><span class="p">(</span><span class="n">SessionRedirectMixin</span><span class="p">):</span>
     <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
 
     <span class="k">def</span> <span class="nf">prepare_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
@@ -146,7 +146,7 @@
 
 <p>We have two sets of information, one is in Request, the other is in Session.</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Request</span><span class="p">(</span><span class="n">RequestHooksMixin</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
         <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">hooks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 
         <span class="c1"># Default empty dicts for dict params.</span>
@@ -171,7 +171,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">cookies</span> <span class="o">=</span> <span class="n">cookies</span>
 <span class="k">class</span> <span class="nc">Session</span><span class="p">(</span><span class="n">SessionRedirectMixin</span><span class="p">):</span>
     <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="n">default_headers</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">proxies</span> <span class="o">=</span> <span class="p">{}</span>
@@ -238,7 +238,7 @@
                 </div>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'whilerx';
+    var disqus_shortname = 'wait-at-will';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -261,7 +261,7 @@
     </script>
     <script type="text/javascript">
     try {
-        var pageTracker = _gat._getTracker("UA-86125180-1");
+        var pageTracker = _gat._getTracker("UA-97423681-1");
     pageTracker._trackPageview();
     } catch(err) {}</script>
 </body>

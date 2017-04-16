@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WhileRX | Python: Logging</title>
+    <title>Wait at Will | Python: Logging</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">WhileRX</a></h1>
+            <h1><a href="/">Wait at Will</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -46,11 +46,11 @@
 <p><code>logging.info</code> -&gt; <code>root.info()</code> -&gt; <code>root = RootLogger(WARNING)</code> -&gt; <code>class RootLogger(Logger)</code> -&gt; <code>class Logger(Filterer)</code> -&gt; <code>class Filterer(object)</code></p>
 <p>For <code>class Filterer</code>, the only thing need to remember is <code>self.filters = []</code>.</p>
 <p>For <code>class Logger</code>:</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">NOTSET</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">NOTSET</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize the logger with a name and an optional level.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">Filterer</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">Filterer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="n">_checkLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span> <span class="c1"># an integer</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="bp">None</span>
@@ -62,7 +62,7 @@
 
 <p>In <code>__init__.py</code> file of logging module, <code>root</code> is set as an attribute in <code>Logger</code> class with <code>Logger.root = root</code>,  also <code>Logger.manager = Manager(Logger.root)</code> in which <code>Manager</code> is <code>class Manager(object)</code>.</p>
 <p><code>class Manager</code> is is <strong><em>under normal circumstances</em></strong> just one Manager instance, which holds the hierarchy of loggers.</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rootnode</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rootnode</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize the manager with the root node of the logger hierarchy.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -140,7 +140,7 @@
 <p>What above code does is adding a handle and set the level to the <code>root</code> object.</p>
 <p>Remember one thing: <code>root</code> is root, only one instance. When you execute <code>logging.info</code> or similar, it's the <code>root</code> object doing the job.</p>
 <p>A good convention to use when naming loggers is to use a module-level logger, in each module which uses logging, named as follows:</p>
-<div class="highlight"><pre><span></span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 </pre></div>
 
 
@@ -195,7 +195,7 @@
                 </div>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'whilerx';
+    var disqus_shortname = 'wait-at-will';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -218,7 +218,7 @@
     </script>
     <script type="text/javascript">
     try {
-        var pageTracker = _gat._getTracker("UA-86125180-1");
+        var pageTracker = _gat._getTracker("UA-97423681-1");
     pageTracker._trackPageview();
     } catch(err) {}</script>
 </body>
