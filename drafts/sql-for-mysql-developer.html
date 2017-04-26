@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Wait at Will | SQL for MySQL Developer</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="MySQL" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">Wait at Will</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Dec 13, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/drafts/sql-for-mysql-developer.html" rel="bookmark" title="Permanent Link to &quot;SQL for MySQL Developer&quot;">SQL for MySQL Developer</a>
+                </h2>
+
+                
+                
+
+                <h2>Chapter 1: Introduction to MySQL</h2>
+<p>In a relational database, Data can only be stored in one format: tables. A table has two special properties:</p>
+<ul>
+<li>The intersection of a row and a column can consist of only one value, an atomic value.</li>
+<li>The rows in a table have no specific order.</li>
+</ul>
+<p>The <em>null</em> is comparable to "value unknown' or "value not present".</p>
+<ul>
+<li>A <em>null</em> is never equal to another <em>null</em>, so two <em>null</em> are no equal to each other.</li>
+<li><em>null</em> is not a value, but rather a gap in a table or a signal indicating that the value is missing.</li>
+</ul>
+<p>Integrity Constraints:</p>
+<ul>
+<li>The contents of a table must satisfy certain rules, the so-called  integrity constraints.</li>
+<li>A relational database server should enforce integrity constraints.<ul>
+<li>Each time, a table is updated, the database server has to check whether the new data satisfies the relevant integrity constraints. This is a task of the database server.</li>
+<li>The integrity constraints must be specified first so that the database server knows what they are.</li>
+<li>Because some integrity constraints are used so frequently, they have special names, such as primary keys, candidate keys, alternate keys and foreign keys.</li>
+</ul>
+</li>
+</ul>
+<p>Keys:</p>
+<ul>
+<li>The primary key of a table is a column (or a combination of columns) used as a unique identification of rows in the table.</li>
+<li>The primary key is a candidate key, but not vice versa.</li>
+<li>A candidate key which is not the primary key of a table is called an alternate key.</li>
+<li>A foreign key is a column (or a combination of columns) in a table in which the population is a subset of the population of the primary key of a table.</li>
+</ul>
+<h2>Chapter 2: The Tennis Club Sample Database</h2>
+<h2>Chapter 3: Installing the Software</h2>
+<h2>Chapter 4: SQL in a Nutshell</h2>
+<h2>Chapter 5: SELECT Elements: Common Elements</h2>
+<p>Numeric Literals:</p>
+<ul>
+<li>Each integer literal is a decimal literal.  </li>
+<li>The decimal literal <code>123.45</code> has a precision of 5 and a scale of 2. The scale of an integer literal is always 0.  </li>
+<li>A float literal is a decimal literal with an exponent.</li>
+</ul>
+<p>Alphanumeric Literal:</p>
+<ul>
+<li>An alphanumeric literal is a string of zero or more alphanumeric characters enclosed in quotation marks</li>
+<li>Quotation marks could be double(<code>"</code>) or single (<code>'</code>).</li>
+<li>The quotation marks are not considered as a part of the literal, they define the beginning and end of the string.</li>
+<li>Some examples:</li>
+</ul>
+<div class="highlight"><pre><span></span>Alphanumeric literal    Value
+&#39;Collins&#39;               Collins
+&quot;Collins&quot;               Collins
+&#39;don&#39;&#39;t&#39;                don&#39;t
+&#39;!?-@&#39;                  !?-@
+&#39;&#39;  
+&#39;&#39;&#39;&#39;                    &#39;
+&#39;&quot;&quot;&#39;                    &quot;&quot;
+&#39;1234&#39;                  1234
+</pre></div>
+
+
+<ul>
+<li>Special characters:</li>
+</ul>
+<div class="highlight"><pre><span></span>\0  The ASCII 0(zero) character
+\&#39;  The single quotation mark
+\&quot;  The double quotation mark
+\b  A backspace
+\n  A new line
+\r  A carriage return
+\t  A tab character
+\z  The ASCII 26 character, or Ctrl + Z
+\\  A slash
+</pre></div>
+
+
+<ul>
+<li>The effect of these special characters is not always visible.</li>
+</ul>
+<p>Temporal Literal:</p>
+<ul>
+<li>date literal, time literal, datetime literal, timestamp literal, year literal.</li>
+<li>A date literal, which consists of a year, a month and a day, represents a certain date on <em>Gregorian</em> calendar.<ul>
+<li>MySQL allows this literal to be written as an alphanumeric or integer literal.</li>
+<li>When an alphanumeric literal is used, the entire value must be enclosed in quotation marks, and the three components must be separated by special characters.<ul>
+<li>Usually, the hyphen is used as a character, but other characters, such as <code>/</code>, <code>@</code> and <code>%</code> are allowed as well.</li>
+<li>Irrelevant zeroes can be omitted in the last two componenets.</li>
+</ul>
+</li>
+<li>When an integer literal is used, the three components are written after each other, thus without hyphens.<ul>
+<li>MySQL interprets the last two digits as the days component, the two digits in front of it as the months component, and everything in front of that as the year component.</li>
+<li>If the year component consists of three digits, a zero is placed in front of it.</li>
+<li>If two digits, the value 2000 is added when that number is between 0 and 69, otherwise, 19000 is added.</li>
+<li>If one digit, three zeroes are placed in front of it.</li>
+</ul>
+</li>
+<li>'0000-00-00' is allowed, called zero date.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">Date</span> <span class="n">literal</span>    <span class="n">Value</span>
+<span class="err">&#39;</span><span class="mi">1980</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">08</span><span class="err">&#39;</span>    <span class="n">December</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1980</span>
+<span class="err">&#39;</span><span class="mi">1991</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">19</span><span class="err">&#39;</span>     <span class="n">June</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">1991</span>
+<span class="err">&#39;</span><span class="mi">1993@6@19</span><span class="err">&#39;</span>     <span class="n">June</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">1993</span>
+<span class="err">&#39;</span><span class="mi">999</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">11</span><span class="err">&#39;</span>     <span class="n">October</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0999</span>
+<span class="mi">551011</span>          <span class="n">October</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2055</span>
+<span class="err">&#39;</span><span class="mi">99</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">11</span><span class="err">&#39;</span>      <span class="n">October</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1999</span>
+<span class="err">&#39;</span><span class="mi">9</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">11</span><span class="err">&#39;</span>       <span class="n">October</span> <span class="mi">11</span><span class="p">,</span> <span class="mo">000</span><span class="mi">9</span>
+</pre></div>
+
+
+<ul>
+<li>The time literal indicates a certain moment of the day or a time interval, consisting of four components: number of hours, number os minutes, number of seconds and number of microseconds.</li>
+<li>Each datetime and timestamp literal consist of seven components: years, months, hours, minutes, seconds and microseconds.<ul>
+<li>Both have an alphanumeric and an integer variant.</li>
+<li>With the alphanumeric variant, hyphens separate the first three components (which indicate a date), and colons separate the next three (which indicate a time); a space comes between the date and the time, and a decimal point is placed in front of the microseconds. The microseconds component can be represented as a number consisting of six digits.</li>
+<li>The timestamp literal supports <em>time zones</em>. When a timestamp value is stored, it is first converted into the corresponding UTC time.</li>
+</ul>
+</li>
+</ul>
+<p>The Boolean Literal only consist of two values: <strong>TRUE</strong> or <strong>FALSE</strong>.</p>
+<p>The Hexadecimal Literal is specified as an alphanumeric literal in front of which the letter <strong>X</strong> or <strong>x</strong> is placed. </p>
+<ul>
+<li>Inside the quotation marks, only the ten digits and the letters <strong>A</strong> to <strong>F</strong> can be used.</li>
+<li>The number of the characters must be an even number.</li>
+</ul>
+<div class="highlight"><pre><span></span>Hexadecimal Literal     Value
+X&#39;41&#39;                   A
+x&#39;6461746162617365&#39;     database
+X&#39;38&#39;                   ;
+</pre></div>
+
+
+<p>The Bit Literal is specified as an alphanumeric literal with the letter <strong>B</strong> or <strong>b</strong> in front.</p>
+<ul>
+<li>Inside the quotation marks, only <em>ones</em> and <em>zeroes</em> are allowed.</li>
+<li>At most 64 digits may be specified.</li>
+</ul>
+<div class="highlight"><pre><span></span>Bit Literal     Value
+b&#39;1001&#39;         9
+B&#39;1111111&#39;      127
+b&#39;0001&#39;         1
+</pre></div>
+
+
+<p>When the result of a <em>SELECT</em> statement is determined, MySQL must assign a name to each column of the result.</p>
+<p>We recommend specifying a column name when an expression in a <em>SELECT</em> clause is not a simple column one, with the help of <em>AS</em>.</p>
+<h2>Chapter 6: SELECT Statements: Table Expressions and Subqueries</h2>
+<h2>Chapter 7: SELECT Statements: The FROM Clause</h2>
+<h2>Chapter 8: SELECT Statements: The WHERE Clause</h2>
+<h2>Chapter 9: SELECT Statements: SELECT Clause and Aggregation Functions</h2>
+<h2>Chapter 10: SELECT Statements: The GROUP BY Clause</h2>
+<h2>Chapter 11: SELECT Statements: The HAVING Clause</h2>
+<h2>Chapter 12: SELECT Statements: The ORDER BY Clause</h2>
+<h2>Chapter 13: SELECT Statements: The LIMIT Clause</h2>
+<h2>Chapter 14: Combining Table Expressions</h2>
+<h2>Chapter 15: The User Variable and the SET Statements</h2>
+<h2>Chapter 16: The HANDLE Statements</h2>
+<h2>Chapter 17: Updating Table</h2>
+<h2>Chapter 18: Loading and Unloading Data</h2>
+<h2>Chapter 19: Working with XML Documents</h2>
+<h2>Chapter 20: Creating Tables</h2>
+<h2>Chapter 21: Specifying Integrity Constraints</h2>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/drafts/sql-for-mysql-developer.html">posted at 13:44</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/database.html" rel="tag">Database</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/mysql.html" class="tags">MySQL</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
