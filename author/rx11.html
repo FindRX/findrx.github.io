@@ -33,6 +33,44 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/palindrome-number.html" rel="bookmark" title="Permanent Link to &quot;Palindrome Number&quot;">Palindrome Number</a>
+                </h2>
+
+                
+                
+
+                <p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">x</span> <span class="o">/=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="o">||</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>When x &lt; 0 …</li></ol>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/palindrome-number.html">No.9</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/palindrome-number.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/string-to-integer-atoi.html" rel="bookmark" title="Permanent Link to &quot;String to Integer (atoi)&quot;">String to Integer (atoi)</a>
                 </h2>
 
@@ -45,7 +83,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/string-to-integer-atoi.html">posted at 00:00</a>
+				<a href="/string-to-integer-atoi.html">No.8</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -84,7 +123,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/reverse-integer.html">posted at 00:00</a>
+				<a href="/reverse-integer.html">No.7</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -105,7 +145,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/median-of-two-sorted-arrays.html">posted at 00:00</a>
+				<a href="/median-of-two-sorted-arrays.html">No.4</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -133,7 +174,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/longest-substring-without-repeating-characters.html">posted at 00:00</a>
+				<a href="/longest-substring-without-repeating-characters.html">No.3</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
@@ -158,7 +200,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/add-two-numbers.html">posted at 00:00</a>
+				<a href="/add-two-numbers.html">No.2</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -188,7 +231,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/two-sum.html">posted at 00:00</a>
+				<a href="/two-sum.html">No.1</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>

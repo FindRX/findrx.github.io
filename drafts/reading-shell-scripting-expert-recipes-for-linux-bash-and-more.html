@@ -47,19 +47,97 @@
 <p>Another peculiar thing about variables in the shell is that there is no need to explicitly declare them before using them.</p>
 <ul>
 <li>An unset variable is almost equivalent to a variable which contains the null string.</li>
+<li>Accessing the value of a non-existent variable simply returns the blank string, or zero, depending upon the context.</li>
 </ul>
 <p>There are three primary ways of assigning a value to a variable:</p>
 <ul>
-<li>Explicit definition: <code>VAR=value</code><ul>
+<li>Explicit definition: <em>VAR=value</em><ul>
 <li>No spaces are permitted around the equal sign.</li>
 <li>Otherwise, a shell has enough reason to think of the statement as a command.</li>
 </ul>
 </li>
+<li>Read: <em>read var</em></li>
+<li>Command substitution: <em>VAR=`data`, VAR=$(date)</em></li>
 </ul>
+<p>The variable <em>$0</em> through <em>$9</em> are defined, <em>$10</em> does not exist and is interpreted as <em>$1</em> followed by a zero.</p>
+<p><em>$#</em> is the number of parameters.</p>
+<p>It's tricky: <em>$*</em>, <em>$@</em>.</p>
+<p>In Unix and Linux, every command returns a numeric code, between 0 and 255.</p>
+<p>The shell sets the <em>$?</em> variable to be the return code of the last-run command.</p>
+<p>By tradition, returning an exit code of zero indicates success.</p>
+<p>Some variables cannot be unset; these are referred to as the "read-only" variables, such as <em>$1</em>, <em>$2</em> and <em>$#</em>.</p>
+<p>In <strong>PATH</strong>, a period <code>.</code> is used to represent the current directory of the calling program, same as <code>::</code>, and a single colon <code>:</code> at the beginning or end of the <strong>PATH</strong> variable will also expand to the current working directory.</p>
+<h2>Wildcard Expansion</h2>
+<p>The two key characters in <strong>filename expansion</strong> are the question mark <code>?</code> and the asterisk <code>*</code>.</p>
+<ul>
+<li><code>?</code> matches any single character.</li>
+<li><code>*</code> matches any sequence of characters. (include none)</li>
+</ul>
+<p>Although this is not filenam expansion, another useful shell feature is the capability to expand a list of strings contained within curly brackets.</p>
+<p>Although <code>?</code> and <code>*</code> are the two mai metacharacters of filename expansion, there is also the <code>[...]</code> construct. This has three different uses:</p>
+<ul>
+<li>range, for example, <code>[a-z]</code></li>
+<li>defined class, for example, <code>[[:alpha:]]</code></li>
+<li>a list of characters, <code>[abcde]</code> and <code>[!sdfjk]</code><ul>
+<li>If you need to match the character <code>[</code>, you have to put it first in the list, as <code>[[aeiou]</code>.</li>
+<li>If you need to match the character <code>-</code>, you have to put it at the start or end, but nowhere else, so either <code>[-aeiou]</code> or <code>[aeiou-]</code> will work.</li>
+</ul>
+</li>
+</ul>
+<p>The bash directive <em>set -o noglob</em> (alternately <em>set -f</em>) disable filename expansion completely, and <em>set +o noglob</em> (or <em>set +f</em>) re-enables it.</p>
+<h2>Shell Options</h2>
+<p>Shell options change the way in which the shell works.</p>
+<ul>
+<li>they are set with command <em>shopt -s optionname</em>.</li>
+<li>they are unset with command <em>shopt -u optionname</em>.</li>
+<li>query with <em>shopt optionname</em> or <em>shopt -q optionname</em>.</li>
+</ul>
+<p>Options affecting filename expansion:</p>
+<ul>
+<li><em>shopt -s dotglob</em> </li>
+<li><em>shopt -s nullglob</em></li>
+<li><em>shopt -s extglob</em></li>
+<li><em>shopt -s nocaseglob</em></li>
+</ul>
+<h2>Quoting</h2>
+<p>How arguments are passed from the shell to external commands is very significant.</p>
+<p>There are three main forms of quoting</p>
+<ul>
+<li>The simplest is the single quote, which stops the shell from interpreting anything within it.</li>
+<li>the double quota interprets variables, but filename are not expanded.</li>
+<li>the backslash<ul>
+<li>when you want to include a special character in a regular string, but it would otherwise be interpreted by the shell, you can put a backslash in front of it.</li>
+<li>Characters you may want to escape:<ul>
+<li><code>'</code>, <code>"</code>, <code>;</code>, <code>!</code>, <code>&amp;</code>...</li>
+</ul>
+</li>
+<li>If a line ends with a backslash immediately followed by a newline, then the backslash and the newline are both removed. This applies within a shell script as well as at the command prompt.</li>
+</ul>
+</li>
+</ul>
+<h2>Conditional Excution</h2>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">[</span> condition <span class="o">]</span>
+<span class="k">then</span>
+    statements
+<span class="k">fi</span>
+</pre></div>
+
+
+<ul>
+<li>Other than the line break after the word <em>then</em>, all these line breaks are required or can be replaced with semicolons.</li>
+<li>The spaces around the <code>[</code> and <code>]</code> are also required.</li>
+</ul>
+<p>so the above code is equal to <code>if [ condition ];then statement(s);fi</code>.</p>
+<p>In shell, <code>[</code> is a program which lives in a <em>bin</em> folder somewhere, and <code>]</code> is simply an argument to it, which is required, but discarded.</p>
+<ul>
+<li><code>[</code> almost equals to <code>test</code> command.</li>
+</ul>
+<p>There are quite a few of flags for <code>test</code>.</p>
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/drafts/reading-shell-scripting-expert-recipes-for-linux-bash-and-more.html">posted at 23:11</a>
+				<a href="/drafts/reading-shell-scripting-expert-recipes-for-linux-bash-and-more.html">posted at 23:11</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/linux.html" rel="tag">Linux</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/reading.html" class="tags">Reading</a>

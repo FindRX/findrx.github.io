@@ -33,6 +33,49 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/power-of-two.html" rel="bookmark" title="Permanent Link to &quot;Power of Two&quot;">Power of Two</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer, write a function to determine if it is a power of two.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfTwo</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">);</span> <span class="n">n</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Better:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfTwo</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>bit manipulation.</li>
+<li>find the …</li></ol>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/power-of-two.html">No.231</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                </div>
+		<a href="/power-of-two.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/rectangle-area.html" rel="bookmark" title="Permanent Link to &quot;Rectangle Area&quot;">Rectangle Area</a>
                 </h2>
 
@@ -50,7 +93,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/rectangle-area.html">posted at 00:03</a>
+				<a href="/rectangle-area.html">No.223</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -75,7 +119,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/contains-duplicate-ii.html">posted at 00:03</a>
+				<a href="/contains-duplicate-ii.html">No.219</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -97,7 +142,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/the-skyline-problem.html">posted at 00:03</a>
+				<a href="/the-skyline-problem.html">No.218</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -130,7 +176,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/contains-duplicate.html">posted at 00:03</a>
+				<a href="/contains-duplicate.html">No.217</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -158,7 +205,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/kth-largest-element-in-an-array.html">posted at 00:03</a>
+				<a href="/kth-largest-element-in-an-array.html">No.215</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -207,7 +255,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/reverse-linked-list.html">posted at 00:03</a>
+				<a href="/reverse-linked-list.html">No.206</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -230,7 +279,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/isomorphic-strings.html">posted at 00:03</a>
+				<a href="/isomorphic-strings.html">No.205</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -260,7 +310,8 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/count-primes.html">posted at 00:03</a>
+				<a href="/count-primes.html">No.204</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
@@ -296,38 +347,14 @@
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="/remove-linked-list-elements.html">posted at 00:03</a>
+				<a href="/remove-linked-list-elements.html">No.203</a>
+
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
                 </div>
 		<a href="/remove-linked-list-elements.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/happy-number.html" rel="bookmark" title="Permanent Link to &quot;Happy Number&quot;">Happy Number</a>
-                </h2>
-
-                
-                
-
-                <p>Write an algorithm to determine if a number is "happy".</p>
-<p>A happy number is a number defined by the following process: </p>
-<ol>
-<li>Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will …</li></ol>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="/happy-number.html">posted at 00:03</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                </div>
-		<a href="/happy-number.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
