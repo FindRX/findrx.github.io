@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
 
-    <meta name="keywords" content="LeetCode,Hash-Table,Greedy" />
+    <meta name="keywords" content="LeetCode,Hash-Table,Design" />
 </head>
 <body>
     <header>
@@ -59,14 +59,14 @@
 </pre></div>
 
 
-<p>Python Solution:</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Logger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize your data structure here.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">messages</span> <span class="o">=</span> <span class="p">{}</span>
 
 
     <span class="k">def</span> <span class="nf">shouldPrintMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
@@ -78,8 +78,39 @@
 <span class="sd">        :type message: str</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">message</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="ow">and</span> <span class="n">timestamp</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">message</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">message</span><span class="p">]</span> <span class="o">=</span> <span class="n">timestamp</span>
+        <span class="k">if</span> <span class="n">message</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">messages</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">message</span><span class="p">]</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">&lt;</span> <span class="n">timestamp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">message</span><span class="p">]</span> <span class="o">=</span> <span class="n">timestamp</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+<span class="c1"># Your Logger object will be instantiated and called as such:</span>
+<span class="c1"># obj = Logger()</span>
+<span class="c1"># param_1 = obj.shouldPrintMessage(timestamp,message)</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Logger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize your data structure here.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">messages</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+    <span class="k">def</span> <span class="nf">shouldPrintMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns true if the message should be printed in the given timestamp, otherwise returns false.</span>
+<span class="sd">        If this method returns false, the message will not be printed.</span>
+<span class="sd">        The timestamp is in seconds granularity.</span>
+<span class="sd">        :type timestamp: int</span>
+<span class="sd">        :type message: str</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">timestamp</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="n">message</span><span class="p">]</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="mi">10</span>
         <span class="k">return</span> <span class="bp">True</span>
 
 
@@ -91,11 +122,9 @@
 
 
 <p>Summary:</p>
-<ol>
-<li>C Solution can't pass the testset, I have no idea why.</li>
-<li>nothing special.</li>
-<li>149ms, 88.70%</li>
-</ol>
+<ul>
+<li>Solution 2 looks more pythonic.</li>
+</ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/logger-rate-limiter/">359. Logger Rate Limiter</a></p>
                 <div class="clear"></div>
 
@@ -105,7 +134,7 @@
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
                 </div>
 <div id="disqus_thread"></div>
 <script type="text/javascript">

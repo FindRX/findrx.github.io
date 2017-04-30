@@ -32,284 +32,190 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/power-of-two.html" rel="bookmark" title="Permanent Link to &quot;Power of Two&quot;">Power of Two</a>
+                    <a href="/ugly-number-ii.html" rel="bookmark" title="Permanent Link to &quot;Ugly Number II&quot;">Ugly Number II</a>
                 </h2>
 
                 
                 
 
-                <p>Given an integer, write a function to determine if it is a power of two.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfTwo</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(;</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">);</span> <span class="n">n</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>Better:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfTwo</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>Summary:</p>
-<ol>
-<li>bit manipulation.</li>
-<li>find the …</li></ol>
+                <p>Write a program to find the n<sup>th</sup> ugly number.</p>
+<p>Ugly numbers are positive numbers whose prime factors only include <code>2</code>, <code>3</code>, <code>5</code>. For example, <code>1, 2, 3, 4, 5, 6, 8, 9, 10, 12</code> is the sequence of the first 10 ugly numbers.</p>
+<p>Note that 1 is typically treated …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/power-of-two.html">No.231</a>
+				<a href="/ugly-number-ii.html">No.264</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
                     &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
-                </div>
-		<a href="/power-of-two.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/rectangle-area.html" rel="bookmark" title="Permanent Link to &quot;Rectangle Area&quot;">Rectangle Area</a>
-                </h2>
-
-                
-                
-
-                <p>Find the total area covered by two rectilinear rectangles in a 2D plane.</p>
-<p>Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.</p>
-<ul>
-<li>Assume that the total area is never beyond the maximum possible value of int.</li>
-</ul>
-<p><img alt="223. Rectangle Area" src="/images/rectangle-area.png"></p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">computeArea</span><span class="p">(</span><span class="kt">int …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/rectangle-area.html">No.223</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                </div>
-		<a href="/rectangle-area.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/contains-duplicate-ii.html" rel="bookmark" title="Permanent Link to &quot;Contains Duplicate II&quot;">Contains Duplicate II</a>
-                </h2>
-
-                
-                
-
-                <p>Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/contains-duplicate-ii.html">No.219</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                </div>
-		<a href="/contains-duplicate-ii.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/the-skyline-problem.html" rel="bookmark" title="Permanent Link to &quot;The Skyline Problem&quot;">The Skyline Problem</a>
-                </h2>
-
-                
-                
-
-                <p>A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Now suppose you are <strong>given the locations and height of all the buildings</strong> as shown on a cityscape photo (Figure A), write a program to <strong>output the …</strong></p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/the-skyline-problem.html">No.218</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/binary-indexed-tree.html" class="tags">Binary-Indexed-Tree</a>
-                    &nbsp;<a href="/tag/segment-tree.html" class="tags">Segment-Tree</a>
                     &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
-                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
                 </div>
-		<a href="/the-skyline-problem.html#disqus_thread">Click to read and post comments</a>
+		<a href="/ugly-number-ii.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/contains-duplicate.html" rel="bookmark" title="Permanent Link to &quot;Contains Duplicate&quot;">Contains Duplicate</a>
+                    <a href="/ugly-number.html" rel="bookmark" title="Permanent Link to &quot;Ugly Number&quot;">Ugly Number</a>
                 </h2>
 
                 
                 
 
-                <p>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
-<p>Solution:</p>
-<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span> <span class="n">Ht</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
-    <span class="k">struct …</span></pre></div>
+                <p>Write a program to check whether a given number is an ugly number.</p>
+<p>Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.</p>
+<p>Note that 1 is typically treated …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/contains-duplicate.html">No.217</a>
+				<a href="/ugly-number.html">No.263</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
                 </div>
-		<a href="/contains-duplicate.html#disqus_thread">Click to read and post comments</a>
+		<a href="/ugly-number.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/kth-largest-element-in-an-array.html" rel="bookmark" title="Permanent Link to &quot;Kth Largest Element in an Array&quot;">Kth Largest Element in an Array</a>
+                    <a href="/3sum-smaller.html" rel="bookmark" title="Permanent Link to &quot;3Sum Smaller&quot;">3Sum Smaller</a>
                 </h2>
 
                 
                 
 
-                <p>Find the k<sup>th</sup> largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
+                <p>Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 &lt;= i &lt; j &lt; k &lt; n that satisfy the condition nums[i] + nums[j] + nums[k] &lt; target.</p>
+<p>Example: </p>
 <ul>
-<li>You may assume k is always valid, 1 ≤ k ≤ array's length.</li>
+<li>Given nums = [-2, 0, 1, 3], and target = 2.</li>
+<li>Return 2. </li>
+<li>Because there …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/3sum-smaller.html">No.259</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/3sum-smaller.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/add-digits.html" rel="bookmark" title="Permanent Link to &quot;Add Digits&quot;">Add Digits</a>
+                </h2>
+
+                
+                
+
+                <p>Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.</p>
+<p>Example:</p>
+<ul>
+<li>Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.</li>
 </ul>
+<p>Follow up:</p>
+<ul>
+<li>Could you do it without any loop/recursion in …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/add-digits.html">No.258</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/add-digits.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/meeting-rooms-ii.html" rel="bookmark" title="Permanent Link to &quot;Meeting Rooms II&quot;">Meeting Rooms II</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array of meeting time intervals consisting of start and end times [[s<sub>1</sub>,e<sub>1</sub>],[s<sub>2</sub>,e<sub>2</sub>],...] (s<sub>i</sub> &lt; e<sub>i</sub>), find the minimum number of conference rooms required.</p>
 <p>For example:</p>
 <ul>
-<li>Given <code>3,2,1,5,6,4</code> and <code>k = 2 …</code></li></ul>
+<li>Given <code>[[0, 30],[5, 10],[15, 20]]</code>,</li>
+<li>return <code>2</code>.</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for an interval …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/kth-largest-element-in-an-array.html">No.215</a>
+				<a href="/meeting-rooms-ii.html">No.253</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
                     &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
-                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
+                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
+                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
                 </div>
-		<a href="/kth-largest-element-in-an-array.html#disqus_thread">Click to read and post comments</a>
+		<a href="/meeting-rooms-ii.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/reverse-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Reverse Linked List&quot;">Reverse Linked List</a>
+                    <a href="/group-shifted-strings.html" rel="bookmark" title="Permanent Link to &quot;Group Shifted Strings&quot;">Group Shifted Strings</a>
                 </h2>
 
                 
                 
 
-                <p>Reverse a singly linked list.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">reverseList</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">_head</span><span class="p">;</span>
-        <span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
-        <span class="n">head</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">_head</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>Summary:</p>
-<ol>
-<li>3ms, 5.9%</li>
-<li>Remember.</li>
-</ol>
-<p>LeetCode …</p>
+                <p>Given a string, we can "shift" each of its letter to its successive letter, for example: "abc" -&gt; "bcd". We can keep "shifting" which forms the sequence:</p>
+<ul>
+<li>"abc" -&gt; "bcd" -&gt; ... -&gt; "xyz"</li>
+</ul>
+<p>Given a list of strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence.</p>
+<p>Example …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/reverse-linked-list.html">No.206</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                </div>
-		<a href="/reverse-linked-list.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/isomorphic-strings.html" rel="bookmark" title="Permanent Link to &quot;Isomorphic Strings&quot;">Isomorphic Strings</a>
-                </h2>
-
-                
-                
-
-                <p>Given two strings s and t, determine if they are isomorphic.</p>
-<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
-<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/isomorphic-strings.html">No.205</a>
+				<a href="/group-shifted-strings.html">No.249</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
                 </div>
-		<a href="/isomorphic-strings.html#disqus_thread">Click to read and post comments</a>
+		<a href="/group-shifted-strings.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/count-primes.html" rel="bookmark" title="Permanent Link to &quot;Count Primes&quot;">Count Primes</a>
+                    <a href="/strobogrammatic-number.html" rel="bookmark" title="Permanent Link to &quot;Strobogrammatic Number&quot;">Strobogrammatic Number</a>
                 </h2>
 
                 
                 
 
-                <p>Count the number of prime numbers less than a non-negative number, n.</p>
+                <p>A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).</p>
+<p>Write a function to determine if a number is strobogrammatic. The number is represented as a string.</p>
+<p>Example: </p>
+<ul>
+<li>the numbers "69", "88", and "818" are all strobogrammatic.</li>
+</ul>
 <p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">countPrimes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isStrobogrammatic</span><span class="p">(</span><span class="kt">char …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/count-primes.html">No.204</a>
+				<a href="/strobogrammatic-number.html">No.246</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
@@ -317,43 +223,87 @@
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                     &nbsp;<a href="/tag/math.html" class="tags">Math</a>
                 </div>
-		<a href="/count-primes.html#disqus_thread">Click to read and post comments</a>
+		<a href="/strobogrammatic-number.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/remove-linked-list-elements.html" rel="bookmark" title="Permanent Link to &quot;Remove Linked List Elements&quot;">Remove Linked List Elements</a>
+                    <a href="/valid-anagram.html" rel="bookmark" title="Permanent Link to &quot;Valid Anagram&quot;">Valid Anagram</a>
                 </h2>
 
                 
                 
 
-                <p>Remove all elements from a linked list of integers that have value val.</p>
-<p>Example</p>
+                <p>Given two strings s and t, write a function to determine if t is an anagram of s.</p>
 <ul>
-<li>Given: <code>1 --&gt; 2 --&gt; 6 --&gt; 3 --&gt; 4 --&gt; 5 --&gt; 6</code>, <code>val = 6</code></li>
-<li>Return: <code>1 --&gt; 2 --&gt; 3 --&gt; 4 --&gt; 5</code></li>
+<li>You may assume the string contains only lowercase alphabets.</li>
+<li>What if the inputs contain unicode characters? How would you adapt your solution to such case?<ul>
+<li>use a real HashTable</li>
 </ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">removeElements</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">,</span> <span class="kt">int …</span></pre></div>
+</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>s = "anagram …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/remove-linked-list-elements.html">No.203</a>
+				<a href="/valid-anagram.html">No.242</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
+                </div>
+		<a href="/valid-anagram.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/sliding-window-maximum.html" rel="bookmark" title="Permanent Link to &quot;Sliding Window Maximum&quot;">Sliding Window Maximum</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.</p>
+<ul>
+<li>You may assume k …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/sliding-window-maximum.html">No.239</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                </div>
+		<a href="/sliding-window-maximum.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/delete-node-in-a-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Delete Node in a Linked List&quot;">Delete Node in a Linked List</a>
+                </h2>
+
+                
+                
+
+                <p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
+<p>Supposed the linked list is <code>1 -&gt; 2 -&gt; 3 -&gt; 4</code> and you are given the third node with value <code>3</code>, the linked list should become <code>1 -&gt; 2 -&gt; 4</code> after calling …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/delete-node-in-a-linked-list.html">No.237</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
                 </div>
-		<a href="/remove-linked-list-elements.html#disqus_thread">Click to read and post comments</a>
+		<a href="/delete-node-in-a-linked-list.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -364,7 +314,7 @@
 
 
 
-                    <span>Page 6 of 10</span>
+                    <span>Page 6 of 12</span>
                 </div>
 
             <div class="clear"></div>

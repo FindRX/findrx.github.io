@@ -39,7 +39,35 @@
                 
                 
 
-                <h2>An Introduction to MySQL</h2>
+                <p>Something important:</p>
+<ul>
+<li>What <em>SELECT</em> returns could be rows, or one row mutliple columns, or one row one column.<ul>
+<li>In python, <code>1</code> is different from <code>[1]</code>, <code>[1]</code> is different from <code>[[1]]</code>.</li>
+<li>In MySQL, when we are talking about what <em>SELECT</em> returns: <ul>
+<li>a single value (a scalar value)  is a row consisting of one column.<ul>
+<li>That means <code>[1]</code> is equal to <code>1</code></li>
+</ul>
+</li>
+<li>a single value (a scalar value)  is also a table consisting of one row consisting of one column.<ul>
+<li>That means <code>[[1]]</code> is equal to <code>1</code></li>
+</ul>
+</li>
+<li>a list of values is multiple rows of which each row consists of one column.<ul>
+<li>That means <code>[1], [2], [3], [4], ...</code> is equal to <code>[1, 2, 3, 4]</code>.</li>
+</ul>
+</li>
+<li>a list of values is also a table consisting of multiple rows of which each row consists of one column.<ul>
+<li>That means <code>[[1], [2], [3], [4], ...]</code> is equal to <code>[1, 2, 3, 4]</code>.</li>
+</ul>
+</li>
+<li>There is no such difference among <code>1</code>, <code>[1]</code> and <code>[[1]]</code> in the results of <em>SELECT</em> statements as in python.</li>
+<li>What <em>SELECT</em> statements return is always a table, and a table consisting of one row consisting of one column is equal to the value in the cell defined by the row and the column.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>An Introduction to MySQL</h2>
 <p>primary key, unique key, index.</p>
 <p>An index is automatically created for a table's primary and non-primary keys.</p>
 <p>The foreign key is simply one or more columns in a table that refer to a primary key in another table.</p>
@@ -67,6 +95,58 @@
 <ul>
 <li>To include spaces or special characters in an alias, enclose the alias in double quotes <code>"</code> or single quotes <code>'</code>.</li>
 </ul>
+<p>In MySQL, a string can contain any combination of characters, and a function performs an operation and returns a value.</p>
+<p>To code a literal value for a string, enclose one or more characters within single quotes <code>'</code> or double quotes <code>"</code>.</p>
+<p>To include a single quote within a literal value for a string, code two single quotes. Or use double quotes instead of single quotes to start and end the literal value.</p>
+<p>Syntax of the <em>WHERE</em> clause with comparison operators:</p>
+<div class="highlight"><pre><span></span><span class="k">WHERE</span> <span class="n">expression1</span> <span class="k">operator</span> <span class="n">expression2</span>
+<span class="n">operators</span><span class="p">:</span> <span class="o">=</span><span class="p">,</span> <span class="o">&lt;</span><span class="p">,</span> <span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;=</span><span class="p">,</span> <span class="o">&gt;=</span><span class="p">,</span> <span class="o">&lt;&gt;</span><span class="p">,</span> <span class="o">!=</span>
+</pre></div>
+
+
+<ul>
+<li>To use a string literal or a date literal in a comprison, enclose it in quotes. </li>
+<li>Literal values for dates must use this format: <em>YYYY-MM-DD</em>, this is the default date format used by MySQL.</li>
+<li>To use a numeric literal, enter the number without quotes.</li>
+<li>Character comparisons performed on MySQL databases are not case-sensitive.</li>
+<li>If your compare a null value using comparison operators, the result is always a null value.</li>
+</ul>
+<p>Syntax of the <em>WHERE</em> clause with logical operators:</p>
+<div class="highlight"><pre><span></span><span class="k">WHERE</span> <span class="p">[</span><span class="k">NOT</span><span class="p">]</span> <span class="n">search_condition_1</span> <span class="err">{</span><span class="k">AND</span><span class="o">|</span><span class="k">OR</span><span class="err">}</span> <span class="p">[</span><span class="k">NOT</span><span class="p">]</span> <span class="n">search_condition_2</span> <span class="p">...</span>
+</pre></div>
+
+
+<ul>
+<li>When MySQL evaluates a compound condition, it evaluates the operators in this sequence: (1) <em>NOT</em>, (2) <em>AND</em>, (3) <em>OR</em>.</li>
+</ul>
+<p>Syntax of the <em>WHERE</em> clause with an <em>IN</em> phrase</p>
+<div class="highlight"><pre><span></span><span class="k">WHERE</span> <span class="n">test_expression</span> <span class="p">[</span><span class="k">NOT</span><span class="p">]</span> <span class="k">IN</span> <span class="p">(</span><span class="err">{</span><span class="n">subquery</span><span class="o">|</span><span class="n">expression_1</span> <span class="p">[,</span> <span class="n">expression_2</span><span class="p">]...</span><span class="err">}</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Syntax of the <em>WHERE</em> clause with a <em>BETWEEN</em> phrase</p>
+<div class="highlight"><pre><span></span><span class="k">WHERE</span> <span class="n">test_expression</span> <span class="p">[</span><span class="k">NOT</span><span class="p">]</span> <span class="k">BETWEEN</span> <span class="n">begin_expression</span> <span class="k">AND</span> <span class="n">end_expression</span>
+</pre></div>
+
+
+<ul>
+<li>The two expressions used in the <em>BETWEEN</em> phrase for the range of values are inclusive.</li>
+</ul>
+<p>Syntax of the <em>WHERE</em> clause with a <em>LIKE</em> phrase</p>
+<div class="highlight"><pre><span></span><span class="k">WHERE</span> <span class="n">match_expression</span> <span class="p">[</span><span class="k">NOT</span><span class="p">]</span> <span class="k">LIKE</span> <span class="n">pattern</span>
+</pre></div>
+
+
+<p>Syntax of the <em>WHERE</em> clause with a <em>REGEXP</em> phrase</p>
+<div class="highlight"><pre><span></span><span class="k">WHERE</span> <span class="n">match_expression</span> <span class="p">[</span><span class="k">NOT</span><span class="p">]</span> <span class="n">REGEXP</span> <span class="n">pattern</span>
+</pre></div>
+
+
+<ul>
+<li>You use the <em>LIKE</em> and <em>REGEXP</em> operators to retrieve rows that match a string pattern, called a mark. Marks aren't case-sensitive.</li>
+<li>Most <em>LIKE</em> and <em>REGEXP</em> phrases significantly degrade performance compared to other types of searches, so use them only when necessary.</li>
+</ul>
+<p><em>ORDER BY</em> can be used with column, alias, expression and column number.</p>
                 <div class="clear"></div>
 
                 <div class="info">

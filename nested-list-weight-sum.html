@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Wait at Will | Nested List Weight Sum</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Depth-First-Search" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">Wait at Will</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/nested-list-weight-sum.html" rel="bookmark" title="Permanent Link to &quot;Nested List Weight Sum&quot;">Nested List Weight Sum</a>
+                </h2>
+
+                
+                
+
+                <p>Given a nested list of integers, return the sum of all integers in the list weighted by their depth.</p>
+<p>Each element is either an integer, or a list -- whose elements may also be integers or other lists.</p>
+<p>Example:</p>
+<ul>
+<li>Given the list [[1,1],2,[1,1]]</li>
+<li>return 10. (four 1's at depth 2, one 2 at depth 1)</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Given the list [1,[4,[6]]]</li>
+<li>return 27. (one 1 at depth 1, one 4 at depth 2, and one 6 at depth 3; 1 + 4<em>2 + 6</em>3 = 27)</li>
+</ul>
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="c1"># &quot;&quot;&quot;</span>
+<span class="c1"># This is the interface that allows for creating nested lists.</span>
+<span class="c1"># You should not implement it, or speculate about its implementation</span>
+<span class="c1"># &quot;&quot;&quot;</span>
+<span class="c1">#class NestedInteger(object):</span>
+<span class="c1">#    def isInteger(self):</span>
+<span class="c1">#        &quot;&quot;&quot;</span>
+<span class="c1">#        @return True if this NestedInteger holds a single integer, rather than a nested list.</span>
+<span class="c1">#        :rtype bool</span>
+<span class="c1">#        &quot;&quot;&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#    def getInteger(self):</span>
+<span class="c1">#        &quot;&quot;&quot;</span>
+<span class="c1">#        @return the single integer that this NestedInteger holds, if it holds a single integer</span>
+<span class="c1">#        Return None if this NestedInteger holds a nested list</span>
+<span class="c1">#        :rtype int</span>
+<span class="c1">#        &quot;&quot;&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#    def getList(self):</span>
+<span class="c1">#        &quot;&quot;&quot;</span>
+<span class="c1">#        @return the nested list that this NestedInteger holds, if it holds a nested list</span>
+<span class="c1">#        Return None if this NestedInteger holds a single integer</span>
+<span class="c1">#        :rtype List[NestedInteger]</span>
+<span class="c1">#        &quot;&quot;&quot;</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_depthSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nestedList</span><span class="p">,</span> <span class="n">level</span><span class="p">):</span>
+        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">elm</span> <span class="ow">in</span> <span class="n">nestedList</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">elm</span><span class="o">.</span><span class="n">isInteger</span><span class="p">():</span>
+                <span class="nb">sum</span> <span class="o">+=</span> <span class="n">level</span> <span class="o">*</span> <span class="n">elm</span><span class="o">.</span><span class="n">getInteger</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">sum</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depthSum</span><span class="p">(</span><span class="n">elm</span><span class="o">.</span><span class="n">getList</span><span class="p">(),</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sum</span>
+    <span class="k">def</span> <span class="nf">depthSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nestedList</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type nestedList: List[NestedInteger]</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depthSum</span><span class="p">(</span><span class="n">nestedList</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * *********************************************************************</span>
+<span class="cm"> * // This is the interface that allows for creating nested lists.</span>
+<span class="cm"> * // You should not implement it, or speculate about its implementation</span>
+<span class="cm"> * *********************************************************************</span>
+<span class="cm"> *</span>
+<span class="cm"> * // Return true if this NestedInteger holds a single integer, rather than a nested list.</span>
+<span class="cm"> * bool NestedIntegerIsInteger(struct NestedInteger *);</span>
+<span class="cm"> *</span>
+<span class="cm"> * // Return the single integer that this NestedInteger holds, if it holds a single integer</span>
+<span class="cm"> * // The result is undefined if this NestedInteger holds a nested list</span>
+<span class="cm"> * int NestedIntegerGetInteger(struct NestedInteger *);</span>
+<span class="cm"> *</span>
+<span class="cm"> * // Return the nested list that this NestedInteger holds, if it holds a nested list</span>
+<span class="cm"> * // The result is undefined if this NestedInteger holds a single integer</span>
+<span class="cm"> * struct NestedInteger **NestedIntegerGetList(struct NestedInteger *);</span>
+<span class="cm"> *</span>
+<span class="cm"> * // Return the nested list&#39;s size that this NestedInteger holds, if it holds a nested list</span>
+<span class="cm"> * // The result is undefined if this NestedInteger holds a single integer</span>
+<span class="cm"> * int NestedIntegerGetListSize(struct NestedInteger *);</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">_depthSum</span><span class="p">(</span><span class="k">struct</span> <span class="n">NestedInteger</span> <span class="o">**</span><span class="n">nestedList</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nestedListSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">level</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nestedListSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">NestedIntegerIsInteger</span><span class="p">(</span><span class="n">nestedList</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">level</span> <span class="o">*</span> <span class="n">NestedIntegerGetInteger</span><span class="p">(</span><span class="n">nestedList</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">_depthSum</span><span class="p">(</span><span class="n">NestedIntegerGetList</span><span class="p">(</span><span class="n">nestedList</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">NestedIntegerGetListSize</span><span class="p">(</span><span class="n">nestedList</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">depthSum</span><span class="p">(</span><span class="k">struct</span> <span class="n">NestedInteger</span><span class="o">**</span> <span class="n">nestedList</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nestedListSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_depthSum</span><span class="p">(</span><span class="n">nestedList</span><span class="p">,</span> <span class="n">nestedListSize</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>Recusive</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/nested-list-weight-sum/">339. Nested List Weight Sum</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/nested-list-weight-sum.html">No.339</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Wait at Will | Moving Average from Data Steam</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Design,Queue" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">Wait at Will</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/moving-average-from-data-steam.html" rel="bookmark" title="Permanent Link to &quot;Moving Average from Data Steam&quot;">Moving Average from Data Steam</a>
+                </h2>
+
+                
+                
+
+                <p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
+<p>For example,</p>
+<div class="highlight"><pre><span></span>MovingAverage m = new MovingAverage(3);
+m.next(1) = 1
+m.next(10) = (1 + 10) / 2
+m.next(3) = (1 + 10 + 3) / 3
+m.next(5) = (10 + 3 + 5) / 3
+</pre></div>
+
+
+<p>Python Solution: </p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">class</span> <span class="nc">MovingAverage</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize your data structure here.</span>
+<span class="sd">        :type size: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span> <span class="o">=</span> <span class="n">size</span><span class="p">);</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
+
+    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type val: int</span>
+<span class="sd">        :rtype: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sum</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sum</span> <span class="o">+=</span> <span class="n">val</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+
+
+<span class="c1"># Your MovingAverage object will be instantiated and called as such:</span>
+<span class="c1"># obj = MovingAverage(size)</span>
+<span class="c1"># param_1 = obj.next(val)</span>
+</pre></div>
+
+
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">record</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">sum</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">pos</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">MovingAverage</span><span class="p">;</span>
+
+<span class="cm">/** Initialize your data structure here. */</span>
+<span class="n">MovingAverage</span><span class="o">*</span> <span class="nf">movingAverageCreate</span><span class="p">(</span><span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">MovingAverage</span> <span class="o">*</span><span class="n">obj</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">MovingAverage</span><span class="p">));</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">record</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">obj</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">movingAverageNext</span><span class="p">(</span><span class="n">MovingAverage</span><span class="o">*</span> <span class="n">obj</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">sum</span> <span class="o">-=</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">record</span><span class="p">[</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">pos</span><span class="p">];</span>
+    <span class="n">obj</span><span class="o">-&gt;</span><span class="n">sum</span> <span class="o">+=</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">record</span><span class="p">[</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">else</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">pos</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">num</span> <span class="o">&lt;</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">num</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">sum</span> <span class="o">/</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">num</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">movingAverageFree</span><span class="p">(</span><span class="n">MovingAverage</span><span class="o">*</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">record</span><span class="p">);</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Your MovingAverage struct will be instantiated and called as such:</span>
+<span class="cm"> * struct MovingAverage* obj = movingAverageCreate(size);</span>
+<span class="cm"> * double param_1 = movingAverageNext(obj, val);</span>
+<span class="cm"> * movingAverageFree(obj);</span>
+<span class="cm"> */</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>Queue problem</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/moving-average-from-data-stream/#/description">346. Moving Average from Data Stream</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/moving-average-from-data-steam.html">No.346</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                    &nbsp;<a href="/tag/queue.html" class="tags">Queue</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Understand Deeply
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
