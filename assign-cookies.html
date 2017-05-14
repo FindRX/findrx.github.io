@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Assign Cookies</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Greedy" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/assign-cookies.html" rel="bookmark" title="Permanent Link to &quot;Assign Cookies&quot;">Assign Cookies</a>
+                </h2>
+
+                
+                
+
+                <p>Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie. Each child <em>i</em> has a greed factor <em>g<sub>i</sub></em>, which is the minimum size of a cookie that the child will be content with; and each cookie <em>j</em> has a size <em>s<sub>j</sub></em>. If <em>s<sub>j</sub></em> &gt;= <em>g<sub>i</sub></em>, we can assign the cookie j to the child i, and the child i will be content. Your goal is to maximize the number of your content children and output the maximum number.</p>
+<ul>
+<li>You may assume the greed factor is always positive. </li>
+<li>You cannot assign more than one cookie to one child.</li>
+</ul>
+<p>Example 1:</p>
+<ul>
+<li>Input: [1,2,3], [1,1]</li>
+<li>Output: 1</li>
+<li>Explanation: <ul>
+<li>You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3. </li>
+<li>And even though you have 2 cookies, since their size is both 1, you could only make the child whose greed factor is 1 content.</li>
+<li>You need to output 1.</li>
+</ul>
+</li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Input: [1,2], [1,2,3]</li>
+<li>Output: 2</li>
+<li>Explanation: <ul>
+<li>You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2. </li>
+<li>You have 3 cookies and their sizes are big enough to gratify all of the children, </li>
+<li>You need to output 2.</li>
+</ul>
+</li>
+</ul>
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bisect</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">findContentChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type g: List[int]</span>
+<span class="sd">        :type s: List[int]</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span> <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">gi</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+            <span class="n">ind</span> <span class="o">=</span> <span class="n">bisect</span><span class="o">.</span><span class="n">bisect_left</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">gi</span><span class="p">,</span> <span class="n">lo</span> <span class="o">=</span> <span class="n">start</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ind</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span> <span class="k">return</span> <span class="n">res</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">ind</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>the array is sorted, why not use binary search, faster than iterate.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/assign-cookies/#/description">455. Assign Cookies</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/assign-cookies.html">No.455</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

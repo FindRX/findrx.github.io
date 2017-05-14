@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | articles tagged "Code-Reading"</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="ephemeral selected"><a href="/tag/code-reading.html">Code-Reading</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Feb 01, 2017</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/python-pelican.html" rel="bookmark" title="Permanent Link to &quot;Python: Pelican&quot;">Python: Pelican</a>
+                </h2>
+
+                
+                
+
+                <p><code>/usr/local/bin/pelican</code>:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/python3.5</span>
+
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">pelican</span> <span class="kn">import</span> <span class="n">main</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(-script\.pyw|\.exe)?$&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+
+
+<p><code>main()</code> is in <code>/usr/local/lib/python3.5/site-packages/pelican/__init__.py</code>.</p>
+<div class="highlight"><pre><span></span><span class="k">def …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/python-pelican.html">posted at 20:37</a>
+
+
+                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">Python</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/code-reading.html" class="tags selected">Code-Reading</a>
+                </div>
+		<a href="/python-pelican.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 04, 2017</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/python-logging.html" rel="bookmark" title="Permanent Link to &quot;Python: Logging&quot;">Python: Logging</a>
+                </h2>
+
+                
+                
+
+                <p>Before using <code>logging.info</code> or something samiliar, you can configure <strong><em>logging</em></strong> or not.</p>
+<p>If you don't configure it manually, the default configuration will be used.</p>
+<h2>Let's check what happens when executing <code>logging.info</code> directly without any pre-configurations</h2>
+<p>There is a <strong><em>root</em></strong> object which will be used if no configration specified …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/python-logging.html">posted at 15:40</a>
+
+
+                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">Python</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/code-reading.html" class="tags selected">Code-Reading</a>
+                </div>
+		<a href="/python-logging.html#disqus_thread">Click to read and post comments</a>
+            </article>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
