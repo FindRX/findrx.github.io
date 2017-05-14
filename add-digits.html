@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wait at Will | Add Digits</title>
+    <title>RuiOAIX's Records | Add Digits</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">Wait at Will</a></h1>
+            <h1><a href="/">RuiOAIX's Records</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -48,6 +48,20 @@
 <ul>
 <li>Could you do it without any loop/recursion in O(1) runtime?</li>
 </ul>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">addDigits</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">num</span> <span class="o">/=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">addDigits</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">addDigits</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">num</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
@@ -57,6 +71,7 @@
 </pre></div>
 
 
+<p>C Solution 3:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">addDigits</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">9</span><span class="p">;</span>
@@ -65,17 +80,31 @@
 </pre></div>
 
 
+<p>C Solution 4:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">addDigits</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">9</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
+<p>C Solution 5:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">addDigits</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">num</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">num</span> <span class="o">%=</span> <span class="mi">9</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">num</span> <span class="o">?</span> <span class="nl">num</span> <span class="p">:</span> <span class="mi">9</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
 <p>Summary:</p>
-<ol>
-<li>Some theory behind.</li>
-<li>3ms, 9.05%</li>
-</ol>
+<ul>
+<li>The difference between <code>a * 100 + b * 10 + c</code> and <code>a + b + c</code> is <code>a * 99 + b * 9</code> which is <code>9 * M</code> (<code>M</code> is a non-negative integer), so just use <code>num %= 9</code> to get rid of the largest <code>9 * M</code>. <ul>
+<li>But there is a corner case where num is 0.</li>
+</ul>
+</li>
+<li>Solution 4 is wiki's answer, but it's not obvious.</li>
+<li>For me, solution 5 is better, we can think of solution 4 as a improved version of solution 5 which covers the corner case.</li>
+</ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/add-digits/">258. Add Digits</a></p>
                 <div class="clear"></div>
 
@@ -100,7 +129,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-				Understand Deeply
+				Try
             </footer>
         </div>
         <div class="clear"></div>

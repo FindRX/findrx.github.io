@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wait at Will | Contains Duplicate</title>
+    <title>RuiOAIX's Records | Contains Duplicate</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">Wait at Will</a></h1>
+            <h1><a href="/">RuiOAIX's Records</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -40,7 +40,7 @@
                 
 
                 <p>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
-<p>Solution:</p>
+<p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
     <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
@@ -83,11 +83,26 @@
 </pre></div>
 
 
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">containsDuplicate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type nums: List[int]</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</pre></div>
+
+
 <p>Summary:</p>
-<ol>
-<li>This is what HashTable does. nothing to say.</li>
-<li>39ms, 39.73%</li>
-</ol>
+<ul>
+<li>Hash-Table in C and in Python</li>
+</ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/contains-duplicate/">217. Contains Duplicate</a></p>
                 <div class="clear"></div>
 
@@ -113,7 +128,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-				Understand Deeply
+				Try
             </footer>
         </div>
         <div class="clear"></div>

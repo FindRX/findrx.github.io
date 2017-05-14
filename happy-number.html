@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wait at Will | Happy Number</title>
+    <title>RuiOAIX's Records | Happy Number</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">Wait at Will</a></h1>
+            <h1><a href="/">RuiOAIX's Records</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -53,7 +53,7 @@
 <li>6<sup>2</sup> + 8<sup>2</sup> = 100</li>
 <li>1<sup>2</sup> + 0<sup>2</sup> + 0<sup>2</sup> = 1</li>
 </ul>
-<p>C Solution with HashTable:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
     <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
@@ -102,7 +102,7 @@
 </pre></div>
 
 
-<p>C Solution with Array as HashTable</p>
+<p>C Solution 2:</p>
 <div class="highlight"><pre><span></span><span class="cp">#define HTSIZE (9 * 9 * 63)</span>
 <span class="kt">bool</span> <span class="nf">isHappy</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">ht</span><span class="p">[</span><span class="n">HTSIZE</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
@@ -119,6 +119,68 @@
     <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">);</span>
     <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="c1">// Using fact all numbers in [2, 6] are not happy (and all not happy numbers end on a cycle that hits this interval)</span>
+<span class="kt">bool</span> <span class="nf">isHappy</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">&gt;</span><span class="mi">6</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="p">){</span><span class="n">next</span><span class="o">+=</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">10</span><span class="p">);</span> <span class="n">n</span><span class="o">/=</span><span class="mi">10</span><span class="p">;}</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">==</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">isHappy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type n: int</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="n">tmp</span> <span class="o">*</span> <span class="n">tmp</span>
+            <span class="n">n</span> <span class="o">//=</span> <span class="mi">10</span>
+
+        <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+            <span class="n">Solution</span><span class="o">.</span><span class="n">dd</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dd</span><span class="p">:</span> 
+            <span class="n">Solution</span><span class="o">.</span><span class="n">dd</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="n">Solution</span><span class="o">.</span><span class="n">dd</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">isHappy</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">isHappy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type n: int</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="n">n</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10</span>
+                <span class="n">s</span> <span class="o">+=</span> <span class="n">tmp</span> <span class="o">*</span> <span class="n">tmp</span>
+                <span class="n">n</span> <span class="o">//=</span> <span class="mi">10</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">s</span>
 </pre></div>
 
 
@@ -153,7 +215,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-				Understand Deeply
+				Try
             </footer>
         </div>
         <div class="clear"></div>

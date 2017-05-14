@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wait at Will | Delete Node in a Linked List</title>
+    <title>RuiOAIX's Records | Delete Node in a Linked List</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">Wait at Will</a></h1>
+            <h1><a href="/">RuiOAIX's Records</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -56,11 +56,28 @@
 </pre></div>
 
 
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">deleteNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type node: ListNode</span>
+<span class="sd">        :rtype: void Do not return anything, modify node in-place instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">val</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
+
+
 <p>Summary:</p>
-<ol>
-<li>3ms, 20.40%</li>
+<ul>
 <li>nothing special</li>
-</ol>
+</ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/delete-node-in-a-linked-list/">237. Delete Node in a Linked List</a></p>
                 <div class="clear"></div>
 
@@ -85,7 +102,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-				Understand Deeply
+				Try
             </footer>
         </div>
         <div class="clear"></div>

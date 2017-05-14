@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wait at Will | Reading Murach's MySQL 2nd Edition</title>
+    <title>RuiOAIX's Records | Reading Murach's MySQL 2nd Edition</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">Wait at Will</a></h1>
+            <h1><a href="/">RuiOAIX's Records</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -147,6 +147,180 @@
 <li>Most <em>LIKE</em> and <em>REGEXP</em> phrases significantly degrade performance compared to other types of searches, so use them only when necessary.</li>
 </ul>
 <p><em>ORDER BY</em> can be used with column, alias, expression and column number.</p>
+<h2>JOIN AND UNION</h2>
+<p>A <strong>join</strong> lets you combine columns from two or more tables into a single result set.</p>
+<p>Explicit syntax for an inner join:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span>
+    <span class="p">[</span><span class="k">INNER</span><span class="p">]</span> <span class="k">JOIN</span> <span class="n">table_2</span> <span class="k">ON</span> <span class="n">join_condition_1</span>
+    <span class="p">[</span><span class="k">INNER</span><span class="p">]</span> <span class="k">JOIN</span> <span class="n">table_3</span> <span class="k">ON</span> <span class="n">join_condition_2</span>
+    <span class="p">...</span>
+</pre></div>
+
+
+<ul>
+<li>THE <em>INNER</em> keyword is optional and is seldom used.</li>
+</ul>
+<p>A <strong>table alias</strong> is an alternative table name assigned in the <em>FROM</em> clause.</p>
+<p>If you assign an alias to a table, you must use that alias to refer to the table throughout your query. You can't use the original table name.</p>
+<p>A join condition can include two or more conditions connected by <em>AND</em> or <em>OR</em> operators.</p>
+<p>A <strong>self-join</strong> joins a table to itself.</p>
+<ul>
+<li>Although <strong>self-join</strong> are rare, they are sometimes useful for retrieving data that can't be retrieved any other way.</li>
+</ul>
+<p>Implicit syntax for an inner join:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span><span class="p">,</span> <span class="n">table_2</span><span class="p">[,</span> <span class="n">table_3</span><span class="p">]</span> <span class="p">...</span>
+<span class="k">WHERE</span> <span class="n">table_1</span><span class="p">.</span><span class="k">column_name</span> <span class="k">operator</span> <span class="n">table_2</span><span class="p">.</span><span class="k">column_name</span>
+    <span class="p">[</span><span class="k">AND</span> <span class="n">table_2</span><span class="p">.</span><span class="k">column_name</span> <span class="k">operator</span> <span class="n">table_3</span><span class="p">.</span><span class="k">column_name</span><span class="p">]...</span>
+</pre></div>
+
+
+<p>Explicit syntax for an outer join:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span>
+    <span class="err">{</span><span class="k">LEFT</span><span class="o">|</span><span class="k">RIGHT</span><span class="err">}</span> <span class="err">{</span><span class="k">OUTER</span><span class="err">}</span> <span class="k">JOIN</span> <span class="n">table_2</span> <span class="k">ON</span> <span class="n">join_condition_1</span>
+    <span class="p">[</span><span class="err">{{</span><span class="k">LEFT</span><span class="o">|</span><span class="k">RIGHT</span><span class="err">}</span> <span class="err">{</span><span class="k">OUTER</span><span class="err">}</span> <span class="k">JOIN</span> <span class="n">table_3</span> <span class="k">ON</span> <span class="n">join_condition_2</span><span class="p">]</span>
+    <span class="p">...</span>
+</pre></div>
+
+
+<ul>
+<li>The <em>OUTER</em> keyword is optional and typically omitted.</li>
+</ul>
+<p>You can use <em>USING</em> keyword to simplify the syntax for joining tables.</p>
+<p>You can use <em>NATURAL</em> keyword to create a natural join that joins two tables based on all columns in the two tables that have the same name.</p>
+<p>Explicit syntax for a cross join:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span> <span class="k">CROSS</span> <span class="k">JOIN</span> <span class="n">table_2</span>
+</pre></div>
+
+
+<p>Implicit syntax for a cross join:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span><span class="p">,</span> <span class="n">table_2</span>
+</pre></div>
+
+
+<p>A <strong>union</strong> combines rows from two or more result sets, whilce a <strong>join</strong> combines columns from two or more result sets.</p>
+<p>If you want to sort the result of a union operation, you can code an <em>ORDER BY</em> clause after the last <em>SELECT</em> statement. In an <em>ORDER BY</em> clause, you must use the column names that are specified in the first <em>SELECT</em> statement.</p>
+<ul>
+<li>That's because the column names in the first <em>SELECT</em> statement are the ones that are used in the final result set.</li>
+</ul>
+<h2>INSERT, UPDATE and DELETE</h2>
+<p>Syntax of the <em>CREATE TABLE AS</em> statement:</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">table_name</span> <span class="k">AS</span> <span class="n">select_statement</span>
+</pre></div>
+
+
+<ul>
+<li>When you use the <em>CREATE TABLE AS</em> statement to create a table, only the column definitions and data are copied.</li>
+<li>Definitions of primary keys, foreign keys, indexes and so on are not included in the new table.</li>
+</ul>
+<p>Syntax of the <em>INSERT</em> statement</p>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="p">[</span><span class="k">INTO</span><span class="p">]</span> <span class="k">table_name</span> <span class="p">[(</span><span class="n">column_list</span><span class="p">)]</span>
+<span class="k">VALUES</span> <span class="p">(</span><span class="n">expression_1</span><span class="p">[,</span> <span class="n">expression_2</span><span class="p">]...)[,</span>
+       <span class="p">(</span><span class="n">expression_1</span><span class="p">[,</span> <span class="n">expression_2</span><span class="p">]...)]...</span>
+</pre></div>
+
+
+<ul>
+<li><em>INTO</em> keyword is optional</li>
+<li>If you don't include a column list in the <em>INSERT</em> clause, you must specify the column values in the same order as in the table, and you must code <strong>a value for each column</strong>.</li>
+<li>If you include a column list, you must specify the column values in the same order as in the column list, and you can omit columns that have default values, accept null values, or are automatically generated.</li>
+<li>To insert a null value into a column, you can use the <em>NULL</em> keyword.</li>
+<li>To insert a default value or to have MySQL generate a value for an auto increment column, you can use the <em>DEFAULT</em> keyword.</li>
+</ul>
+<p>Syntax of the <em>UPDATE</em> statement</p>
+<div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="k">table_name</span> 
+<span class="k">SET</span> <span class="n">column_name_1</span> <span class="o">=</span> <span class="n">expression_1</span><span class="p">[,</span> <span class="n">column_name_2</span> <span class="o">=</span> <span class="n">expression_2</span><span class="p">]...</span>
+<span class="p">[</span><span class="k">WHERE</span> <span class="n">search_condition</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Syntax of the <em>DELETE</em> statement</p>
+<div class="highlight"><pre><span></span><span class="k">DELEtE</span> <span class="k">FROM</span> <span class="k">table_name</span>
+<span class="p">[</span><span class="k">WHERE</span> <span class="n">search_conditon</span><span class="p">]</span>
+</pre></div>
+
+
+<h2>Summary Queries</h2>
+<p>A summary query is a <em>SELECT</em> statement that includes one or more aggregate functions.</p>
+<p>All of the aggregate functions except for <em>COUNT(*)</em> ignore null values.</p>
+<p>With two exceptions, a <em>SELECT</em> clause that contains an aggregate function can contain only aggregate functions.</p>
+<ul>
+<li>The first exception is if the column specification results in a literal value.</li>
+<li>The second exception is if the query includes a <em>GROUP BY</em> clause. Then, the <em>SELECT</em> clause can include any columns specified in the <em>GROUP BY</em> clause.</li>
+</ul>
+<p>When a <em>SELECT</em> statement includes a <em>GROUP BY</em> clause, the <em>SELECT</em> clause can include the columns used for grouping, aggregate functions, and expressions that result in a constant value.</p>
+<p>When you include a <em>WHERE</em> clause in a <em>SELECT</em> statement that uses grouping and aggregates, MySQL applies the search condition before it groups the rows and calculates the aggregates.</p>
+<ul>
+<li>A <em>WHERE</em> clause can refer to any column in the base tables.</li>
+<li>A <em>WHERE</em> clause can't contain aggregate functions.</li>
+</ul>
+<p>When you include a <em>HAVING</em> clause in a <em>SELECT</em> statement that uses grouping and aggregates, MySQL applies the search condition after it groups the rows and calculates the aggregates.</p>
+<ul>
+<li>A <em>HAVING</em> clause can only refer to a column included in the <em>SELECT</em> clause.</li>
+<li>A <em>HAVING</em> clause can contain aggregate functions.</li>
+</ul>
+<h2>Subqueries</h2>
+<p>A subquery is a <em>SELECT</em> statement that's coded within another SQL statement.</p>
+<ul>
+<li>For this to work, you must enclose the subquery in parentheses.</li>
+</ul>
+<p>A subquery can return a single value, a list of values (a result set that has a single column), or a table of values (a result set that has multiple columns).</p>
+<p>A subquery can be coded, or introduced, anywhere a single value, a list of values, or a table is allowed.</p>
+<p>However, a subquery can't include an <em>ORDER BY</em> clause.</p>
+<p>Subqueries can be nested within other subqueries.</p>
+<p>When you use the <em>IN</em> operator, the subquery must return a single column of values.</p>
+<p>A subquery that's coded in the <em>FROM</em> clause returns a result set that can be referred to as an inline view.</p>
+<p>When you code a subquery in the <em>FROM</em> clause, you must assign an alias to it.</p>
+<h2>Data Type</h2>
+<p>Numbers that don't include a decimal point are known as <strong>integer</strong>.</p>
+<p>Numbers taht include a decimal point are known as <strong>real number</strong>.</p>
+<p>The large object (LOB) data types are useful for storing images, sound, video, and large amounts of text.</p>
+<p>You use <em>CHAR</em> type to store fixed-length strings. You use <em>VARCHAR</em> data type to store variable-length strings.</p>
+<p>With MySQL 5.6 and later, the <em>CHAR</em> and <em>VARCHAR</em> types use the UTF-8 character set by default.</p>
+<ul>
+<li>The character set uses up to three bytes to store each character.</li>
+<li>When you use the UTF-8 character set with a <em>CHAR</em> tpe, MySQL must reserve three bytes for each character. As a result, MySQL must use 6 bytes for the <em>CHAR(2)</em> type, and it must use 30 bytes for the <em>CHAR(10)</em> type.</li>
+<li>However, when you use the <em>VARCHAR</em> type, MySQL doesn't need to reserve space for each character. As a result, if you are using English letters and symbols, MySQL only uses one byte per character, plus one byte to store the length of the string.</li>
+</ul>
+<p>With MySQL 5.5 and earlier, the <em>CHAR</em> and <em>VARCHAR</em> types used the latin1 character set by default.</p>
+<p>You can use single or double quotes for string literals.</p>
+<p><code>CHAR(M)</code></p>
+<ul>
+<li>Fixed-length strings of character data where <code>M</code> is the number of characters, between 0 and 255. </li>
+<li>With the UTF-8 character set, MySQL must reserve three bytes for each character in a <em>CHAR</em>.</li>
+</ul>
+<p><code>VARCHAR(M)</code> </p>
+<ul>
+<li>Variable-length strings of character data where <code>M</code> is the maximum number of characters, betwwen 0 and 255.</li>
+</ul>
+<p>The integer types:</p>
+<ul>
+<li><em>BIGINT</em> 8 bytes; <em>INT</em> 4 bytes; <em>MEDIUMINT</em> 3 bytes; <em>SMALLINT</em> 2 bytes, <em>TINYINT</em> 1 byte.</li>
+<li>To specify a display size, such as <code>INT(4)</code>, you can code it in parentheses after the data type. <ul>
+<li>But this only affects how MySQl displays the value, not how it stores the value.</li>
+</ul>
+</li>
+<li><em>INTEGER</em> is a synonym for the <em>INT</em> type.</li>
+<li>The <em>BOOL</em> and <em>BOOLEAN</em> types are synonyms for <em>TINYINT(1)</em>.<ul>
+<li>To make that more intuitive, you can use the <em>FALSE</em> keyword, which is an alias for 0, and the <em>TRUE</em> keyword, which is an alias for 1.</li>
+</ul>
+</li>
+</ul>
+<p><code>DECIMAL(M, D)</code></p>
+<ul>
+<li>Fixed-precision numbers where <em>M</em> specifies the maximum number of total digits (the precision) and <em>D</em> specifies the number of digits to the right of the decimal (the precision).</li>
+<li><em>M</em> can range from 0 to 65.</li>
+<li><em>D</em> can range from 0 to 30.</li>
+<li><em>DEC</em>, <em>NUMERIC</em> and <em>FIXED</em> types are synonyms for the <em>DECIMAL</em> type.</li>
+</ul>
+<p><em>DOUBLE</em> 8 bytes, <em>FLOAT</em> 4 bytes.</p>
+<ul>
+<li>The <em>REAL</em> and <em>DOUBLE PRECISION</em> types are synonyms for the <em>DOUBLE</em> type.</li>
+</ul>
                 <div class="clear"></div>
 
                 <div class="info">
@@ -170,7 +344,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-				Understand Deeply
+				Try
             </footer>
         </div>
         <div class="clear"></div>

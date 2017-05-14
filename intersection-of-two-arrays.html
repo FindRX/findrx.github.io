@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wait at Will | Intersection of Two Arrays</title>
+    <title>RuiOAIX's Records | Intersection of Two Arrays</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">Wait at Will</a></h1>
+            <h1><a href="/">RuiOAIX's Records</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -129,11 +129,24 @@
 </pre></div>
 
 
+<p>Python Solution: </p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums1</span><span class="p">,</span> <span class="n">nums2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type nums1: List[int]</span>
+<span class="sd">        :type nums2: List[int]</span>
+<span class="sd">        :rtype: List[int]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">nums1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">nums2</span><span class="p">))</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ol>
-<li>3ms, 35.79%</li>
+<li>3ms, 35.79</li>
 <li>Hash the shorter array, maybe useful, maybe not.</li>
 <li>Delete during checking the longer array.</li>
+<li>The difference between python and c.</li>
 </ol>
 <p>LeetCode: <a href="https://leetcode.com/problems/intersection-of-two-arrays/">349. Intersection of Two Arrays</a></p>
                 <div class="clear"></div>
@@ -162,7 +175,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-				Understand Deeply
+				Try
             </footer>
         </div>
         <div class="clear"></div>

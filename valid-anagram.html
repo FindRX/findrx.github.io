@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wait at Will | Valid Anagram</title>
+    <title>RuiOAIX's Records | Valid Anagram</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">Wait at Will</a></h1>
+            <h1><a href="/">RuiOAIX's Records</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -52,7 +52,7 @@
 <li>s = "anagram", t = "nagaram", return true.</li>
 <li>s = "rat", t = "car", return false.</li>
 </ul>
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isAnagram</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">flag</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
     <span class="k">for</span> <span class="p">(;</span> <span class="o">*</span><span class="n">s</span><span class="p">;</span> <span class="n">s</span><span class="o">++</span><span class="p">)</span> <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">s</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
@@ -66,6 +66,7 @@
 </pre></div>
 
 
+<p>C Solution 2:</p>
 <div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isAnagram</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">diff</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -79,12 +80,24 @@
 </pre></div>
 
 
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">isAnagram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type s: str</span>
+<span class="sd">        :type t: str</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Counter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="n">Counter</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+
+
 <p>Summary:</p>
-<ol>
+<ul>
 <li>nothing special.</li>
-<li>3ms, 37.59%</li>
-<li>similar to 438. Find All Anagrams in a String.</li>
-</ol>
+</ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/valid-anagram/">242. Valid Anagram</a></p>
                 <div class="clear"></div>
 
@@ -110,7 +123,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-				Understand Deeply
+				Try
             </footer>
         </div>
         <div class="clear"></div>

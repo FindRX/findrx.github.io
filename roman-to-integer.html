@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wait at Will | Roman to Integer</title>
+    <title>RuiOAIX's Records | Roman to Integer</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">Wait at Will</a></h1>
+            <h1><a href="/">RuiOAIX's Records</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -41,7 +41,7 @@
 
                 <p>Given a roman numeral, convert it to an integer.</p>
 <p>Input is guaranteed to be within the range from 1 to 3999.</p>
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">romanToInt</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
@@ -84,6 +84,7 @@
 </pre></div>
 
 
+<p>C Solution 2:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">romanToInt</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
     <span class="n">flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -111,7 +112,7 @@
 
 <p>Summary:</p>
 <ol>
-<li>The last solution clearly demonstrate the logic. For the last character, it definitely is a plus, so set <code>flag[0] = 0</code> first to make <code>flag[*s] &lt; flag[0]</code>.</li>
+<li>The last solution clearly demonstrate the logic. For the last character, it definitely is a plus, so set <code>flag[0] = 0</code> first to make <code>flag[*s] &gt; flag[0]</code>.</li>
 <li>The first: 29ms, 34.21%. The Second: 25ms, 66.67%.</li>
 <li>To solve this problem, Abstracting the logic behind is the point.</li>
 </ol>
@@ -140,7 +141,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-				Understand Deeply
+				Try
             </footer>
         </div>
         <div class="clear"></div>

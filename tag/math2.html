@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wait at Will | articles tagged "Math" | Page 2</title>
+    <title>RuiOAIX's Records | articles tagged "Math" | Page 2</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -24,11 +24,35 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">Wait at Will</a></h1>
+            <h1><a href="/">RuiOAIX's Records</a></h1>
         </div>
     </header>
     <div id="wrapper">
         <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/ugly-number.html" rel="bookmark" title="Permanent Link to &quot;Ugly Number&quot;">Ugly Number</a>
+                </h2>
+
+                
+                
+
+                <p>Write a program to check whether a given number is an ugly number.</p>
+<p>Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.</p>
+<p>Note that 1 is typically treated …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/ugly-number.html">No.263</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                </div>
+		<a href="/ugly-number.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
@@ -100,8 +124,8 @@
 <ul>
 <li>the numbers "69", "88", and "818" are all strobogrammatic.</li>
 </ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isStrobogrammatic</span><span class="p">(</span><span class="kt">char …</span></pre></div>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isStrobogrammatic …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
@@ -125,7 +149,7 @@
                 
 
                 <p>Given an integer, write a function to determine if it is a power of two.</p>
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfTwo</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(;</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">);</span> <span class="n">n</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">);</span>
@@ -134,7 +158,7 @@
 </pre></div>
 
 
-<p>Better:</p>
+<p>C Solution 2:</p>
 <div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfTwo</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
 <span class="p">}</span>
@@ -143,8 +167,7 @@
 
 <p>Summary:</p>
 <ol>
-<li>bit manipulation.</li>
-<li>find the …</li></ol>
+<li>bit …</li></ol>
                 <div class="clear"></div>
 
                 <div class="info">
@@ -317,46 +340,6 @@
                     &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
                 </div>
 		<a href="/excel-sheet-column-number.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/excel-sheet-column-title.html" rel="bookmark" title="Permanent Link to &quot;Excel Sheet Column Title&quot;">Excel Sheet Column Title</a>
-                </h2>
-
-                
-                
-
-                <p>Given a positive integer, return its corresponding column title as appear in an Excel sheet.</p>
-<p>Example:</p>
-<ul>
-<li>1 -&gt; A</li>
-<li>2 -&gt; B</li>
-<li>3 -&gt; C</li>
-<li>...</li>
-<li>26 -&gt; Z</li>
-<li>27 -&gt; AA</li>
-<li>28 -&gt; AB </li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">convertToTitle</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
-        <span class="o">*</span><span class="n">r</span><span class="o">++</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="sc">&#39;A&#39;</span><span class="p">;</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">26</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="o">*</span><span class="n">r …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/excel-sheet-column-title.html">No.168</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                </div>
-		<a href="/excel-sheet-column-title.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -373,7 +356,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-				Understand Deeply
+				Try
             </footer>
         </div>
         <div class="clear"></div>

@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wait at Will | Find the Difference</title>
+    <title>RuiOAIX's Records | Find the Difference</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">Wait at Will</a></h1>
+            <h1><a href="/">RuiOAIX's Records</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -48,7 +48,7 @@
 <li>Output: e</li>
 <li>Explanation: 'e' is the letter that was added.</li>
 </ul>
-<p>Common solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="kt">char</span> <span class="nf">findTheDifference</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">ht</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
@@ -61,7 +61,7 @@
 </pre></div>
 
 
-<p>Using a 32 bits unsigned integer instead of the array.</p>
+<p>C Solution 2: Using a 32 bits unsigned integer instead of the array.</p>
 <div class="highlight"><pre><span></span><span class="kt">char</span> <span class="nf">findTheDifference</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">uint32_t</span> <span class="n">ht</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
@@ -74,7 +74,7 @@
 </pre></div>
 
 
-<p>Bit manipulation (but not a technique of hash table):</p>
+<p>C Solution 3: Bit manipulation (but not a technique of hash table):</p>
 <div class="highlight"><pre><span></span><span class="kt">char</span> <span class="nf">findTheDifference</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(;</span> <span class="o">*</span><span class="n">s</span><span class="p">;</span> <span class="n">s</span><span class="o">++</span><span class="p">)</span> <span class="n">c</span> <span class="o">^=</span> <span class="o">*</span><span class="n">s</span><span class="p">;</span>
@@ -87,7 +87,7 @@
 <p>Summary:</p>
 <ol>
 <li>0ms, 14.02%</li>
-<li>This problem should be solved with bit manipulation, so not a typical HashTable problem.</li>
+<li>This problem should be solved with bit manipulation, it's not a typical HashTable problem.</li>
 <li>Same to above problem: 136. Single Number</li>
 </ol>
 <p>LeetCode: <a href="https://leetcode.com/problems/find-the-difference/">389. Find the Difference</a></p>
@@ -115,7 +115,7 @@
             <div class="clear"></div>
             <footer>
                 <p>
-				Understand Deeply
+				Try
             </footer>
         </div>
         <div class="clear"></div>
