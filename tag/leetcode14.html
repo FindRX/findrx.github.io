@@ -32,6 +32,57 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/climbing-stairs.html" rel="bookmark" title="Permanent Link to &quot;Climbing Stairs&quot;">Climbing Stairs</a>
+                </h2>
+
+                
+                
+
+                <p>You are climbing a stair case. It takes n steps to reach to the top.</p>
+<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
+<ul>
+<li>Given n will be a positive integer.</li>
+</ul>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">climbStairs</span><span class="p">(</span><span class="kt">int</span> <span class="n">n …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/climbing-stairs.html">No.70</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
+                </div>
+		<a href="/climbing-stairs.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/sqrtx.html" rel="bookmark" title="Permanent Link to &quot;Sqrt(x)&quot;">Sqrt(x)</a>
+                </h2>
+
+                
+                
+
+                <p>LeetCode: <a href="https://leetcode.com/problems/sqrtx/">69. Sqrt(x)</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/sqrtx.html">No.69</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                </div>
+		<a href="/sqrtx.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/add-binary.html" rel="bookmark" title="Permanent Link to &quot;Add Binary&quot;">Add Binary</a>
                 </h2>
 
@@ -268,74 +319,6 @@
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
                 </div>
 		<a href="/swap-nodes-in-pairs.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/merge-k-sorted-lists.html" rel="bookmark" title="Permanent Link to &quot;Merge K Sorted Lists&quot;">Merge K Sorted Lists</a>
-                </h2>
-
-                
-                
-
-                <p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
-<p>C Solution:</p>
-<p>Using heap.</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">**</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-    <span class="n">heap</span><span class="p">[(</span><span class="o">*</span><span class="n">top</span><span class="p">)</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">cur …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/merge-k-sorted-lists.html">No.23</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
-                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
-                </div>
-		<a href="/merge-k-sorted-lists.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/merge-two-sorted-lists.html" rel="bookmark" title="Permanent Link to &quot;Merge Two Sorted Lists&quot;">Merge Two Sorted Lists</a>
-                </h2>
-
-                
-                
-
-                <p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">mergeTwoLists</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">l1</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">l2 …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/merge-two-sorted-lists.html">No.21</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                </div>
-		<a href="/merge-two-sorted-lists.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>

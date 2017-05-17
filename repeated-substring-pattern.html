@@ -71,6 +71,20 @@
 <p>Summary:</p>
 <ul>
 <li>https://discuss.leetcode.com/topic/68206/easy-python-solution-with-explaination/6</li>
+<li>The basic idea is:<ol>
+<li><code>s in s[1:] + s[:-1]</code> proves <code>s == s1s2 == s2s1</code>, if <code>len(s1) == len(s2)</code>, problem solved. </li>
+<li>WLOG, let's say <code>len(s1) &lt; len(s2)</code>.</li>
+<li><code>s1s2 == s2s1</code> means <code>s2 == s1s3 == s3s1</code>. if <code>len(s1) == len(s3)</code>, problem solved.</li>
+<li>Otherwise, <code>s1</code> has to be shorter than <code>s2</code>.<ul>
+<li>The reason is that <code>s</code> can be represented as <code>s1"s3s1s1"s3s1</code> and <code>s3"s1s1s3"s1s1</code>.</li>
+<li>If <code>s3</code> is shorter than <code>s1</code>, in the first step, <code>s</code> could be equal to <code>s3s4 == s4s3</code>, so it's false.</li>
+</ul>
+</li>
+<li><code>s1s3 == s3s1</code> means <code>s3 == s1s4 == s4s1</code>.</li>
+<li>...</li>
+<li><code>s == s1s1s1s1...s1sn == sns1...s1s1s1</code>, until <code>len(sn) == len(s1)</code>, problem solved.</li>
+</ol>
+</li>
 </ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/repeated-substring-pattern/#/description">459. Repeated Substring Pattern</a></p>
                 <div class="clear"></div>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | The null Point and Zero</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">May 17, 2017</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/the-null-point-and-zero.html" rel="bookmark" title="Permanent Link to &quot;The null Point and Zero&quot;">The null Point and Zero</a>
+                </h2>
+
+                
+                
+
+                <h2>What C standard says?</h2>
+<p><strong><em>§ 6.3.2.3 of the C99 standard says</em></strong></p>
+<ul>
+<li><em>An integer constant expression with the value <code>0</code>, or such an expression cast to type <code>void *</code>, is called a null pointer constant.</em></li>
+<li><em>If a null pointer constant is converted to a pointer type, the resulting pointer, called a null pointer, is guaranteed to compare unequal to a pointer to any object or function.</em></li>
+</ul>
+<h2>Explanation</h2>
+<ul>
+<li>First, <code>0</code> is a null pointer constant.</li>
+<li>When is a null pointer constant converted to a pointer type?<ul>
+<li>assignment: <code>int *p = 0;</code></li>
+<li>comparison: <code>p == 0</code> or <code>p</code> or <code>!p</code></li>
+<li>dereferencing: <code>*p</code></li>
+<li>casting: <code>(void *)0</code></li>
+</ul>
+</li>
+<li>So, it's safe to use <code>0</code> to initialize a pointer. (I love it)</li>
+</ul>
+<h2>Compiler's responsibility</h2>
+<p>C compilers recognize the value <code>0</code> (when used as a pointer) in source code to be a special value that means <code>NULL</code>, which is defined in <em><stddef.h></em>.</p>
+<p>Even when the implementation internally uses some other binary value to mean a null pointer, the compiler translates from <code>0</code> in the source code into its internal representation of a null pointer.</p>
+<ul>
+<li>It does not matter on the underlying architecture. </li>
+<li>If the underlying architecture has a null pointer value defined as address 0xDEADBEEF, then it is up to the compiler to sort this mess out.</li>
+<li>As such, even on this funny architecture, <ul>
+<li>the following ways are still valid ways to check for a null pointer:</li>
+<li><code>if (!pointer)</code>, <code>if (pointer == NULL)</code>, <code>if (pointer == 0)</code></li>
+</ul>
+</li>
+</ul>
+<h2>Following are some valid ways to check for a null pointer:</h2>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">pointer</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>the macro <code>NULL</code> is provided in the header file <em>stddef.h</em>. </li>
+<li><code>NULL</code> is defined to compare equal to a null pointer.</li>
+<li>It is implementation defined what the actual definition of NULL is, as long as it is a valid null pointer constant.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">pointer</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>The integer constant literal <code>0</code> has different meanings depending upon the context in which it's used. </li>
+<li>In all cases, it is still an integer constant with the value <code>0</code>, it is just described in different ways.</li>
+<li>If a pointer is being compared to the constant literal <code>0</code>, then this is a check to see if the pointer is a null pointer. </li>
+<li>This <code>0</code> is then referred to as a null pointer constant. </li>
+<li>The C standard defines that <code>0</code> cast to the type <code>void *</code> is both a null pointer and a null pointer constant.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pointer</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>This <code>if</code> statement implicitly checks <strong>is not 0</strong>, so we reverse that to mean <strong>is 0</strong>.</li>
+</ul>
+<h2>The following are INVALID ways to check for a null pointer:</h2>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">mynull</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">pointer</span> <span class="o">==</span> <span class="n">mynull</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>To the compiler this is not a check for a null pointer, but an equality check on two variables. </li>
+<li>This might work if <code>mynull</code> never changes in the code and the compiler optimizations constant fold the <code>0</code> into the if statement. </li>
+<li>But this is not guaranteed and the compiler has to produce at least one diagnostic message (warning or error) according to the C Standard.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cp">#define MYNULL (void *) 0xDEADBEEF</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">pointer</span> <span class="o">==</span> <span class="n">MYNULL</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">pointer</span> <span class="o">==</span> <span class="mh">0xDEADBEEF</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>and <code>0xDEADBEEF</code> is not 0, so according to C standard, it's not a null pointer constant in any case.</li>
+<li>as a result, <code>0xDEADBEEF</code> will never be convert into a null pointer.</li>
+<li>these are seen by a compiler as normal comparisons.</li>
+</ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/the-null-point-and-zero.html">posted at 08:56</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/c.html" rel="tag">C</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
