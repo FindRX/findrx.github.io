@@ -61,7 +61,7 @@
 <p>Even when the implementation internally uses some other binary value to mean a null pointer, the compiler translates from <code>0</code> in the source code into its internal representation of a null pointer.</p>
 <ul>
 <li>It does not matter on the underlying architecture. </li>
-<li>If the underlying architecture has a null pointer value defined as address 0xDEADBEEF, then it is up to the compiler to sort this mess out.</li>
+<li>If the underlying architecture has a null pointer value defined as address <code>0xDEADBEEF</code>, then it is up to the compiler to sort this mess out.</li>
 <li>As such, even on this funny architecture, <ul>
 <li>the following ways are still valid ways to check for a null pointer:</li>
 <li><code>if (!pointer)</code>, <code>if (pointer == NULL)</code>, <code>if (pointer == 0)</code></li>
@@ -108,7 +108,8 @@
 <li>This might work if <code>mynull</code> never changes in the code and the compiler optimizations constant fold the <code>0</code> into the if statement. </li>
 <li>But this is not guaranteed and the compiler has to produce at least one diagnostic message (warning or error) according to the C Standard.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="cp">#define MYNULL (void *) 0xDEADBEEF</span>
+<div class="highlight"><pre><span></span><span class="c1">// even when the underlying architecture has a null pointer value defined as address `0xDEADBEEF`, following are not valid.</span>
+<span class="cp">#define MYNULL (void *) 0xDEADBEEF</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">pointer</span> <span class="o">==</span> <span class="n">MYNULL</span><span class="p">)</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">pointer</span> <span class="o">==</span> <span class="mh">0xDEADBEEF</span><span class="p">)</span>
 </pre></div>
