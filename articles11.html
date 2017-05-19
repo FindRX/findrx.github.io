@@ -31,6 +31,66 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/lowest-common-ancestor-of-a-binary-search-tree.html" rel="bookmark" title="Permanent Link to &quot;Lowest Common Ancestor of a Binary Search Tree&quot;">Lowest Common Ancestor of a Binary Search Tree</a>
+                </h2>
+
+                
+                
+
+                <p>Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.</p>
+<p>According to the <a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor">definition of LCA on Wikipedia</a>: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/lowest-common-ancestor-of-a-binary-search-tree.html">No.235</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                </div>
+		<a href="/lowest-common-ancestor-of-a-binary-search-tree.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/palindrome-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Palindrome Linked List&quot;">Palindrome Linked List</a>
+                </h2>
+
+                
+                
+
+                <p>Given a singly linked list, determine if it is a palindrome.</p>
+<ul>
+<li>Could you do it in O(n) time and O(1) space?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">slow</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">left …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/palindrome-linked-list.html">No.234</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                </div>
+		<a href="/palindrome-linked-list.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/power-of-two.html" rel="bookmark" title="Permanent Link to &quot;Power of Two&quot;">Power of Two</a>
                 </h2>
 
@@ -307,62 +367,6 @@
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
                 </div>
 		<a href="/reverse-linked-list.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/isomorphic-strings.html" rel="bookmark" title="Permanent Link to &quot;Isomorphic Strings&quot;">Isomorphic Strings</a>
-                </h2>
-
-                
-                
-
-                <p>Given two strings s and t, determine if they are isomorphic.</p>
-<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
-<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/isomorphic-strings.html">No.205</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                </div>
-		<a href="/isomorphic-strings.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/count-primes.html" rel="bookmark" title="Permanent Link to &quot;Count Primes&quot;">Count Primes</a>
-                </h2>
-
-                
-                
-
-                <p>Count the number of prime numbers less than a non-negative number, n.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">countPrimes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/count-primes.html">No.204</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                </div>
-		<a href="/count-primes.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>

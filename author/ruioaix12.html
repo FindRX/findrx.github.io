@@ -33,6 +33,62 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/isomorphic-strings.html" rel="bookmark" title="Permanent Link to &quot;Isomorphic Strings&quot;">Isomorphic Strings</a>
+                </h2>
+
+                
+                
+
+                <p>Given two strings s and t, determine if they are isomorphic.</p>
+<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
+<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/isomorphic-strings.html">No.205</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                </div>
+		<a href="/isomorphic-strings.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/count-primes.html" rel="bookmark" title="Permanent Link to &quot;Count Primes&quot;">Count Primes</a>
+                </h2>
+
+                
+                
+
+                <p>Count the number of prime numbers less than a non-negative number, n.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">countPrimes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/count-primes.html">No.204</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/count-primes.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/remove-linked-list-elements.html" rel="bookmark" title="Permanent Link to &quot;Remove Linked List Elements&quot;">Remove Linked List Elements</a>
                 </h2>
 
@@ -274,72 +330,6 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
                     &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
                 </div>
 		<a href="/majority-element.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/excel-sheet-column-title.html" rel="bookmark" title="Permanent Link to &quot;Excel Sheet Column Title&quot;">Excel Sheet Column Title</a>
-                </h2>
-
-                
-                
-
-                <p>Given a positive integer, return its corresponding column title as appear in an Excel sheet.</p>
-<p>Example:</p>
-<ul>
-<li>1 -&gt; A</li>
-<li>2 -&gt; B</li>
-<li>3 -&gt; C</li>
-<li>...</li>
-<li>26 -&gt; Z</li>
-<li>27 -&gt; AA</li>
-<li>28 -&gt; AB </li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">convertToTitle</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
-        <span class="o">*</span><span class="n">r</span><span class="o">++</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="sc">&#39;A&#39;</span><span class="p">;</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">26</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="o">*</span><span class="n">r …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/excel-sheet-column-title.html">No.168</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                </div>
-		<a href="/excel-sheet-column-title.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/two-sum-ii-input-array-is-sorted.html" rel="bookmark" title="Permanent Link to &quot;Two Sum II - Input array is sorted&quot;">Two Sum II - Input array is sorted</a>
-                </h2>
-
-                
-                
-
-                <p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
-<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2 …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/two-sum-ii-input-array-is-sorted.html">No.167</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
-                    &nbsp;<a href="/tag/k-sum.html" class="tags">K-Sum</a>
-                </div>
-		<a href="/two-sum-ii-input-array-is-sorted.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>

@@ -32,6 +32,76 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/reverse-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Reverse Linked List&quot;">Reverse Linked List</a>
+                </h2>
+
+                
+                
+
+                <p>Reverse a singly linked list.</p>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">reverseList</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">_head</span><span class="p">;</span>
+        <span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_head</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/reverse-linked-list.html">No.206</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                </div>
+		<a href="/reverse-linked-list.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/isomorphic-strings.html" rel="bookmark" title="Permanent Link to &quot;Isomorphic Strings&quot;">Isomorphic Strings</a>
+                </h2>
+
+                
+                
+
+                <p>Given two strings s and t, determine if they are isomorphic.</p>
+<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
+<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/isomorphic-strings.html">No.205</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                </div>
+		<a href="/isomorphic-strings.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/count-primes.html" rel="bookmark" title="Permanent Link to &quot;Count Primes&quot;">Count Primes</a>
                 </h2>
 
@@ -274,77 +344,6 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
                     &nbsp;<a href="/tag/k-sum.html" class="tags">K-Sum</a>
                 </div>
 		<a href="/two-sum-iii-data-structure-design.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/majority-element.html" rel="bookmark" title="Permanent Link to &quot;Majority Element&quot;">Majority Element</a>
-                </h2>
-
-                
-                
-
-                <p>Given an array of size n, find the majority element. </p>
-<p>The majority element is the element that appears more than ⌊ n/2 ⌋ times.</p>
-<p>You may assume that the array is non-empty and the majority element always exist in the array.</p>
-<p>Python Solution:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
-
-<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">majorityElement</span><span class="p">(</span><span class="bp">self …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/majority-element.html">No.169</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
-                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
-                </div>
-		<a href="/majority-element.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/excel-sheet-column-title.html" rel="bookmark" title="Permanent Link to &quot;Excel Sheet Column Title&quot;">Excel Sheet Column Title</a>
-                </h2>
-
-                
-                
-
-                <p>Given a positive integer, return its corresponding column title as appear in an Excel sheet.</p>
-<p>Example:</p>
-<ul>
-<li>1 -&gt; A</li>
-<li>2 -&gt; B</li>
-<li>3 -&gt; C</li>
-<li>...</li>
-<li>26 -&gt; Z</li>
-<li>27 -&gt; AA</li>
-<li>28 -&gt; AB </li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">convertToTitle</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
-        <span class="o">*</span><span class="n">r</span><span class="o">++</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="sc">&#39;A&#39;</span><span class="p">;</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">26</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="o">*</span><span class="n">r …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/excel-sheet-column-title.html">No.168</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                </div>
-		<a href="/excel-sheet-column-title.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>

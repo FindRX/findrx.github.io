@@ -32,6 +32,77 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/majority-element.html" rel="bookmark" title="Permanent Link to &quot;Majority Element&quot;">Majority Element</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array of size n, find the majority element. </p>
+<p>The majority element is the element that appears more than ⌊ n/2 ⌋ times.</p>
+<p>You may assume that the array is non-empty and the majority element always exist in the array.</p>
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">majorityElement</span><span class="p">(</span><span class="bp">self …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/majority-element.html">No.169</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                </div>
+		<a href="/majority-element.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/excel-sheet-column-title.html" rel="bookmark" title="Permanent Link to &quot;Excel Sheet Column Title&quot;">Excel Sheet Column Title</a>
+                </h2>
+
+                
+                
+
+                <p>Given a positive integer, return its corresponding column title as appear in an Excel sheet.</p>
+<p>Example:</p>
+<ul>
+<li>1 -&gt; A</li>
+<li>2 -&gt; B</li>
+<li>3 -&gt; C</li>
+<li>...</li>
+<li>26 -&gt; Z</li>
+<li>27 -&gt; AA</li>
+<li>28 -&gt; AB </li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">convertToTitle</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">r</span><span class="o">++</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="sc">&#39;A&#39;</span><span class="p">;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">26</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">*</span><span class="n">r …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/excel-sheet-column-title.html">No.168</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/excel-sheet-column-title.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/two-sum-ii-input-array-is-sorted.html" rel="bookmark" title="Permanent Link to &quot;Two Sum II - Input array is sorted&quot;">Two Sum II - Input array is sorted</a>
                 </h2>
 
@@ -291,60 +362,6 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
                 </div>
 		<a href="/copy-list-with-random-pointer.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/single-number.html" rel="bookmark" title="Permanent Link to &quot;Single number&quot;">Single number</a>
-                </h2>
-
-                
-                
-
-                <p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
-<ul>
-<li>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">singleNumber</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numsSize</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numsSize</span><span class="p">;</span> <span class="n">i …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/single-number.html">No.136</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
-                </div>
-		<a href="/single-number.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/best-time-to-buy-and-sell-stock-ii.html" rel="bookmark" title="Permanent Link to &quot;Best Time to Buy and Sell Stock II&quot;">Best Time to Buy and Sell Stock II</a>
-                </h2>
-
-                
-                
-
-                <p>Say you have an array for which the i<sup>th</sup> element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/best-time-to-buy-and-sell-stock-ii.html">No.122</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
-                </div>
-		<a href="/best-time-to-buy-and-sell-stock-ii.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>

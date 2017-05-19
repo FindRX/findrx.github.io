@@ -33,6 +33,53 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/sliding-window-maximum.html" rel="bookmark" title="Permanent Link to &quot;Sliding Window Maximum&quot;">Sliding Window Maximum</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.</p>
+<ul>
+<li>You may assume k …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/sliding-window-maximum.html">No.239</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                </div>
+		<a href="/sliding-window-maximum.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/delete-node-in-a-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Delete Node in a Linked List&quot;">Delete Node in a Linked List</a>
+                </h2>
+
+                
+                
+
+                <p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
+<p>Supposed the linked list is <code>1 -&gt; 2 -&gt; 3 -&gt; 4</code> and you are given the third node with value <code>3</code>, the linked list should become <code>1 -&gt; 2 -&gt; 4</code> after calling …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/delete-node-in-a-linked-list.html">No.237</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                </div>
+		<a href="/delete-node-in-a-linked-list.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/lowest-common-ancestor-of-a-binary-search-tree.html" rel="bookmark" title="Permanent Link to &quot;Lowest Common Ancestor of a Binary Search Tree&quot;">Lowest Common Ancestor of a Binary Search Tree</a>
                 </h2>
 
@@ -294,81 +341,6 @@
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                 </div>
 		<a href="/contains-duplicate.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/kth-largest-element-in-an-array.html" rel="bookmark" title="Permanent Link to &quot;Kth Largest Element in an Array&quot;">Kth Largest Element in an Array</a>
-                </h2>
-
-                
-                
-
-                <p>Find the k<sup>th</sup> largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
-<ul>
-<li>You may assume k is always valid, 1 ≤ k ≤ array's length.</li>
-</ul>
-<p>For example:</p>
-<ul>
-<li>Given <code>3,2,1,5,6,4</code> and <code>k = 2 …</code></li></ul>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/kth-largest-element-in-an-array.html">No.215</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
-                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
-                </div>
-		<a href="/kth-largest-element-in-an-array.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/reverse-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Reverse Linked List&quot;">Reverse Linked List</a>
-                </h2>
-
-                
-                
-
-                <p>Reverse a singly linked list.</p>
-<p>C Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">reverseList</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">_head</span><span class="p">;</span>
-        <span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
-        <span class="n">head</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">_head</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>C Solution 2:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/reverse-linked-list.html">No.206</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                </div>
-		<a href="/reverse-linked-list.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
