@@ -33,6 +33,106 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/number-of-1-bits.html" rel="bookmark" title="Permanent Link to &quot;Number of 1 Bits&quot;">Number of 1 Bits</a>
+                </h2>
+
+                
+                
+
+                <p>Write a function that takes an unsigned integer and returns the number of ’1' bits it has (also known as the Hamming weight).</p>
+<p>For example, the 32-bit integer ’11' has binary representation 00000000000000000000000000001011, so the function should return 3.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">hammingWeight</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/number-of-1-bits.html">No.191</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                </div>
+		<a href="/number-of-1-bits.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/factorial-trailing-zeroes.html" rel="bookmark" title="Permanent Link to &quot;Factorial Trailing Zeroes&quot;">Factorial Trailing Zeroes</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer n, return the number of trailing zeroes in n!.</p>
+<p>Note: Your solution should be in logarithmic time complexity.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">trailingZeroes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="n">res</span> <span class="o">+=</span> <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>The point is finding the logic behind. And this is what …</li></ol>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/factorial-trailing-zeroes.html">No.172</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/factorial-trailing-zeroes.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/excel-sheet-column-number.html" rel="bookmark" title="Permanent Link to &quot;Excel Sheet Column Number&quot;">Excel Sheet Column Number</a>
+                </h2>
+
+                
+                
+
+                <p>Related to previous question 168. Excel Sheet Column Title</p>
+<p>Given a column title as appear in an Excel sheet, return its corresponding column number.</p>
+<p>Example:</p>
+<ul>
+<li>A -&gt; 1</li>
+<li>B -&gt; 2</li>
+<li>C -&gt; 3</li>
+<li>...</li>
+<li>Z -&gt; 26</li>
+<li>AA -&gt; 27</li>
+<li>AB -&gt; 28 </li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">titleToNumber</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="o">*</span><span class="n">s</span><span class="p">;</span> <span class="n">s</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">res …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/excel-sheet-column-number.html">No.171</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/excel-sheet-column-number.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/two-sum-iii-data-structure-design.html" rel="bookmark" title="Permanent Link to &quot;Two Sum III - Data structure design&quot;">Two Sum III - Data structure design</a>
                 </h2>
 
@@ -254,114 +354,6 @@ find - Find if there exists any pair of numbers which sum is equal to the value.
                     &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
                 </div>
 		<a href="/insertion-sort-list.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/reorder-list.html" rel="bookmark" title="Permanent Link to &quot;Reorder List&quot;">Reorder List</a>
-                </h2>
-
-                
-                
-
-                <p>Given a singly linked list L: L0→L1→…→Ln-1→Ln,
-reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
-<ul>
-<li>You must do this in-place without altering the nodes' values.</li>
-</ul>
-<p>For example:</p>
-<ul>
-<li>Given <code>1,2,3,4</code>, reorder it to <code>1,4,2,3</code>.</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/reorder-list.html">No.143</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                </div>
-		<a href="/reorder-list.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/linked-list-cycle-ii.html" rel="bookmark" title="Permanent Link to &quot;Linked List Cycle II&quot;">Linked List Cycle II</a>
-                </h2>
-
-                
-                
-
-                <p>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.</p>
-<ul>
-<li>Do not modify the linked list.</li>
-<li>Can you solve it without using extra space?</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="nf">detectCycle</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/linked-list-cycle-ii.html">No.142</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                </div>
-		<a href="/linked-list-cycle-ii.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/linked-list-cycle.html" rel="bookmark" title="Permanent Link to &quot;Linked List Cycle&quot;">Linked List Cycle</a>
-                </h2>
-
-                
-                
-
-                <p>Given a linked list, determine if it has a cycle in it.</p>
-<ul>
-<li>Can you solve it without using extra space?</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="kt">bool</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">_head</span> <span class="o">&amp;&amp;</span> <span class="n">_head …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/linked-list-cycle.html">No.141</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                </div>
-		<a href="/linked-list-cycle.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -372,7 +364,7 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 
 
 
-                    <span>Page 12 of 16</span>
+                    <span>Page 12 of 17</span>
                 </div>
 
             <div class="clear"></div>

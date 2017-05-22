@@ -33,6 +33,82 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/reverse-vowels-of-a-string.html" rel="bookmark" title="Permanent Link to &quot;Reverse Vowels of a String&quot;">Reverse Vowels of a String</a>
+                </h2>
+
+                
+                
+
+                <p>Write a function that takes a string as input and reverse only the vowels of a string.</p>
+<ul>
+<li>The vowels does not include the letter "y".</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Given s = "hello", return "holle".</li>
+<li>Given s = "leetcode", return "leotcede".</li>
+</ul>
+<p>C Solution: </p>
+<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">reverseVowels</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">l</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1 …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/reverse-vowels-of-a-string.html">No.345</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                </div>
+		<a href="/reverse-vowels-of-a-string.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/reverse-string.html" rel="bookmark" title="Permanent Link to &quot;Reverse String&quot;">Reverse String</a>
+                </h2>
+
+                
+                
+
+                <p>Write a function that takes a string as input and returns the string reversed.</p>
+<p>Example:</p>
+<ul>
+<li>Given s = "hello", return "olleh".</li>
+</ul>
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reverseString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type s: str</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">reverseString</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span> <span class="o">||</span> <span class="o">!*</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">l …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/reverse-string.html">No.344</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+		<a href="/reverse-string.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/power-of-four.html" rel="bookmark" title="Permanent Link to &quot;Power of Four&quot;">Power of Four</a>
                 </h2>
 
@@ -259,54 +335,6 @@ Each time your friend makes a guess, you provide a hint that indicates how many 
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                 </div>
 		<a href="/bulls-and-cows.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/find-median-from-data-stream.html" rel="bookmark" title="Permanent Link to &quot;Find Median from Data Stream&quot;">Find Median from Data Stream</a>
-                </h2>
-
-                
-                
-
-                <p>Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.</p>
-<p>Examples: 
-<code>[2,3,4]</code> , the median is <code>3</code></p>
-<p><code>[2,3]</code>, the median is <code>(2 + 3) / 2 …</code></p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/find-median-from-data-stream.html">No.295</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
-                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
-                </div>
-		<a href="/find-median-from-data-stream.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/flip-game.html" rel="bookmark" title="Permanent Link to &quot;Flip Game&quot;">Flip Game</a>
-                </h2>
-
-                
-                
-
-                <p>You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive "++" into "--". The game ends when a person can no longer make a move and therefore the other person will be …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/flip-game.html">No.293</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                </div>
-		<a href="/flip-game.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -317,7 +345,7 @@ Each time your friend makes a guess, you provide a hint that indicates how many 
 
 
 
-                    <span>Page 8 of 17</span>
+                    <span>Page 8 of 18</span>
                 </div>
 
             <div class="clear"></div>

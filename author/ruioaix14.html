@@ -33,6 +33,105 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/linked-list-cycle.html" rel="bookmark" title="Permanent Link to &quot;Linked List Cycle&quot;">Linked List Cycle</a>
+                </h2>
+
+                
+                
+
+                <p>Given a linked list, determine if it has a cycle in it.</p>
+<ul>
+<li>Can you solve it without using extra space?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">_head</span> <span class="o">&amp;&amp;</span> <span class="n">_head …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/linked-list-cycle.html">No.141</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                </div>
+		<a href="/linked-list-cycle.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/copy-list-with-random-pointer.html" rel="bookmark" title="Permanent Link to &quot;Copy List with Random Pointer&quot;">Copy List with Random Pointer</a>
+                </h2>
+
+                
+                
+
+                <p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
+<p>Return a deep copy of the list.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list with a random pointer.</span>
+<span class="cm"> * struct RandomListNode {</span>
+<span class="cm"> *     int label;</span>
+<span class="cm"> *     struct RandomListNode *next;</span>
+<span class="cm"> *     struct …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/copy-list-with-random-pointer.html">No.138</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                </div>
+		<a href="/copy-list-with-random-pointer.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/single-number.html" rel="bookmark" title="Permanent Link to &quot;Single number&quot;">Single number</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
+<ul>
+<li>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">singleNumber</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numsSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numsSize</span><span class="p">;</span> <span class="n">i …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/single-number.html">No.136</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                </div>
+		<a href="/single-number.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/best-time-to-buy-and-sell-stock-ii.html" rel="bookmark" title="Permanent Link to &quot;Best Time to Buy and Sell Stock II&quot;">Best Time to Buy and Sell Stock II</a>
                 </h2>
 
@@ -77,6 +176,77 @@
                     &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
                 </div>
 		<a href="/best-time-to-buy-and-sell-stock.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/pascals-triangle.html" rel="bookmark" title="Permanent Link to &quot;Pascal's Triangle&quot;">Pascal's Triangle</a>
+                </h2>
+
+                
+                
+
+                <p>Given numRows, generate the first numRows of Pascal's triangle.</p>
+<p>For example, given numRows = 5,
+Return</p>
+<div class="highlight"><pre><span></span>[
+     [1],
+    [1,1],
+   [1,2,1],
+  [1,3,3,1],
+ [1,4,6,4,1]
+]
+</pre></div>
+
+
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">numRows</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type numRows: int</span>
+<span class="sd">        :rtype: List[List[int]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">numRows</span> <span class="o">&lt;</span> <span class="mi">1 …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/pascals-triangle.html">No.118</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                </div>
+		<a href="/pascals-triangle.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/balanced-binary-tree.html" rel="bookmark" title="Permanent Link to &quot;Balanced Binary Tree&quot;">Balanced Binary Tree</a>
+                </h2>
+
+                
+                
+
+                <p>Given a binary tree, determine if it is height-balanced.</p>
+<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/balanced-binary-tree.html">No.110</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                </div>
+		<a href="/balanced-binary-tree.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
@@ -189,167 +359,6 @@
                     &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
                 </div>
 		<a href="/binary-tree-level-order-traversal-ii.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/maximum-depth-of-binary-tree.html" rel="bookmark" title="Permanent Link to &quot;Maximum Depth of Binary Tree&quot;">Maximum Depth of Binary Tree</a>
-                </h2>
-
-                
-                
-
-                <p>Given a binary tree, find its maximum depth.</p>
-<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for a binary tree node.</span>
-<span class="cm"> * struct TreeNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct TreeNode *left;</span>
-<span class="cm"> *     struct TreeNode *right;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="kt">int</span> <span class="nf">maxDepth …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/maximum-depth-of-binary-tree.html">No.104</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
-                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
-                </div>
-		<a href="/maximum-depth-of-binary-tree.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/symmetric-tree.html" rel="bookmark" title="Permanent Link to &quot;Symmetric Tree&quot;">Symmetric Tree</a>
-                </h2>
-
-                
-                
-
-                <p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
-<ul>
-<li>Bonus points if you could solve it both recursively and iteratively.</li>
-</ul>
-<p>For example, this binary tree [1,2,2,3,4,4,3] is symmetric:</p>
-<div class="highlight"><pre><span></span>    1
-   / \
-  2   2
- / \ / \
-3  4 4  3
-</pre></div>
-
-
-<p>But …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/symmetric-tree.html">No.101</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
-                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
-                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
-                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
-                </div>
-		<a href="/symmetric-tree.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/same-tree.html" rel="bookmark" title="Permanent Link to &quot;Same Tree&quot;">Same Tree</a>
-                </h2>
-
-                
-                
-
-                <p>Given two binary trees, write a function to check if they are equal or not.</p>
-<p>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.</p>
-<p>Python Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
-<span class="c1"># class TreeNode(object):</span>
-<span class="c1">#     def __init__(self, x):</span>
-<span class="c1">#         self …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/same-tree.html">No.100</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
-                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
-                </div>
-		<a href="/same-tree.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/reverse-linked-list-ii.html" rel="bookmark" title="Permanent Link to &quot;Reverse Linked List II&quot;">Reverse Linked List II</a>
-                </h2>
-
-                
-                
-
-                <p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
-<ul>
-<li>Given m, n satisfy the following condition: 1 ≤ m ≤ n ≤ length of list.</li>
-</ul>
-<p>For example:</p>
-<ul>
-<li>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code>, <code>m = 2</code> and <code>n = 4</code>,</li>
-<li>return <code>1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</code>.</li>
-</ul>
-<p>C …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/reverse-linked-list-ii.html">No.92</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                </div>
-		<a href="/reverse-linked-list-ii.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/partition-list.html" rel="bookmark" title="Permanent Link to &quot;Partition List&quot;">Partition List</a>
-                </h2>
-
-                
-                
-
-                <p>Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.</p>
-<ul>
-<li>You should preserve the original relative order of the nodes in each of the two partitions.</li>
-</ul>
-<p>For example:</p>
-<ul>
-<li>Given <code>1-&gt;4-&gt;3-&gt;2-&gt;5- …</code></li></ul>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/partition-list.html">No.86</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                </div>
-		<a href="/partition-list.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -360,7 +369,7 @@
 
 
 
-                    <span>Page 14 of 17</span>
+                    <span>Page 14 of 18</span>
                 </div>
 
             <div class="clear"></div>
