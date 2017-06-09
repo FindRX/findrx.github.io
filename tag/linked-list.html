@@ -169,7 +169,7 @@ PhoneDirectory …</pre></div>
 <ul>
 <li>Could you do it in O(n) time and O(1) space?</li>
 </ul>
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Definition for singly-linked list.</span>
 <span class="cm"> * struct ListNode {</span>
@@ -177,9 +177,10 @@ PhoneDirectory …</pre></div>
 <span class="cm"> *     struct ListNode *next;</span>
 <span class="cm"> * };</span>
 <span class="cm"> */</span>
-<span class="kt">bool</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">slow</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">left …</span></pre></div>
+<span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="nf">reverse</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">struct …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
@@ -254,7 +255,7 @@ PhoneDirectory …</pre></div>
 <li>Given: <code>1 --&gt; 2 --&gt; 6 --&gt; 3 --&gt; 4 --&gt; 5 --&gt; 6</code>, <code>val = 6</code></li>
 <li>Return: <code>1 --&gt; 2 --&gt; 3 --&gt; 4 --&gt; 5</code></li>
 </ul>
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Definition for singly-linked list.</span>
 <span class="cm"> * struct ListNode {</span>
@@ -262,7 +263,7 @@ PhoneDirectory …</pre></div>
 <span class="cm"> *     struct ListNode *next;</span>
 <span class="cm"> * };</span>
 <span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">removeElements</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">,</span> <span class="kt">int …</span></pre></div>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">removeElements</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">

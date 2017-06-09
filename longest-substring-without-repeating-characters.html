@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
 
-    <meta name="keywords" content="Hash-Table,Two-Pointers,String,LeetCode" />
+    <meta name="keywords" content="Hash-Table,Two-Pointers,String,LeetCode,Try-Again" />
 </head>
 <body>
     <header>
@@ -46,7 +46,32 @@
 <li>Given <code>"bbbbb"</code>, the answer is <code>"b"</code>, with the length of 1.</li>
 <li>Given <code>"pwwkew"</code>, the answer is <code>"wke"</code>, with the length of 3. Note that the answer must be a substring, <code>"pwke"</code> is a subsequence and not a substring.</li>
 </ol>
-<p>C Solution (Two points and HashTable):</p>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">flag</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span> <span class="p">{</span>
+            <span class="n">flag</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">limit</span> <span class="o">&gt;=</span> <span class="n">flag</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">flag</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">limit</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">&gt;</span> <span class="n">cur</span> <span class="o">?</span> <span class="nl">res</span> <span class="p">:</span> <span class="n">cur</span><span class="p">;</span>
+        <span class="n">limit</span> <span class="o">=</span> <span class="n">flag</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">flag</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">limit</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">res</span> <span class="o">&gt;</span> <span class="n">cur</span> <span class="o">?</span> <span class="nl">res</span> <span class="p">:</span> <span class="n">cur</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">prepos</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">l</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span><span class="p">;</span>
@@ -64,7 +89,7 @@
 </pre></div>
 
 
-<p>C Solution (DP):</p>
+<p>C Solution 3:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="o">*</span><span class="n">l</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span><span class="p">;</span>
@@ -96,12 +121,9 @@
 
 
 <p>Summary:</p>
-<ol>
-<li>Two points and a HashTable can solve the problem; but HashTable works as a dictionary rather than a set. 9ms</li>
-<li>DP solution. The point is checking the longest substring which ends at each character. 9ms</li>
-<li>Python solution is similar to DP. 109ms</li>
-<li>Couldn't be better, I think. the Runtime is kinda meaningless.</li>
-</ol>
+<ul>
+<li>C Solution 2 is beautiful. to understand corner case is the key point to write concise code.</li>
+</ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a></p>
                 <div class="clear"></div>
 
@@ -113,6 +135,7 @@
                     &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
                     &nbsp;<a href="/tag/string.html" class="tags">String</a>
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
                 </div>
 <div id="disqus_thread"></div>
 <script type="text/javascript">

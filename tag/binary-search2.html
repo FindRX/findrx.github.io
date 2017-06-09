@@ -32,6 +32,154 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/search-a-2d-matrix-ii.html" rel="bookmark" title="Permanent Link to &quot;Search a 2D Matrix II&quot;">Search a 2D Matrix II</a>
+                </h2>
+
+                
+                
+
+                <p>Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p>
+<ul>
+<li>Integers in each row are sorted in ascending from left to right.</li>
+<li>Integers in each column are sorted in ascending from top to bottom.</li>
+</ul>
+<p>For example,</p>
+<ul>
+<li>Consider the following …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/search-a-2d-matrix-ii.html">No.240</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags selected">Binary-Search</a>
+                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
+                </div>
+		<a href="/search-a-2d-matrix-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/two-sum-ii-input-array-is-sorted.html" rel="bookmark" title="Permanent Link to &quot;Two Sum II - Input array is sorted&quot;">Two Sum II - Input array is sorted</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2 …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/two-sum-ii-input-array-is-sorted.html">No.167</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags selected">Binary-Search</a>
+                    &nbsp;<a href="/tag/k-sum.html" class="tags">K-Sum</a>
+                </div>
+		<a href="/two-sum-ii-input-array-is-sorted.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/search-a-2d-matrix.html" rel="bookmark" title="Permanent Link to &quot;Search a 2D Matrix&quot;">Search a 2D Matrix</a>
+                </h2>
+
+                
+                
+
+                <p>Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p>
+<ul>
+<li>Integers in each row are sorted from left to right.</li>
+<li>The first integer of each row is greater than the last integer of the previous row.</li>
+</ul>
+<p>For example,</p>
+<ul>
+<li>Consider …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/search-a-2d-matrix.html">No.74</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags selected">Binary-Search</a>
+                </div>
+		<a href="/search-a-2d-matrix.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/sqrtx.html" rel="bookmark" title="Permanent Link to &quot;Sqrt(x)&quot;">Sqrt(x)</a>
+                </h2>
+
+                
+                
+
+                <p>Implement int sqrt(int x).</p>
+<p>Compute and return the square root of x.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">mySqrt</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="p">((</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">==</span> <span class="n">x</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span> <span class="k">return</span> <span class="n">m</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">l …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/sqrtx.html">No.69</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags selected">Binary-Search</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
+                </div>
+		<a href="/sqrtx.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/search-insert-position.html" rel="bookmark" title="Permanent Link to &quot;Search Insert Position&quot;">Search Insert Position</a>
+                </h2>
+
+                
+                
+
+                <p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You may assume no duplicates in the array.</p>
+<p>Here are few examples.</p>
+<ul>
+<li>[1,3,5,6], 5 → 2</li>
+<li>[1 …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/search-insert-position.html">No.35</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags selected">Binary-Search</a>
+                </div>
+		<a href="/search-insert-position.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/median-of-two-sorted-arrays.html" rel="bookmark" title="Permanent Link to &quot;Median of Two Sorted Arrays&quot;">Median of Two Sorted Arrays</a>
                 </h2>
 

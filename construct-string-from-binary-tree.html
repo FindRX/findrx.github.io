@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Construct String from Binary Tree</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Tree,String" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/construct-string-from-binary-tree.html" rel="bookmark" title="Permanent Link to &quot;Construct String from Binary Tree&quot;">Construct String from Binary Tree</a>
+                </h2>
+
+                
+                
+
+                <p>You need to construct a string consists of parenthesis and integers from a binary tree with the preorder traversing way.</p>
+<p>The null node needs to be represented by empty parenthesis pair "()". And you need to omit all the empty parenthesis pairs that don't affect the one-to-one mapping relationship between the string and the original binary tree.</p>
+<p>Example 1:</p>
+<ul>
+<li>Input: Binary tree: [1,2,3,4]</li>
+</ul>
+<div class="highlight"><pre><span></span>       1
+     /   \
+    2     3
+   /    
+  4     
+</pre></div>
+
+
+<ul>
+<li>Output: "1(2(4))(3)"</li>
+<li>Explanation: <ul>
+<li>Originallay it needs to be "1(2(4)())(3()())", </li>
+<li>but you need to omit all the unnecessary empty parenthesis pairs. </li>
+<li>And it will be "1(2(4))(3)".</li>
+</ul>
+</li>
+</ul>
+<p>Example 2:
+* Input: Binary tree: [1,2,3,null,4]</p>
+<div class="highlight"><pre><span></span>       1
+     /   \
+    2     3
+     \  
+      4 
+</pre></div>
+
+
+<ul>
+<li>Output: "1(2()(4))(3)"</li>
+<li>Explanation: <ul>
+<li>Almost the same as the first example, </li>
+<li>except we can't omit the first parenthesis pair to break the one-to-one mapping relationship between the input and the output.</li>
+</ul>
+</li>
+</ul>
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">tree2str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type t: TreeNode</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">t2str</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">res</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span><span class="p">:</span> <span class="k">return</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span><span class="o">.</span><span class="n">left</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">:</span> <span class="k">return</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">:</span> <span class="n">t2str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
+                <span class="n">t2str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">t2str</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Solution:</p>
+<ul>
+<li>Nothing to say.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/construct-string-from-binary-tree/#/description">606. Construct String from Binary Tree</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/construct-string-from-binary-tree.html">No.606</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

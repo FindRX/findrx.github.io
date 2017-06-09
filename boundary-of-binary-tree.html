@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Boundary of Binary Tree</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Tree" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/boundary-of-binary-tree.html" rel="bookmark" title="Permanent Link to &quot;Boundary of Binary Tree&quot;">Boundary of Binary Tree</a>
+                </h2>
+
+                
+                
+
+                <p>Given a binary tree, return the values of its boundary in anti-clockwise direction starting from root. Boundary includes left boundary, leaves, and right boundary in order without duplicate nodes.</p>
+<p>Left boundary is defined as the path from root to the left-most node. Right boundary is defined as the path from root to the right-most node. If the root doesn't have left subtree or right subtree, then the root itself is left boundary or right boundary. Note this definition only applies to the input binary tree, and not applies to any subtrees.</p>
+<p>The left-most node is defined as a leaf node you could reach when you always firstly travel to the left subtree if exists. If not, travel to the right subtree. Repeat until you reach a leaf node.</p>
+<p>The right-most node is also defined by the same way with left and right exchanged.</p>
+<p>Example 1</p>
+<ul>
+<li>Input:</li>
+</ul>
+<div class="highlight"><pre><span></span>  1
+   \
+    2
+   / \
+  3   4
+</pre></div>
+
+
+<ul>
+<li>Ouput: [1, 3, 4, 2]</li>
+<li>Explanation:<ul>
+<li>The root doesn't have left subtree, so the root itself is left boundary.</li>
+<li>The leaves are node 3 and 4.</li>
+<li>The right boundary are node 1,2,4. Note the anti-clockwise direction means you should output reversed right boundary.</li>
+<li>So order them in anti-clockwise without duplicates and we have [1,3,4,2].</li>
+</ul>
+</li>
+</ul>
+<p>Example 2</p>
+<ul>
+<li>Input:</li>
+</ul>
+<div class="highlight"><pre><span></span>    ____1_____
+   /          \
+  2            3
+ / \          / 
+4   5        6   
+   / \      / \
+  7   8    9  10  
+</pre></div>
+
+
+<ul>
+<li>Ouput: [1,2,4,7,8,9,10,6,3]</li>
+<li>Explanation:<ul>
+<li>The left boundary are node 1,2,4. (4 is the left-most node according to definition)</li>
+<li>The leaves are node 4,7,8,9,10.</li>
+<li>The right boundary are node 1,3,6,10. (10 is the right-most node).</li>
+<li>So order them in anti-clockwise without duplicate nodes we have [1,2,4,7,8,9,10,6,3].</li>
+</ul>
+</li>
+</ul>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">boundaryOfBinaryTree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type root: TreeNode</span>
+<span class="sd">        :rtype: List[int]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span> <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">def</span> <span class="nf">preorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">inside</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">inside</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">:</span> <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">:</span> 
+                <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">inside</span><span class="p">)</span>
+                <span class="n">inside</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">:</span> <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">inside</span><span class="p">)</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">:</span> <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">_preorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">inside</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">inside</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">:</span> <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+                <span class="n">_preorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">inside</span><span class="p">)</span>
+                <span class="n">inside</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">:</span> 
+                <span class="n">_preorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">inside</span><span class="p">)</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">:</span> <span class="n">_preorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">root</span><span class="o">.</span><span class="n">val</span><span class="p">]</span> <span class="o">+</span> <span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>Tricky.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/boundary-of-binary-tree/#/description">545. Boundary of Binary Tree</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/boundary-of-binary-tree.html">No.545</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

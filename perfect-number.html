@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Perfect Number</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Math" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/perfect-number.html" rel="bookmark" title="Permanent Link to &quot;Perfect Number&quot;">Perfect Number</a>
+                </h2>
+
+                
+                
+
+                <p>We define the Perfect Number is a positive integer that is equal to the sum of all its positive divisors except itself.</p>
+<p>Now, given an integer n, write a function that returns true when it is a perfect number and false when it is not.</p>
+<ul>
+<li>The input number n will not exceed 100,000,000. (1e8)</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Input: 28</li>
+<li>Output: True</li>
+<li>Explanation: 28 = 1 + 2 + 4 + 7 + 14</li>
+</ul>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">checkPerfectNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type num: int</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">num</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">_num</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="n">_num</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">num</span> <span class="o">//</span> <span class="n">l</span>
+            <span class="k">if</span> <span class="n">l</span> <span class="o">*</span> <span class="n">tmp</span> <span class="o">==</span> <span class="n">num</span><span class="p">:</span>
+                <span class="n">_num</span> <span class="o">-=</span> <span class="n">l</span> 
+                <span class="n">_num</span> <span class="o">-=</span> <span class="n">tmp</span>
+                <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">tmp</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="n">r</span> <span class="ow">and</span> <span class="n">l</span> <span class="o">*</span> <span class="n">r</span> <span class="o">==</span> <span class="n">num</span><span class="p">:</span>
+            <span class="n">_num</span> <span class="o">-=</span> <span class="n">l</span>
+        <span class="k">return</span> <span class="n">_num</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">checkPerfectNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type num: int</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">num</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="nb">sum</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="n">l</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">sum</span> <span class="o">+=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">;</span>
+            <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">num</span> <span class="o">//</span> <span class="n">l</span><span class="p">;</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="n">r</span> <span class="ow">and</span> <span class="n">l</span> <span class="o">*</span> <span class="n">r</span> <span class="o">==</span> <span class="n">num</span><span class="p">:</span>
+            <span class="nb">sum</span> <span class="o">+=</span> <span class="n">l</span>
+        <span class="k">return</span> <span class="nb">sum</span> <span class="o">==</span> <span class="n">num</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>A good method for problem about diviors.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/perfect-number/#/description">507. Perfect Number</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/perfect-number.html">No.357</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

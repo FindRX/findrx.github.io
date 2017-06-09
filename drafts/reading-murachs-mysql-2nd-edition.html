@@ -39,35 +39,7 @@
                 
                 
 
-                <p>Something important:</p>
-<ul>
-<li>What <em>SELECT</em> returns could be rows, or one row mutliple columns, or one row one column.<ul>
-<li>In python, <code>1</code> is different from <code>[1]</code>, <code>[1]</code> is different from <code>[[1]]</code>.</li>
-<li>In MySQL, when we are talking about what <em>SELECT</em> returns: <ul>
-<li>a single value (a scalar value)  is a row consisting of one column.<ul>
-<li>That means <code>[1]</code> is equal to <code>1</code></li>
-</ul>
-</li>
-<li>a single value (a scalar value)  is also a table consisting of one row consisting of one column.<ul>
-<li>That means <code>[[1]]</code> is equal to <code>1</code></li>
-</ul>
-</li>
-<li>a list of values is multiple rows of which each row consists of one column.<ul>
-<li>That means <code>[1], [2], [3], [4], ...</code> is equal to <code>[1, 2, 3, 4]</code>.</li>
-</ul>
-</li>
-<li>a list of values is also a table consisting of multiple rows of which each row consists of one column.<ul>
-<li>That means <code>[[1], [2], [3], [4], ...]</code> is equal to <code>[1, 2, 3, 4]</code>.</li>
-</ul>
-</li>
-<li>There is no such difference among <code>1</code>, <code>[1]</code> and <code>[[1]]</code> in the results of <em>SELECT</em> statements as in python.</li>
-<li>What <em>SELECT</em> statements return is always a table, and a table consisting of one row consisting of one column is equal to the value in the cell defined by the row and the column.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2>An Introduction to MySQL</h2>
+                <h2>An Introduction to MySQL</h2>
 <p>primary key, unique key, index.</p>
 <p>An index is automatically created for a table's primary and non-primary keys.</p>
 <p>The foreign key is simply one or more columns in a table that refer to a primary key in another table.</p>

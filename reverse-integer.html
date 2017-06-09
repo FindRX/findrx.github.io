@@ -49,29 +49,27 @@
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">INT_MIN</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="p">;</span>
         <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">limit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">tlimit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">limit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">_limit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">res</span> <span class="o">&gt;</span> <span class="n">limit</span> <span class="o">||</span> <span class="n">res</span> <span class="o">==</span> <span class="n">limit</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">tlimit</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">res</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
         <span class="n">x</span> <span class="o">/=</span> <span class="mi">10</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="n">res</span> <span class="o">*</span> <span class="n">sign</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="n">res</span> <span class="o">*</span> <span class="n">sign</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">res</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">_limit</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">res</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sign</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>Summary:</p>
-<ol>
-<li>There are some other solutions. </li>
-<li>I always feel something is hiding behind.</li>
+<ul>
 <li>Math is tricky during being represented on computer.</li>
-<li>6ms, 19.96%</li>
-</ol>
+</ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/reverse-integer/">7. Reverse Integer</a></p>
                 <div class="clear"></div>
 

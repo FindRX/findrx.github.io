@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Reverse Words in a String II</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,String" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/reverse-words-in-a-string-ii.html" rel="bookmark" title="Permanent Link to &quot;Reverse Words in a String II&quot;">Reverse Words in a String II</a>
+                </h2>
+
+                
+                
+
+                <p>Given an input string, reverse the string word by word. A word is defined as a sequence of non-space characters.</p>
+<p>The input string does not contain leading or trailing spaces and the words are always separated by a single space.</p>
+<p>For example,</p>
+<ul>
+<li>Given s = "the sky is blue",</li>
+<li>return "blue is sky the".</li>
+</ul>
+<p>Could you do it in-place without allocating extra space?</p>
+<p>C Solution: </p>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">reverse</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">s</span> <span class="o">&lt;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">s</span> <span class="o">^=</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">e</span> <span class="o">^=</span> <span class="o">*</span><span class="n">s</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">s</span><span class="o">++</span> <span class="o">^=</span> <span class="o">*</span><span class="n">e</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">reverseWords</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">_s</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">char</span> <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">++</span><span class="n">t</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">*</span><span class="n">t</span> <span class="o">!=</span> <span class="sc">&#39; &#39;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!*</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">reverse</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">reverse</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">reverse</span><span class="p">(</span><span class="n">_s</span><span class="p">,</span> <span class="n">s</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>nothing to say.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/reverse-words-in-a-string-ii/#/description">186. Reverse Words in a String II</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/reverse-words-in-a-string-ii.html">No.186</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

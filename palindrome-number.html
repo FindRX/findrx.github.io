@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
 
-    <meta name="keywords" content="LeetCode,Math" />
+    <meta name="keywords" content="LeetCode,Math,Try-Again" />
 </head>
 <body>
     <header>
@@ -42,7 +42,8 @@
                 <p>Determine whether an integer is a palindrome. Do this without extra space.</p>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
@@ -55,9 +56,8 @@
 
 <p>Summary:</p>
 <ol>
-<li>When x &lt; 0, return false..., this should be clarified.</li>
-<li>The logic is in the code.</li>
-<li>72ms, 49.88%</li>
+<li>When <code>x &lt; 0</code>, return false..., this should be clarified.</li>
+<li>The only special case is when the least-significant digit is 0. Remember.</li>
 </ol>
 <p>LeetCode: <a href="https://leetcode.com/problems/palindrome-number/">9. Palindrome Number</a></p>
                 <div class="clear"></div>
@@ -68,6 +68,7 @@
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
                 </div>
 <div id="disqus_thread"></div>
 <script type="text/javascript">

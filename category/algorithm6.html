@@ -33,313 +33,280 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/sum-of-two-integers.html" rel="bookmark" title="Permanent Link to &quot;Sum of Two Integers&quot;">Sum of Two Integers</a>
+                    <a href="/valid-word-square.html" rel="bookmark" title="Permanent Link to &quot;Valid Word Square&quot;">Valid Word Square</a>
                 </h2>
 
                 
                 
 
-                <p>Calculate the sum of two integers a and b, but you are not allowed to use the operator <code>+</code> and <code>-</code>.</p>
-<p>Example:</p>
+                <p>Given a sequence of words, check whether it forms a valid word square.</p>
+<p>A sequence of words forms a valid word square if the kth row and column read the exact same string, where <code>0 ≤ k &lt; max(numRows, numColumns)</code>.</p>
 <ul>
-<li>Given a = 1 and b = 2, return 3.</li>
-</ul>
-<p>C Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">getSum</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">carry</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">carry</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">;</span>
-        <span class="n">a</span> <span class="o">^=</span> <span class="n">b</span><span class="p">;</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="n">carry</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return …</span></pre></div>
+<li>The number of words given is at least 1 and does …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/sum-of-two-integers.html">No.371</a>
+				<a href="/valid-word-square.html">No.422</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
                 </div>
-		<a href="/sum-of-two-integers.html#disqus_thread">Click to read and post comments</a>
+		<a href="/valid-word-square.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/plus-one-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Plus One Linked List&quot;">Plus One Linked List</a>
+                    <a href="/add-strings.html" rel="bookmark" title="Permanent Link to &quot;Add Strings&quot;">Add Strings</a>
                 </h2>
 
                 
                 
 
-                <p>Given a non-negative integer represented as non-empty a singly linked list of digits, plus one to the integer.</p>
+                <p>Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.</p>
+<p>Note:</p>
 <ul>
-<li>You may assume the integer do not contain any leading zero, except the number 0 itself.</li>
-<li>The digits are stored such that the most significant digit is at the head of the …</li></ul>
+<li>The length of both num1 and num2 is <code>&lt;</code> 5100.</li>
+<li>Both num1 and num2 contains only digits 0-9.</li>
+<li>Both num1 and num2 does not contain any leading zero.</li>
+<li>You must not use any …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/plus-one-linked-list.html">No.369</a>
+				<a href="/add-strings.html">No.415</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
                 </div>
-		<a href="/plus-one-linked-list.html#disqus_thread">Click to read and post comments</a>
+		<a href="/add-strings.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/valid-perfect-square.html" rel="bookmark" title="Permanent Link to &quot;Valid Perfect Square&quot;">Valid Perfect Square</a>
+                    <a href="/third-maximum-number.html" rel="bookmark" title="Permanent Link to &quot;Third Maximum Number&quot;">Third Maximum Number</a>
                 </h2>
 
                 
                 
 
-                <p>Given a positive integer num, write a function which returns True if num is a perfect square else False.</p>
-<p>Note: Do not use any built-in library function such as sqrt.</p>
+                <p>Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n).</p>
 <p>Example 1:</p>
 <ul>
-<li>Input: 16</li>
-<li>Returns: True</li>
+<li>Input: [3, 2, 1]</li>
+<li>Output: 1</li>
+<li>Explanation: The third maximum is 1.</li>
 </ul>
 <p>Example 2:</p>
 <ul>
-<li>Input: 14</li>
-<li>Returns: False</li>
-</ul>
-<p>Python Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">isPerfectSquare …</span></pre></div>
+<li>Input: [1, 2 …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/valid-perfect-square.html">No.367</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                </div>
-		<a href="/valid-perfect-square.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/max-consecutive-ones.html" rel="bookmark" title="Permanent Link to &quot;Max Consecutive Ones&quot;">Max Consecutive Ones</a>
-                </h2>
-
-                
-                
-
-                <p>Given a binary array, find the maximum number of consecutive 1s in this array.</p>
-<ul>
-<li>The input array will only contain 0 and 1.</li>
-<li>The length of input array is a positive integer and will not exceed 10,000</li>
-</ul>
-<p>Example:</p>
-<ul>
-<li>Input: [1,1,0,1,1,1]</li>
-<li>Output: 3</li>
-<li>Explanation: The …</li></ul>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/max-consecutive-ones.html">No.365</a>
+				<a href="/third-maximum-number.html">No.414</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/array.html" class="tags">Array</a>
                 </div>
-		<a href="/max-consecutive-ones.html#disqus_thread">Click to read and post comments</a>
+		<a href="/third-maximum-number.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/logger-rate-limiter.html" rel="bookmark" title="Permanent Link to &quot;Logger Rate Limiter&quot;">Logger Rate Limiter</a>
+                    <a href="/fizz-buzz.html" rel="bookmark" title="Permanent Link to &quot;Fizz Buzz&quot;">Fizz Buzz</a>
                 </h2>
 
                 
                 
 
-                <p>Design a logger system that receive stream of messages along with its timestamps, each message should be printed if and only if it is not printed in the last 10 seconds.</p>
-<p>Given a message and a timestamp (in seconds granularity), return true if the message should be printed in the …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/logger-rate-limiter.html">No.359</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
-                </div>
-		<a href="/logger-rate-limiter.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/rearrange-string-k-distance-apart.html" rel="bookmark" title="Permanent Link to &quot;Rearrange String k Distance Apart&quot;">Rearrange String k Distance Apart</a>
-                </h2>
-
-                
-                
-
-                <p>Given a non-empty string str and an integer k, rearrange the string such that the same characters are at least distance k from each other.</p>
-<p>All input strings are given in lowercase letters. If it is not possible to rearrange the string, return an empty string "".</p>
-<p>Example 1:</p>
-<div class="highlight"><pre><span></span>str = &quot;aabbcc …</pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/rearrange-string-k-distance-apart.html">No.358</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
-                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
-                </div>
-		<a href="/rearrange-string-k-distance-apart.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/line-reflection.html" rel="bookmark" title="Permanent Link to &quot;Line Reflection&quot;">Line Reflection</a>
-                </h2>
-
-                
-                
-
-                <p>Given n points on a 2D plane, find if there is such a line parallel to y-axis that reflect the given points.</p>
-<p><strong>Example 1:</strong></p>
-<p>Given points = <code>[[1,1],[-1,1]]</code>, return true.</p>
-<p><strong>Example 2:</strong></p>
-<p>Given points = <code>[[1,1],[-1,-1]]</code>, return false.</p>
-<p><strong>Follow up:</strong></p>
-<p>Could you do better than O …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/line-reflection.html">No.356</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                </div>
-		<a href="/line-reflection.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/design-twitter.html" rel="bookmark" title="Permanent Link to &quot;Design Twitter&quot;">Design Twitter</a>
-                </h2>
-
-                
-                
-
-                <p>Design a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user's news feed. Your design should support the following methods:</p>
+                <p>Write a program that outputs the string representation of numbers from 1 to n.</p>
+<p>But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.</p>
+<p>Example:</p>
 <ul>
-<li><strong>postTweet(userId, tweetId)</strong>: Compose a new tweet.</li>
-<li><strong>getNewsFeed(userId)</strong>: Retrieve the 10 most …</li></ul>
+<li>n = 15 …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/design-twitter.html">No.355</a>
+				<a href="/fizz-buzz.html">No.412</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
-                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
                 </div>
-		<a href="/design-twitter.html#disqus_thread">Click to read and post comments</a>
+		<a href="/fizz-buzz.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/intersection-of-two-arrays-ii.html" rel="bookmark" title="Permanent Link to &quot;Intersection of Two Arrays II&quot;">Intersection of Two Arrays II</a>
+                    <a href="/longest-palindrome.html" rel="bookmark" title="Permanent Link to &quot;Longest Palindrome&quot;">Longest Palindrome</a>
                 </h2>
 
                 
                 
 
-                <p>Given two arrays, write a function to compute their intersection.</p>
+                <p>Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.</p>
 <ul>
-<li>Each element in the result should appear as many times as it shows in both arrays.</li>
-<li>The result can be in any order.</li>
+<li>This is case sensitive, for example "Aa" is not considered a palindrome here.</li>
+<li>Assume the length of given string will not exceed 1,010.</li>
 </ul>
 <p>Example:</p>
 <ul>
-<li>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2, 2].</li>
-</ul>
-<p>Follow up:</p>
-<ul>
-<li>What if …</li></ul>
+<li>Input …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/intersection-of-two-arrays-ii.html">No.350</a>
+				<a href="/longest-palindrome.html">No.409</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
                 </div>
-		<a href="/intersection-of-two-arrays-ii.html#disqus_thread">Click to read and post comments</a>
+		<a href="/longest-palindrome.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/intersection-of-two-arrays.html" rel="bookmark" title="Permanent Link to &quot;Intersection of Two Arrays&quot;">Intersection of Two Arrays</a>
+                    <a href="/valid-word-abbreviation.html" rel="bookmark" title="Permanent Link to &quot;Valid Word Abbreviation&quot;">Valid Word Abbreviation</a>
                 </h2>
 
                 
                 
 
-                <p>Given two arrays, write a function to compute their intersection.</p>
+                <p>Given a non-empty string <code>s</code> and an abbreviation <code>abbr</code>, return whether the string matches with the given abbreviation.</p>
+<p>A string such as "word" contains only the following valid abbreviations:</p>
+<p>["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", "1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]</p>
+<p>Notice that only the above …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/valid-word-abbreviation.html">No.408</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+		<a href="/valid-word-abbreviation.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/trapping-rain-water-ii.html" rel="bookmark" title="Permanent Link to &quot;Trapping Rain Water II&quot;">Trapping Rain Water II</a>
+                </h2>
+
+                
+                
+
+                <p>Given an <code>m x n</code> matrix of positive integers representing the height of each unit cell in a 2D elevation map, compute the volume of water it is able to trap after raining.</p>
 <ul>
-<li>Each element in the result must be unique.</li>
-<li>The result can be in any order.</li>
-</ul>
+<li>Both m and n are less than 110. </li>
+<li>The height of each unit cell is greater than …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/trapping-rain-water-ii.html">No.407</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                </div>
+		<a href="/trapping-rain-water-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/convert-a-number-to-hexadecimal.html" rel="bookmark" title="Permanent Link to &quot;Convert a Number to Hexadecimal&quot;">Convert a Number to Hexadecimal</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer, write an algorithm to convert it to hexadecimal. For negative integer, two’s complement method is used.</p>
+<ul>
+<li>All letters in hexadecimal (a-f) must be in lowercase.</li>
+<li>The hexadecimal string must not contain extra leading 0s. If the number is zero, it is represented by a single zero …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/convert-a-number-to-hexadecimal.html">No.405</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                </div>
+		<a href="/convert-a-number-to-hexadecimal.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/sum-of-left-leaves.html" rel="bookmark" title="Permanent Link to &quot;Sum of Left Leaves&quot;">Sum of Left Leaves</a>
+                </h2>
+
+                
+                
+
+                <p>Find the sum of all left leaves in a given binary tree.</p>
 <p>Example:</p>
+<div class="highlight"><pre><span></span>    3
+   / \
+  9  20
+    /  \
+   15   7
+</pre></div>
+
+
 <ul>
-<li>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</li>
+<li>There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.</li>
 </ul>
 <p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">HE</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">HE</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="k">struct</span> <span class="n">HT</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">size …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct TreeNode *left …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/intersection-of-two-arrays.html">No.349</a>
+				<a href="/sum-of-left-leaves.html">No.404</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
                 </div>
-		<a href="/intersection-of-two-arrays.html#disqus_thread">Click to read and post comments</a>
+		<a href="/sum-of-left-leaves.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/binary-watch.html" rel="bookmark" title="Permanent Link to &quot;Binary Watch&quot;">Binary Watch</a>
+                </h2>
+
+                
+                
+
+                <p>A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).</p>
+<p>Each LED represents a zero or one, with the least significant bit on the right.</p>
+<p><img alt="empty" src="/images/binary-watch.jpg"></p>
+<p>For example, the above binary watch reads "3:25".</p>
+<p>Given …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/binary-watch.html">No.401</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/backtracking.html" class="tags">Backtracking</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                </div>
+		<a href="/binary-watch.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -350,7 +317,7 @@
 
 
 
-                    <span>Page 6 of 17</span>
+                    <span>Page 6 of 23</span>
                 </div>
 
             <div class="clear"></div>

@@ -31,230 +31,298 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/ugly-number.html" rel="bookmark" title="Permanent Link to &quot;Ugly Number&quot;">Ugly Number</a>
+                    <a href="/design-twitter.html" rel="bookmark" title="Permanent Link to &quot;Design Twitter&quot;">Design Twitter</a>
                 </h2>
 
                 
                 
 
-                <p>Write a program to check whether a given number is an ugly number.</p>
-<p>Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.</p>
-<p>Note that 1 is typically treated …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/ugly-number.html">No.263</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                </div>
-		<a href="/ugly-number.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/3sum-smaller.html" rel="bookmark" title="Permanent Link to &quot;3Sum Smaller&quot;">3Sum Smaller</a>
-                </h2>
-
-                
-                
-
-                <p>Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 &lt;= i &lt; j &lt; k &lt; n that satisfy the condition nums[i] + nums[j] + nums[k] &lt; target.</p>
-<p>Example: </p>
+                <p>Design a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able to see the 10 most recent tweets in the user's news feed. Your design should support the following methods:</p>
 <ul>
-<li>Given nums = [-2, 0, 1, 3], and target = 2.</li>
-<li>Return 2. </li>
-<li>Because there …</li></ul>
+<li><strong>postTweet(userId, tweetId)</strong>: Compose a new tweet.</li>
+<li><strong>getNewsFeed(userId)</strong>: Retrieve the 10 most …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/3sum-smaller.html">No.259</a>
+				<a href="/design-twitter.html">No.355</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
                 </div>
-		<a href="/3sum-smaller.html#disqus_thread">Click to read and post comments</a>
+		<a href="/design-twitter.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/add-digits.html" rel="bookmark" title="Permanent Link to &quot;Add Digits&quot;">Add Digits</a>
+                    <a href="/intersection-of-two-arrays-ii.html" rel="bookmark" title="Permanent Link to &quot;Intersection of Two Arrays II&quot;">Intersection of Two Arrays II</a>
                 </h2>
 
                 
                 
 
-                <p>Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.</p>
+                <p>Given two arrays, write a function to compute their intersection.</p>
+<ul>
+<li>Each element in the result should appear as many times as it shows in both arrays.</li>
+<li>The result can be in any order.</li>
+</ul>
 <p>Example:</p>
 <ul>
-<li>Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.</li>
+<li>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2, 2].</li>
 </ul>
 <p>Follow up:</p>
 <ul>
-<li>Could you do it without any loop/recursion in …</li></ul>
+<li>What if …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/add-digits.html">No.258</a>
+				<a href="/intersection-of-two-arrays-ii.html">No.350</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
+                </div>
+		<a href="/intersection-of-two-arrays-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/intersection-of-two-arrays.html" rel="bookmark" title="Permanent Link to &quot;Intersection of Two Arrays&quot;">Intersection of Two Arrays</a>
+                </h2>
+
+                
+                
+
+                <p>Given two arrays, write a function to compute their intersection.</p>
+<ul>
+<li>Each element in the result must be unique.</li>
+<li>The result can be in any order.</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">HE</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">HE</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="n">HT</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">size …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/intersection-of-two-arrays.html">No.349</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
+                </div>
+		<a href="/intersection-of-two-arrays.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/top-k-frequent-elements.html" rel="bookmark" title="Permanent Link to &quot;Top K Frequent Elements&quot;">Top K Frequent Elements</a>
+                </h2>
+
+                
+                
+
+                <p>Given a non-empty array of integers, return the k most frequent elements.</p>
+<ul>
+<li>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.</li>
+<li>Your algorithm's time complexity must be better than O(n log n), where n is the array's size.</li>
+</ul>
+<p>For example:</p>
+<ul>
+<li>Given [1,1,1,2 …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/top-k-frequent-elements.html">No.347</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                </div>
+		<a href="/top-k-frequent-elements.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/moving-average-from-data-steam.html" rel="bookmark" title="Permanent Link to &quot;Moving Average from Data Steam&quot;">Moving Average from Data Steam</a>
+                </h2>
+
+                
+                
+
+                <p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
+<p>For example,</p>
+<div class="highlight"><pre><span></span>MovingAverage m = new MovingAverage(3);
+m.next(1) = 1
+m.next(10) = (1 + 10) / 2
+m.next(3) = (1 + 10 + 3) / 3
+m.next(5) = (10 + 3 + 5 …</pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/moving-average-from-data-steam.html">No.346</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                    &nbsp;<a href="/tag/queue.html" class="tags">Queue</a>
+                </div>
+		<a href="/moving-average-from-data-steam.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/reverse-vowels-of-a-string.html" rel="bookmark" title="Permanent Link to &quot;Reverse Vowels of a String&quot;">Reverse Vowels of a String</a>
+                </h2>
+
+                
+                
+
+                <p>Write a function that takes a string as input and reverse only the vowels of a string.</p>
+<ul>
+<li>The vowels does not include the letter "y".</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Given s = "hello", return "holle".</li>
+<li>Given s = "leetcode", return "leotcede".</li>
+</ul>
+<p>C Solution: </p>
+<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">reverseVowels</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">l</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1 …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/reverse-vowels-of-a-string.html">No.345</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                </div>
+		<a href="/reverse-vowels-of-a-string.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/reverse-string.html" rel="bookmark" title="Permanent Link to &quot;Reverse String&quot;">Reverse String</a>
+                </h2>
+
+                
+                
+
+                <p>Write a function that takes a string as input and returns the string reversed.</p>
+<p>Example:</p>
+<ul>
+<li>Given s = "hello", return "olleh".</li>
+</ul>
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reverseString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type s: str</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">reverseString</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span> <span class="o">||</span> <span class="o">!*</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">l …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/reverse-string.html">No.344</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+		<a href="/reverse-string.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/power-of-four.html" rel="bookmark" title="Permanent Link to &quot;Power of Four&quot;">Power of Four</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer (signed 32 bits), write a function to check whether it is a power of 4.</p>
+<p>Example:</p>
+<ul>
+<li>Given num = 16, return true. Given num = 5, return false.</li>
+</ul>
+<p>Follow up: </p>
+<ul>
+<li>Could you solve it without loops/recursion?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfFour</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">num</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">num</span> <span class="o">&amp;</span> <span class="mh">0x55555555 …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/power-of-four.html">No.342</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
                 </div>
-		<a href="/add-digits.html#disqus_thread">Click to read and post comments</a>
+		<a href="/power-of-four.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/binary-tree-paths.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Paths&quot;">Binary Tree Paths</a>
+                    <a href="/longest-substring-with-at-most-k-distinct-characters.html" rel="bookmark" title="Permanent Link to &quot;Longest Substring with At Most K Distinct Characters&quot;">Longest Substring with At Most K Distinct Characters</a>
                 </h2>
 
                 
                 
 
-                <p>Given a binary tree, return all root-to-leaf paths.</p>
-<p>For example, given the following binary tree:</p>
-<div class="highlight"><pre><span></span>   1
- /   \
-2     3
- \
-  5
-</pre></div>
-
-
-<p>All root-to-leaf paths are:</p>
-<ul>
-<li>["1-&gt;2-&gt;5", "1-&gt;3"]</li>
-</ul>
-<p>Python Solution:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
-<span class="c1"># class TreeNode(object):</span>
-<span class="c1">#     def __init__(self, x):</span>
-<span class="c1">#         self.val = x</span>
-<span class="c1">#         self.left = None</span>
-<span class="c1">#         self …</span></pre></div>
+                <p>Given a string, find the length of the longest substring T that contains at most k distinct characters.</p>
+<p>For example, Given s = <code>“eceba”</code> and k = 2,</p>
+<p>T is <code>"ece"</code> which its length is 3.</p>
+<p>Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">lengthOfLongestSubstringKDistinct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type s: str</span>
+<span class="sd">        :type k: int</span>
+<span class="sd">        :rtype …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/binary-tree-paths.html">No.257</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
-                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
-                </div>
-		<a href="/binary-tree-paths.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/paint-house.html" rel="bookmark" title="Permanent Link to &quot;Paint House&quot;">Paint House</a>
-                </h2>
-
-                
-                
-
-                <p>There are a row of n houses, each house can be painted with one of the three colors: red, blue or green. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/paint-house.html">No.256</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
-                </div>
-		<a href="/paint-house.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/meeting-rooms-ii.html" rel="bookmark" title="Permanent Link to &quot;Meeting Rooms II&quot;">Meeting Rooms II</a>
-                </h2>
-
-                
-                
-
-                <p>Given an array of meeting time intervals consisting of start and end times [[s<sub>1</sub>,e<sub>1</sub>],[s<sub>2</sub>,e<sub>2</sub>],...] (s<sub>i</sub> &lt; e<sub>i</sub>), find the minimum number of conference rooms required.</p>
-<p>For example:</p>
-<ul>
-<li>Given <code>[[0, 30],[5, 10],[15, 20]]</code>,</li>
-<li>return <code>2</code>.</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for an interval …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/meeting-rooms-ii.html">No.253</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
-                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
-                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
-                </div>
-		<a href="/meeting-rooms-ii.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/meeting-rooms.html" rel="bookmark" title="Permanent Link to &quot;Meeting Rooms&quot;">Meeting Rooms</a>
-                </h2>
-
-                
-                
-
-                <p>Given an array of meeting time intervals consisting of start and end times <code>[[s1,e1],[s2,e2],...] (si &lt; ei)</code>, determine if a person could attend all meetings.</p>
-<p>Example:</p>
-<ul>
-<li>Given [[0, 30],[5, 10],[15, 20]],</li>
-<li>return false.</li>
-</ul>
-<p>Python Solution:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Definition for an interval.</span>
-<span class="c1"># class Interval(object):</span>
-<span class="c1">#     def __init__(self, s …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/meeting-rooms.html">No.252</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
-                </div>
-		<a href="/meeting-rooms.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/group-shifted-strings.html" rel="bookmark" title="Permanent Link to &quot;Group Shifted Strings&quot;">Group Shifted Strings</a>
-                </h2>
-
-                
-                
-
-                <p>Given a string, we can "shift" each of its letter to its successive letter, for example: "abc" -&gt; "bcd". We can keep "shifting" which forms the sequence:</p>
-<ul>
-<li>"abc" -&gt; "bcd" -&gt; ... -&gt; "xyz"</li>
-</ul>
-<p>Given a list of strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence.</p>
-<p>Example …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/group-shifted-strings.html">No.249</a>
+				<a href="/longest-substring-with-at-most-k-distinct-characters.html">No.340</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
@@ -262,65 +330,34 @@
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                     &nbsp;<a href="/tag/string.html" class="tags">String</a>
                 </div>
-		<a href="/group-shifted-strings.html#disqus_thread">Click to read and post comments</a>
+		<a href="/longest-substring-with-at-most-k-distinct-characters.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/strobogrammatic-number.html" rel="bookmark" title="Permanent Link to &quot;Strobogrammatic Number&quot;">Strobogrammatic Number</a>
+                    <a href="/nested-list-weight-sum.html" rel="bookmark" title="Permanent Link to &quot;Nested List Weight Sum&quot;">Nested List Weight Sum</a>
                 </h2>
 
                 
                 
 
-                <p>A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).</p>
-<p>Write a function to determine if a number is strobogrammatic. The number is represented as a string.</p>
-<p>Example: </p>
+                <p>Given a nested list of integers, return the sum of all integers in the list weighted by their depth.</p>
+<p>Each element is either an integer, or a list -- whose elements may also be integers or other lists.</p>
+<p>Example:</p>
 <ul>
-<li>the numbers "69", "88", and "818" are all strobogrammatic.</li>
-</ul>
-<p>C Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isStrobogrammatic …</span></pre></div>
+<li>Given the list [[1,1],2,[1,1]]</li>
+<li>return 10. (four 1's …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/strobogrammatic-number.html">No.246</a>
+				<a href="/nested-list-weight-sum.html">No.339</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
                 </div>
-		<a href="/strobogrammatic-number.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/shortest-word-distance.html" rel="bookmark" title="Permanent Link to &quot;Shortest Word Distance&quot;">Shortest Word Distance</a>
-                </h2>
-
-                
-                
-
-                <p>Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.</p>
-<ul>
-<li>You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.</li>
-</ul>
-<p>For example,</p>
-<ul>
-<li>Assume that words = ["practice", "makes", "perfect", "coding …</li></ul>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/shortest-word-distance.html">No.243</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                </div>
-		<a href="/shortest-word-distance.html#disqus_thread">Click to read and post comments</a>
+		<a href="/nested-list-weight-sum.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -331,7 +368,7 @@
 
 
 
-                    <span>Page 10 of 18</span>
+                    <span>Page 10 of 24</span>
                 </div>
 
             <div class="clear"></div>

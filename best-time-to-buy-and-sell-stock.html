@@ -53,12 +53,28 @@
 <li>Output: 0</li>
 <li>In this case, no transaction is done, i.e. max profit = 0.</li>
 </ul>
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">maxProfit</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">prices</span><span class="p">,</span> <span class="kt">int</span> <span class="n">pricesSize</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">pricesSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">min</span> <span class="o">=</span> <span class="n">min</span> <span class="o">&lt;</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">?</span> <span class="nl">min</span> <span class="p">:</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">&gt;</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">min</span> <span class="o">?</span> <span class="nl">res</span> <span class="p">:</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">min</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">maxProfit</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">prices</span><span class="p">,</span> <span class="kt">int</span> <span class="n">pricesSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">pricesSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">min</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">min</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
         <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">&gt;</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">min</span> <span class="o">?</span> <span class="nl">res</span> <span class="p">:</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">min</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>

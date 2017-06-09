@@ -32,6 +32,192 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/plus-one.html" rel="bookmark" title="Permanent Link to &quot;Plus One&quot;">Plus One</a>
+                </h2>
+
+                
+                
+
+                <p>Given a non-negative integer represented as a non-empty array of digits, plus one to the integer.</p>
+<p>You may assume the integer do not contain any leading zero, except the number 0 itself.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list.</p>
+<p>C …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/plus-one.html">No.66</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                </div>
+		<a href="/plus-one.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/trapping-rain-water.html" rel="bookmark" title="Permanent Link to &quot;Trapping Rain Water&quot;">Trapping Rain Water</a>
+                </h2>
+
+                
+                
+
+                <p>Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.</p>
+<p>For example, 
+Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.</p>
+<p><img alt="trapping-rain-water" src="/images/trapping-rain-water.png"></p>
+<p>The above elevation map is represented …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/trapping-rain-water.html">No.42</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                </div>
+		<a href="/trapping-rain-water.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/roman-to-integer.html" rel="bookmark" title="Permanent Link to &quot;Roman to Integer&quot;">Roman to Integer</a>
+                </h2>
+
+                
+                
+
+                <p>Given a roman numeral, convert it to an integer.</p>
+<p>Input is guaranteed to be within the range from 1 to 3999.</p>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">romanToInt</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span> <span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="sc">&#39;M&#39;</span><span class="p">;</span> <span class="n">p</span><span class="o">++</span><span class="p">);</span>
+    <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">s</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span> <span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="sc">&#39;C&#39;</span> <span class="o">||</span> <span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="sc">&#39;D …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/roman-to-integer.html">No.13</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+		<a href="/roman-to-integer.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/palindrome-number.html" rel="bookmark" title="Permanent Link to &quot;Palindrome Number&quot;">Palindrome Number</a>
+                </h2>
+
+                
+                
+
+                <p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">x</span> <span class="o">/=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="o">||</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/palindrome-number.html">No.9</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
+                </div>
+		<a href="/palindrome-number.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/string-to-integer-atoi.html" rel="bookmark" title="Permanent Link to &quot;String to Integer (atoi)&quot;">String to Integer (atoi)</a>
+                </h2>
+
+                
+                
+
+                <p>Implement atoi to convert a string to an integer.</p>
+<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
+<p>Notes: It is intended for this problem to be specified vaguely (ie, no given input …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/string-to-integer-atoi.html">No.8</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+		<a href="/string-to-integer-atoi.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/reverse-integer.html" rel="bookmark" title="Permanent Link to &quot;Reverse Integer&quot;">Reverse Integer</a>
+                </h2>
+
+                
+                
+
+                <p>Reverse digits of an integer.</p>
+<ul>
+<li>Example1: x = 123, return 321</li>
+<li>Example2: x = -123, return -321</li>
+</ul>
+<p>C Solution: </p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">reverse</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">INT_MIN</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">limit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">_limit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">res</span> <span class="o">&lt;</span> <span class="n">limit …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/reverse-integer.html">No.7</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                </div>
+		<a href="/reverse-integer.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/add-two-numbers.html" rel="bookmark" title="Permanent Link to &quot;Add Two Numbers&quot;">Add Two Numbers</a>
                 </h2>
 

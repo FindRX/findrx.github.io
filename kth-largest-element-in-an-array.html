@@ -48,7 +48,6 @@
 <li>Given <code>3,2,1,5,6,4</code> and <code>k = 2</code>, return <code>5</code>.</li>
 </ul>
 <p>C Solution:</p>
-<p>Using heap.</p>
 <div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">top</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">heap</span><span class="p">[(</span><span class="o">*</span><span class="n">top</span><span class="p">)</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
@@ -86,6 +85,19 @@
 </pre></div>
 
 
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">findKthLargest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type nums: List[int]</span>
+<span class="sd">        :type k: int</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ol>
 <li>This problem can be solved in many ways.<ol>
@@ -94,8 +106,7 @@
 <li>divide and conquer. check  O(N) best case / O(N<sup>2</sup>) worst case time and O(1) space.</li>
 </ol>
 </li>
-<li>Here I only list the heap solution.</li>
-<li>6ms, 69.81%</li>
+<li>Partition-based selection can get an average O(N) time complexity.</li>
 </ol>
 <p>LeetCode: <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/">215. Kth Largest Element in an Array</a></p>
                 <div class="clear"></div>

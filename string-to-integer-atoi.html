@@ -42,7 +42,7 @@
                 <p>Implement atoi to convert a string to an integer.</p>
 <p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
 <p>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">myAtoi</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(;</span> <span class="o">*</span><span class="n">str</span> <span class="o">==</span> <span class="sc">&#39; &#39;</span><span class="p">;</span><span class="n">str</span><span class="o">++</span><span class="p">);</span>
     <span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -60,6 +60,23 @@
 
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">myAtoi</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">str</span> <span class="o">==</span> <span class="sc">&#39; &#39;</span><span class="p">)</span> <span class="n">str</span><span class="o">++</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">str</span> <span class="o">==</span> <span class="sc">&#39;+&#39;</span><span class="p">)</span> <span class="n">str</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">str</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="n">str</span><span class="o">++</span><span class="p">,</span> <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">str</span> <span class="o">&lt;=</span> <span class="sc">&#39;9&#39;</span> <span class="o">&amp;&amp;</span> <span class="o">*</span><span class="n">str</span> <span class="o">&gt;=</span> <span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">val</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="o">*</span><span class="n">str</span><span class="o">++</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">val</span> <span class="o">*</span> <span class="n">sign</span> <span class="o">&gt;</span> <span class="n">INT_MAX</span><span class="p">)</span> <span class="k">return</span> <span class="n">INT_MAX</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">val</span> <span class="o">*</span> <span class="n">sign</span> <span class="o">&lt;</span> <span class="n">INT_MIN</span><span class="p">)</span> <span class="k">return</span> <span class="n">INT_MIN</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">val</span> <span class="o">*</span> <span class="n">sign</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 

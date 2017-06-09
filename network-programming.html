@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Network Programming</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="Network-Programming" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Feb 24, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/network-programming.html" rel="bookmark" title="Permanent Link to &quot;Network Programming&quot;">Network Programming</a>
+                </h2>
+
+                
+                
+
+                <h2>Information</h2>
+<p>What is Socket?</p>
+<ul>
+<li>A way to speak to other programs using standard Unix file descriptors.</li>
+<li>A file descriptor is simply an integer associated with an open file.</li>
+</ul>
+<p>Where do I get this file descriptor for network communication?</p>
+<ul>
+<li>You make a call to the <code>socket()</code> system routine.</li>
+<li>It returns the socket descriptor, and you communicate through it using the specilized <code>send()</code> and <code>recv()</code> socket calls.</li>
+<li>You can also use <code>read()</code> and <code>write()</code> calls to communicate through socket, but <code>send()</code> and <code>recv()</code> offer much greater control over your data transmission.</li>
+</ul>
+<p>There are all kinds of sockets.</p>
+<ul>
+<li><strong>DARPA</strong> Internet addresses (Internet Sockets)</li>
+<li>path names on a local node (Unix Sockets)</li>
+<li><strong>CCITT X.25</strong> addresses (X.25 Sockets)</li>
+</ul>
+<p>We focus on Internet Sockets. There are two types of Internet Sockets.</p>
+<ol>
+<li>Stream Sockets, referred as <em>SOCK_STREAM</em>.</li>
+<li>Datagram Sockets, referred as <em>SOCK_DGRAM</em>.</li>
+</ol>
+<p>Stream Sockets are reliable two-way connected communication streams, and it's error-free.</p>
+<ul>
+<li>Stream Sockets use a protocol called The <strong>Transmission Control Protocol</strong>, otherwise known as <strong>TCP</strong>.</li>
+<li>TCP makes sure your data arrives sequentially and error-free.</li>
+<li><strong>IP</strong> stands for <strong>Internet Protocol</strong>, it deals with Internet routing and is not generally responsible for data integrity.</li>
+</ul>
+<p>Datagram Sockets also use IP for routing, but they don't use TCP; they use The <strong>User Datagram Protocol</strong>, or <strong>UDP</strong>.</p>
+<ul>
+<li>If you send a datagram, it may arrive. It may arrive out of order. If it arrives, the data within the packet will be error-free.</li>
+<li>Applications which use Datagram Sockets may have their own protocol on top of UDP to guarantee data integrity, such as <em>tftp</em> and <em>dhcpcd</em>.</li>
+<li>Why would you use an unreliable underlying protocol? The resson is speed.</li>
+</ul>
+<p><strong>Layered Network Model (aka "ISO/OSI")</strong>.</p>
+<ol>
+<li>Application</li>
+<li>Presentation</li>
+<li>Session</li>
+<li>Transport</li>
+<li>Network</li>
+<li>Data Link</li>
+<li>Physical</li>
+</ol>
+<p>A layered model more consistent with Unix might be:</p>
+<ol>
+<li>Application Layer (telnet, ftp, etc.)</li>
+<li>Host-to-Host Transport Layer (TCP, UDP)</li>
+<li>Internet Layer (IP and routing)</li>
+<li>Network Access Layer (Ethernet, wi-fi, or whatever)</li>
+</ol>
+<p>IP address is used by the IP(Network) layer, and the port number is use by Transport Layer.</p>
+<ul>
+<li>Different services on the Internet have different well-known port numbers.</li>
+<li>You can see them all in the <a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">Big IANA Port List</a>.</li>
+</ul>
+<h2>Application</h2>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">addrinfo</span> <span class="p">{</span>
+    <span class="kt">int</span>              <span class="n">ai_flags</span><span class="p">;</span>     <span class="c1">// AI_PASSIVE, AI_CANONNAME, etc.</span>
+    <span class="kt">int</span>              <span class="n">ai_family</span><span class="p">;</span>    <span class="c1">// AF_INET, AF_INET6, AF_UNSPEC</span>
+    <span class="kt">int</span>              <span class="n">ai_socktype</span><span class="p">;</span>  <span class="c1">// SOCK_STREAM, SOCK_DGRAM</span>
+    <span class="kt">int</span>              <span class="n">ai_protocol</span><span class="p">;</span>  <span class="c1">// use 0 for &quot;any&quot;</span>
+    <span class="kt">size_t</span>           <span class="n">ai_addrlen</span><span class="p">;</span>   <span class="c1">// size of ai_addr in bytes</span>
+    <span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="n">ai_addr</span><span class="p">;</span>      <span class="c1">// struct sockaddr_in or _in6</span>
+    <span class="kt">char</span>            <span class="o">*</span><span class="n">ai_canonname</span><span class="p">;</span> <span class="c1">// full canonical hostname</span>
+    <span class="k">struct</span> <span class="n">addrinfo</span> <span class="o">*</span><span class="n">ai_next</span><span class="p">;</span>      <span class="c1">// linked list, next node</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">getaddrinfo</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">nodename</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">servname</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">addrinfo</span> <span class="o">*</span><span class="n">hints</span><span class="p">,</span> <span class="k">struct</span> <span class="n">addrinfo</span> <span class="o">**</span><span class="n">res</span><span class="p">);</span>
+</pre></div>
+
+
+<p><code>getaddrinfo()</code> is an excellent function that will return information on a particular host name (such as its IP address) and load up a <code>struct sockaddr</code> for you, taking care of the gritty details (like if it's IPv4 or IPv6.) </p>
+<ul>
+<li>
+<p>It replaces the old functions <code>gethostbyname()</code> and <code>getservbyname()</code>.</p>
+</li>
+<li>
+<p>The host name that you're interested in goes in the <code>nodename</code> parameter. The address can be either a host name, like “www.example.com”, or an IPv4 or IPv6 address (passed as a string). This parameter can also be NULL if you're using the AI_PASSIVE flag.</p>
+</li>
+<li>
+<p>The <code>servname</code> parameter is basically the port number. It can be a port number (passed as a string, like “80”), or it can be a service name, like “http” or “tftp” or “smtp” or “pop”, etc. Well-known service names can be found in the IANA Port List42 or in your /etc/services file.</p>
+</li>
+<li>
+<p>Lastly, for input parameters, we have <code>hints</code>. This is really where you get to define what the getaddrinfo() function is going to do. </p>
+<ul>
+<li>Zero the whole structure before use with <code>memset()</code>.</li>
+<li>The <code>ai_flags</code> can be set to a variety of things, but here are a couple important ones. (Multiple flags can be specified by bitwise-ORing them together with the <code>|</code> operator.) <ul>
+<li><code>AI_CANONNAME</code> causes the <code>ai_canonname</code> of the result to the filled out with the host's canonical (real) name. </li>
+<li><code>AI_PASSIVE</code> causes the result's IP address to be filled out with <code>INADDR_ANY</code> (IPv4)or <code>in6addr_any</code> (IPv6); this causes a subsequent call to <code>bind()</code> to auto-fill the IP address of the struct sockaddr with the address of the current host. That's excellent for setting up a server when you don't want to hardcode the address. If you do use the <code>AI_PASSIVE</code>, flag, then you can pass NULL in the nodename (since bind() will fill it in for you later.)</li>
+</ul>
+</li>
+<li>you'll likely want to set <code>ai_family</code> to <code>AF_UNSPEC</code> which tells <code>getaddrinfo()</code> to look for both IPv4 and IPv6 addresses. You can also restrict yourself to one or the other with <code>AF_INET</code> or <code>AF_INET6</code>.</li>
+<li>the <code>ai_socktype</code> field should be set to <code>SOCK_STREAM</code> or <code>SOCK_DGRAM</code>, depending on which type of socket you want.</li>
+<li>Finally, just leave <code>ai_protocol</code> at <code>0</code> to automatically choose your protocol type.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span>    <span class="n">sa_family</span><span class="p">;</span>    <span class="c1">// address family, AF_xxx</span>
+    <span class="kt">char</span>              <span class="n">sa_data</span><span class="p">[</span><span class="mi">14</span><span class="p">];</span>  <span class="c1">// 14 bytes of protocol address</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="n">sockaddr_storage</span> <span class="p">{</span>
+    <span class="n">sa_family_t</span>  <span class="n">ss_family</span><span class="p">;</span>     <span class="c1">// address family</span>
+    <span class="c1">// all this is padding, implementation specific, ignore it:</span>
+    <span class="kt">char</span>      <span class="n">__ss_pad1</span><span class="p">[</span><span class="n">_SS_PAD1SIZE</span><span class="p">];</span>
+    <span class="kt">int64_t</span>   <span class="n">__ss_align</span><span class="p">;</span>
+    <span class="kt">char</span>      <span class="n">__ss_pad2</span><span class="p">[</span><span class="n">_SS_PAD2SIZE</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<ul>
+<li><code>sa_family</code> can be a variety of things, but it'll be <code>AF_INET</code> (IPv4) or <code>AF_INET6</code> (IPv6) for everything we do in this document.</li>
+<li><code>sa_data</code> contains a destination address and port number for the socket.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// (IPv4 only--see struct sockaddr_in6 for IPv6)</span>
+<span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="p">{</span>
+    <span class="kt">short</span> <span class="kt">int</span>          <span class="n">sin_family</span><span class="p">;</span>  <span class="c1">// Address family, AF_INET</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="kt">int</span> <span class="n">sin_port</span><span class="p">;</span>    <span class="c1">// Port number</span>
+    <span class="k">struct</span> <span class="n">in_addr</span>     <span class="n">sin_addr</span><span class="p">;</span>    <span class="c1">// Internet address</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span>      <span class="n">sin_zero</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span> <span class="c1">// Same size as struct sockaddr</span>
+<span class="p">};</span>
+<span class="c1">// (IPv4 only--see struct in6_addr for IPv6)</span>
+<span class="c1">// Internet address (a structure for historical reasons)</span>
+<span class="k">struct</span> <span class="n">in_addr</span> <span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">s_addr</span><span class="p">;</span> <span class="c1">// that&#39;s a 32-bit int (4 bytes)</span>
+<span class="p">};</span>
+
+<span class="c1">// (IPv6 only--see struct sockaddr_in and struct in_addr for IPv4)</span>
+<span class="k">struct</span> <span class="n">sockaddr_in6</span> <span class="p">{</span>
+    <span class="n">u_int16_t</span> <span class="n">sin6_family</span><span class="p">;</span>   <span class="c1">// address family, AF_INET6</span>
+    <span class="n">u_int16_t</span> <span class="n">sin6_port</span><span class="p">;</span>     <span class="c1">// port number, Network Byte Order</span>
+    <span class="n">u_int32_t</span> <span class="n">sin6_flowinfo</span><span class="p">;</span> <span class="c1">// IPv6 flow information</span>
+    <span class="k">struct</span> <span class="n">in6_addr</span> <span class="n">sin6_addr</span><span class="p">;</span>     <span class="c1">// IPv6 address</span>
+    <span class="n">u_int32_t</span> <span class="n">sin6_scope_id</span><span class="p">;</span> <span class="c1">// Scope ID</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="n">in6_addr</span> <span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span>   <span class="n">s6_addr</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>   <span class="c1">// IPv6 address</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Here's a sample call if you're a <strong><em>server</em></strong> who wants to listen on your host's IP address, port 3490.</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">addrinfo</span> <span class="n">hints</span><span class="p">;</span>
+<span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">hints</span><span class="p">);</span> <span class="c1">// make sure the struct is empty</span>
+<span class="n">hints</span><span class="p">.</span><span class="n">ai_family</span> <span class="o">=</span> <span class="n">AF_UNSPEC</span><span class="p">;</span>     <span class="c1">// don&#39;t care IPv4 or IPv6</span>
+<span class="n">hints</span><span class="p">.</span><span class="n">ai_socktype</span> <span class="o">=</span> <span class="n">SOCK_STREAM</span><span class="p">;</span> <span class="c1">// TCP stream sockets</span>
+<span class="n">hints</span><span class="p">.</span><span class="n">ai_flags</span> <span class="o">=</span> <span class="n">AI_PASSIVE</span><span class="p">;</span>     <span class="c1">// fill in my IP for me</span>
+<span class="k">struct</span> <span class="n">addrinfo</span> <span class="o">*</span><span class="n">servinfo</span><span class="p">;</span>  <span class="c1">// will point to the results</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">status</span> <span class="o">=</span> <span class="n">getaddrinfo</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">&quot;3490&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">servinfo</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;getaddrinfo error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">gai_strerror</span><span class="p">(</span><span class="n">status</span><span class="p">));</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// servinfo now points to a linked list of 1 or more struct addrinfos</span>
+<span class="c1">// ... do everything until you don&#39;t need servinfo anymore ....</span>
+<span class="n">freeaddrinfo</span><span class="p">(</span><span class="n">servinfo</span><span class="p">);</span> <span class="c1">// free the linked-list</span>
+</pre></div>
+
+
+<p>Here's a sample call if you're a <strong><em>client</em></strong> who wants to connect to a particular server, say “www.example.net” port 3490.</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">addrinfo</span> <span class="n">hints</span><span class="p">;</span>
+<span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">hints</span><span class="p">);</span> <span class="c1">// make sure the struct is empty</span>
+<span class="n">hints</span><span class="p">.</span><span class="n">ai_family</span> <span class="o">=</span> <span class="n">AF_UNSPEC</span><span class="p">;</span>     <span class="c1">// don&#39;t care IPv4 or IPv6</span>
+<span class="n">hints</span><span class="p">.</span><span class="n">ai_socktype</span> <span class="o">=</span> <span class="n">SOCK_STREAM</span><span class="p">;</span> <span class="c1">// TCP stream sockets</span>
+<span class="k">struct</span> <span class="n">addrinfo</span> <span class="o">*</span><span class="n">servinfo</span><span class="p">;</span>  <span class="c1">// will point to the results</span>
+<span class="c1">// get ready to connect</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">getaddrinfo</span><span class="p">(</span><span class="s">&quot;www.example.net&quot;</span><span class="p">,</span> <span class="s">&quot;3490&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">servinfo</span><span class="p">);</span>
+<span class="c1">// servinfo now points to a linked list of 1 or more struct addrinfos</span>
+<span class="c1">// etc.</span>
+</pre></div>
+
+
+<hr>
+<p><code>getaddrinfo</code> is only preparation. </p>
+<hr>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/network-programming.html">posted at 23:29</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/c.html" rel="tag">C</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/network-programming.html" class="tags">Network-Programming</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

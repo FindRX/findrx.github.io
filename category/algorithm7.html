@@ -33,317 +33,286 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/top-k-frequent-elements.html" rel="bookmark" title="Permanent Link to &quot;Top K Frequent Elements&quot;">Top K Frequent Elements</a>
+                    <a href="/shortest-unsorted-continuous-subarray.html" rel="bookmark" title="Permanent Link to &quot;Shortest Unsorted Continuous Subarray&quot;">Shortest Unsorted Continuous Subarray</a>
                 </h2>
 
                 
                 
 
-                <p>Given a non-empty array of integers, return the k most frequent elements.</p>
+                <p>Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too.</p>
+<p>You need to find the shortest such subarray and output its length.</p>
+<p>Example 1:</p>
 <ul>
-<li>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.</li>
-<li>Your algorithm's time complexity must be better than O(n log n), where n is the array's size.</li>
-</ul>
-<p>For example:</p>
-<ul>
-<li>Given [1,1,1,2 …</li></ul>
+<li>Input: [2, 6, 4 …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/top-k-frequent-elements.html">No.347</a>
+				<a href="/shortest-unsorted-continuous-subarray.html">No.401</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
                 </div>
-		<a href="/top-k-frequent-elements.html#disqus_thread">Click to read and post comments</a>
+		<a href="/shortest-unsorted-continuous-subarray.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/moving-average-from-data-steam.html" rel="bookmark" title="Permanent Link to &quot;Moving Average from Data Steam&quot;">Moving Average from Data Steam</a>
+                    <a href="/nth-digit.html" rel="bookmark" title="Permanent Link to &quot;Nth Digit&quot;">Nth Digit</a>
                 </h2>
 
                 
                 
 
-                <p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
-<p>For example,</p>
-<div class="highlight"><pre><span></span>MovingAverage m = new MovingAverage(3);
-m.next(1) = 1
-m.next(10) = (1 + 10) / 2
-m.next(3) = (1 + 10 + 3) / 3
-m.next(5) = (10 + 3 + 5 …</pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/moving-average-from-data-steam.html">No.346</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
-                    &nbsp;<a href="/tag/queue.html" class="tags">Queue</a>
-                </div>
-		<a href="/moving-average-from-data-steam.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/reverse-vowels-of-a-string.html" rel="bookmark" title="Permanent Link to &quot;Reverse Vowels of a String&quot;">Reverse Vowels of a String</a>
-                </h2>
-
-                
-                
-
-                <p>Write a function that takes a string as input and reverse only the vowels of a string.</p>
+                <p>Find the n<sup>th</sup> digit of the infinite integer sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...</p>
+<p>Note:</p>
 <ul>
-<li>The vowels does not include the letter "y".</li>
+<li>n is positive and will fit within the range of a 32-bit signed integer (n <code>&lt;</code> 2<sup>31</sup>).</li>
 </ul>
 <p>Example:</p>
 <ul>
-<li>Given s = "hello", return "holle".</li>
-<li>Given s = "leetcode", return "leotcede".</li>
-</ul>
-<p>C Solution: </p>
-<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">reverseVowels</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">l</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1 …</span></pre></div>
+<li>Input: 3 Output: 3</li>
+<li>Input: 11 Output: 0<ul>
+<li>Explanation: The …</li></ul></li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/reverse-vowels-of-a-string.html">No.345</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                </div>
-		<a href="/reverse-vowels-of-a-string.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/reverse-string.html" rel="bookmark" title="Permanent Link to &quot;Reverse String&quot;">Reverse String</a>
-                </h2>
-
-                
-                
-
-                <p>Write a function that takes a string as input and returns the string reversed.</p>
-<p>Example:</p>
-<ul>
-<li>Given s = "hello", return "olleh".</li>
-</ul>
-<p>Python Solution:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">reverseString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :type s: str</span>
-<span class="sd">        :rtype: str</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-
-
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">reverseString</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span> <span class="o">||</span> <span class="o">!*</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">l …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/reverse-string.html">No.344</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                </div>
-		<a href="/reverse-string.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/power-of-four.html" rel="bookmark" title="Permanent Link to &quot;Power of Four&quot;">Power of Four</a>
-                </h2>
-
-                
-                
-
-                <p>Given an integer (signed 32 bits), write a function to check whether it is a power of 4.</p>
-<p>Example:</p>
-<ul>
-<li>Given num = 16, return true. Given num = 5, return false.</li>
-</ul>
-<p>Follow up: </p>
-<ul>
-<li>Could you solve it without loops/recursion?</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfFour</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">num</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">num</span> <span class="o">&amp;</span> <span class="mh">0x55555555 …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/power-of-four.html">No.342</a>
+				<a href="/nth-digit.html">No.400</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
                 </div>
-		<a href="/power-of-four.html#disqus_thread">Click to read and post comments</a>
+		<a href="/nth-digit.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/longest-substring-with-at-most-k-distinct-characters.html" rel="bookmark" title="Permanent Link to &quot;Longest Substring with At Most K Distinct Characters&quot;">Longest Substring with At Most K Distinct Characters</a>
+                    <a href="/rotate-function.html" rel="bookmark" title="Permanent Link to &quot;Rotate Function&quot;">Rotate Function</a>
                 </h2>
 
                 
                 
 
-                <p>Given a string, find the length of the longest substring T that contains at most k distinct characters.</p>
-<p>For example, Given s = <code>“eceba”</code> and k = 2,</p>
-<p>T is <code>"ece"</code> which its length is 3.</p>
-<p>Solution:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">lengthOfLongestSubstringKDistinct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :type s: str</span>
-<span class="sd">        :type k: int</span>
-<span class="sd">        :rtype …</span></pre></div>
+                <p>Given an array of integers A and let n to be its length.</p>
+<p>Assume B<sub>k</sub> to be an array obtained by rotating the array A k positions clock-wise, we define a "rotation function" F on A as follow:</p>
+<p>F(k) = 0 * Bk[0] + 1 * Bk[1] + ... + (n-1) * Bk[n-1 …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/longest-substring-with-at-most-k-distinct-characters.html">No.340</a>
+				<a href="/rotate-function.html">No.396</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
                 </div>
-		<a href="/longest-substring-with-at-most-k-distinct-characters.html#disqus_thread">Click to read and post comments</a>
+		<a href="/rotate-function.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/nested-list-weight-sum.html" rel="bookmark" title="Permanent Link to &quot;Nested List Weight Sum&quot;">Nested List Weight Sum</a>
+                    <a href="/find-the-difference.html" rel="bookmark" title="Permanent Link to &quot;Find the Difference&quot;">Find the Difference</a>
                 </h2>
 
                 
                 
 
-                <p>Given a nested list of integers, return the sum of all integers in the list weighted by their depth.</p>
-<p>Each element is either an integer, or a list -- whose elements may also be integers or other lists.</p>
+                <p>Given two strings s and t which consist of only lowercase letters.</p>
+<p>String t is generated by random shuffling string s and then add one more letter at a random position.</p>
+<p>Find the letter that was added in t.</p>
 <p>Example:</p>
 <ul>
-<li>Given the list [[1,1],2,[1,1]]</li>
-<li>return 10. (four 1's …</li></ul>
+<li>Input: s = "abcd" t = "abcde"</li>
+<li>Output: e</li>
+<li>Explanation: 'e' is …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/nested-list-weight-sum.html">No.339</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
-                </div>
-		<a href="/nested-list-weight-sum.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/palindrome-pairs.html" rel="bookmark" title="Permanent Link to &quot;Palindrome Pairs&quot;">Palindrome Pairs</a>
-                </h2>
-
-                
-                
-
-                <p>Given a list of <strong>unique</strong> words, find all pairs of <strong>distinct</strong> indices <code>(i, j)</code> in the given list, so that the concatenation of the two words, i.e. <code>words[i] + words[j]</code> is a palindrome.</p>
-<p><strong>Example 1:</strong></p>
-<ul>
-<li>Given <code>words</code> = <code>["bat", "tab", "cat"]</code></li>
-<li>Return <code>[[0, 1], [1, 0]]</code></li>
-<li>The palindromes are …</li></ul>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/palindrome-pairs.html">No.336</a>
+				<a href="/find-the-difference.html">No.389</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                    &nbsp;<a href="/tag/trie.html" class="tags">Trie</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
                 </div>
-		<a href="/palindrome-pairs.html#disqus_thread">Click to read and post comments</a>
+		<a href="/find-the-difference.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/odd-even-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Odd Even Linked List&quot;">Odd Even Linked List</a>
+                    <a href="/first-unique-character-in-a-string.html" rel="bookmark" title="Permanent Link to &quot;First Unique Character in a String&quot;">First Unique Character in a String</a>
                 </h2>
 
                 
                 
 
-                <p>Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.</p>
+                <p>Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.</p>
 <ul>
-<li>You should try to do it in place. The program should run in O(1) space complexity and …</li></ul>
+<li>You may assume the string contain only lowercase letters.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>s = "leetcode", return 0.</li>
+<li>s = "loveleetcode", return 2.</li>
+</ul>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">firstUniqChar …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/odd-even-linked-list.html">No.328</a>
+				<a href="/first-unique-character-in-a-string.html">No.387</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                </div>
+		<a href="/first-unique-character-in-a-string.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/ransom-note.html" rel="bookmark" title="Permanent Link to &quot;Ransom Note&quot;">Ransom Note</a>
+                </h2>
+
+                
+                
+
+                <p>Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function that will return true if the ransom note can be constructed from the magazines ; otherwise, it will return false.</p>
+<p>Each letter in the magazine string can only be used once in your …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/ransom-note.html">No.383</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+		<a href="/ransom-note.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/insert-delete-getrandom-o1-duplicates-allowed.html" rel="bookmark" title="Permanent Link to &quot;Insert Delete GetRandom O(1) - Duplicates allowed&quot;">Insert Delete GetRandom O(1) - Duplicates allowed</a>
+                </h2>
+
+                
+                
+
+                <p>Design a data structure that supports all following operations in average O(1) time.</p>
+<p><strong><em>Note: Duplicate elements are allowed.</em></strong></p>
+<ol>
+<li><code>insert(val)</code>: Inserts an item val to the collection.</li>
+<li><code>remove(val)</code>: Removes an item val from the collection if present.</li>
+<li><code>getRandom</code>: Returns a random element from current collection of elements. The …</li></ol>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/insert-delete-getrandom-o1-duplicates-allowed.html">No.381</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                </div>
+		<a href="/insert-delete-getrandom-o1-duplicates-allowed.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/insert-delete-getrandom-o1.html" rel="bookmark" title="Permanent Link to &quot;Insert Delete GetRandom O(1)&quot;">Insert Delete GetRandom O(1)</a>
+                </h2>
+
+                
+                
+
+                <p>Design a data structure that supports all following operations in average <strong><em>O(1)</em></strong> time.</p>
+<ol>
+<li><code>insert(val)</code>: Inserts an item val to the set if not already present.</li>
+<li><code>remove(val)</code>: Removes an item val from the set if present.</li>
+<li><code>getRandom</code>: Returns a random element from current set of elements. Each element …</li></ol>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/insert-delete-getrandom-o1.html">No.380</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                </div>
+		<a href="/insert-delete-getrandom-o1.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/design-phone-directory.html" rel="bookmark" title="Permanent Link to &quot;Design Phone Directory&quot;">Design Phone Directory</a>
+                </h2>
+
+                
+                
+
+                <p>Design a Phone Directory which supports the following operations:</p>
+<ul>
+<li>get: Provide a number which is not assigned to anyone.</li>
+<li>check: Check if a number is available or not.</li>
+<li>release: Recycle or release a number.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>// Init a phone directory containing a total of 3 numbers: 0, 1, and 2.
+PhoneDirectory …</pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/design-phone-directory.html">No.379</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
                 </div>
-		<a href="/odd-even-linked-list.html#disqus_thread">Click to read and post comments</a>
+		<a href="/design-phone-directory.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/power-of-three.html" rel="bookmark" title="Permanent Link to &quot;Power of Three&quot;">Power of Three</a>
+                    <a href="/kth-smallest-element-in-a-sorted-matrix.html" rel="bookmark" title="Permanent Link to &quot;Kth Smallest Element in a Sorted Matrix&quot;">Kth Smallest Element in a Sorted Matrix</a>
                 </h2>
 
                 
                 
 
-                <p>Given an integer, write a function to determine if it is a power of three.</p>
-<p>Follow up:
-* Could you do it without using any loop / recursion?</p>
-<p>C Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfThree</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">n</span> <span class="o">/=</span> <span class="mi">3</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>C Solution 2 …</p>
+                <p>Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.</p>
+<ul>
+<li>it is the kth smallest element in the sorted order, not the kth distinct element.</li>
+<li>You may assume k is always valid, 1 ≤ k …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/power-of-three.html">No.326</a>
+				<a href="/kth-smallest-element-in-a-sorted-matrix.html">No.378</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
                 </div>
-		<a href="/power-of-three.html#disqus_thread">Click to read and post comments</a>
+		<a href="/kth-smallest-element-in-a-sorted-matrix.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -354,7 +323,7 @@ m.next(5) = (10 + 3 + 5 …</pre></div>
 
 
 
-                    <span>Page 7 of 17</span>
+                    <span>Page 7 of 23</span>
                 </div>
 
             <div class="clear"></div>

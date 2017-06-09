@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Valid Word Square</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/valid-word-square.html" rel="bookmark" title="Permanent Link to &quot;Valid Word Square&quot;">Valid Word Square</a>
+                </h2>
+
+                
+                
+
+                <p>Given a sequence of words, check whether it forms a valid word square.</p>
+<p>A sequence of words forms a valid word square if the kth row and column read the exact same string, where <code>0 ≤ k &lt; max(numRows, numColumns)</code>.</p>
+<ul>
+<li>The number of words given is at least 1 and does not exceed 500.</li>
+<li>Word length will be at least 1 and does not exceed 500.</li>
+<li>Each word contains only lowercase English alphabet a-z.</li>
+</ul>
+<p>Example 1:</p>
+<ul>
+<li>Input:</li>
+</ul>
+<div class="highlight"><pre><span></span>[
+  &quot;abcd&quot;,
+  &quot;bnrt&quot;,
+  &quot;crmy&quot;,
+  &quot;dtye&quot;
+]
+</pre></div>
+
+
+<ul>
+<li>Output: true</li>
+<li>Explanation:<ul>
+<li>The first row and first column both read "abcd".</li>
+<li>The second row and second column both read "bnrt".</li>
+<li>The third row and third column both read "crmy".</li>
+<li>The fourth row and fourth column both read "dtye".</li>
+<li>Therefore, it is a valid word square.</li>
+</ul>
+</li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Input:</li>
+</ul>
+<div class="highlight"><pre><span></span>[
+  &quot;abcd&quot;,
+  &quot;bnrt&quot;,
+  &quot;crm&quot;,
+  &quot;dt&quot;
+]
+</pre></div>
+
+
+<ul>
+<li>Output: true</li>
+<li>Explanation:<ul>
+<li>The first row and first column both read "abcd".</li>
+<li>The second row and second column both read "bnrt".</li>
+<li>The third row and third column both read "crm".</li>
+<li>The fourth row and fourth column both read "dt".</li>
+<li>Therefore, it is a valid word square.</li>
+</ul>
+</li>
+</ul>
+<p>Example 3:</p>
+<ul>
+<li>Input:</li>
+</ul>
+<div class="highlight"><pre><span></span>[
+  &quot;ball&quot;,
+  &quot;area&quot;,
+  &quot;read&quot;,
+  &quot;lady&quot;
+]
+</pre></div>
+
+
+<ul>
+<li>Output: false</li>
+<li>Explanation:<ul>
+<li>The third row reads "read" while the third column reads "lead".</li>
+<li>Therefore, it is NOT a valid word square.</li>
+</ul>
+</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">validWordSquare</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span> <span class="n">words</span><span class="p">,</span> <span class="kt">int</span> <span class="n">wordsSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">wordsSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="n">wordsSize</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">words</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">words</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>Remember</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/valid-word-square/#/description">422. Valid Word Square</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/valid-word-square.html">No.422</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

@@ -62,7 +62,7 @@
 <ul>
 <li>Therefore, return the max sliding window as [3,3,5,5,6,7].</li>
 </ul>
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Return an array of size *returnSize.</span>
 <span class="cm"> * Note: The returned array must be malloced, assume caller calls free().</span>
@@ -118,7 +118,7 @@
 </pre></div>
 
 
-<p>O(1) Solution:</p>
+<p>C Solution 2:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Return an array of size *returnSize.</span>
 <span class="cm"> * Note: The returned array must be malloced, assume caller calls free().</span>
@@ -143,6 +143,32 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
+</pre></div>
+
+
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">maxSlidingWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type nums: List[int]</span>
+<span class="sd">        :type k: int</span>
+<span class="sd">        :rtype: List[int]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">nums</span><span class="p">:</span> <span class="k">return</span> <span class="p">[]</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">heap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+            <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="o">-</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">heap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">discards</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="n">discards</span><span class="p">[</span><span class="o">-</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">k</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="o">-</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">while</span> <span class="n">discards</span><span class="p">[</span><span class="n">heap</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">discards</span><span class="p">[</span><span class="n">heap</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">heap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">res</span>
 </pre></div>
 
 

@@ -62,7 +62,7 @@
 </ul>
 </li>
 </ul>
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">arrangeCoins</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
@@ -73,6 +73,7 @@
 </pre></div>
 
 
+<p>C Solution 2:</p>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">arrangeCoins</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
@@ -87,11 +88,17 @@
 </pre></div>
 
 
+<p>C Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">arrangeCoins</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ol>
 <li>22ms, 42.06%</li>
-<li>Binary search, hehe.</li>
-<li>Using double with int sometimes confuses me.</li>
+<li>Binary search is strange, because of double?</li>
 </ol>
 <p>LeetCode: <a href="https://leetcode.com/problems/arranging-coins/">441. Arranging Coins</a></p>
                 <div class="clear"></div>

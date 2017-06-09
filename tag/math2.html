@@ -32,6 +32,155 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/perfect-number.html" rel="bookmark" title="Permanent Link to &quot;Perfect Number&quot;">Perfect Number</a>
+                </h2>
+
+                
+                
+
+                <p>We define the Perfect Number is a positive integer that is equal to the sum of all its positive divisors except itself.</p>
+<p>Now, given an integer n, write a function that returns true when it is a perfect number and false when it is not.</p>
+<ul>
+<li>The input number n will …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/perfect-number.html">No.357</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                </div>
+		<a href="/perfect-number.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/line-reflection.html" rel="bookmark" title="Permanent Link to &quot;Line Reflection&quot;">Line Reflection</a>
+                </h2>
+
+                
+                
+
+                <p>Given n points on a 2D plane, find if there is such a line parallel to y-axis that reflect the given points.</p>
+<p><strong>Example 1:</strong></p>
+<p>Given points = <code>[[1,1],[-1,1]]</code>, return true.</p>
+<p><strong>Example 2:</strong></p>
+<p>Given points = <code>[[1,1],[-1,-1]]</code>, return false.</p>
+<p><strong>Follow up:</strong></p>
+<p>Could you do better than O …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/line-reflection.html">No.356</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                </div>
+		<a href="/line-reflection.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/power-of-four.html" rel="bookmark" title="Permanent Link to &quot;Power of Four&quot;">Power of Four</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer (signed 32 bits), write a function to check whether it is a power of 4.</p>
+<p>Example:</p>
+<ul>
+<li>Given num = 16, return true. Given num = 5, return false.</li>
+</ul>
+<p>Follow up: </p>
+<ul>
+<li>Could you solve it without loops/recursion?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfFour</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">num</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">num</span> <span class="o">&amp;</span> <span class="mh">0x55555555 …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/power-of-four.html">No.342</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                </div>
+		<a href="/power-of-four.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/power-of-three.html" rel="bookmark" title="Permanent Link to &quot;Power of Three&quot;">Power of Three</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer, write a function to determine if it is a power of three.</p>
+<p>Follow up:
+* Could you do it without using any loop / recursion?</p>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfThree</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">n</span> <span class="o">/=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2 …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/power-of-three.html">No.326</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                </div>
+		<a href="/power-of-three.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/super-ugly-number.html" rel="bookmark" title="Permanent Link to &quot;Super Ugly Number&quot;">Super Ugly Number</a>
+                </h2>
+
+                
+                
+
+                <p>Write a program to find the n<sup>th</sup> super ugly number.</p>
+<p>Super ugly numbers are positive numbers whose all prime factors are in the given prime list primes of size k. </p>
+<ul>
+<li><code>1</code> is a super ugly number for any given primes.</li>
+<li>The given numbers in primes are in ascending order …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/super-ugly-number.html">No.313</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                </div>
+		<a href="/super-ugly-number.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/missing-number.html" rel="bookmark" title="Permanent Link to &quot;Missing Number&quot;">Missing Number</a>
                 </h2>
 
@@ -165,165 +314,6 @@
                     &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
                 </div>
 		<a href="/add-digits.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/strobogrammatic-number.html" rel="bookmark" title="Permanent Link to &quot;Strobogrammatic Number&quot;">Strobogrammatic Number</a>
-                </h2>
-
-                
-                
-
-                <p>A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).</p>
-<p>Write a function to determine if a number is strobogrammatic. The number is represented as a string.</p>
-<p>Example: </p>
-<ul>
-<li>the numbers "69", "88", and "818" are all strobogrammatic.</li>
-</ul>
-<p>C Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isStrobogrammatic …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/strobogrammatic-number.html">No.246</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                </div>
-		<a href="/strobogrammatic-number.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/power-of-two.html" rel="bookmark" title="Permanent Link to &quot;Power of Two&quot;">Power of Two</a>
-                </h2>
-
-                
-                
-
-                <p>Given an integer, write a function to determine if it is a power of two.</p>
-<p>C Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfTwo</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(;</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">);</span> <span class="n">n</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>C Solution 2:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfTwo</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>Summary:</p>
-<ol>
-<li>bit …</li></ol>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/power-of-two.html">No.231</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
-                </div>
-		<a href="/power-of-two.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/rectangle-area.html" rel="bookmark" title="Permanent Link to &quot;Rectangle Area&quot;">Rectangle Area</a>
-                </h2>
-
-                
-                
-
-                <p>Find the total area covered by two rectilinear rectangles in a 2D plane.</p>
-<p>Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.</p>
-<ul>
-<li>Assume that the total area is never beyond the maximum possible value of int.</li>
-</ul>
-<p><img alt="223. Rectangle Area" src="/images/rectangle-area.png"></p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">computeArea</span><span class="p">(</span><span class="kt">int …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/rectangle-area.html">No.223</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                </div>
-		<a href="/rectangle-area.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/count-primes.html" rel="bookmark" title="Permanent Link to &quot;Count Primes&quot;">Count Primes</a>
-                </h2>
-
-                
-                
-
-                <p>Count the number of prime numbers less than a non-negative number, n.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">countPrimes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/count-primes.html">No.204</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                </div>
-		<a href="/count-primes.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/happy-number.html" rel="bookmark" title="Permanent Link to &quot;Happy Number&quot;">Happy Number</a>
-                </h2>
-
-                
-                
-
-                <p>Write an algorithm to determine if a number is "happy".</p>
-<p>A happy number is a number defined by the following process: </p>
-<ol>
-<li>Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will …</li></ol>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/happy-number.html">No.202</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                </div>
-		<a href="/happy-number.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>

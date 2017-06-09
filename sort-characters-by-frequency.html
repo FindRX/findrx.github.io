@@ -70,8 +70,7 @@
 </ul>
 </li>
 </ul>
-<p>Python Solution:</p>
-<p>Heap:</p>
+<p>Python Solution 1: [Heap]</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">frequencySort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
         <span class="n">freq</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
@@ -85,7 +84,7 @@
 </pre></div>
 
 
-<p>Bucket:</p>
+<p>Python Solution 2: [Bucket]:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">frequencySort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
         <span class="n">freq</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
@@ -98,11 +97,24 @@
 </pre></div>
 
 
+<p>Python Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">frequencySort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type s: str</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">[(</span><span class="n">d</span><span class="p">[</span><span class="n">val</span><span class="p">],</span> <span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">d</span><span class="p">]</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">val</span> <span class="o">*</span> <span class="n">count</span> <span class="k">for</span> <span class="n">count</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+
+
 <p>Summary:</p>
-<ol>
-<li>The first: 132ms, 25.04%. The second: 129ms, 27.11%</li>
-<li>It's easy, both are O(N)</li>
-</ol>
+<ul>
+<li>Got use to Pythonic</li>
+</ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/sort-characters-by-frequency/">451. Sort Characters By Frequency</a></p>
                 <div class="clear"></div>
 

@@ -32,6 +32,166 @@
 
             <article class="post">
                 <h2 class="title">
+                    <a href="/strobogrammatic-number.html" rel="bookmark" title="Permanent Link to &quot;Strobogrammatic Number&quot;">Strobogrammatic Number</a>
+                </h2>
+
+                
+                
+
+                <p>A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).</p>
+<p>Write a function to determine if a number is strobogrammatic. The number is represented as a string.</p>
+<p>Example: </p>
+<ul>
+<li>the numbers "69", "88", and "818" are all strobogrammatic.</li>
+</ul>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isStrobogrammatic …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/strobogrammatic-number.html">No.246</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                </div>
+		<a href="/strobogrammatic-number.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/power-of-two.html" rel="bookmark" title="Permanent Link to &quot;Power of Two&quot;">Power of Two</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer, write a function to determine if it is a power of two.</p>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfTwo</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">);</span> <span class="n">n</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfTwo</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ol>
+<li>bit …</li></ol>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/power-of-two.html">No.231</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                </div>
+		<a href="/power-of-two.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/rectangle-area.html" rel="bookmark" title="Permanent Link to &quot;Rectangle Area&quot;">Rectangle Area</a>
+                </h2>
+
+                
+                
+
+                <p>Find the total area covered by two rectilinear rectangles in a 2D plane.</p>
+<p>Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.</p>
+<ul>
+<li>Assume that the total area is never beyond the maximum possible value of int.</li>
+</ul>
+<p><img alt="223. Rectangle Area" src="/images/rectangle-area.png"></p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">computeArea</span><span class="p">(</span><span class="kt">int …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/rectangle-area.html">No.223</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                </div>
+		<a href="/rectangle-area.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/count-primes.html" rel="bookmark" title="Permanent Link to &quot;Count Primes&quot;">Count Primes</a>
+                </h2>
+
+                
+                
+
+                <p>Count the number of prime numbers less than a non-negative number, n.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">countPrimes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/count-primes.html">No.204</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
+                </div>
+		<a href="/count-primes.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/happy-number.html" rel="bookmark" title="Permanent Link to &quot;Happy Number&quot;">Happy Number</a>
+                </h2>
+
+                
+                
+
+                <p>Write an algorithm to determine if a number is "happy".</p>
+<p>A happy number is a number defined by the following process: </p>
+<ol>
+<li>Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will …</li></ol>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/happy-number.html">No.202</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                </div>
+		<a href="/happy-number.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
                     <a href="/factorial-trailing-zeroes.html" rel="bookmark" title="Permanent Link to &quot;Factorial Trailing Zeroes&quot;">Factorial Trailing Zeroes</a>
                 </h2>
 
@@ -151,7 +311,17 @@
                 
                 
 
-                <p>LeetCode: <a href="https://leetcode.com/problems/sqrtx/">69. Sqrt(x)</a></p>
+                <p>Implement int sqrt(int x).</p>
+<p>Compute and return the square root of x.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">mySqrt</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="p">((</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">==</span> <span class="n">x</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span> <span class="k">return</span> <span class="n">m</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">l …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
@@ -162,6 +332,7 @@
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
                     &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
                 </div>
 		<a href="/sqrtx.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
@@ -182,12 +353,11 @@
 </ul>
 <p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">addBinary</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">alen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">blen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="p">(</span><span class="n">alen</span> <span class="o">&gt;</span> <span class="n">blen</span> <span class="o">?</span> <span class="nl">alen</span> <span class="p">:</span> <span class="n">blen</span><span class="p">);</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="n">res</span><span class="p">[</span><span class="n">len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int …</span></pre></div>
+    <span class="kt">int</span> <span class="n">lena</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">lenb</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="p">(</span><span class="n">lena</span> <span class="o">&gt;</span> <span class="n">lenb</span> <span class="o">?</span> <span class="nl">lena</span> <span class="p">:</span> <span class="n">lenb</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">len</span><span class="p">);</span>
+    <span class="n">res</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">k …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
@@ -200,167 +370,6 @@
                     &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
                 </div>
 		<a href="/add-binary.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/plus-one.html" rel="bookmark" title="Permanent Link to &quot;Plus One&quot;">Plus One</a>
-                </h2>
-
-                
-                
-
-                <p>Given a non-negative integer represented as a non-empty array of digits, plus one to the integer.</p>
-<p>You may assume the integer do not contain any leading zero, except the number 0 itself.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list.</p>
-<p>C …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/plus-one.html">No.66</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                </div>
-		<a href="/plus-one.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/roman-to-integer.html" rel="bookmark" title="Permanent Link to &quot;Roman to Integer&quot;">Roman to Integer</a>
-                </h2>
-
-                
-                
-
-                <p>Given a roman numeral, convert it to an integer.</p>
-<p>Input is guaranteed to be within the range from 1 to 3999.</p>
-<p>C Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">romanToInt</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
-
-    <span class="k">for</span> <span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span> <span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="sc">&#39;M&#39;</span><span class="p">;</span> <span class="n">p</span><span class="o">++</span><span class="p">);</span>
-    <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
-
-    <span class="k">for</span> <span class="p">(</span><span class="n">s</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span> <span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="sc">&#39;C&#39;</span> <span class="o">||</span> <span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="sc">&#39;D …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/roman-to-integer.html">No.13</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                </div>
-		<a href="/roman-to-integer.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/palindrome-number.html" rel="bookmark" title="Permanent Link to &quot;Palindrome Number&quot;">Palindrome Number</a>
-                </h2>
-
-                
-                
-
-                <p>Determine whether an integer is a palindrome. Do this without extra space.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="n">x</span> <span class="o">/=</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="o">||</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>Summary:</p>
-<ol>
-<li>When x &lt; 0 …</li></ol>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/palindrome-number.html">No.9</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                </div>
-		<a href="/palindrome-number.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/string-to-integer-atoi.html" rel="bookmark" title="Permanent Link to &quot;String to Integer (atoi)&quot;">String to Integer (atoi)</a>
-                </h2>
-
-                
-                
-
-                <p>Implement atoi to convert a string to an integer.</p>
-<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
-<p>Notes: It is intended for this problem to be specified vaguely (ie, no given input …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/string-to-integer-atoi.html">No.8</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                </div>
-		<a href="/string-to-integer-atoi.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/reverse-integer.html" rel="bookmark" title="Permanent Link to &quot;Reverse Integer&quot;">Reverse Integer</a>
-                </h2>
-
-                
-                
-
-                <p>Reverse digits of an integer.</p>
-<ul>
-<li>Example1: x = 123, return 321</li>
-<li>Example2: x = -123, return -321</li>
-</ul>
-<p>C Solution: </p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">reverse</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">INT_MIN</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="p">;</span>
-        <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">limit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">tlimit</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/reverse-integer.html">No.7</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags selected">Math</a>
-                </div>
-		<a href="/reverse-integer.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
