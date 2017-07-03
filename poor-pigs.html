@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Poor Pigs</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Brainteaser" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/poor-pigs.html" rel="bookmark" title="Permanent Link to &quot;Poor Pigs&quot;">Poor Pigs</a>
+                </h2>
+
+                
+                
+
+                <p>There are 1000 buckets, one and only one of them contains poison, the rest are filled with water. They all look the same. If a pig drinks that poison it will die within 15 minutes. What is the minimum amount of pigs you need to figure out which bucket contains the poison within one hour.</p>
+<p>Answer this question, and write an algorithm for the follow-up general case.</p>
+<p>Follow-up:</p>
+<p>If there are n buckets and a pig drinking poison will die within m minutes, how many pigs (x) you need to figure out the "poison" bucket within p minutes? There is exact one bucket with poison.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">poorPigs</span><span class="p">(</span><span class="kt">int</span> <span class="n">buckets</span><span class="p">,</span> <span class="kt">int</span> <span class="n">minutesToDie</span><span class="p">,</span> <span class="kt">int</span> <span class="n">minutesToTest</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">times</span> <span class="o">=</span> <span class="n">minutesToTest</span> <span class="o">/</span> <span class="n">minutesToDie</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">pigs</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="n">buckets</span><span class="p">)</span><span class="o">/</span><span class="n">log</span><span class="p">(</span><span class="n">times</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">pigs</span> <span class="o">+</span> <span class="p">(</span><span class="n">pow</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">pigs</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">buckets</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">poorPigs</span><span class="p">(</span><span class="kt">int</span> <span class="n">buckets</span><span class="p">,</span> <span class="kt">int</span> <span class="n">minutesToDie</span><span class="p">,</span> <span class="kt">int</span> <span class="n">minutesToTest</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">times</span> <span class="o">=</span> <span class="n">minutesToTest</span> <span class="o">/</span> <span class="n">minutesToDie</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">pigs</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_buckets</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">_buckets</span> <span class="o">&lt;</span> <span class="n">buckets</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_buckets</span> <span class="o">*=</span> <span class="n">times</span><span class="p">;</span>
+        <span class="n">pigs</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">pigs</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>Nothing to say.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/poor-pigs/#/description">458. Poor Pigs</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/poor-pigs.html">No.458</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/brainteaser.html" class="tags">Brainteaser</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

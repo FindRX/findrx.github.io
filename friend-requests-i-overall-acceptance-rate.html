@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Friend Requests I: Overall Acceptance Rate</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Database" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/friend-requests-i-overall-acceptance-rate.html" rel="bookmark" title="Permanent Link to &quot;Friend Requests I: Overall Acceptance Rate&quot;">Friend Requests I: Overall Acceptance Rate</a>
+                </h2>
+
+                
+                
+
+                <p>In social network like Facebook or Twitter, people send friend requests and accept others’ requests as well. Now given two tables as below:</p>
+<p>Table: <code>friend_request</code></p>
+<div class="highlight"><pre><span></span>| sender_id | send_to_id |request_date|
+|-----------|------------|------------|
+| 1         | 2          | 2016_06-01 |
+| 1         | 3          | 2016_06-01 |
+| 1         | 4          | 2016_06-01 |
+| 2         | 3          | 2016_06-02 |
+| 3         | 4          | 2016-06-09 |
+</pre></div>
+
+
+<p>Table: <code>request_accepted</code></p>
+<div class="highlight"><pre><span></span>| requester_id | accepter_id |accept_date |
+|--------------|-------------|------------|
+| 1            | 2           | 2016_06-03 |
+| 1            | 3           | 2016-06-08 |
+| 2            | 3           | 2016-06-08 |
+| 3            | 4           | 2016-06-09 |
+| 3            | 4           | 2016-06-10 |
+</pre></div>
+
+
+<p>Write a query to find the overall acceptance rate of requests rounded to 2 decimals, which is the number of acceptance divide the number of requests.</p>
+<p>For the sample data above, your query should return the following result.</p>
+<div class="highlight"><pre><span></span>|accept_rate|
+|-----------|
+|       0.80|
+</pre></div>
+
+
+<p>Note:</p>
+<ul>
+<li>The accepted requests are not necessarily from the table friend_request. In this case, you just need to simply count the total accepted requests (no matter whether they are in the original requests), and divide it by the number of requests to get the acceptance rate.</li>
+<li>It is possible that a sender sends multiple requests to the same receiver, and a request could be accepted more than once. In this case, the ‘duplicated’ requests or acceptances are only counted once.</li>
+<li>If there is no requests at all, you should return 0.00 as the accept_rate.</li>
+</ul>
+<p>Explanation: There are 4 unique accepted requests, and there are 5 requests in total. So the rate is 0.80.</p>
+<p>Follow-up:</p>
+<ul>
+<li>Can you write a query to return the accept rate but for every month?</li>
+<li>How about the cumulative accept rate for every day?</li>
+</ul>
+<p>Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">Write</span> <span class="n">your</span> <span class="n">MySQL</span> <span class="n">query</span> <span class="k">statement</span> <span class="n">below</span>
+<span class="k">SELECT</span> <span class="k">IF</span> <span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="k">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span> <span class="k">cast</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="k">c</span> <span class="o">/</span> <span class="n">R</span><span class="p">.</span><span class="k">c</span> <span class="k">as</span> <span class="nb">decimal</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+<span class="k">AS</span> <span class="n">accept_rate</span>
+<span class="k">FROM</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">requester_id</span><span class="p">,</span> <span class="n">accepter_id</span><span class="p">)</span> <span class="k">AS</span> <span class="k">c</span> <span class="k">FROM</span> <span class="n">request_accepted</span><span class="p">)</span> <span class="k">AS</span> <span class="n">A</span>
+<span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">sender_id</span><span class="p">,</span> <span class="n">send_to_id</span><span class="p">)</span> <span class="k">AS</span> <span class="k">c</span> <span class="k">FROM</span> <span class="n">friend_request</span><span class="p">)</span> <span class="k">AS</span> <span class="n">R</span>
+</pre></div>
+
+
+<p>Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">Write</span> <span class="n">your</span> <span class="n">MySQL</span> <span class="n">query</span> <span class="k">statement</span> <span class="n">below</span>
+<span class="k">SELECT</span> <span class="k">IF</span> <span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="k">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span> <span class="k">cast</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="k">c</span> <span class="o">/</span> <span class="n">R</span><span class="p">.</span><span class="k">c</span> <span class="k">as</span> <span class="nb">decimal</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+<span class="k">AS</span> <span class="n">accept_rate</span>
+<span class="k">FROM</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">requester_id</span><span class="p">,</span> <span class="n">accepter_id</span><span class="p">)</span> <span class="k">AS</span> <span class="k">c</span> <span class="k">FROM</span> <span class="n">request_accepted</span><span class="p">)</span> <span class="k">AS</span> <span class="n">A</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">sender_id</span><span class="p">,</span> <span class="n">send_to_id</span><span class="p">)</span> <span class="k">AS</span> <span class="k">c</span> <span class="k">FROM</span> <span class="n">friend_request</span><span class="p">)</span> <span class="k">AS</span> <span class="n">R</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>FROM can be used as cache.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/friend-requests-i-overall-acceptance-rate/#/description">597. Friend Requests I: Overall Acceptance Rate</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/friend-requests-i-overall-acceptance-rate.html">No.597</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/database.html" class="tags">Database</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

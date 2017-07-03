@@ -146,7 +146,7 @@
 </pre></div>
 
 
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Definition for a binary tree node.</span>
 <span class="cm"> * struct TreeNode {</span>
@@ -185,6 +185,65 @@
     <span class="o">*</span><span class="n">returnSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="n">cur_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cur_val</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cur_count</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">returnSize</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct TreeNode *left;</span>
+<span class="cm"> *     struct TreeNode *right;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="cm">/**</span>
+<span class="cm"> * Return an array of size *returnSize.</span>
+<span class="cm"> * Note: The returned array must be malloced, assume caller calls free().</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">inorder</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">max</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">pre</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">count</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">pre</span> <span class="o">==</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">++*</span><span class="n">count</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">max</span> <span class="o">&lt;</span> <span class="o">*</span><span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+            <span class="o">*</span><span class="n">max</span> <span class="o">=</span> <span class="o">*</span><span class="n">count</span><span class="p">;</span>
+            <span class="o">*</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">max</span> <span class="o">==</span> <span class="o">*</span><span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="n">res</span><span class="p">[</span><span class="o">*</span><span class="n">size</span><span class="p">]</span> <span class="o">=</span> <span class="o">*</span><span class="n">pre</span><span class="p">;</span>
+            <span class="o">++*</span><span class="n">size</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="o">*</span><span class="n">pre</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span> <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">int</span><span class="o">*</span> <span class="nf">findMode</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">returnSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">//first traversal</span>
+    <span class="o">*</span><span class="n">returnSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pre</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">,</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max</span><span class="p">,</span> <span class="n">returnSize</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pre</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">count</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">max</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+        <span class="o">*</span><span class="n">returnSize</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">pre</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">*</span><span class="n">returnSize</span> <span class="o">+=</span> <span class="p">(</span><span class="n">max</span> <span class="o">==</span> <span class="n">count</span><span class="p">);</span>
+    <span class="c1">//second traversal</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="o">*</span><span class="n">returnSize</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="o">*</span><span class="n">returnSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">pre</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max</span><span class="p">,</span> <span class="n">returnSize</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pre</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">count</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">max</span> <span class="o">==</span> <span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">res</span><span class="p">[(</span><span class="o">*</span><span class="n">returnSize</span><span class="p">)</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">pre</span><span class="p">;</span>
+    <span class="p">}</span>
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>

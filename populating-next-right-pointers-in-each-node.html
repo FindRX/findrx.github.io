@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Populating Next Right Pointers in Each Node</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Tree,Depth-First-Search" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/populating-next-right-pointers-in-each-node.html" rel="bookmark" title="Permanent Link to &quot;Populating Next Right Pointers in Each Node&quot;">Populating Next Right Pointers in Each Node</a>
+                </h2>
+
+                
+                
+
+                <p>Given a binary tree</p>
+<div class="highlight"><pre><span></span>    <span class="k">struct</span> <span class="n">TreeLinkNode</span> <span class="p">{</span>
+      <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">left</span><span class="p">;</span>
+      <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
+      <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.</p>
+<p>Initially, all next pointers are set to NULL.</p>
+<p>Note:</p>
+<ul>
+<li>You may only use constant extra space.</li>
+<li>You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).</li>
+</ul>
+<p>For example,</p>
+<p>Given the following perfect binary tree,</p>
+<div class="highlight"><pre><span></span>         1
+       /  \
+      2    3
+     / \  / \
+    4  5  6  7
+</pre></div>
+
+
+<p>After calling your function, the tree should look like:</p>
+<div class="highlight"><pre><span></span>         1 -&gt; NULL
+       /  \
+      2 -&gt; 3 -&gt; NULL
+     / \  / \
+    4-&gt;5-&gt;6-&gt;7 -&gt; NULL
+</pre></div>
+
+
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for binary tree with next pointer.</span>
+<span class="cm"> * struct TreeLinkNode {</span>
+<span class="cm"> *  int val;</span>
+<span class="cm"> *  struct TreeLinkNode *left, *right, *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">connect</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">l</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">l</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">l</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">connect</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+    <span class="n">connect</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for binary tree with next pointer.</span>
+<span class="cm"> * struct TreeLinkNode {</span>
+<span class="cm"> *  int val;</span>
+<span class="cm"> *  struct TreeLinkNode *left, *right, *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">connect</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">cur</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">cur</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cur</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>Nothing to say</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node/#/description">116. Populating Next Right Pointers in Each Node</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/populating-next-right-pointers-in-each-node.html">No.116</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

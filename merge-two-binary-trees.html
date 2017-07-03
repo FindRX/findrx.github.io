@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Merge Two Binary Trees</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Tree" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/merge-two-binary-trees.html" rel="bookmark" title="Permanent Link to &quot;Merge Two Binary Trees&quot;">Merge Two Binary Trees</a>
+                </h2>
+
+                
+                
+
+                <p>Given two binary trees and imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not.</p>
+<p>You need to merge them into a new binary tree. The merge rule is that if two nodes overlap, then sum node values up as the new value of the merged node. Otherwise, the NOT null node will be used as the node of new tree.</p>
+<p>Example 1:</p>
+<ul>
+<li>Input: </li>
+</ul>
+<div class="highlight"><pre><span></span>        Tree 1                     Tree 2                  
+          1                         2                             
+         / \                       / \                            
+        3   2                     1   3                        
+       /                           \   \                      
+      5                             4   7                  
+</pre></div>
+
+
+<ul>
+<li>Output, Merged tree:</li>
+</ul>
+<div class="highlight"><pre><span></span>         3
+        / \
+       4   5
+      / \   \ 
+     5   4   7
+</pre></div>
+
+
+<p>Note: The merging process must start from the root nodes of both trees.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct TreeNode *left;</span>
+<span class="cm"> *     struct TreeNode *right;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="nf">mergeTrees</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">t1</span><span class="p">,</span> <span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">t2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">t1</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">t2</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeNode</span><span class="p">));</span>
+    <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">t1</span> <span class="o">?</span> <span class="n">t1</span><span class="o">-&gt;</span><span class="nl">val</span> <span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">t2</span> <span class="o">?</span> <span class="n">t2</span><span class="o">-&gt;</span><span class="nl">val</span> <span class="p">:</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">mergeTrees</span><span class="p">(</span><span class="n">t1</span> <span class="o">?</span> <span class="n">t1</span><span class="o">-&gt;</span><span class="nl">left</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t2</span> <span class="o">?</span> <span class="n">t2</span><span class="o">-&gt;</span><span class="nl">left</span> <span class="p">:</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">mergeTrees</span><span class="p">(</span><span class="n">t1</span> <span class="o">?</span> <span class="n">t1</span><span class="o">-&gt;</span><span class="nl">right</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t2</span> <span class="o">?</span> <span class="n">t2</span><span class="o">-&gt;</span><span class="nl">right</span> <span class="p">:</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>Could I modify the t1 or t2?</li>
+<li>If yes, free the abandoned one.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/merge-two-binary-trees/#/description">617. Merge Two Binary Trees</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/merge-two-binary-trees.html">No.617</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

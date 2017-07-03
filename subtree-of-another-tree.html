@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
 
-    <meta name="keywords" content="LeetCode,Tree" />
+    <meta name="keywords" content="LeetCode,Tree,Mystery" />
 </head>
 <body>
     <header>
@@ -114,6 +114,30 @@
 </pre></div>
 
 
+<p>OR </p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct TreeNode *left;</span>
+<span class="cm"> *     struct TreeNode *right;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">isSame</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="k">struct</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">t</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">t</span> <span class="o">^</span> <span class="o">!</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">!=</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">isSame</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">isSame</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">isSubtree</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">t</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isSame</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">isSubtree</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">||</span> <span class="n">isSubtree</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
 <p>Python Solution:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">isSubtree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
@@ -142,6 +166,7 @@
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/mystery.html" class="tags">Mystery</a>
                 </div>
 <div id="disqus_thread"></div>
 <script type="text/javascript">

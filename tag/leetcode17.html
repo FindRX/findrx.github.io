@@ -32,85 +32,74 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/reorder-list.html" rel="bookmark" title="Permanent Link to &quot;Reorder List&quot;">Reorder List</a>
+                    <a href="/isomorphic-strings.html" rel="bookmark" title="Permanent Link to &quot;Isomorphic Strings&quot;">Isomorphic Strings</a>
                 </h2>
 
                 
                 
 
-                <p>Given a singly linked list L: L0→L1→…→Ln-1→Ln,
-reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
-<ul>
-<li>You must do this in-place without altering the nodes' values.</li>
-</ul>
-<p>For example:</p>
-<ul>
-<li>Given <code>1,2,3,4</code>, reorder it to <code>1,4,2,3</code>.</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct …</span></pre></div>
+                <p>Given two strings s and t, determine if they are isomorphic.</p>
+<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
+<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/reorder-list.html">No.143</a>
+				<a href="/isomorphic-strings.html">No.205</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                 </div>
-		<a href="/reorder-list.html#disqus_thread">Click to read and post comments</a>
+		<a href="/isomorphic-strings.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/linked-list-cycle-ii.html" rel="bookmark" title="Permanent Link to &quot;Linked List Cycle II&quot;">Linked List Cycle II</a>
+                    <a href="/count-primes.html" rel="bookmark" title="Permanent Link to &quot;Count Primes&quot;">Count Primes</a>
                 </h2>
 
                 
                 
 
-                <p>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.</p>
-<ul>
-<li>Do not modify the linked list.</li>
-<li>Can you solve it without using extra space?</li>
-</ul>
+                <p>Count the number of prime numbers less than a non-negative number, n.</p>
 <p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="nf">detectCycle</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">countPrimes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/linked-list-cycle-ii.html">No.142</a>
+				<a href="/count-primes.html">No.204</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
                 </div>
-		<a href="/linked-list-cycle-ii.html#disqus_thread">Click to read and post comments</a>
+		<a href="/count-primes.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/linked-list-cycle.html" rel="bookmark" title="Permanent Link to &quot;Linked List Cycle&quot;">Linked List Cycle</a>
+                    <a href="/remove-linked-list-elements.html" rel="bookmark" title="Permanent Link to &quot;Remove Linked List Elements&quot;">Remove Linked List Elements</a>
                 </h2>
 
                 
                 
 
-                <p>Given a linked list, determine if it has a cycle in it.</p>
+                <p>Remove all elements from a linked list of integers that have value val.</p>
+<p>Example</p>
 <ul>
-<li>Can you solve it without using extra space?</li>
+<li>Given: <code>1 --&gt; 2 --&gt; 6 --&gt; 3 --&gt; 4 --&gt; 5 --&gt; 6</code>, <code>val = 6</code></li>
+<li>Return: <code>1 --&gt; 2 --&gt; 3 --&gt; 4 --&gt; 5</code></li>
 </ul>
 <p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -120,215 +109,222 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 <span class="cm"> *     struct ListNode *next;</span>
 <span class="cm"> * };</span>
 <span class="cm"> */</span>
-<span class="kt">bool</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">_head …</span></pre></div>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">removeElements</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/linked-list-cycle.html">No.141</a>
+				<a href="/remove-linked-list-elements.html">No.203</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
                 </div>
-		<a href="/linked-list-cycle.html#disqus_thread">Click to read and post comments</a>
+		<a href="/remove-linked-list-elements.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/copy-list-with-random-pointer.html" rel="bookmark" title="Permanent Link to &quot;Copy List with Random Pointer&quot;">Copy List with Random Pointer</a>
+                    <a href="/happy-number.html" rel="bookmark" title="Permanent Link to &quot;Happy Number&quot;">Happy Number</a>
                 </h2>
 
                 
                 
 
-                <p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
-<p>Return a deep copy of the list.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list with a random pointer.</span>
-<span class="cm"> * struct RandomListNode {</span>
-<span class="cm"> *     int label;</span>
-<span class="cm"> *     struct RandomListNode *next;</span>
-<span class="cm"> *     struct …</span></pre></div>
+                <p>Write an algorithm to determine if a number is "happy".</p>
+<p>A happy number is a number defined by the following process: </p>
+<ol>
+<li>Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will …</li></ol>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/copy-list-with-random-pointer.html">No.138</a>
+				<a href="/happy-number.html">No.202</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
                 </div>
-		<a href="/copy-list-with-random-pointer.html#disqus_thread">Click to read and post comments</a>
+		<a href="/happy-number.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/single-number.html" rel="bookmark" title="Permanent Link to &quot;Single number&quot;">Single number</a>
+                    <a href="/number-of-islands.html" rel="bookmark" title="Permanent Link to &quot;Number of Islands&quot;">Number of Islands</a>
                 </h2>
 
                 
                 
 
-                <p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
-<ul>
-<li>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">singleNumber</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numsSize</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numsSize</span><span class="p">;</span> <span class="n">i …</span></pre></div>
+                <p>Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+<p>Example 1:</p>
+<div class="highlight"><pre><span></span>11110
+11010 …</pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/single-number.html">No.136</a>
+				<a href="/number-of-islands.html">No.200</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
+                    &nbsp;<a href="/tag/union-find.html" class="tags">Union-Find</a>
                 </div>
-		<a href="/single-number.html#disqus_thread">Click to read and post comments</a>
+		<a href="/number-of-islands.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/word-ladder.html" rel="bookmark" title="Permanent Link to &quot;Word Ladder&quot;">Word Ladder</a>
+                    <a href="/binary-tree-right-side-view.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Right Side View&quot;">Binary Tree Right Side View</a>
                 </h2>
 
                 
                 
 
-                <p>Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:</p>
-<ul>
-<li>Only one letter can be changed at a time.</li>
-<li>Each transformed word must exist in the word list. Note that beginWord is not a transformed word …</li></ul>
+                <p>Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.</p>
+<p>For example:
+Given the following binary tree,</p>
+<div class="highlight"><pre><span></span>   1            &lt;---
+ /   \
+2     3         &lt;---
+ \     \
+  5     4       &lt;---
+</pre></div>
+
+
+<p>You should return [1, 3, 4].</p>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/word-ladder.html">No.127</a>
+				<a href="/binary-tree-right-side-view.html">No.199</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
                     &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
                 </div>
-		<a href="/word-ladder.html#disqus_thread">Click to read and post comments</a>
+		<a href="/binary-tree-right-side-view.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/valid-palindrome.html" rel="bookmark" title="Permanent Link to &quot;Valid Palindrome&quot;">Valid Palindrome</a>
+                    <a href="/house-robber.html" rel="bookmark" title="Permanent Link to &quot;House Robber&quot;">House Robber</a>
                 </h2>
 
                 
                 
 
-                <p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
-<p>For example,
-"A man, a plan, a canal: Panama" is a palindrome.
-"race a car" is not a palindrome.</p>
-<p>Note:</p>
-<ul>
-<li>Have you consider that the string might be empty? This is a good question …</li></ul>
+                <p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/valid-palindrome.html">No.125</a>
+				<a href="/house-robber.html">No.198</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                </div>
-		<a href="/valid-palindrome.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/best-time-to-buy-and-sell-stock-ii.html" rel="bookmark" title="Permanent Link to &quot;Best Time to Buy and Sell Stock II&quot;">Best Time to Buy and Sell Stock II</a>
-                </h2>
-
-                
-                
-
-                <p>Say you have an array for which the i<sup>th</sup> element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/best-time-to-buy-and-sell-stock-ii.html">No.122</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
-                </div>
-		<a href="/best-time-to-buy-and-sell-stock-ii.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/best-time-to-buy-and-sell-stock.html" rel="bookmark" title="Permanent Link to &quot;Best Time to Buy and Sell Stock&quot;">Best Time to Buy and Sell Stock</a>
-                </h2>
-
-                
-                
-
-                <p>Say you have an array for which the i<sup>th</sup> element is the price of a given stock on day i.</p>
-<p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/best-time-to-buy-and-sell-stock.html">No.121</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
                     &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
                 </div>
-		<a href="/best-time-to-buy-and-sell-stock.html#disqus_thread">Click to read and post comments</a>
+		<a href="/house-robber.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/pascals-triangle-ii.html" rel="bookmark" title="Permanent Link to &quot;Pascal's Triangle II&quot;">Pascal's Triangle II</a>
+                    <a href="/tenth-line.html" rel="bookmark" title="Permanent Link to &quot;Tenth Line&quot;">Tenth Line</a>
                 </h2>
 
                 
                 
 
-                <p>Given an index k, return the kth row of the Pascal's triangle.</p>
-<ul>
-<li>Could you optimize your algorithm to use only O(k) extra space?</li>
-</ul>
-<p>For example, given k = 3, Return [1,3,3,1].</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Return an array of size *returnSize.</span>
-<span class="cm"> * Note: The returned array must be malloced, assume …</span></pre></div>
+                <p>How would you print just the 10th line of a file?</p>
+<p>For example, assume that file.txt has the following content:</p>
+<div class="highlight"><pre><span></span>Line 1
+Line 2
+Line 3
+Line 4
+Line 5
+Line 6
+Line 7
+Line 8
+Line 9
+Line 10
+</pre></div>
+
+
+<p>Your script should output the tenth line, which is …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/pascals-triangle-ii.html">No.119</a>
+				<a href="/tenth-line.html">No.195</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/bash.html" class="tags">Bash</a>
                 </div>
-		<a href="/pascals-triangle-ii.html#disqus_thread">Click to read and post comments</a>
+		<a href="/tenth-line.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/number-of-1-bits.html" rel="bookmark" title="Permanent Link to &quot;Number of 1 Bits&quot;">Number of 1 Bits</a>
+                </h2>
+
+                
+                
+
+                <p>Write a function that takes an unsigned integer and returns the number of ’1' bits it has (also known as the Hamming weight).</p>
+<p>For example, the 32-bit integer ’11' has binary representation 00000000000000000000000000001011, so the function should return 3.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">hammingWeight</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/number-of-1-bits.html">No.191</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                </div>
+		<a href="/number-of-1-bits.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/reverse-bits.html" rel="bookmark" title="Permanent Link to &quot;Reverse Bits&quot;">Reverse Bits</a>
+                </h2>
+
+                
+                
+
+                <p>Reverse bits of a given 32 bits unsigned integer.</p>
+<p>For example, given input 43261596 (represented in binary as 00000010100101000001111010011100), return 964176192 (represented in binary as 00111001011110000010100101000000).</p>
+<p>Follow up:
+If this function is called many times, how would you optimize it?</p>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="nf">reverseBits</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0 …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/reverse-bits.html">No.190</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                </div>
+		<a href="/reverse-bits.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -339,7 +335,7 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 
 
 
-                    <span>Page 17 of 23</span>
+                    <span>Page 17 of 27</span>
                 </div>
 
             <div class="clear"></div>

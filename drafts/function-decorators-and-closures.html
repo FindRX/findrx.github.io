@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Function Decorators and Closures</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Nov 23, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/drafts/function-decorators-and-closures.html" rel="bookmark" title="Permanent Link to &quot;Function Decorators and Closures&quot;">Function Decorators and Closures</a>
+                </h2>
+
+                
+                
+
+                <p>A Decorator is a callable that takes another function as argument (the decorated function) and returns another callable object.</p>
+<p>Decorators are just syntactic sugar, and they are executed immediately when a module is loaded.</p>
+<p>Most decorators define an inner function and return it to replace the decorated function.</p>
+<ul>
+<li>decorators can be used many times, so each time the inner function is a new object created when the decorators run.</li>
+</ul>
+<p>A closure is a function with an extended scope that encompasses <em>nonglobal</em> variables referenced in the body of the function but not defined there.</p>
+<div class="highlight"><pre><span></span><span class="c1">#obj is a function.</span>
+<span class="n">obj</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_varnames</span>  <span class="c1"># names of local variables.</span>
+<span class="n">obj</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_freevars</span>  <span class="c1"># names of free variables.</span>
+<span class="n">obj</span><span class="o">.</span><span class="vm">__closure__</span> <span class="c1"># the bindings of the variables in co_freevars.</span>
+<span class="n">obj</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cell_contents</span> <span class="c1"># the actual value of the first freevar.</span>
+</pre></div>
+
+
+<p>Python has three built-in functions that are designed to decorate methods: <code>property</code>, <code>classmethod</code> and <code>staticmethod</code>.</p>
+<p>How do you make a decorator accept other arguments?</p>
+<ul>
+<li>make a decorator factory that takes those arguments and returns a decorator, which is then applied to the function to be decorated.</li>
+<li>So, just another level.</li>
+<li>Parameterized decorators almost aways involve at least two nested functions.</li>
+</ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/drafts/function-decorators-and-closures.html">posted at 09:23</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">Python</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

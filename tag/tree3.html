@@ -32,15 +32,59 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/minimum-depth-of-binary-tree.html" rel="bookmark" title="Permanent Link to &quot;Minimum Depth of Binary Tree&quot;">Minimum Depth of Binary Tree</a>
+                    <a href="/kth-smallest-element-in-a-bst.html" rel="bookmark" title="Permanent Link to &quot;Kth Smallest Element in a BST&quot;">Kth Smallest Element in a BST</a>
                 </h2>
 
                 
                 
 
-                <p>Given a binary tree, find its minimum depth.</p>
-<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
-<p>C Solution 1:</p>
+                <p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
+<p>Note: 
+You may assume k is always valid, 1 ? k ? BST's total elements.</p>
+<p>Follow up:
+What if the BST is modified (insert/delete operations) often and you need to find the kth smallest …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/kth-smallest-element-in-a-bst.html">No.230</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
+                    &nbsp;<a href="/tag/perfect.html" class="tags">Perfect</a>
+                </div>
+		<a href="/kth-smallest-element-in-a-bst.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/invert-binary-tree.html" rel="bookmark" title="Permanent Link to &quot;Invert Binary Tree&quot;">Invert Binary Tree</a>
+                </h2>
+
+                
+                
+
+                <p>Invert a binary tree.</p>
+<div class="highlight"><pre><span></span>     4
+   /   \
+  2     7
+ / \   / \
+1   3 6   9
+</pre></div>
+
+
+<p>to</p>
+<div class="highlight"><pre><span></span>     4
+   /   \
+  7     2
+ / \   / \
+9   6 3   1
+</pre></div>
+
+
+<p>C Solution:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Definition for a binary tree node.</span>
 <span class="cm"> * struct TreeNode {</span>
@@ -49,11 +93,73 @@
 <span class="cm"> *     struct TreeNode *right;</span>
 <span class="cm"> * };</span>
 <span class="cm"> */</span>
-<span class="kt">int …</span></pre></div>
+<span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="nf">invertTree</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span> <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">left …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/minimum-depth-of-binary-tree.html">No.111</a>
+				<a href="/invert-binary-tree.html">No.226</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
+                </div>
+		<a href="/invert-binary-tree.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/count-complete-tree-nodes.html" rel="bookmark" title="Permanent Link to &quot;Count Çomplete Tree Nodes&quot;">Count Çomplete Tree Nodes</a>
+                </h2>
+
+                
+                
+
+                <p>Given a complete binary tree, count the number of nodes.</p>
+<p>Definition of a complete binary tree from <a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees">Wikipedia</a>:
+In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between 1 …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/count-complete-tree-nodes.html">No.222</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                </div>
+		<a href="/count-complete-tree-nodes.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/binary-tree-right-side-view.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Right Side View&quot;">Binary Tree Right Side View</a>
+                </h2>
+
+                
+                
+
+                <p>Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.</p>
+<p>For example:
+Given the following binary tree,</p>
+<div class="highlight"><pre><span></span>   1            &lt;---
+ /   \
+2     3         &lt;---
+ \     \
+  5     4       &lt;---
+</pre></div>
+
+
+<p>You should return [1, 3, 4].</p>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/binary-tree-right-side-view.html">No.199</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
@@ -62,48 +168,129 @@
                     &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
                     &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
                 </div>
-		<a href="/minimum-depth-of-binary-tree.html#disqus_thread">Click to read and post comments</a>
+		<a href="/binary-tree-right-side-view.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/balanced-binary-tree.html" rel="bookmark" title="Permanent Link to &quot;Balanced Binary Tree&quot;">Balanced Binary Tree</a>
+                    <a href="/binary-search-tree-iterator.html" rel="bookmark" title="Permanent Link to &quot;Binary Search Tree Iterator&quot;">Binary Search Tree Iterator</a>
                 </h2>
 
                 
                 
 
-                <p>Given a binary tree, determine if it is height-balanced.</p>
-<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for a binary tree node.</span>
-<span class="cm"> * struct TreeNode {</span>
-<span class="cm"> *     int …</span></pre></div>
+                <p>Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.</p>
+<p>Calling next() will return the next smallest number in the BST.</p>
+<p>Note: next() and hasNext() should run in average O(1) time and uses O(h) memory, where h …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/balanced-binary-tree.html">No.110</a>
+				<a href="/binary-search-tree-iterator.html">No.173</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
-                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>
+                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
                 </div>
-		<a href="/balanced-binary-tree.html#disqus_thread">Click to read and post comments</a>
+		<a href="/binary-search-tree-iterator.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/convert-sorted-array-to-binary-search-tree.html" rel="bookmark" title="Permanent Link to &quot;Convert Sorted Array to Binary Search Tree&quot;">Convert Sorted Array to Binary Search Tree</a>
+                    <a href="/binary-tree-postorder-traversal.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Postorder Traversal&quot;">Binary Tree Postorder Traversal</a>
                 </h2>
 
                 
                 
 
-                <p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
-<p>Python Solution:</p>
+                <p>Given a binary tree, return the postorder traversal of its nodes' values.</p>
+<p>For example:</p>
+<p>Given binary tree {1,#,2,3},</p>
+<div class="highlight"><pre><span></span>   1
+    \
+     2
+    /
+   3
+</pre></div>
+
+
+<p>return [3,2,1].</p>
+<p>Note: Recursive solution is trivial, could you do it iteratively?</p>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/binary-tree-postorder-traversal.html">No.145</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
+                    &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>
+                    &nbsp;<a href="/tag/perfect.html" class="tags">Perfect</a>
+                </div>
+		<a href="/binary-tree-postorder-traversal.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/binary-tree-preorder-traversal.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Preorder Traversal&quot;">Binary Tree Preorder Traversal</a>
+                </h2>
+
+                
+                
+
+                <p>Given a binary tree, return the preorder traversal of its nodes' values.</p>
+<p>For example:</p>
+<ul>
+<li>Given binary tree {1,#,2,3},</li>
+</ul>
+<div class="highlight"><pre><span></span>   1
+    \
+     2
+    /
+   3
+</pre></div>
+
+
+<ul>
+<li>return [1,2,3].</li>
+</ul>
+<p>Note: Recursive solution is trivial, could you do it iteratively?</p>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/binary-tree-preorder-traversal.html">No.144</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
+                    &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>
+                </div>
+		<a href="/binary-tree-preorder-traversal.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/construct-binary-tree-from-inorder-and-postorder-traversal.html" rel="bookmark" title="Permanent Link to &quot;Construct Binary Tree from Inorder and Postorder Traversal&quot;">Construct Binary Tree from Inorder and Postorder Traversal</a>
+                </h2>
+
+                
+                
+
+                <p>Given inorder and postorder traversal of a tree, construct the binary tree.</p>
+<p>Note: You may assume that duplicates do not exist in the tree.</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
 <span class="c1"># class TreeNode(object):</span>
 <span class="c1">#     def __init__(self, x):</span>
@@ -111,14 +298,48 @@
 <span class="c1">#         self.left = None</span>
 <span class="c1">#         self.right = None</span>
 
-<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">sortedArrayToBST</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :type nums …</span></pre></div>
+<span class="k">class …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/convert-sorted-array-to-binary-search-tree.html">No.108</a>
+				<a href="/construct-binary-tree-from-inorder-and-postorder-traversal.html">No.116</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                </div>
+		<a href="/construct-binary-tree-from-inorder-and-postorder-traversal.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/populating-next-right-pointers-in-each-node.html" rel="bookmark" title="Permanent Link to &quot;Populating Next Right Pointers in Each Node&quot;">Populating Next Right Pointers in Each Node</a>
+                </h2>
+
+                
+                
+
+                <p>Given a binary tree</p>
+<div class="highlight"><pre><span></span>    <span class="k">struct</span> <span class="n">TreeLinkNode</span> <span class="p">{</span>
+      <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">left</span><span class="p">;</span>
+      <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
+      <span class="n">TreeLinkNode</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<p>Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.</p>
+<p>Initially, all next pointers are set to NULL.</p>
+<p>Note:</p>
+<ul>
+<li>You may only …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/populating-next-right-pointers-in-each-node.html">No.116</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
@@ -126,70 +347,54 @@
                     &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
                     &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
                 </div>
-		<a href="/convert-sorted-array-to-binary-search-tree.html#disqus_thread">Click to read and post comments</a>
+		<a href="/populating-next-right-pointers-in-each-node.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/binary-tree-level-order-traversal-ii.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Level Order Traversal II&quot;">Binary Tree Level Order Traversal II</a>
+                    <a href="/flatten-binary-tree-to-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Flatten Binary Tree to Linked List&quot;">Flatten Binary Tree to Linked List</a>
                 </h2>
 
                 
                 
 
-                <p>Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).</p>
-<p>For example:</p>
-<ul>
-<li>Given binary tree [3,9,20,null,null,15,7],</li>
-</ul>
-<div class="highlight"><pre><span></span>    3
-   / \
-  9  20
-    /  \
-   15   7
+                <p>Given a binary tree, flatten it to a linked list in-place.</p>
+<p>For example,
+Given</p>
+<div class="highlight"><pre><span></span>         1
+        / \
+       2   5
+      / \   \
+     3   4   6
 </pre></div>
 
 
-<ul>
-<li>return its bottom-up level order traversal as …</li></ul>
-                <div class="clear"></div>
+<p>The flattened tree should look like:</p>
+<div class="highlight"><pre><span></span>   1
+    \
+     2
+      \
+       3
+        \
+         4
+          \
+           5
+            \
+             6
+</pre></div>
 
-                <div class="info">
-				<a href="/binary-tree-level-order-traversal-ii.html">No.107</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
-                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
-                </div>
-		<a href="/binary-tree-level-order-traversal-ii.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/maximum-depth-of-binary-tree.html" rel="bookmark" title="Permanent Link to &quot;Maximum Depth of Binary Tree&quot;">Maximum Depth of Binary Tree</a>
-                </h2>
-
-                
-                
-
-                <p>Given a binary tree, find its maximum depth.</p>
-<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
-<p>C Solution:</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Definition for a binary tree node.</span>
 <span class="cm"> * struct TreeNode {</span>
 <span class="cm"> *     int val;</span>
 <span class="cm"> *     struct TreeNode *left;</span>
-<span class="cm"> *     struct TreeNode *right;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="kt">int</span> <span class="nf">maxDepth …</span></pre></div>
+<span class="cm"> *     struct TreeNode …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/maximum-depth-of-binary-tree.html">No.104</a>
+				<a href="/flatten-binary-tree-to-linked-list.html">No.114</a>
 
                     &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
                     &nbsp;&middot;
@@ -197,158 +402,18 @@
                     &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
                     &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
                 </div>
-		<a href="/maximum-depth-of-binary-tree.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/binary-tree-level-order-traversal.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Level Order Traversal&quot;">Binary Tree Level Order Traversal</a>
-                </h2>
-
-                
-                
-
-                <p>Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).</p>
-<p>For example:</p>
-<ul>
-<li>Given binary tree [3,9,20,null,null,15,7],</li>
-</ul>
-<div class="highlight"><pre><span></span>    3
-   / \
-  9  20
-    /  \
-   15   7
-</pre></div>
-
-
-<ul>
-<li>return its level order traversal as:</li>
-</ul>
-<div class="highlight"><pre><span></span>[
-  [3],
-  [9,20],
-  [15,7]
-]
-</pre></div>
-
-
-<p>Python …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/binary-tree-level-order-traversal.html">No.102</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
-                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
-                </div>
-		<a href="/binary-tree-level-order-traversal.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/symmetric-tree.html" rel="bookmark" title="Permanent Link to &quot;Symmetric Tree&quot;">Symmetric Tree</a>
-                </h2>
-
-                
-                
-
-                <p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
-<ul>
-<li>Bonus points if you could solve it both recursively and iteratively.</li>
-</ul>
-<p>For example, this binary tree [1,2,2,3,4,4,3] is symmetric:</p>
-<div class="highlight"><pre><span></span>    1
-   / \
-  2   2
- / \ / \
-3  4 4  3
-</pre></div>
-
-
-<p>But …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/symmetric-tree.html">No.101</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
-                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
-                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
-                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
-                </div>
-		<a href="/symmetric-tree.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/same-tree.html" rel="bookmark" title="Permanent Link to &quot;Same Tree&quot;">Same Tree</a>
-                </h2>
-
-                
-                
-
-                <p>Given two binary trees, write a function to check if they are equal or not.</p>
-<p>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.</p>
-<p>Python Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
-<span class="c1"># class TreeNode(object):</span>
-<span class="c1">#     def __init__(self, x):</span>
-<span class="c1">#         self …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/same-tree.html">No.100</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
-                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
-                </div>
-		<a href="/same-tree.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/validate-binary-search-tree.html" rel="bookmark" title="Permanent Link to &quot;Validate Binary Search Tree&quot;">Validate Binary Search Tree</a>
-                </h2>
-
-                
-                
-
-                <p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
-<p>Assume a BST is defined as follows:</p>
-<ul>
-<li>The left subtree of a node contains only nodes with keys less than the node's key.</li>
-<li>The right subtree of a node contains only nodes with keys greater than …</li></ul>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/validate-binary-search-tree.html">No.98</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags selected">Tree</a>
-                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
-                </div>
-		<a href="/validate-binary-search-tree.html#disqus_thread">Click to read and post comments</a>
+		<a href="/flatten-binary-tree-to-linked-list.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
                 <div class="pages">
 
                 <a href="/tag/tree2.html" class="prev_page">&larr;&nbsp;Previous</a>
+                <a href="/tag/tree4.html" class="next_page">Next&nbsp;&rarr;</a>
 
 
 
-                    <span>Page 3 of 3</span>
+                    <span>Page 3 of 5</span>
                 </div>
 
             <div class="clear"></div>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Triangle Judgement</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Database" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/triangle-judgement.html" rel="bookmark" title="Permanent Link to &quot;Triangle Judgement&quot;">Triangle Judgement</a>
+                </h2>
+
+                
+                
+
+                <p>A pupil Tim gets homework to identify whether three line segments could possibly form a triangle.</p>
+<p>However, this assignment is very heavy because there are hundreds of records to calculate.
+Could you help Tim by writing a query to judge whether these three sides can form a triangle, assuming table triangle holds the length of the three sides x, y and z.</p>
+<div class="highlight"><pre><span></span>| x  | y  | z  |
+|----|----|----|
+| 13 | 15 | 30 |
+| 10 | 20 | 15 |
+</pre></div>
+
+
+<p>For the sample data above, your query should return the follow result:</p>
+<div class="highlight"><pre><span></span>| x  | y  | z  | triangle |
+|----|----|----|----------|
+| 13 | 15 | 30 | No       |
+| 10 | 20 | 15 | Yes      |
+</pre></div>
+
+
+<p>Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">Write</span> <span class="n">your</span> <span class="n">MySQL</span> <span class="n">query</span> <span class="k">statement</span> <span class="n">below</span>
+<span class="k">SELECT</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> 
+    <span class="k">IF</span><span class="p">((</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="k">and</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="k">and</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">z</span><span class="p">)</span> <span class="k">or</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="k">and</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="k">and</span> <span class="n">x</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="k">or</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="k">and</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="k">and</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">),</span> <span class="s1">&#39;Yes&#39;</span><span class="p">,</span> <span class="s1">&#39;No&#39;</span><span class="p">)</span>
+    <span class="k">AS</span> <span class="n">triangle</span>
+<span class="k">FROM</span> <span class="n">triangle</span>
+</pre></div>
+
+
+<p>Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">Write</span> <span class="n">your</span> <span class="n">MySQL</span> <span class="n">query</span> <span class="k">statement</span> <span class="n">below</span>
+<span class="k">SELECT</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> 
+    <span class="k">IF</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">z</span> <span class="k">and</span> <span class="n">x</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="k">and</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;Yes&#39;</span><span class="p">,</span> <span class="s1">&#39;No&#39;</span><span class="p">)</span>
+    <span class="k">AS</span> <span class="n">triangle</span>
+<span class="k">FROM</span> <span class="n">triangle</span>
+</pre></div>
+
+
+<p>Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">Write</span> <span class="n">your</span> <span class="n">MySQL</span> <span class="n">query</span> <span class="k">statement</span> <span class="n">below</span>
+<span class="k">SELECT</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> 
+    <span class="k">IF</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="k">or</span> <span class="n">x</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="k">or</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="s1">&#39;Yes&#39;</span><span class="p">)</span>
+    <span class="k">AS</span> <span class="n">triangle</span>
+<span class="k">FROM</span> <span class="n">triangle</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>nothing to say</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/triangle-judgement/#/description">610. Triangle Judgement</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/triangle-judgement.html">No.610</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/database.html" class="tags">Database</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

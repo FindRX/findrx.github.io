@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Sales Person</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Database" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/sales-person.html" rel="bookmark" title="Permanent Link to &quot;Sales Person&quot;">Sales Person</a>
+                </h2>
+
+                
+                
+
+                <p>Description:</p>
+<ul>
+<li>Given three tables: salesperson, company, orders.</li>
+<li>Output all the names in the table salesperson, who didn’t have sales to company 'RED'.</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Input<ul>
+<li>Table: salesperson</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>+----------+------+--------+-----------------+-----------+
+| sales_id | name | salary | commission_rate | hire_date |
++----------+------+--------+-----------------+-----------+
+|   1      | John | 100000 |     6           | 4/1/2006  |
+|   2      | Amy  | 120000 |     5           | 5/1/2010  |
+|   3      | Mark | 65000  |     12          | 12/25/2008|
+|   4      | Pam  | 25000  |     25          | 1/1/2005  |
+|   5      | Alex | 50000  |     10          | 2/3/2007  |
++----------+------+--------+-----------------+-----------+
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>* The table salesperson holds the salesperson information. Every salesperson has a sales_id and a name.
+* Table: company
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>+---------+--------+------------+
+| com_id  |  name  |    city    |
++---------+--------+------------+
+|   1     |  RED   |   Boston   |
+|   2     | ORANGE |   New York |
+|   3     | YELLOW |   Boston   |
+|   4     | GREEN  |   Austin   |
++---------+--------+------------+
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>* The table company holds the company information. Every company has a com_id and a name.
+* Table: orders
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>+----------+----------+---------+----------+--------+
+| order_id |  date    | com_id  | sales_id | amount |
++----------+----------+---------+----------+--------+
+| 1        | 1/1/2014 |    3    |    4     | 100000 |
+| 2        | 2/1/2014 |    4    |    5     | 5000   |
+| 3        | 3/1/2014 |    1    |    1     | 50000  |
+| 4        | 4/1/2014 |    1    |    4     | 25000  |
++----------+----------+---------+----------+--------+
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>* The table orders holds the sales record information, salesperson and customer company are represented by sales_id and com_id.
+</pre></div>
+
+
+<ul>
+<li>output</li>
+</ul>
+<div class="highlight"><pre><span></span>+------+
+| name | 
++------+
+| Amy  | 
+| Mark | 
+| Alex |
++------+
+</pre></div>
+
+
+<ul>
+<li>Explanation<ul>
+<li>According to order '3' and '4' in table orders, it is easy to tell only salesperson 'John' and 'Alex' have sales to company 'RED',</li>
+<li>so we need to output all the other names in table salesperson.</li>
+</ul>
+</li>
+</ul>
+<p>Solution:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">Write</span> <span class="n">your</span> <span class="n">MySQL</span> <span class="n">query</span> <span class="k">statement</span> <span class="n">below</span>
+<span class="k">SELECT</span> <span class="n">name</span>
+<span class="k">FROM</span> <span class="n">salesperson</span> 
+<span class="k">WHERE</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">orders</span> <span class="k">WHERE</span> <span class="n">salesperson</span><span class="p">.</span><span class="n">sales_id</span> <span class="o">=</span> <span class="n">orders</span><span class="p">.</span><span class="n">sales_id</span> <span class="k">AND</span> <span class="n">orders</span><span class="p">.</span><span class="n">com_id</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">com_id</span> <span class="k">FROM</span> <span class="n">company</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;RED&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>nothing to say</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/sales-person/#/description">607. Sales Person</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/sales-person.html">No.607</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/database.html" class="tags">Database</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

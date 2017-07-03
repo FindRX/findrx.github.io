@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Employee Bonus</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Database" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/employee-bonus.html" rel="bookmark" title="Permanent Link to &quot;Employee Bonus&quot;">Employee Bonus</a>
+                </h2>
+
+                
+                
+
+                <p>elect all employee's name and bonus whose bonus is <code>&lt; 1000</code>.</p>
+<p>Table:Employee</p>
+<div class="highlight"><pre><span></span>+-------+--------+-----------+--------+
+| empId |  name  | supervisor| salary |
++-------+--------+-----------+--------+
+|   1   | John   |  3        | 1000   |
+|   2   | Dan    |  3        | 2000   |
+|   3   | Brad   |  null     | 4000   |
+|   4   | Thomas |  3        | 4000   |
++-------+--------+-----------+--------+
+</pre></div>
+
+
+<p>empId is the primary key column for this table.</p>
+<p>Table: Bonus</p>
+<div class="highlight"><pre><span></span>+-------+-------+
+| empId | bonus |
++-------+-------+
+| 2     | 500   |
+| 4     | 2000  |
++-------+-------+
+</pre></div>
+
+
+<p>empId is the primary key column for this table.</p>
+<p>Example ouput:</p>
+<div class="highlight"><pre><span></span>+-------+-------+
+| name  | bonus |
++-------+-------+
+| John  | null  |
+| Dan   | 500   |
+| Brad  | null  |
++-------+-------+
+</pre></div>
+
+
+<p>Solution:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">Write</span> <span class="n">your</span> <span class="n">MySQL</span> <span class="n">query</span> <span class="k">statement</span> <span class="n">below</span>
+<span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">name</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">bonus</span> <span class="k">as</span> <span class="n">bonus</span>
+<span class="k">FROM</span> <span class="n">Employee</span> <span class="k">as</span> <span class="n">e</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">Bonus</span> <span class="k">as</span> <span class="n">b</span>
+<span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">empId</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">empId</span>
+<span class="k">WHERE</span> <span class="n">b</span><span class="p">.</span><span class="n">bonus</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">OR</span> <span class="n">b</span><span class="p">.</span><span class="n">bonus</span> <span class="o">&lt;</span> <span class="mi">1000</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>The conditions in WHERE can not be put into ON clause.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/employee-bonus/#/description">577. Employee Bonus</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/employee-bonus.html">No.577</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/database.html" class="tags">Database</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
