@@ -62,6 +62,38 @@
 </pre></div>
 
 
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type matrix: List[List[int]]</span>
+<span class="sd">        :rtype: void Do not return anything, modify matrix in-place instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">):</span>
+                <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">][</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">j</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">matrix</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">][</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">j</span><span class="p">]</span>
+                <span class="p">)</span>       
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type matrix: List[List[int]]</span>
+<span class="sd">        :rtype: void Do not return anything, modify matrix in-place instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">):</span>
+                <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="o">~</span><span class="n">i</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="o">~</span><span class="n">i</span><span class="p">][</span><span class="o">~</span><span class="n">j</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="o">~</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">matrix</span><span class="p">[</span><span class="o">~</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="o">~</span><span class="n">i</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="o">~</span><span class="n">i</span><span class="p">][</span><span class="o">~</span><span class="n">j</span><span class="p">]</span>
+                    <span class="p">)</span>       
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
 <li>The key point here is to find the right index.</li>
@@ -72,7 +104,7 @@
 
                 <div class="info">
 				<a href="/rotate-image.html">No.48</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/array.html" class="tags">Array</a>

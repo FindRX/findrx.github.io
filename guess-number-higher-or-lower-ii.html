@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Guess Number Higher or Lower II</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Minimax,Dynamic-Programming" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/guess-number-higher-or-lower-ii.html" rel="bookmark" title="Permanent Link to &quot;Guess Number Higher or Lower II&quot;">Guess Number Higher or Lower II</a>
+                </h2>
+
+                
+                
+
+                <p>We are playing the Guess Game. The game is as follows:</p>
+<p>I pick a number from 1 to n. You have to guess which number I picked.</p>
+<p>Every time you guess wrong, I'll tell you whether the number I picked is higher or lower.</p>
+<p>However, when you guess a particular number x, and you guess wrong, you pay $x. You win the game when you guess the number I picked.</p>
+<p>Example:</p>
+<p>n = 10, I pick 8.</p>
+<ul>
+<li>First round:  You guess 5, I tell you that it's higher. You pay $5.</li>
+<li>Second round: You guess 7, I tell you that it's higher. You pay $7.</li>
+<li>Third round:  You guess 9, I tell you that it's lower. You pay $9.</li>
+</ul>
+<p>Game over. 8 is the number I picked.</p>
+<p>You end up paying $5 + $7 + $9 = $21.</p>
+<p>Given a particular n ≥ 1, find out how much money you need to have to guarantee a win.</p>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># 1918ms</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">getMoneyAmount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type n: int</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dp</span> <span class="o">=</span> <span class="p">{(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">):</span>
+                    <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">],</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span> <span class="n">dp</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="c1"># 2405ms</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">getMoneyAmount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type n: int</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">def</span> <span class="nf">recu</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="o">&gt;=</span> <span class="n">e</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span> <span class="k">return</span> <span class="n">cache</span><span class="p">[(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">recu</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">e</span> <span class="o">+</span> <span class="n">recu</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">recu</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">recu</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">e</span><span class="p">)))</span>
+            <span class="n">cache</span><span class="p">[(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span> <span class="o">=</span> <span class="n">res</span>
+            <span class="k">return</span> <span class="n">res</span>
+        <span class="k">return</span> <span class="n">recu</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>    
+</pre></div>
+
+
+<p>Python Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="c1"># 608ms</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">getMoneyAmount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type n: int</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">dp</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">):</span>
+                    <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">],</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>dp is so funny.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/guess-number-higher-or-lower-ii/#/description">375. Guess Number Higher or Lower II</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/guess-number-higher-or-lower-ii.html">No.375</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/minimax.html" class="tags">Minimax</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

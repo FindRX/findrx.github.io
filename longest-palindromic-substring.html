@@ -80,16 +80,52 @@
 </pre></div>
 
 
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">longestPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type s: str</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="n">s</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">])</span>
+        <span class="n">max_center</span><span class="p">,</span> <span class="n">max_radius</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="n">center</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+        <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">cur</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">center</span> <span class="o">-</span> <span class="n">cur</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">radius</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">center</span> <span class="o">-</span> <span class="n">cur</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">radius</span> <span class="o">+</span> <span class="n">cur</span> <span class="o">&lt;</span> <span class="n">left</span><span class="p">:</span>
+                    <span class="n">d</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">radius</span>
+                    <span class="k">continue</span>
+            <span class="n">radius</span> <span class="o">=</span> <span class="n">left</span> <span class="o">-</span> <span class="n">cur</span> <span class="k">if</span> <span class="n">left</span> <span class="o">&gt;</span> <span class="n">cur</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="n">cur</span> <span class="o">-</span> <span class="n">radius</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">cur</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="ow">and</span> <span class="n">l</span><span class="p">[</span><span class="n">cur</span> <span class="o">-</span> <span class="n">radius</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">l</span><span class="p">[</span><span class="n">cur</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">radius</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">cur</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">&gt;</span> <span class="n">left</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">radius</span> <span class="o">&gt;</span> <span class="n">max_radius</span><span class="p">:</span>
+                    <span class="n">max_center</span> <span class="o">=</span> <span class="n">cur</span>
+                    <span class="n">max_radius</span> <span class="o">=</span> <span class="n">radius</span>
+                <span class="n">center</span> <span class="o">=</span> <span class="n">cur</span>
+                <span class="n">left</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">+</span> <span class="n">radius</span>
+            <span class="k">if</span> <span class="n">left</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="k">break</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">radius</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">max_center</span> <span class="o">-</span> <span class="n">max_radius</span><span class="p">:</span> <span class="n">max_center</span> <span class="o">+</span> <span class="n">max_radius</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">l</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s1">&#39;*&#39;</span><span class="p">])</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
-<li></li>
+<li>python solution is much better.</li>
 </ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/longest-palindromic-substring/#/description">5. Longest Palindromic Substring</a></p>
                 <div class="clear"></div>
 
                 <div class="info">
 				<a href="/longest-palindromic-substring.html">No.5</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/string.html" class="tags">String</a>

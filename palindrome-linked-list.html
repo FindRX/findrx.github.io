@@ -107,18 +107,78 @@
 </pre></div>
 
 
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">head</span><span class="p">):</span>
+            <span class="n">tail</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="bp">None</span>
+            <span class="k">while</span> <span class="n">tail</span><span class="p">:</span>
+                <span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="p">,</span> <span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">return</span> <span class="n">head</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">:</span> <span class="k">return</span> <span class="bp">True</span>
+        <span class="n">slow</span><span class="p">,</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+            <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">slow</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">right</span> <span class="ow">and</span> <span class="n">right</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">head</span><span class="o">.</span><span class="n">val</span><span class="p">:</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">right</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="n">right</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">:</span> <span class="k">return</span> <span class="bp">True</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+            <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">left</span><span class="p">,</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">if</span> <span class="n">fast</span><span class="p">:</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">while</span> <span class="n">left</span> <span class="ow">and</span> <span class="n">left</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">slow</span><span class="o">.</span><span class="n">val</span><span class="p">:</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="n">left</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ol>
 <li>12ms, 71.87%</li>
 <li>reverse the left side during finding the middle node, compare.</li>
 <li>Sometimes, don't consider the corner case too much in the beginning. Consider it later.</li>
+<li>Python solution 2 is so beautiful.</li>
 </ol>
 <p>LeetCode: <a href="https://leetcode.com/problems/palindrome-linked-list/">234. Palindrome Linked List</a></p>
                 <div class="clear"></div>
 
                 <div class="info">
 				<a href="/palindrome-linked-list.html">No.234</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>

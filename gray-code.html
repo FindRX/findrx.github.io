@@ -93,6 +93,27 @@
 </pre></div>
 
 
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">grayCode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type n: int</span>
+<span class="sd">        :rtype: List[int]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="n">cur_size</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">xrange</span><span class="p">(</span><span class="n">cur_size</span><span class="p">)):</span>
+                <span class="n">res</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">|</span> <span class="n">mask</span>
+                <span class="n">ind</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">cur_size</span> <span class="o">=</span> <span class="n">ind</span>
+        <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
 <li>Solution 2 is something ... special.</li>
@@ -102,7 +123,7 @@
 
                 <div class="info">
 				<a href="/gray-code.html">No.89</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/backtracking.html" class="tags">Backtracking</a>

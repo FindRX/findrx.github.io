@@ -82,16 +82,39 @@
 </pre></div>
 
 
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reverseList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">while</span> <span class="n">tail</span><span class="p">:</span>
+            <span class="c1">#head, tail, tail.next = tail, tail.next, head</span>
+            <span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="p">,</span> <span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">return</span> <span class="n">head</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
 <li>Solution 2 is more natural.</li>
+<li>python solution, be careful about the unpacking order.</li>
 </ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/reverse-linked-list/">206. Reverse Linked List</a></p>
                 <div class="clear"></div>
 
                 <div class="info">
 				<a href="/reverse-linked-list.html">No.206</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>

@@ -164,6 +164,73 @@
 </pre></div>
 
 
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">plusOne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">head</span><span class="p">):</span>
+            <span class="n">head</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">head</span>
+            <span class="k">while</span> <span class="n">tail</span><span class="p">:</span>
+                <span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="p">,</span> <span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">return</span> <span class="n">head</span>
+
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+        <span class="n">carry</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">cur</span> <span class="ow">and</span> <span class="n">carry</span><span class="p">:</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">carry</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">//</span> <span class="mi">10</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">%=</span> <span class="mi">10</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">carry</span><span class="p">:</span> 
+            <span class="n">new_head</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">new_head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span>
+            <span class="k">return</span> <span class="n">new_head</span>
+        <span class="k">return</span> <span class="n">head</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">plusOne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dummy</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">dummy</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">r</span> <span class="o">=</span> <span class="n">dummy</span>
+        <span class="k">while</span> <span class="n">r</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">val</span> <span class="o">!=</span> <span class="mi">9</span><span class="p">:</span>
+                <span class="n">l</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">val</span> <span class="o">!=</span> <span class="mi">9</span><span class="p">:</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">val</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">head</span>
+        <span class="n">l</span><span class="o">.</span><span class="n">val</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">l</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+            <span class="n">l</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">if</span> <span class="n">dummy</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">dummy</span>
+        <span class="k">return</span> <span class="n">head</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ol>
 <li>dummy head and double pointer can both be used when the pre-element need some operations.</li>
@@ -175,7 +242,7 @@
 
                 <div class="info">
 				<a href="/plus-one-linked-list.html">No.369</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>

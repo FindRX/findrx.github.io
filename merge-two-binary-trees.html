@@ -86,6 +86,63 @@
 </pre></div>
 
 
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">mergeTrees</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type t1: TreeNode</span>
+<span class="sd">        :type t2: TreeNode</span>
+<span class="sd">        :rtype: TreeNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">t1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">t2</span><span class="p">:</span> <span class="k">return</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">t1</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="ow">not</span> <span class="n">t2</span><span class="p">):</span> 
+            <span class="k">return</span> <span class="n">t1</span> <span class="k">if</span> <span class="n">t1</span> <span class="k">else</span> <span class="n">t2</span>
+        <span class="n">t1</span><span class="o">.</span><span class="n">val</span> <span class="o">+=</span> <span class="n">t2</span><span class="o">.</span><span class="n">val</span>
+        <span class="n">t1</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mergeTrees</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+        <span class="n">t1</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mergeTrees</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">t1</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span> <span class="k">return</span>
+        <span class="n">_root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+        <span class="n">_root</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+        <span class="n">_root</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_root</span>
+
+    <span class="k">def</span> <span class="nf">mergeTrees</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type t1: TreeNode</span>
+<span class="sd">        :type t2: TreeNode</span>
+<span class="sd">        :rtype: TreeNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">t1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">t2</span><span class="p">:</span> <span class="k">return</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">t1</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="ow">not</span> <span class="n">t2</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">t1</span> <span class="k">if</span> <span class="n">t1</span> <span class="k">else</span> <span class="n">t2</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">val</span> <span class="o">+</span> <span class="n">t2</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mergeTrees</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mergeTrees</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">root</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
 <li>Could I modify the t1 or t2?</li>
@@ -96,7 +153,7 @@
 
                 <div class="info">
 				<a href="/merge-two-binary-trees.html">No.617</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>

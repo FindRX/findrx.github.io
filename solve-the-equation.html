@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Solve the Equation</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Math" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/solve-the-equation.html" rel="bookmark" title="Permanent Link to &quot;Solve the Equation&quot;">Solve the Equation</a>
+                </h2>
+
+                
+                
+
+                <p>Solve a given equation and return the value of x in the form of string "x=#value". The equation contains only '+', '-' operation, the variable x and its coefficient.</p>
+<p>If there is no solution for the equation, return "No solution".</p>
+<p>If there are infinite solutions for the equation, return "Infinite solutions".</p>
+<p>If there is exactly one solution for the equation, we ensure that the value of x is an integer.</p>
+<p>Example 1:</p>
+<div class="highlight"><pre><span></span>Input: &quot;x+5-3+x=6+x-2&quot;
+Output: &quot;x=2&quot;
+</pre></div>
+
+
+<p>Example 2:</p>
+<div class="highlight"><pre><span></span>Input: &quot;x=x&quot;
+Output: &quot;Infinite solutions&quot;
+</pre></div>
+
+
+<p>Example 3:</p>
+<div class="highlight"><pre><span></span>Input: &quot;2x=x&quot;
+Output: &quot;x=0&quot;
+</pre></div>
+
+
+<p>Example 4:</p>
+<div class="highlight"><pre><span></span>Input: &quot;2x+3x-6x=x+2&quot;
+Output: &quot;x=-1&quot;
+</pre></div>
+
+
+<p>Example 5:</p>
+<div class="highlight"><pre><span></span>Input: &quot;x=x+2&quot;
+Output: &quot;No solution&quot;
+</pre></div>
+
+
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">solveEquation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">equation</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type equation: str</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;([=+-])&#39;</span><span class="p">,</span> <span class="n">equation</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">op</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">val</span><span class="p">:</span> <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+                <span class="n">op</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+                <span class="n">op</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;=&#39;</span><span class="p">:</span>
+                <span class="n">op</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">val</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">val</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="mi">1</span>
+                <span class="n">x</span> <span class="o">+=</span> <span class="n">val</span> <span class="o">*</span> <span class="n">op</span> <span class="o">*</span> <span class="n">sign</span>
+                <span class="n">op</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">*</span> <span class="n">op</span> <span class="o">*</span> <span class="n">sign</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Infinite solutions&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;No solution&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;x={}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="n">res</span> <span class="o">//</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>It's not complex.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/solve-the-equation/#/description">640. Solve the Equation</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/solve-the-equation.html">No.640</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

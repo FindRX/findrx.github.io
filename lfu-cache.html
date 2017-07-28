@@ -64,7 +64,7 @@
 </pre></div>
 
 
-<p>Python Solution:</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
@@ -84,7 +84,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">capacity</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_frequency</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">min_frequency</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="k">def</span> <span class="nf">pick_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
@@ -95,12 +94,8 @@
         <span class="k">if</span> <span class="n">header</span><span class="o">.</span><span class="n">next</span> <span class="o">==</span> <span class="n">tail</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">frequency</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_frequency</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">min_frequency</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">frequency</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_frequency</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">max_frequency</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="k">def</span> <span class="nf">put_it_back</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_frequency</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">node</span><span class="o">.</span><span class="n">frequency</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_frequency</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">max_frequency</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">frequency</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_frequency</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">node</span><span class="o">.</span><span class="n">frequency</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_frequency</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">min_frequency</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">frequency</span>
         <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">frequency</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
@@ -167,6 +162,91 @@
 </pre></div>
 
 
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="k">class</span> <span class="nc">LFUCache</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type capacity: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fqs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_fq</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">capacity</span>
+
+    <span class="k">def</span> <span class="nf">_insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">frequency</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fqs</span><span class="p">:</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">tail</span><span class="o">.</span><span class="n">pre</span> <span class="o">=</span> <span class="n">tail</span><span class="p">,</span> <span class="n">head</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fqs</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">frequency</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;head&#39;</span><span class="p">:</span> <span class="n">head</span><span class="p">,</span> <span class="s1">&#39;tail&#39;</span><span class="p">:</span> <span class="n">tail</span><span class="p">}</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fqs</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">frequency</span><span class="p">][</span><span class="s1">&#39;head&#39;</span><span class="p">]</span>
+        <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">pre</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">head</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type key: int</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">:</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">pre</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">fq</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">frequency</span>
+        <span class="k">if</span> <span class="n">fq</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_fq</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">fqs</span><span class="p">[</span><span class="n">fq</span><span class="p">][</span><span class="s1">&#39;head&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">next</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">fqs</span><span class="p">[</span><span class="n">fq</span><span class="p">][</span><span class="s1">&#39;tail&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_fq</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">frequency</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_insert</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span>
+
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type key: int</span>
+<span class="sd">        :type value: int</span>
+<span class="sd">        :rtype: void</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">:</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">pre</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">fq</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">frequency</span>
+            <span class="k">if</span> <span class="n">fq</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_fq</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">fqs</span><span class="p">[</span><span class="n">fq</span><span class="p">][</span><span class="s1">&#39;head&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">next</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">fqs</span><span class="p">[</span><span class="n">fq</span><span class="p">][</span><span class="s1">&#39;tail&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">min_fq</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">frequency</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span><span class="p">:</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fqs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">min_fq</span><span class="p">][</span><span class="s1">&#39;tail&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pre</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">pre</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">key</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_fq</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_fq</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_insert</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+<span class="c1"># Your LFUCache object will be instantiated and called as such:</span>
+<span class="c1"># obj = LFUCache(capacity)</span>
+<span class="c1"># param_1 = obj.get(key)</span>
+<span class="c1"># obj.put(key,value)</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
 <li>Doubly linked list + hash table (key) + hash table (frequency)</li>
@@ -176,7 +256,7 @@
 
                 <div class="info">
 				<a href="/lfu-cache.html">No.460</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/design.html" class="tags">Design</a>

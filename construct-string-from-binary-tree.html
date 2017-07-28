@@ -80,7 +80,7 @@
 </ul>
 </li>
 </ul>
-<p>Python Solution:</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
 <span class="c1"># class TreeNode(object):</span>
 <span class="c1">#     def __init__(self, x):</span>
@@ -99,7 +99,7 @@
             <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span><span class="o">.</span><span class="n">left</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">:</span> <span class="k">return</span>
             <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">:</span> <span class="n">t2str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+            <span class="n">t2str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
             <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
                 <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
@@ -111,16 +111,45 @@
 </pre></div>
 
 
-<p>Solution:</p>
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">tree2str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type t: TreeNode</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span><span class="p">:</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span><span class="o">.</span><span class="n">left</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">val</span><span class="p">)]</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree2str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">))</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree2str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">))</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Summary:</p>
 <ul>
-<li>Nothing to say.</li>
+<li>both is beautful, I prefer the solution 1.</li>
 </ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/construct-string-from-binary-tree/#/description">606. Construct String from Binary Tree</a></p>
                 <div class="clear"></div>
 
                 <div class="info">
 				<a href="/construct-string-from-binary-tree.html">No.606</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>

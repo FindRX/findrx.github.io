@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
 
-    <meta name="keywords" content="LeetCode,Linked-List,Math" />
+    <meta name="keywords" content="LeetCode,Array,Stack,Two-Pointers" />
 </head>
 <body>
     <header>
@@ -43,15 +43,84 @@
 <p>For example, Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.</p>
 <p><img alt="trapping-rain-water" src="/images/trapping-rain-water.png"></p>
 <p>The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped. </p>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">trap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type height: List[int]</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">height</span><span class="p">[:],</span> <span class="n">height</span><span class="p">[:]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)):</span>
+            <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span>
+            <span class="n">r</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">height</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">trap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type height: List[int]</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cur</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+            <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">cur</span> <span class="o">&gt;</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">pop</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">stack</span><span class="p">:</span> <span class="k">break</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">cur</span><span class="p">)</span> <span class="o">-</span> <span class="n">pop</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cur</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+
+
+<p>Python Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">trap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type height: List[int]</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lb</span><span class="p">,</span> <span class="n">rb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">height</span><span class="p">[</span><span class="n">lb</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">height</span><span class="p">[</span><span class="n">rb</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">height</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">height</span><span class="p">[</span><span class="n">lb</span><span class="p">]:</span>
+                    <span class="n">lb</span> <span class="o">=</span> <span class="n">l</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">res</span> <span class="o">+=</span> <span class="n">height</span><span class="p">[</span><span class="n">lb</span><span class="p">]</span> <span class="o">-</span> <span class="n">height</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+                <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">height</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">height</span><span class="p">[</span><span class="n">rb</span><span class="p">]:</span>
+                    <span class="n">rb</span> <span class="o">=</span> <span class="n">r</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">res</span> <span class="o">+=</span> <span class="n">height</span><span class="p">[</span><span class="n">rb</span><span class="p">]</span> <span class="o">-</span> <span class="n">height</span><span class="p">[</span><span class="n">r</span><span class="p">]</span>
+                <span class="n">r</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>beautiful.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/trapping-rain-water/#/description">42. Trapping Rain Water</a></p>
                 <div class="clear"></div>
 
                 <div class="info">
 				<a href="/trapping-rain-water.html">No.42</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
                 </div>
 <div id="disqus_thread"></div>
 <script type="text/javascript">

@@ -178,6 +178,21 @@
 </pre></div>
 
 
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type nums: List[int]</span>
+<span class="sd">        :type target: int</span>
+<span class="sd">        :rtype: List[int]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">target</span> <span class="o">-</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span> <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">target</span> <span class="o">-</span> <span class="n">num</span><span class="p">],</span> <span class="n">i</span><span class="p">]</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+</pre></div>
+
+
 <p>Summary: </p>
 <ol>
 <li>If we think the complexity of HashTable is O(N), then the solutions are O(N).</li>
@@ -191,7 +206,7 @@
 
                 <div class="info">
 				<a href="/two-sum.html">No.1</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                     &nbsp;<a href="/tag/array.html" class="tags">Array</a>

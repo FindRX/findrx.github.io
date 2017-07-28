@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Set Matrix Zeroes</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Array" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/set-matrix-zeroes.html" rel="bookmark" title="Permanent Link to &quot;Set Matrix Zeroes&quot;">Set Matrix Zeroes</a>
+                </h2>
+
+                
+                
+
+                <p>Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.</p>
+<p>Follow up:</p>
+<ul>
+<li>Did you use extra space?</li>
+<li>A straight forward solution using O(mn) space is probably a bad idea.</li>
+<li>A simple improvement uses O(m + n) space, but still not the best solution.</li>
+<li>Could you devise a constant space solution?</li>
+</ul>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setZeroes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type matrix: List[List[int]]</span>
+<span class="sd">        :rtype: void Do not return anything, modify matrix in-place instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">val</span><span class="p">]</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">_c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+                <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">_c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">_r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+                <span class="n">matrix</span><span class="p">[</span><span class="n">_r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setZeroes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type matrix: List[List[int]]</span>
+<span class="sd">        :rtype: void Do not return anything, modify matrix in-place instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">first_row_zero</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+                <span class="n">first_row_zero</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">break</span>
+        <span class="n">first_col_zero</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">first_col_zero</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">break</span>
+
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+                    <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+                    <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+                <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+                    <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="n">first_row_zero</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+                <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">first_col_zero</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+                <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>Python Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setZeroes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type matrix: List[List[int]]</span>
+<span class="sd">        :rtype: void Do not return anything, modify matrix in-place instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">first_col_zero</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">first_col_zero</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">break</span>
+
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+                    <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">r</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+                    <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="n">first_col_zero</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+                <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>Python Solution 4:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setZeroes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type matrix: List[List[int]]</span>
+<span class="sd">        :rtype: void Do not return anything, modify matrix in-place instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">first_col_zero</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span> <span class="n">first_col_zero</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+                    <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">r</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+                    <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">first_col_zero</span><span class="p">:</span> <span class="n">matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>solution 4 is beautiful</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/set-matrix-zeroes/#/description">73. Set Matrix Zeroes</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/set-matrix-zeroes.html">No.73</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

@@ -33,99 +33,331 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/longest-substring-without-repeating-characters.html" rel="bookmark" title="Permanent Link to &quot;Longest Substring Without Repeating Characters&quot;">Longest Substring Without Repeating Characters</a>
+                    <a href="/rotate-list.html" rel="bookmark" title="Permanent Link to &quot;Rotate List&quot;">Rotate List</a>
                 </h2>
 
                 
                 
 
-                <p>Given a string, find the length of the longest substring without repeating characters.</p>
-<p>Examples:</p>
-<ol>
-<li>Given <code>"abcabcbb"</code>, the answer is <code>"abc"</code>, which the length is 3.</li>
-<li>Given <code>"bbbbb"</code>, the answer is <code>"b"</code>, with the length of 1.</li>
-<li>Given <code>"pwwkew"</code>, the answer is <code>"wke"</code>, with the length of 3. Note that the …</li></ol>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/longest-substring-without-repeating-characters.html">No.3</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
-                </div>
-		<a href="/longest-substring-without-repeating-characters.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/add-two-numbers.html" rel="bookmark" title="Permanent Link to &quot;Add Two Numbers&quot;">Add Two Numbers</a>
-                </h2>
-
-                
-                
-
-                <p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+                <p>Given a list, rotate the list to the right by k places, where k is non-negative.</p>
+<p>Example:</p>
 <ul>
-<li>You may assume the two numbers do not contain any leading zero …</li></ul>
+<li>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code> and <code>k = 2</code>,</li>
+<li>return <code>4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</code>.</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">rotateRight …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/add-two-numbers.html">No.2</a>
+				<a href="/rotate-list.html">No.61</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
                 </div>
-		<a href="/add-two-numbers.html#disqus_thread">Click to read and post comments</a>
+		<a href="/rotate-list.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/two-sum.html" rel="bookmark" title="Permanent Link to &quot;Two Sum&quot;">Two Sum</a>
+                    <a href="/length-of-last-word.html" rel="bookmark" title="Permanent Link to &quot;Length of Last Word&quot;">Length of Last Word</a>
                 </h2>
 
                 
                 
 
-                <p>Given a list of integers, return indices of two numbers such that they add up to a specific target.</p>
+                <p>Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.</p>
+<p>If the last word does not exist, return 0.</p>
+<p>Note: </p>
 <ul>
-<li>You can assume that each input could have exactly one solution.</li>
-<li>Indices are zero-based.</li>
+<li>A word is defined as a character sequence consists of non-space characters only.</li>
 </ul>
-<p>Example:</p>
+<p>For example, </p>
 <ul>
-<li>Given nums = [2, 7, 11, 15], target = 9,</li>
-<li>Because nums[0] + nums[1] = 2 + 7 = 9 …</li></ul>
+<li>Given s = "Hello …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/two-sum.html">No.1</a>
+				<a href="/length-of-last-word.html">No.58</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/k-sum.html" class="tags">K-Sum</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
                 </div>
-		<a href="/two-sum.html#disqus_thread">Click to read and post comments</a>
+		<a href="/length-of-last-word.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/maximum-subarray.html" rel="bookmark" title="Permanent Link to &quot;Maximum Subarray&quot;">Maximum Subarray</a>
+                </h2>
+
+                
+                
+
+                <p>Find the contiguous subarray within an array (containing at least one number) which has the largest sum.</p>
+<p>For example: </p>
+<ul>
+<li>given the array [-2,1,-3,4,-1,2,1,-5,4],</li>
+<li>the contiguous subarray [4,-1,2,1] has the largest sum = 6.</li>
+</ul>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">maxSubArray</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/maximum-subarray.html">No.53</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
+                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
+                </div>
+		<a href="/maximum-subarray.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/group-anagrams.html" rel="bookmark" title="Permanent Link to &quot;Group Anagrams&quot;">Group Anagrams</a>
+                </h2>
+
+                
+                
+
+                <p>Given an array of strings, group anagrams together.</p>
+<p>For example, given: ["eat", "tea", "tan", "ate", "nat", "bat"], </p>
+<p>Return:</p>
+<div class="highlight"><pre><span></span>[
+  [&quot;ate&quot;, &quot;eat&quot;,&quot;tea&quot;],
+  [&quot;nat&quot;,&quot;tan&quot;],
+  [&quot;bat&quot;]
+]
+</pre></div>
+
+
+<p>Note: All inputs will be in lower-case.</p>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">groupAnagrams</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type strs: List[str]</span>
+<span class="sd">        :rtype: List[List[str]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/group-anagrams.html">No.49</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+		<a href="/group-anagrams.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/rotate-image.html" rel="bookmark" title="Permanent Link to &quot;Rotate Image&quot;">Rotate Image</a>
+                </h2>
+
+                
+                
+
+                <p>You are given an n x n 2D matrix representing an image.</p>
+<p>Rotate the image by 90 degrees (clockwise).</p>
+<p>Follow up:</p>
+<ul>
+<li>Could you do this in-place?</li>
+</ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">rotate</span><span class="p">(</span><span class="kt">int</span><span class="o">**</span> <span class="n">matrix</span><span class="p">,</span> <span class="kt">int</span> <span class="n">matrixRowSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">matrixColSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">matrixRowSize</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">for …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/rotate-image.html">No.48</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                </div>
+		<a href="/rotate-image.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/trapping-rain-water.html" rel="bookmark" title="Permanent Link to &quot;Trapping Rain Water&quot;">Trapping Rain Water</a>
+                </h2>
+
+                
+                
+
+                <p>Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.</p>
+<p>For example, Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.</p>
+<p><img alt="trapping-rain-water" src="/images/trapping-rain-water.png"></p>
+<p>The above elevation map is represented …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/trapping-rain-water.html">No.42</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                </div>
+		<a href="/trapping-rain-water.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/count-and-say.html" rel="bookmark" title="Permanent Link to &quot;Count and Say&quot;">Count and Say</a>
+                </h2>
+
+                
+                
+
+                <p>The count-and-say sequence is the sequence of integers beginning as follows:</p>
+<p>1, 11, 21, 1211, 111221, ...</p>
+<ul>
+<li>1 is read off as "one 1" or 11.</li>
+<li>11 is read off as "two 1s" or 21.</li>
+<li>21 is read off as "one 2, then one 1" or 1211.</li>
+</ul>
+<p>Given an integer n …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/count-and-say.html">No.38</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+		<a href="/count-and-say.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/valid-sudoku.html" rel="bookmark" title="Permanent Link to &quot;Valid Sudoku&quot;">Valid Sudoku</a>
+                </h2>
+
+                
+                
+
+                <p>Determine if a Sudoku is valid, according to: <a href="http://sudoku.com.au/TheRules.aspx">Sudoku Puzzles - The Rules</a>.</p>
+<p>The Sudoku board could be partially filled, where empty cells are filled with the character '.'.</p>
+<ul>
+<li>A valid Sudoku board (partially filled) is not necessarily solvable. Only the filled cells need to be validated.</li>
+</ul>
+<p><img alt="valid sudoku" src="/images/valid-sudoku.png"></p>
+<p>Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isValidSudoku</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span> <span class="n">board …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/valid-sudoku.html">No.36</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                </div>
+		<a href="/valid-sudoku.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/search-insert-position.html" rel="bookmark" title="Permanent Link to &quot;Search Insert Position&quot;">Search Insert Position</a>
+                </h2>
+
+                
+                
+
+                <p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You may assume no duplicates in the array.</p>
+<p>Here are few examples.</p>
+<ul>
+<li>[1,3,5,6], 5 → 2</li>
+<li>[1 …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/search-insert-position.html">No.35</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                </div>
+		<a href="/search-insert-position.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/implement-strstr.html" rel="bookmark" title="Permanent Link to &quot;Implement strStr()&quot;">Implement strStr()</a>
+                </h2>
+
+                
+                
+
+                <p>Implement strStr().</p>
+<p>Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.</p>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">strStr</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">haystack</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">needle</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">needle</span> <span class="o">||</span> <span class="o">!*</span><span class="n">needle</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">needle</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">haystack</span><span class="p">[</span><span class="n">res</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="n">haystack</span><span class="p">[</span><span class="n">res</span><span class="p">])</span> <span class="p">{</span>
+            <span class="kt">char …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/implement-strstr.html">No.28</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                </div>
+		<a href="/implement-strstr.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
                 <div class="pages">
 
                 <a href="/author/ruioaix27.html" class="prev_page">&larr;&nbsp;Previous</a>
+                <a href="/author/ruioaix29.html" class="next_page">Next&nbsp;&rarr;</a>
 
 
 
-                    <span>Page 28 of 28</span>
+                    <span>Page 28 of 31</span>
                 </div>
 
             <div class="clear"></div>

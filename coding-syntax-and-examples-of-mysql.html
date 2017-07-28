@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Coding Syntax and Examples of MySQL</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="SQL,MySQL" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jul 02, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/coding-syntax-and-examples-of-mysql.html" rel="bookmark" title="Permanent Link to &quot;Coding Syntax and Examples of MySQL&quot;">Coding Syntax and Examples of MySQL</a>
+                </h2>
+
+                
+                
+
+                <h2>SQL Statements</h2>
+<p>The statements that work with the data in a database are called the <em>data manipulation language (DML)</em>.</p>
+<p>The statements that create databases and work with the objects within a database are called the <em>data definition language (DDL)</em>.</p>
+<p>On large systems, these statements are used exclusively by <em>database administratiors (DBAs)</em>.</p>
+<p>DML:</p>
+<ol>
+<li><strong>SELECT</strong></li>
+<li><strong>INSERT</strong></li>
+<li><strong>UPDATE</strong></li>
+<li><strong>DELETE</strong></li>
+</ol>
+<p>DDL:</p>
+<ol>
+<li><strong>CREATE DATABASE</strong></li>
+<li><strong>DROP DATABASE</strong></li>
+<li><strong>CREATE TABLE</strong></li>
+<li><strong>ALTER TABLE</strong></li>
+<li><strong>DROP TABLE</strong></li>
+<li><strong>CREATE INDEX</strong></li>
+<li><strong>ALTER INDEX</strong></li>
+<li><strong>DROP INDEX</strong></li>
+</ol>
+<hr>
+<h2>SELECT</h2>
+<p>The basic syntax for the SELECT statement (including five clauses.)</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="p">[</span><span class="k">FROM</span> <span class="n">table_source</span><span class="p">]</span>
+<span class="p">[</span><span class="k">WHERE</span> <span class="n">search_condition</span><span class="p">]</span>
+<span class="p">[</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">order_by_list</span><span class="p">]</span>
+<span class="p">[</span><span class="k">LIMIT</span> <span class="n">row_limit</span><span class="p">]</span>
+</pre></div>
+
+
+<p>The syntax of the SELECT clause.</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="p">[</span><span class="k">ALL</span><span class="o">|</span><span class="k">DISTINCT</span><span class="p">]</span>
+       <span class="n">column_specification</span> <span class="p">[[</span><span class="k">AS</span><span class="p">]</span> <span class="n">result_column</span><span class="p">]</span>
+    <span class="p">[,</span> <span class="n">column_specification</span> <span class="p">[[</span><span class="k">AS</span><span class="p">]</span> <span class="n">result_column</span><span class="p">]</span> <span class="p">...</span>
+</pre></div>
+
+
+<p>column_specification could be <code>*</code>, column_name, arithmetic expressions and functions.</p>
+<hr>
+<h2>ORDER BY</h2>
+<p>The syntax of the ORDER BY clause:</p>
+<div class="highlight"><pre><span></span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">expression</span> <span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]</span> <span class="p">[,</span> <span class="n">expression</span> <span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]]...</span>
+</pre></div>
+
+
+<ul>
+<li>ASC is default.</li>
+<li>The ORDER BY clause can include a column alias that's specified in the SELECT clause if the column alias does not include spaces.</li>
+<li>The ORDER BY clause can include any valid expression. The expression can refer to any column in the base table, even if it isn't included in the result set.</li>
+<li>The ORDER BY clause can use numbers to specify the columns to use for sorting. <ul>
+<li>In that case, <code>1</code> represents the first column in the result set, <code>2</code> represents the second column, and son on.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>LIMIT</h2>
+<p>The syntax of the LIMIT clause:</p>
+<div class="highlight"><pre><span></span><span class="k">LIMIT</span> <span class="p">[</span><span class="k">offset</span><span class="p">,]</span> <span class="k">row_count</span>
+</pre></div>
+
+
+<ul>
+<li>If you code both arguments, the offset specifies the first row to return, where the offset of the first row is 0.</li>
+<li>If you want to retrieve all of the rows from a certain offset to the end of the result set, code <code>-1</code> for the row count.</li>
+</ul>
+<hr>
+<h2>JOIN</h2>
+<p>A <em>join</em> lets you combine columns from two or more tables into a single result set.</p>
+<p>Tables are typically joined on the relationship between the primary key in one table and a foreign key in the other table. However, you can also join tables based on relationships not defined in the database. These are called <em>hac relationships</em>.</p>
+<p>Explicit syntax for an inner join:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span>
+    <span class="p">[</span><span class="k">INNER</span><span class="p">]</span> <span class="k">JOIN</span> <span class="n">table_2</span> <span class="k">ON</span> <span class="n">join_condition_1</span>
+    <span class="p">[[</span><span class="k">INNER</span><span class="p">]</span> <span class="k">JOIN</span> <span class="n">table_3</span> <span class="k">ON</span> <span class="n">join_condition_2</span><span class="p">]...</span>
+</pre></div>
+
+
+<p>Implicit syntax for an inner join:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span><span class="p">,</span> <span class="n">table_2</span> <span class="p">[,</span> <span class="n">table_3</span><span class="p">]...</span>
+<span class="k">WHERE</span> <span class="n">table_1</span><span class="p">.</span><span class="k">column_name</span> <span class="k">operator</span> <span class="n">table_2</span><span class="p">.</span><span class="k">column_name</span>
+    <span class="p">[</span><span class="k">AND</span> <span class="n">table_2</span><span class="p">.</span><span class="k">column_name</span> <span class="k">operator</span> <span class="n">table_3</span><span class="p">.</span><span class="k">column_name</span><span class="p">]...</span>
+</pre></div>
+
+
+<ul>
+<li>THE <em>INNER</em> keyword is optional and is seldom used.</li>
+</ul>
+<p>Explicit syntax for an outer join:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span>
+    <span class="err">{</span><span class="k">LEFT</span><span class="o">|</span><span class="k">RIGHT</span><span class="err">}</span> <span class="p">[</span><span class="k">OUTER</span><span class="p">]</span> <span class="k">JOIN</span> <span class="n">table_2</span> <span class="k">ON</span> <span class="n">join_condition_1</span>
+    <span class="p">[</span><span class="err">{{</span><span class="k">LEFT</span><span class="o">|</span><span class="k">RIGHT</span><span class="err">}</span> <span class="p">[</span><span class="k">OUTER</span><span class="p">]</span> <span class="k">JOIN</span> <span class="n">table_3</span> <span class="k">ON</span> <span class="n">join_condition_2</span><span class="p">]...</span>
+</pre></div>
+
+
+<ul>
+<li>The <em>OUTER</em> keyword is optional and typically omitted.</li>
+<li>An outer join retrieves all rows that satisfy the join condition, plus unmatched rows in the left or right table.</li>
+<li>When a row with unmatched columns is retrieved, any columns from the other table that are included in the result set are given null values.</li>
+</ul>
+<p>The syntax for a join that uses the USING keyword:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span>
+    <span class="p">[</span><span class="err">{</span><span class="k">LEFT</span><span class="o">|</span><span class="k">RIGHT</span><span class="err">}</span> <span class="p">[</span><span class="k">OUTER</span><span class="p">]]</span> <span class="k">JOIN</span> <span class="n">table_2</span> <span class="k">USING</span> <span class="p">(</span><span class="n">join_column_1</span> <span class="p">[,</span> <span class="n">join_column_2</span><span class="p">]...)</span>
+    <span class="p">[[</span><span class="err">{</span><span class="k">LEFT</span><span class="o">|</span><span class="k">RIGHT</span><span class="err">}</span> <span class="p">[</span><span class="k">OUTER</span><span class="p">]]</span> <span class="k">JOIN</span> <span class="n">table_3</span> <span class="k">USING</span> <span class="p">(</span><span class="n">join_column_1</span> <span class="p">[,</span> <span class="n">join_column_2</span><span class="p">]...)]...</span>
+</pre></div>
+
+
+<ul>
+<li>The join can be an inter join or an outer join.</li>
+</ul>
+<p>The syntax for a join that uses the NATURAL keyword</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span>
+    <span class="k">NATURAL</span> <span class="k">JOIN</span> <span class="n">table_2</span>
+    <span class="p">[</span><span class="k">NATURAL</span> <span class="k">JOIN</span> <span class="n">table_3</span><span class="p">]...</span>
+</pre></div>
+
+
+<ul>
+<li>You can use <em>NATURAL</em> keyword to create a natural join that joins two tables based on all columns in the two tables that have the same name.</li>
+</ul>
+<p>Explicit syntax for a cross join:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span> <span class="k">CROSS</span> <span class="k">JOIN</span> <span class="n">table_2</span>
+</pre></div>
+
+
+<p>Implicit syntax for a cross join:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">select_list</span>
+<span class="k">FROM</span> <span class="n">table_1</span><span class="p">,</span> <span class="n">table_2</span>
+</pre></div>
+
+
+<ul>
+<li>A cross join joins each row from the first table with each row from the second table. The result set returned by a cross join is known as a Cartesian product.</li>
+</ul>
+<hr>
+<h2>UNION</h2>
+<p>The syntax for a union operation:</p>
+<div class="highlight"><pre><span></span>    <span class="n">SELECT_statement_1</span>
+<span class="k">UNION</span> <span class="p">[</span><span class="k">ALL</span><span class="p">]</span> <span class="n">SELECT_statement_2</span>
+<span class="p">[</span><span class="k">UNION</span> <span class="p">[</span><span class="k">ALL</span><span class="p">]</span> <span class="n">SELECT_statement_3</span><span class="p">]...</span>
+<span class="p">[</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">order_by_list</span><span class="p">]</span>
+</pre></div>
+
+
+<p>A <strong>union</strong> combines rows from two or more result sets, while a <strong>join</strong> combines columns from two or more result sets.</p>
+<p>Each result set must return the same number of columns, and the corresponding columns in each result set must have compatible data types.</p>
+<p>By default, a union eliminates duplicate rows. If you want to include duplicate rows, code the ALL keyword.</p>
+<p>The column names in the final result set are taken from the first SELECT clause. Column aliases assigned by the other SELECT clauses have no effect on the final result set.</p>
+<p>If you want to sort the result of a union operation, you can code an <em>ORDER BY</em> clause after the last <em>SELECT</em> statement. In an <em>ORDER BY</em> clause, you must use the column names that are specified in the first <em>SELECT</em> statement.</p>
+<hr>
+<h2>INSERT, UPDATE and DELETE</h2>
+<p>Syntax of the <em>INSERT</em> statement</p>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="p">[</span><span class="k">INTO</span><span class="p">]</span> <span class="k">table_name</span> <span class="p">[(</span><span class="n">column_list</span><span class="p">)]</span>
+<span class="k">VALUES</span> <span class="p">(</span><span class="n">expression_1</span><span class="p">[,</span> <span class="n">expression_2</span><span class="p">]...)</span>
+       <span class="p">[,</span> <span class="p">(</span><span class="n">expression_1</span><span class="p">[,</span> <span class="n">expression_2</span><span class="p">]...)]...</span>
+</pre></div>
+
+
+<ul>
+<li><em>INTO</em> keyword is optional</li>
+<li>If you don't include a column list in the <em>INSERT</em> clause, you must specify the column values in the same order as in the table, and you must code <strong>a value for each column</strong>.</li>
+<li>If you include a column list, you must specify the column values in the same order as in the column list, and you can omit columns that have default values, accept null values, or are automatically generated.</li>
+<li>To insert a null value into a column, you can use the <em>NULL</em> keyword.</li>
+<li>To insert a default value or to have MySQL generate a value for an auto increment column, you can use the <em>DEFAULT</em> keyword.</li>
+</ul>
+<p>Syntax of the <em>UPDATE</em> statement</p>
+<div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="k">table_name</span> 
+<span class="k">SET</span> <span class="n">column_name_1</span> <span class="o">=</span> <span class="n">expression_1</span><span class="p">[,</span> <span class="n">column_name_2</span> <span class="o">=</span> <span class="n">expression_2</span><span class="p">]...</span>
+<span class="p">[</span><span class="k">WHERE</span> <span class="n">search_condition</span><span class="p">]</span>
+</pre></div>
+
+
+<ul>
+<li>If you turn off safe update mode and omit the WHERE clasuse, all rows in the table will be updated.</li>
+</ul>
+<p>Syntax of the <em>DELETE</em> statement</p>
+<div class="highlight"><pre><span></span><span class="k">DELEtE</span> <span class="k">FROM</span> <span class="k">table_name</span>
+<span class="p">[</span><span class="k">WHERE</span> <span class="n">search_conditon</span><span class="p">]</span>
+</pre></div>
+
+
+<ul>
+<li>If you turn safe update mode off and omit the WHERE clause from a DELETE statement, all the rows in the table will be deleted.</li>
+</ul>
+<hr>
+<h2>CREATE, ALTER and DROP</h2>
+<p>Syntax of the <em>CREATE TABLE AS</em> statement:</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">table_name</span> <span class="k">AS</span> <span class="n">select_statement</span>
+</pre></div>
+
+
+<ul>
+<li>When you use the <em>CREATE TABLE AS</em> statement to create a table, only the column definitions and data are copied.</li>
+<li>Definitions of primary keys, foreign keys, indexes and so on are not included in the new table.</li>
+</ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/coding-syntax-and-examples-of-mysql.html">posted at 12:32</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/databases.html" rel="tag">databases</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/sql.html" class="tags">SQL</a>
+                    &nbsp;<a href="/tag/mysql.html" class="tags">MySQL</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

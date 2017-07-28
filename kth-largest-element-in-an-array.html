@@ -85,7 +85,7 @@
 </pre></div>
 
 
-<p>Python Solution:</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">findKthLargest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -95,6 +95,41 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">findKthLargest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type nums: List[int]</span>
+<span class="sd">        :type k: int</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">]</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+            <span class="n">k</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Python Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">findKthLargest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type nums: List[int]</span>
+<span class="sd">        :type k: int</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">heap</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">:]:</span>
+            <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="n">heap</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+                <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">heap</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
 
@@ -113,7 +148,7 @@
 
                 <div class="info">
 				<a href="/kth-largest-element-in-an-array.html">No.215</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>

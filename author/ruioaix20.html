@@ -33,162 +33,207 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/excel-sheet-column-title.html" rel="bookmark" title="Permanent Link to &quot;Excel Sheet Column Title&quot;">Excel Sheet Column Title</a>
+                    <a href="/the-skyline-problem.html" rel="bookmark" title="Permanent Link to &quot;The Skyline Problem&quot;">The Skyline Problem</a>
                 </h2>
 
                 
                 
 
-                <p>Given a positive integer, return its corresponding column title as appear in an Excel sheet.</p>
-<p>Example:</p>
-<ul>
-<li>1 -&gt; A</li>
-<li>2 -&gt; B</li>
-<li>3 -&gt; C</li>
-<li>...</li>
-<li>26 -&gt; Z</li>
-<li>27 -&gt; AA</li>
-<li>28 -&gt; AB </li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">convertToTitle</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
-        <span class="o">*</span><span class="n">r</span><span class="o">++</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="sc">&#39;A&#39;</span><span class="p">;</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">26</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="o">*</span><span class="n">r …</span></pre></div>
+                <p>A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Now suppose you are <strong>given the locations and height of all the buildings</strong> as shown on a cityscape photo (Figure A), write a program to <strong>output the …</strong></p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/excel-sheet-column-title.html">No.168</a>
+				<a href="/the-skyline-problem.html">No.218</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/binary-indexed-tree.html" class="tags">Binary-Indexed-Tree</a>
+                    &nbsp;<a href="/tag/segment-tree.html" class="tags">Segment-Tree</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
                 </div>
-		<a href="/excel-sheet-column-title.html#disqus_thread">Click to read and post comments</a>
+		<a href="/the-skyline-problem.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/two-sum-ii-input-array-is-sorted.html" rel="bookmark" title="Permanent Link to &quot;Two Sum II - Input array is sorted&quot;">Two Sum II - Input array is sorted</a>
+                    <a href="/contains-duplicate.html" rel="bookmark" title="Permanent Link to &quot;Contains Duplicate&quot;">Contains Duplicate</a>
                 </h2>
 
                 
                 
 
-                <p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
-<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2 …</p>
+                <p>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">He</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">He</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Ht</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">size …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/two-sum-ii-input-array-is-sorted.html">No.167</a>
+				<a href="/contains-duplicate.html">No.217</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
-                    &nbsp;<a href="/tag/k-sum.html" class="tags">K-Sum</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                 </div>
-		<a href="/two-sum-ii-input-array-is-sorted.html#disqus_thread">Click to read and post comments</a>
+		<a href="/contains-duplicate.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/intersection-of-two-linked-lists.html" rel="bookmark" title="Permanent Link to &quot;Intersection of Two Linked Lists&quot;">Intersection of Two Linked Lists</a>
+                    <a href="/kth-largest-element-in-an-array.html" rel="bookmark" title="Permanent Link to &quot;Kth Largest Element in an Array&quot;">Kth Largest Element in an Array</a>
                 </h2>
 
                 
                 
 
-                <p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
+                <p>Find the k<sup>th</sup> largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
 <ul>
-<li>If the two linked lists have no intersection at all, return null.</li>
-<li>The linked lists must retain their original structure after the function returns.</li>
-<li>You may assume there are no cycles anywhere in …</li></ul>
+<li>You may assume k is always valid, 1 ≤ k ≤ array's length.</li>
+</ul>
+<p>For example:</p>
+<ul>
+<li>Given <code>3,2,1,5,6,4</code> and <code>k = 2 …</code></li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/intersection-of-two-linked-lists.html">No.160</a>
+				<a href="/kth-largest-element-in-an-array.html">No.215</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
+                </div>
+		<a href="/kth-largest-element-in-an-array.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/reverse-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Reverse Linked List&quot;">Reverse Linked List</a>
+                </h2>
+
+                
+                
+
+                <p>Reverse a singly linked list.</p>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * struct ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">reverseList</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">_head</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">head</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">_head</span><span class="p">;</span>
+        <span class="n">_head</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_head</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/reverse-linked-list.html">No.206</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
                 </div>
-		<a href="/intersection-of-two-linked-lists.html#disqus_thread">Click to read and post comments</a>
+		<a href="/reverse-linked-list.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/read-n-characters-given-read4.html" rel="bookmark" title="Permanent Link to &quot;Read N Characters Given Read4&quot;">Read N Characters Given Read4</a>
+                    <a href="/isomorphic-strings.html" rel="bookmark" title="Permanent Link to &quot;Isomorphic Strings&quot;">Isomorphic Strings</a>
                 </h2>
 
                 
                 
 
-                <p>The API: int read4(char *buf) reads 4 characters at a time from a file.</p>
-<p>The return value is the actual number of characters read. For example, it returns 3 if there is only 3 characters left in the file.</p>
-<p>By using the read4 API, implement the function int read …</p>
+                <p>Given two strings s and t, determine if they are isomorphic.</p>
+<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
+<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/read-n-characters-given-read4.html">No.157</a>
+				<a href="/isomorphic-strings.html">No.205</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                 </div>
-		<a href="/read-n-characters-given-read4.html#disqus_thread">Click to read and post comments</a>
+		<a href="/isomorphic-strings.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/min-stack.html" rel="bookmark" title="Permanent Link to &quot;Min Stack&quot;">Min Stack</a>
+                    <a href="/count-primes.html" rel="bookmark" title="Permanent Link to &quot;Count Primes&quot;">Count Primes</a>
                 </h2>
 
                 
                 
 
-                <p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
-<ul>
-<li>push(x) -- Push element x onto stack.</li>
-<li>pop() -- Removes the element on top of the stack.</li>
-<li>top() -- Get the top element.</li>
-<li>getMin() -- Retrieve the minimum element in the stack.</li>
-</ul>
-<p>Example:</p>
-<div class="highlight"><pre><span></span>MinStack minStack = new MinStack …</pre></div>
+                <p>Count the number of prime numbers less than a non-negative number, n.</p>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">countPrimes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">flag</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/min-stack.html">No.155</a>
+				<a href="/count-primes.html">No.204</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
                     &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
-                    &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>
-                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
                 </div>
-		<a href="/min-stack.html#disqus_thread">Click to read and post comments</a>
+		<a href="/count-primes.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/sort-list.html" rel="bookmark" title="Permanent Link to &quot;Sort List&quot;">Sort List</a>
+                    <a href="/remove-linked-list-elements.html" rel="bookmark" title="Permanent Link to &quot;Remove Linked List Elements&quot;">Remove Linked List Elements</a>
                 </h2>
 
                 
                 
 
-                <p>Sort a linked list in O(n log n) time using constant space complexity.</p>
-<p>C Solution:</p>
+                <p>Remove all elements from a linked list of integers that have value val.</p>
+<p>Example</p>
+<ul>
+<li>Given: <code>1 --&gt; 2 --&gt; 6 --&gt; 3 --&gt; 4 --&gt; 5 --&gt; 6</code>, <code>val = 6</code></li>
+<li>Return: <code>1 --&gt; 2 --&gt; 3 --&gt; 4 --&gt; 5</code></li>
+</ul>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Definition for singly-linked list.</span>
 <span class="cm"> * struct ListNode {</span>
@@ -196,167 +241,108 @@
 <span class="cm"> *     struct ListNode *next;</span>
 <span class="cm"> * };</span>
 <span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">sortList</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="k">return</span> <span class="n">head</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">l</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span> <span class="n">dummy …</span></pre></div>
+<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">removeElements</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/sort-list.html">No.148</a>
+				<a href="/remove-linked-list-elements.html">No.203</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
                 </div>
-		<a href="/sort-list.html#disqus_thread">Click to read and post comments</a>
+		<a href="/remove-linked-list-elements.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/insertion-sort-list.html" rel="bookmark" title="Permanent Link to &quot;Insertion Sort List&quot;">Insertion Sort List</a>
+                    <a href="/happy-number.html" rel="bookmark" title="Permanent Link to &quot;Happy Number&quot;">Happy Number</a>
                 </h2>
 
                 
                 
 
-                <p>Sort a linked list using insertion sort.</p>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">insertionSortList</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">ListNode</span> <span class="n">dummy</span><span class="p">,</span> <span class="o">*</span><span class="n">l</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">dummy</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
-    <span class="n">dummy</span><span class="p">.</span><span class="n">next</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">dummy</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">l</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">&amp;&amp;</span> <span class="n">l</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="n">l</span> <span class="o">=</span> <span class="n">l …</span></pre></div>
+                <p>Write an algorithm to determine if a number is "happy".</p>
+<p>A happy number is a number defined by the following process: </p>
+<ol>
+<li>Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will …</li></ol>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/insertion-sort-list.html">No.147</a>
+				<a href="/happy-number.html">No.202</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/sort.html" class="tags">Sort</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                 </div>
-		<a href="/insertion-sort-list.html#disqus_thread">Click to read and post comments</a>
+		<a href="/happy-number.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/lru-cache.html" rel="bookmark" title="Permanent Link to &quot;LRU Cache&quot;">LRU Cache</a>
+                    <a href="/number-of-islands.html" rel="bookmark" title="Permanent Link to &quot;Number of Islands&quot;">Number of Islands</a>
                 </h2>
 
                 
                 
 
-                <p>Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.</p>
-<ul>
-<li>get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.</li>
-<li>put(key, value) - Set or insert the …</li></ul>
+                <p>Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+<p>Example 1:</p>
+<div class="highlight"><pre><span></span>11110
+11010 …</pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/lru-cache.html">No.146</a>
+				<a href="/number-of-islands.html">No.200</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
+                    &nbsp;<a href="/tag/union-find.html" class="tags">Union-Find</a>
                 </div>
-		<a href="/lru-cache.html#disqus_thread">Click to read and post comments</a>
+		<a href="/number-of-islands.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/binary-tree-postorder-traversal.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Postorder Traversal&quot;">Binary Tree Postorder Traversal</a>
+                    <a href="/binary-tree-right-side-view.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Right Side View&quot;">Binary Tree Right Side View</a>
                 </h2>
 
                 
                 
 
-                <p>Given a binary tree, return the postorder traversal of its nodes' values.</p>
-<p>For example:</p>
-<p>Given binary tree {1,#,2,3},</p>
-<div class="highlight"><pre><span></span>   1
-    \
-     2
-    /
-   3
+                <p>Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.</p>
+<p>For example:
+Given the following binary tree,</p>
+<div class="highlight"><pre><span></span>   1            &lt;---
+ /   \
+2     3         &lt;---
+ \     \
+  5     4       &lt;---
 </pre></div>
 
 
-<p>return [3,2,1].</p>
-<p>Note: Recursive solution is trivial, could you do it iteratively?</p>
+<p>You should return [1, 3, 4].</p>
 <p>Python Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
-<span class="c1"># class TreeNode(object):</span>
-<span class="c1">#     def …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/binary-tree-postorder-traversal.html">No.145</a>
+				<a href="/binary-tree-right-side-view.html">No.199</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
-                    &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>
-                    &nbsp;<a href="/tag/perfect.html" class="tags">Perfect</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
                 </div>
-		<a href="/binary-tree-postorder-traversal.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/binary-tree-preorder-traversal.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Preorder Traversal&quot;">Binary Tree Preorder Traversal</a>
-                </h2>
-
-                
-                
-
-                <p>Given a binary tree, return the preorder traversal of its nodes' values.</p>
-<p>For example:</p>
-<ul>
-<li>Given binary tree {1,#,2,3},</li>
-</ul>
-<div class="highlight"><pre><span></span>   1
-    \
-     2
-    /
-   3
-</pre></div>
-
-
-<ul>
-<li>return [1,2,3].</li>
-</ul>
-<p>Note: Recursive solution is trivial, could you do it iteratively?</p>
-<p>Python Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
-<span class="c1"># class TreeNode(object):</span>
-<span class="c1">#     def …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/binary-tree-preorder-traversal.html">No.144</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
-                    &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>
-                </div>
-		<a href="/binary-tree-preorder-traversal.html#disqus_thread">Click to read and post comments</a>
+		<a href="/binary-tree-right-side-view.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -367,7 +353,7 @@
 
 
 
-                    <span>Page 20 of 28</span>
+                    <span>Page 20 of 31</span>
                 </div>
 
             <div class="clear"></div>

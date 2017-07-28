@@ -32,302 +32,349 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/rotate-list.html" rel="bookmark" title="Permanent Link to &quot;Rotate List&quot;">Rotate List</a>
+                    <a href="/construct-binary-tree-from-preorder-and-inorder-traversal.html" rel="bookmark" title="Permanent Link to &quot;Construct Binary Tree from Preorder and Inorder Traversal&quot;">Construct Binary Tree from Preorder and Inorder Traversal</a>
                 </h2>
 
                 
                 
 
-                <p>Given a list, rotate the list to the right by k places, where k is non-negative.</p>
-<p>Example:</p>
-<ul>
-<li>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code> and <code>k = 2</code>,</li>
-<li>return <code>4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</code>.</li>
-</ul>
-<p>C Solution:</p>
+                <p>Given preorder and inorder traversal of a tree, construct the binary tree.</p>
+<p>Note:</p>
+<p>You may assume that duplicates do not exist in the tree.</p>
+<p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
 <span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
+<span class="cm"> *     struct TreeNode *left;</span>
+<span class="cm"> *     struct TreeNode *right;</span>
 <span class="cm"> * };</span>
 <span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">rotateRight …</span></pre></div>
+<span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="nf">buildTree</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">preorder</span><span class="p">,</span> <span class="kt">int</span> <span class="n">preorderSize …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/rotate-list.html">No.61</a>
+				<a href="/construct-binary-tree-from-preorder-and-inorder-traversal.html">No.105</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
                 </div>
-		<a href="/rotate-list.html#disqus_thread">Click to read and post comments</a>
+		<a href="/construct-binary-tree-from-preorder-and-inorder-traversal.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/length-of-last-word.html" rel="bookmark" title="Permanent Link to &quot;Length of Last Word&quot;">Length of Last Word</a>
+                    <a href="/maximum-depth-of-binary-tree.html" rel="bookmark" title="Permanent Link to &quot;Maximum Depth of Binary Tree&quot;">Maximum Depth of Binary Tree</a>
                 </h2>
 
                 
                 
 
-                <p>Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.</p>
-<p>If the last word does not exist, return 0.</p>
-<p>Note: </p>
-<ul>
-<li>A word is defined as a character sequence consists of non-space characters only.</li>
-</ul>
-<p>For example, </p>
-<ul>
-<li>Given s = "Hello …</li></ul>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/length-of-last-word.html">No.58</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                </div>
-		<a href="/length-of-last-word.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/maximum-subarray.html" rel="bookmark" title="Permanent Link to &quot;Maximum Subarray&quot;">Maximum Subarray</a>
-                </h2>
-
-                
-                
-
-                <p>Find the contiguous subarray within an array (containing at least one number) which has the largest sum.</p>
-<p>For example: </p>
-<ul>
-<li>given the array [-2,1,-3,4,-1,2,1,-5,4],</li>
-<li>the contiguous subarray [4,-1,2,1] has the largest sum = 6.</li>
-</ul>
-<p>C Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">maxSubArray</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">nums …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/maximum-subarray.html">No.53</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
-                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
-                </div>
-		<a href="/maximum-subarray.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/rotate-image.html" rel="bookmark" title="Permanent Link to &quot;Rotate Image&quot;">Rotate Image</a>
-                </h2>
-
-                
-                
-
-                <p>You are given an n x n 2D matrix representing an image.</p>
-<p>Rotate the image by 90 degrees (clockwise).</p>
-<p>Follow up:</p>
-<ul>
-<li>Could you do this in-place?</li>
-</ul>
+                <p>Given a binary tree, find its maximum depth.</p>
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
 <p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">rotate</span><span class="p">(</span><span class="kt">int</span><span class="o">**</span> <span class="n">matrix</span><span class="p">,</span> <span class="kt">int</span> <span class="n">matrixRowSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">matrixColSize</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">matrixRowSize</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
-        <span class="k">for …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     struct TreeNode *left;</span>
+<span class="cm"> *     struct TreeNode *right;</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">maxDepth …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/rotate-image.html">No.48</a>
+				<a href="/maximum-depth-of-binary-tree.html">No.104</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
                 </div>
-		<a href="/rotate-image.html#disqus_thread">Click to read and post comments</a>
+		<a href="/maximum-depth-of-binary-tree.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/trapping-rain-water.html" rel="bookmark" title="Permanent Link to &quot;Trapping Rain Water&quot;">Trapping Rain Water</a>
+                    <a href="/binary-tree-zigzag-level-order-traversal.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Zigzag Level Order Traversal&quot;">Binary Tree Zigzag Level Order Traversal</a>
                 </h2>
 
                 
                 
 
-                <p>Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.</p>
-<p>For example, Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.</p>
-<p><img alt="trapping-rain-water" src="/images/trapping-rain-water.png"></p>
-<p>The above elevation map is represented …</p>
+                <p>Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).</p>
+<p>For example:</p>
+<p>Given binary tree [3,9,20,null,null,15,7],</p>
+<div class="highlight"><pre><span></span>    3
+   / \
+  9  20
+    /  \
+   15   7
+</pre></div>
+
+
+<p>return its zigzag …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/trapping-rain-water.html">No.42</a>
+				<a href="/binary-tree-zigzag-level-order-traversal.html">No.103</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
+                    &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>
                 </div>
-		<a href="/trapping-rain-water.html#disqus_thread">Click to read and post comments</a>
+		<a href="/binary-tree-zigzag-level-order-traversal.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/count-and-say.html" rel="bookmark" title="Permanent Link to &quot;Count and Say&quot;">Count and Say</a>
+                    <a href="/binary-tree-level-order-traversal.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Level Order Traversal&quot;">Binary Tree Level Order Traversal</a>
                 </h2>
 
                 
                 
 
-                <p>The count-and-say sequence is the sequence of integers beginning as follows:</p>
-<p>1, 11, 21, 1211, 111221, ...</p>
+                <p>Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).</p>
+<p>For example:</p>
 <ul>
-<li>1 is read off as "one 1" or 11.</li>
-<li>11 is read off as "two 1s" or 21.</li>
-<li>21 is read off as "one 2, then one 1" or 1211.</li>
+<li>Given binary tree [3,9,20,null,null,15,7],</li>
 </ul>
-<p>Given an integer n …</p>
-                <div class="clear"></div>
+<div class="highlight"><pre><span></span>    3
+   / \
+  9  20
+    /  \
+   15   7
+</pre></div>
 
-                <div class="info">
-				<a href="/count-and-say.html">No.38</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                </div>
-		<a href="/count-and-say.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/valid-sudoku.html" rel="bookmark" title="Permanent Link to &quot;Valid Sudoku&quot;">Valid Sudoku</a>
-                </h2>
-
-                
-                
-
-                <p>Determine if a Sudoku is valid, according to: <a href="http://sudoku.com.au/TheRules.aspx">Sudoku Puzzles - The Rules</a>.</p>
-<p>The Sudoku board could be partially filled, where empty cells are filled with the character '.'.</p>
 <ul>
-<li>A valid Sudoku board (partially filled) is not necessarily solvable. Only the filled cells need to be validated.</li>
+<li>return its level order traversal as:</li>
 </ul>
-<p><img alt="valid sudoku" src="/images/valid-sudoku.png"></p>
-<p>Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isValidSudoku</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span> <span class="n">board …</span></pre></div>
+<div class="highlight"><pre><span></span>[
+  [3],
+  [9,20],
+  [15,7]
+]
+</pre></div>
+
+
+<p>Python …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/valid-sudoku.html">No.36</a>
+				<a href="/binary-tree-level-order-traversal.html">No.102</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
                 </div>
-		<a href="/valid-sudoku.html#disqus_thread">Click to read and post comments</a>
+		<a href="/binary-tree-level-order-traversal.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/search-insert-position.html" rel="bookmark" title="Permanent Link to &quot;Search Insert Position&quot;">Search Insert Position</a>
+                    <a href="/symmetric-tree.html" rel="bookmark" title="Permanent Link to &quot;Symmetric Tree&quot;">Symmetric Tree</a>
                 </h2>
 
                 
                 
 
-                <p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
-<p>You may assume no duplicates in the array.</p>
-<p>Here are few examples.</p>
+                <p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
 <ul>
-<li>[1,3,5,6], 5 → 2</li>
-<li>[1 …</li></ul>
+<li>Bonus points if you could solve it both recursively and iteratively.</li>
+</ul>
+<p>For example, this binary tree [1,2,2,3,4,4,3] is symmetric:</p>
+<div class="highlight"><pre><span></span>    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+</pre></div>
+
+
+<p>But …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/search-insert-position.html">No.35</a>
+				<a href="/symmetric-tree.html">No.101</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
                 </div>
-		<a href="/search-insert-position.html#disqus_thread">Click to read and post comments</a>
+		<a href="/symmetric-tree.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/implement-strstr.html" rel="bookmark" title="Permanent Link to &quot;Implement strStr()&quot;">Implement strStr()</a>
+                    <a href="/same-tree.html" rel="bookmark" title="Permanent Link to &quot;Same Tree&quot;">Same Tree</a>
                 </h2>
 
                 
                 
 
-                <p>Implement strStr().</p>
-<p>Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.</p>
+                <p>Given two binary trees, write a function to check if they are equal or not.</p>
+<p>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.</p>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/same-tree.html">No.100</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                </div>
+		<a href="/same-tree.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/recover-binary-search-tree.html" rel="bookmark" title="Permanent Link to &quot;Recover Binary Search Tree&quot;">Recover Binary Search Tree</a>
+                </h2>
+
+                
+                
+
+                <p>Two elements of a binary search tree (BST) are swapped by mistake.</p>
+<p>Recover the tree without changing its structure.</p>
+<p>Note:
+A solution using O(n) space is pretty straight forward. Could you devise a constant space solution?</p>
 <p>C Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">strStr</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">haystack</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">needle</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">needle</span> <span class="o">||</span> <span class="o">!*</span><span class="n">needle</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">needle</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">haystack</span><span class="p">[</span><span class="n">res</span><span class="p">])</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="n">haystack</span><span class="p">[</span><span class="n">res</span><span class="p">])</span> <span class="p">{</span>
-            <span class="kt">char …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int val …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/implement-strstr.html">No.28</a>
+				<a href="/recover-binary-search-tree.html">No.99</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
                 </div>
-		<a href="/implement-strstr.html#disqus_thread">Click to read and post comments</a>
+		<a href="/recover-binary-search-tree.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/remove-element.html" rel="bookmark" title="Permanent Link to &quot;Remove Element&quot;">Remove Element</a>
+                    <a href="/validate-binary-search-tree.html" rel="bookmark" title="Permanent Link to &quot;Validate Binary Search Tree&quot;">Validate Binary Search Tree</a>
                 </h2>
 
                 
                 
 
-                <p>Given an array and a value, remove all instances of that value in place and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
-<p>The order of elements can be changed. It doesn't matter what you leave beyond …</p>
+                <p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
+<p>Assume a BST is defined as follows:</p>
+<ul>
+<li>The left subtree of a node contains only nodes with keys less than the node's key.</li>
+<li>The right subtree of a node contains only nodes with keys greater than …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/remove-element.html">No.27</a>
+				<a href="/validate-binary-search-tree.html">No.98</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/perfect.html" class="tags">Perfect</a>
                 </div>
-		<a href="/remove-element.html#disqus_thread">Click to read and post comments</a>
+		<a href="/validate-binary-search-tree.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/unique-binary-search-trees.html" rel="bookmark" title="Permanent Link to &quot;Unique Binary Search Trees&quot;">Unique Binary Search Trees</a>
+                </h2>
+
+                
+                
+
+                <p>Given n, how many structurally unique BST's (binary search trees) that store values 1...n?</p>
+<p>For example, Given n = 3, there are a total of 5 unique BST's.</p>
+<div class="highlight"><pre><span></span>   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+</pre></div>
+
+
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">numTrees</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/unique-binary-search-trees.html">No.96</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
+                </div>
+		<a href="/unique-binary-search-trees.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/unique-binary-search-trees-ii.html" rel="bookmark" title="Permanent Link to &quot;Unique Binary Search Trees II&quot;">Unique Binary Search Trees II</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1...n.</p>
+<p>For example,</p>
+<p>Given n = 3, your program should return all 5 unique BST's shown below.</p>
+<div class="highlight"><pre><span></span>   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+</pre></div>
+
+
+<p>Python Solution 1 …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/unique-binary-search-trees-ii.html">No.95</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
+                    &nbsp;<a href="/tag/another-solution.html" class="tags">Another-Solution</a>
+                </div>
+		<a href="/unique-binary-search-trees-ii.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -338,7 +385,7 @@
 
 
 
-                    <span>Page 24 of 27</span>
+                    <span>Page 24 of 29</span>
                 </div>
 
             <div class="clear"></div>

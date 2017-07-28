@@ -68,31 +68,58 @@
 <span class="cm"> *     struct TreeNode *right;</span>
 <span class="cm"> * };</span>
 <span class="cm"> */</span>
-<span class="kt">void</span> <span class="nf">postorder</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">sum</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span> <span class="n">postorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">inorder</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">sum</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span> <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
     <span class="o">*</span><span class="n">sum</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">+=</span> <span class="o">*</span><span class="n">sum</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="n">postorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">sum</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="nf">convertBST</span><span class="p">(</span><span class="k">struct</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">postorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sum</span><span class="p">);</span>
+    <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sum</span><span class="p">);</span>
     <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">convertBST</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type root: TreeNode</span>
+<span class="sd">        :rtype: TreeNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span> <span class="k">return</span>
+        <span class="k">def</span> <span class="nf">inorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="nb">sum</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">:</span> 
+                <span class="nb">sum</span> <span class="o">=</span> <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
+            <span class="n">root</span><span class="o">.</span><span class="n">val</span> <span class="o">+=</span> <span class="nb">sum</span>
+            <span class="nb">sum</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">val</span>
+            <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+                <span class="nb">sum</span> <span class="o">=</span> <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">sum</span>
+        <span class="n">inorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">root</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
-<li><code>*sum</code> and <code>postorder()</code> is necessary</li>
-<li>BTW, it's an inorder, I make a mistake.</li>
+<li><code>*sum</code> and <code>inorder()</code> is necessary</li>
 </ul>
 <p>LeetCode: <a href="https://leetcode.com/problems/convert-bst-to-greater-tree/#/description">538. Convert BST to Greater Tree</a></p>
                 <div class="clear"></div>
 
                 <div class="info">
 				<a href="/convert-bst-to-greater-tree.html">No.538</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>

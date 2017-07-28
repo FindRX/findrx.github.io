@@ -55,7 +55,7 @@
 <ul>
 <li>Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.</li>
 </ul>
-<p>Python Solution:</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
 <span class="c1"># class TreeNode(object):</span>
 <span class="c1">#     def __init__(self, x):</span>
@@ -106,8 +106,113 @@
                 <span class="k">continue</span>
             <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TreeNode</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)))</span>
         <span class="k">return</span> <span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Your Codec object will be instantiated and called as such:</span>
+<span class="c1"># codec = Codec()</span>
+<span class="c1"># codec.deserialize(codec.serialize(root))</span>
+</pre></div>
 
 
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Codec</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Encodes a tree to a single string.</span>
+
+<span class="sd">        :type root: TreeNode</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">def</span> <span class="nf">preorder</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+            <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">:</span> <span class="k">return</span>
+            <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">:</span> <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">:</span> <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+            <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Decodes your encoded data to tree.</span>
+
+<span class="sd">        :type data: str</span>
+<span class="sd">        :rtype: TreeNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span> <span class="k">return</span> <span class="bp">None</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;:&#39;</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span>
+                <span class="n">right</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">left</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
+                <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TreeNode</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Your Codec object will be instantiated and called as such:</span>
+<span class="c1"># codec = Codec()</span>
+<span class="c1"># codec.deserialize(codec.serialize(root))</span>
+</pre></div>
+
+
+<p>Python Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Codec</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Encodes a tree to a single string.</span>
+
+<span class="sd">        :type root: TreeNode</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">recu</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
+                <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
+                <span class="n">recu</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+                <span class="n">recu</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">recu</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Decodes your encoded data to tree.</span>
+
+<span class="sd">        :type data: str</span>
+<span class="sd">        :rtype: TreeNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">recu</span><span class="p">():</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">recu</span><span class="p">()</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">recu</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">node</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">recu</span><span class="p">()</span>
 
 
 <span class="c1"># Your Codec object will be instantiated and called as such:</span>
@@ -125,7 +230,7 @@
 
                 <div class="info">
 				<a href="/serialize-and-deserialize-binary-tree.html">No.297</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>

@@ -83,6 +83,41 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 </pre></div>
 
 
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reorderList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :rtype: void Do not return anything, modify head in-place instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">:</span> <span class="k">return</span>
+        <span class="n">slow</span><span class="p">,</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+            <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">while</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">slow</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">cur</span><span class="p">,</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">slow</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">while</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">l</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">r</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">tmp</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ol>
 <li>13ms, 70.69%</li>
@@ -94,7 +129,7 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 
                 <div class="info">
 				<a href="/reorder-list.html">No.143</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>

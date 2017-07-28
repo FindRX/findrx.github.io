@@ -129,6 +129,35 @@
 </pre></div>
 
 
+<p>OR</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">findFrequentTreeSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type root: TreeNode</span>
+<span class="sd">        :rtype: List[int]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span> <span class="k">return</span> <span class="p">[]</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">recu</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">recu</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">recu</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+            <span class="nb">sum</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">right</span> <span class="o">+</span> <span class="n">root</span><span class="o">.</span><span class="n">val</span>
+            <span class="n">d</span><span class="p">[</span><span class="nb">sum</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="nb">sum</span>
+        <span class="n">recu</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">==</span> <span class="n">freq</span><span class="p">]</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
 <li>not sure which one is better</li>
@@ -138,7 +167,7 @@
 
                 <div class="info">
 				<a href="/most-frequent-subtree-sum.html">No.508</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>

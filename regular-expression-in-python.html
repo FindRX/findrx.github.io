@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Regular Expression in Python</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="Python" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Dec 31, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/regular-expression-in-python.html" rel="bookmark" title="Permanent Link to &quot;Regular Expression in Python&quot;">Regular Expression in Python</a>
+                </h2>
+
+                
+                
+
+                <h2>11 metacharacters</h2>
+<p>A complete list of the metacharacters (<strong>11</strong> total): <strong><em>. ^ $ * + ? { } [ ] \ | ( )</em></strong></p>
+<ol>
+<li><code>[</code> and <code>]</code> is used for specifying a character class.<ul>
+<li>metacharacters are <strong>not active</strong> inside character classes.<ul>
+<li>There is an exception: Including a <code>^</code> as the first character of the character class.<ul>
+<li>When this happens,  you will match the characters not listed within the character class.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Backslash <code>\</code> can be used to escape all the metacharacters so you can match them in a pattern.<ul>
+<li>Some of the special sequences beginning with <code>\</code> represent predefined sets of characters that are often useful, such as the set of digits, the set of letters, or the set of anything that isn’t whitespace.</li>
+<li>These sequences can be included inside a character class.<ul>
+<li>There is an exception: inside a character class, <code>\b</code> represents the backspace character.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>.</code> metacharacter matches anything except a newline character, and there’s an alternate mode <code>re.DOTALL</code> where it will match even a newline.</li>
+<li><code>*</code> doesn’t match the literal character <code>*</code>; instead, it specifies that the previous character can be matched zero or more times, instead of exactly once.<ul>
+<li>Repetitions such as <code>*</code> are greedy; when repeating a RE, the matching engine will try to repeat it as many times as possible. If later portions of the pattern don’t match, the matching engine will then back up and try again with fewer repetitions.</li>
+</ul>
+</li>
+<li>Another repeating metacharacter is <code>+</code>, which matches one or more times.</li>
+<li>The question mark character, <code>?</code>, matches either once or zero times; you can think of it as marking something as being optional.<ul>
+<li>By default, <code>*</code>, <code>+</code>, <code>?</code> and <code>{m, n}</code> are greedy.</li>
+<li>If you want to match as little text as possible, use <code>*?</code>, <code>+?</code>, <code>??</code> and <code>{m, n}?</code> instead.</li>
+</ul>
+</li>
+<li>The most complicated repeated qualifier is <code>{m,n}</code>, where <code>m</code> and <code>n</code> are decimal integers. This qualifier means there must be at least <code>m</code> repetitions, and at most <code>n</code>.<ul>
+<li>Omitting <code>m</code> is interpreted as a lower limit of 0, while omitting <code>n</code> results in an upper bound of infinity.</li>
+<li><code>{0,}</code> is the same as <code>*</code>, <code>{1,}</code> is equivalent to <code>+</code>, and <code>{0,1}</code> is the same as <code>?</code>. </li>
+</ul>
+</li>
+<li>Usually <code>^</code> matches only at the beginning of the string, but when <code>re.MULTILINE</code> is set, <code>^</code> matches at the beginning of the string and at the beginning of each line within the string, immediately following each newline.</li>
+<li>Usually <code>$</code> matches only at the end of the string and immediately before the newline (if any) at the end of the string. <ul>
+<li><code>re.search('\wf$', 'abcdf\n')</code>, return <code>&lt;_sre.SRE_Match object; span=(3, 5), match='df'&gt;</code></li>
+<li><code>re.search('\wf\n$', 'abcdf\n')</code>, return <code>&lt;_sre.SRE_Match object; span=(3, 6), match='df\n'&gt;</code></li>
+<li>but when <code>re.MULTILINE</code> is set, <code>$</code> matches at the end of the string and at the end of each line, immediately preceding each newline.</li>
+</ul>
+</li>
+<li><code>|</code> metacharacter. If A and B are regular expressions, A|B will match any string that matches either A or B.</li>
+<li><code>( )</code> is special, I have to spend some more space for it. Talk it later.</li>
+</ol>
+<h2>Basic syntax</h2>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\\\</span><span class="s1">section&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;\section&#39;</span><span class="p">)</span> <span class="c1">#return: &lt;_sre.SRE_Match object; span=(0, 8), match=&#39;\\section&#39;&gt;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">section&#39;</span><span class="p">)</span> <span class="c1">#return: &lt;_sre.SRE_Match object; span=(0, 8), match=&#39;\\section&#39;&gt;</span>
+</pre></div>
+
+
+<p>Regular expressions are compiled into pattern objects.</p>
+<p><code>a</code> is a pattern object. <code>b</code> and <code>c</code> are match objects.</p>
+<p>Some prototypes:</p>
+<ul>
+<li><code>re.compile(pattern, flags = 0)</code></li>
+<li><code>re.search(pattern, string, flags = 0)</code></li>
+</ul>
+<p>Available flags: <code>re.ASCII/re.A, re.DOTALL/re.S, re.IGNORECASE/re.I, re.LOCALE/re.L, re.MULTILINE/re.M, re.VERBOSE/re.X</code>. <strong>6</strong> totally.</p>
+<p>For instance, <code>re.compile('\w+', re.IGNORECASE)</code>, <code>re.compile('\w+', re.IGNORECASE | re.MULTILINE)</code>.</p>
+<p>For <code>re.VERBOSE</code>:</p>
+<ul>
+<li>When it's been specified, whitespace within the RE string is ignored, except when the whitespace is in a character class or preceded by an unescaped backslash.</li>
+<li>This flag also lets you put comments within a RE that will be ignored by the engine; comments are marked by a '#' that’s neither in a character class or preceded by an unescaped backslash.</li>
+</ul>
+<h2>The backslash plague</h2>
+<ol>
+<li><code>\section</code>, text string to be matched.</li>
+<li><code>\\section</code>, escaped string for <code>re.compile()</code>.</li>
+<li><code>\\\\section</code>, escaped string for a string literal.</li>
+</ol>
+<p><code>\\\\section</code> is a python string, python will explain it.</p>
+<ul>
+<li>In python, <code>\\</code> means <code>\</code>, so what it really means is <code>\\section</code> which is what we want to pass to <code>re.compile</code>.</li>
+</ul>
+<p>When <code>re.compile</code> receives <code>\\section</code>, it trys to explains <code>\\section</code> in regular expression's way.</p>
+<ul>
+<li>In a regular expression, <code>\\</code> is a literal <code>\</code>.</li>
+<li>So the regular expression engine will try to match strings which contain <code>\section</code> literally. </li>
+</ul>
+<p><code>b = a.match('\section')</code> works.</p>
+<ul>
+<li>That's becasue that <code>\s</code> doesn't has any special meaning in python. so <code>\section</code> is a literal <code>\section</code> in python.</li>
+</ul>
+<p>And <code>c = a.match('\\section')</code> works too.</p>
+<ul>
+<li>That's because that <code>\\</code> has special meaning in python, the result of <code>\\section</code> in python is the literal <code>\section</code>.</li>
+</ul>
+<p>So unclear.</p>
+<p>The point is we have two interpreter here: python and regular expression engine (which is <code>re</code> module here).</p>
+<ul>
+<li>Before a string is passed into methods in <code>re</code> module, it's interpreted by python. Then in the regular expression engine, the string will be interpreted in regex way.</li>
+</ul>
+<p>For example, <code>'\t\\d'</code>, <code>'\\t\\d'</code>, <code>r'\t\d'</code>.</p>
+<ul>
+<li>Passing these three strings into <code>re.compile()</code> will result in a same pattern object.</li>
+<li>Python interpret <code>'\t\\d'</code> as a tab character, a backslash character and a 'd' character.</li>
+<li>Python interpret <code>'\\t\\d'</code> as a backslash character, a 't' character, a backslash charachter and a 'd' character.</li>
+<li>Python interpret <code>r'\t\d'</code> as a backslash character, a 't' character, a backslash character and a 'd' character.</li>
+<li>So, <code>'\\t\\d'</code> is equal to <code>r'\t\d'</code>.</li>
+<li>When <code>re.compile()</code> receives the first one <code>'\t\\d'</code>, it understand the tab character and keep it that way, and it understand the combination of a backslash character and a 'd' character and interpret the combination as a <code>[0-9]</code> character class.</li>
+<li>When <code>re.compile()</code> receives the second or the third string <code>'\\t\\d'</code>, it understand the combination of a backslash character and a 't' character and interpret the combination as a tab character, and it also understand the combination of a backslash character and a 'd' character and interpret the combination as a <code>[0-9]</code> character class.</li>
+</ul>
+<h2>Special sequences beginning with <code>\</code></h2>
+<p>Some common sequences: <code>\d \D \s \S \w \W \A \Z \B</code>, all these can be used in character class.</p>
+<p>And there is a special one: <code>\b</code>.</p>
+<ul>
+<li>First, <code>\d \D \s \S \w \W \A \Z \B</code> are meaningless in python, so the <code>\</code> preceded is a <code>\</code> literal. But <code>\b</code> is the backspace character in python, so when <code>\b</code> is in a RE string, I means when it is passed into methods in <em>re</em> module like <code>re.compile()</code>, what these methods get is a character whose ASCII value is 8, rather than a <code>\</code> character and a <code>b</code> character. <ul>
+<li>So if what you want is the word boundary <code>\b</code>, you have to precede the pattern string with <code>r</code>, or use <code>\\b</code> instead.</li>
+</ul>
+</li>
+<li>When being inside a character class, \b represents the backspace character, for compatibility with Python’s string literals.</li>
+</ul>
+<h2><code>( )</code> metacharacter</h2>
+<p><code>(</code> and <code>)</code> have much the same meaning as they do in mathematical expressions; they group together the expressions contained inside them, and you can repeat the contents of a group with a repeating qualifier, such as <code>*</code>, <code>+</code>, <code>?</code>, or <code>{m,n}</code>. For example, <code>(ab)*</code> will match zero or more repetitions of <code>ab</code>.</p>
+<p>One pair of <code>( )</code> is a group, it's numbered from left to right, from 1 upward. Group 0 is the whole RE.</p>
+<div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(a(b)c)d&#39;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abcd&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># return: &#39;abcd&#39;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># return: &#39;abc&#39;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># return: &#39;b&#39;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># return: 4</span>
+<span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># return: 3</span>
+<span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># return: 2</span>
+</pre></div>
+
+
+<p>There is some extensions, The syntax is <code>(?...)</code>. These extensions are also groups, things you can do to normal group can also be done to these extensions.</p>
+<p>Some common extensions: <code>(?:...) (?P&lt;name&gt;...)</code> </p>
+<p>Backreferences: <code>(\b\w+)\s+\1</code> is equal to <code>(?P&lt;word&gt;\b\w+)\s+(?P=word)</code>.</p>
+<p>Positive lookahead: <code>(?=...)</code></p>
+<p>Negative lookahead: <code>(?!...)</code>, for instance, a filename whose extension can't be 'bat': <code>.*[.](?!bat$|exe$)[^.]*$</code></p>
+<h2>split</h2>
+<p><code>re.split</code> prototype: <code>re.split(pattern, string, maxsplit=0, flags=0)</code></p>
+<div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;\W+&#39;</span><span class="p">,</span> <span class="s1">&#39;This... is a test.&#39;</span><span class="p">)</span> <span class="c1"># return: [&#39;This&#39;, &#39;is&#39;, &#39;a&#39;, &#39;test&#39;, &#39;&#39;]</span>
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;\W+&#39;</span><span class="p">,</span> <span class="s1">&#39;This... is a test.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># return: [&#39;This&#39;, &#39;is a test.&#39;]</span>
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;(\W+)&#39;</span><span class="p">,</span> <span class="s1">&#39;This... is a test.&#39;</span><span class="p">)</span> <span class="c1"># return: [&#39;This&#39;, &#39;... &#39;, &#39;is&#39;, &#39; &#39;, &#39;a&#39;, &#39; &#39;, &#39;test&#39;, &#39;.&#39;, &#39;&#39;]</span>
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;(\W+)&#39;</span><span class="p">,</span> <span class="s1">&#39;This... is a test.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># return: [&#39;This&#39;, &#39;... &#39;, &#39;is a test.&#39;]</span>
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;(\W+)&#39;</span><span class="p">,</span> <span class="s1">&#39;This... is a test.&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># return: [&#39;This&#39;, &#39;... &#39;, &#39;is&#39;, &#39; &#39;, &#39;a test.&#39;]</span>
+</pre></div>
+
+
+<h2>replace</h2>
+<p><code>re.sub</code> prototype: <code>sub(pattern, repl, string, count=0, flags=0)</code></p>
+<p><strong>Empty matches</strong> are replaced only when they're adjacent to a previous match.</p>
+<ul>
+<li><code>re.sub('x*', '-', 'abxd') # return: '-a-b-d-'</code></li>
+</ul>
+<p>Any backslash escapes in <code>repl</code> are processed.</p>
+<ul>
+<li><code>re.sub('section{([^}]*)}', 'subsection{\\1}', 'section{first} section{second}')</code></li>
+<li>return: 'subsection{first} subsection{second}'</li>
+<li>the repl <code>subsection{\\1}</code> will be used in regular expression engine.</li>
+</ul>
+<p><code>repl</code> could be a function.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hexrepl</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+    <span class="s2">&quot;Return the hex string for a decimal number&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+    <span class="k">return</span> <span class="nb">hex</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">hexrepl</span><span class="p">,</span> <span class="s1">&#39;Call 65490 for printing, 49152 for user code.&#39;</span><span class="p">)</span>
+<span class="c1"># return: &#39;Call 0xffd2 for printing, 0xc000 for user code.&#39;</span>
+</pre></div>
+
+
+<h2>END</h2>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/regular-expression-in-python.html">posted at 21:05</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/python.html" class="tags">Python</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

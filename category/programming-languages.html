@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | articles in the "programming-languages" category</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+
+                <li class="ephemeral selected"><a href="/category/programming-languages.html">programming-languages</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">May 17, 2017</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/relation-between-null-pointer-and-integer-zero-in-c.html" rel="bookmark" title="Permanent Link to &quot;Relation between null pointer and integer zero in C&quot;">Relation between null pointer and integer zero in C</a>
+                </h2>
+
+                
+                
+
+                <h2>What C standard says?</h2>
+<p><strong><em>§ 6.3.2.3 of the C99 standard says</em></strong></p>
+<ul>
+<li><em>An integer constant expression with the value <code>0</code>, or such an expression cast to type <code>void *</code>, is called a null pointer constant.</em></li>
+<li><em>If a null pointer constant is converted to a pointer type, the resulting pointer, called …</em></li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/relation-between-null-pointer-and-integer-zero-in-c.html">posted at 08:56</a>
+
+
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/c.html" class="tags">C</a>
+                </div>
+		<a href="/relation-between-null-pointer-and-integer-zero-in-c.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Feb 27, 2017</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/requests-session-in-python.html" rel="bookmark" title="Permanent Link to &quot;Requests Session in Python&quot;">Requests Session in Python</a>
+                </h2>
+
+                
+                
+
+                <p>First, let's check what <code>requests.get('https://github.com')</code> does.</p>
+<p>From <em>__init__.py</em>, I get <code>from .api import request, get, head, post, patch, put, delete, options</code>.</p>
+<p>In <em>api.py</em>, <code>get</code> is defined as following:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sessions</span>
+
+<span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/requests-session-in-python.html">posted at 17:57</a>
+
+
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/python.html" class="tags">Python</a>
+                    &nbsp;<a href="/tag/code-reading.html" class="tags">Code-Reading</a>
+                </div>
+		<a href="/requests-session-in-python.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Feb 01, 2017</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/pelican-in-python.html" rel="bookmark" title="Permanent Link to &quot;Pelican in Python&quot;">Pelican in Python</a>
+                </h2>
+
+                
+                
+
+                <p><em>/usr/local/bin/pelican</em>:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/python3.5</span>
+
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">pelican</span> <span class="kn">import</span> <span class="n">main</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(-script\.pyw|\.exe)?$&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+
+
+<p><code>main()</code> is in <em>/usr/local/lib/python3.5/site-packages/pelican/__init__.py</em>.</p>
+<div class="highlight"><pre><span></span><span class="k">def …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/pelican-in-python.html">posted at 20:37</a>
+
+
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/python.html" class="tags">Python</a>
+                    &nbsp;<a href="/tag/code-reading.html" class="tags">Code-Reading</a>
+                </div>
+		<a href="/pelican-in-python.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Dec 31, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/regular-expression-in-python.html" rel="bookmark" title="Permanent Link to &quot;Regular Expression in Python&quot;">Regular Expression in Python</a>
+                </h2>
+
+                
+                
+
+                <h2>11 metacharacters</h2>
+<p>A complete list of the metacharacters (<strong>11</strong> total): <strong><em>. ^ $ * + ? { } [ ] \ | ( )</em></strong></p>
+<ol>
+<li><code>[</code> and <code>]</code> is used for specifying a character class.<ul>
+<li>metacharacters are <strong>not active</strong> inside character classes.<ul>
+<li>There is an exception: Including a <code>^</code> as the first character of the character class.<ul>
+<li>When this happens,  you will match the characters not listed within …</li></ul></li></ul></li></ul></li></ol>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/regular-expression-in-python.html">posted at 21:05</a>
+
+
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/python.html" class="tags">Python</a>
+                </div>
+		<a href="/regular-expression-in-python.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Dec 08, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/import-in-python.html" rel="bookmark" title="Permanent Link to &quot;Import in Python&quot;">Import in Python</a>
+                </h2>
+
+                
+                
+
+                <p>In both Python 3.X and 2.X, <code>from</code> statements can now use leading dots(<code>.</code>) to specify that they require modules located within the same package in which the statements appear in, instead of modules located elsewhere on the module import search path (called <strong>absolute imports</strong>).</p>
+<p>In Python 3.X …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/import-in-python.html">posted at 23:12</a>
+
+
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/python.html" class="tags">Python</a>
+                </div>
+		<a href="/import-in-python.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Oct 28, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/integer-in-c.html" rel="bookmark" title="Permanent Link to &quot;Integer in C&quot;">Integer in C</a>
+                </h2>
+
+                
+                
+
+                <h2>Integer Type Representation</h2>
+<p>The representation of a value for an object having integer type is the particular encoding of the value in the bit pattern contained in the storage allocated for the object.</p>
+<p><code>CHAR_BIT</code> in <code>limits.h</code> gives the number of bits in a byte, which is at least 8 …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/integer-in-c.html">posted at 20:19</a>
+
+
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/c.html" class="tags">C</a>
+                </div>
+		<a href="/integer-in-c.html#disqus_thread">Click to read and post comments</a>
+            </article>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

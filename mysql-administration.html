@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | MySQL Administration</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="MySQL,MariaDB" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Sep 21, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/mysql-administration.html" rel="bookmark" title="Permanent Link to &quot;MySQL Administration&quot;">MySQL Administration</a>
+                </h2>
+
+                
+                
+
+                <hr>
+<p>Database administrator (DBA) responsibilities:</p>
+<ul>
+<li>Maintanance:<ul>
+<li>Monitor the server</li>
+<li>Configure the server</li>
+<li>Maintain log files</li>
+</ul>
+</li>
+<li>Design:<ul>
+<li>Design the database</li>
+<li>Create the database</li>
+</ul>
+</li>
+<li>Security:<ul>
+<li>Maintain user accounts</li>
+<li>Secure the server and its databases</li>
+</ul>
+</li>
+<li>Backup:<ul>
+<li>Backup the database regularly</li>
+<li>Restore the database if necessary</li>
+<li>Migrate data to another server if necessary</li>
+</ul>
+</li>
+<li>Miscellaneous<ul>
+<li>Start or stop the server when necessary</li>
+<li>Optimize the server</li>
+<li>Update software when necessary</li>
+<li>Enable and manage replication if necessary</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Types of database files:</p>
+<ul>
+<li>Configuration file<ul>
+<li>Files that contain configuration options that the MySQL server uses to set its defaults when it starts.</li>
+<li>In my Sierra, the configuration file is <code>/usr/local/etc/my.cnf</code>.</li>
+</ul>
+</li>
+<li>Data file<ul>
+<li>Files that define the tables, indexes, and other database objects. </li>
+<li>These files also store any data that's used by the database objects.</li>
+<li>InnoDB uses one file per table (am .frm file).</li>
+<li>MyISAM uses three files per table(.frm, .myd, and .myi).</li>
+<li>Other files are used for other database objects such as views and triggers.</li>
+<li>In my Sierra, the data directory is <code>/usr/local/var/mysql</code></li>
+</ul>
+</li>
+<li>Log file<ul>
+<li>Files that contain information that's written (logged) by the database server.</li>
+<li>You can configure your server to turn these files on or off and to control how they work.</li>
+<li>Types of log files<ul>
+<li>General<ul>
+<li>A text file that contains a record of client connection. SQL statements received from the clients, and other information.</li>
+</ul>
+</li>
+<li>Error<ul>
+<li>A text file that contains messages about server startup and shutdown and error messages.</li>
+</ul>
+</li>
+<li>Slow query<ul>
+<li>A text file that contains SQL statements that take a long time to execute.</li>
+</ul>
+</li>
+<li>Binary<ul>
+<li>One or more binary files that contain a record of changes that have been made to the database.</li>
+<li>This log can be used with backups to restore a database after a crash.</li>
+<li>This log can also be used to enable replication between a master server and a slave server.</li>
+</ul>
+</li>
+<li>Relay<ul>
+<li>One or more binary files that are used on a slave machine to relay any changes that have been made on the master machine.</li>
+<li>This log is only necessary when you're using replicaiton.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Monitor the server:</p>
+<ul>
+<li><code>SHOW STATUS</code><ul>
+<li>There are 518 status variables on my machine.</li>
+<li>A status variable is a variable that contains information about the status of the MySQL server.</li>
+</ul>
+</li>
+<li><code>SHOW VARIABLES</code><ul>
+<li>There are 610 system variables on my machine.</li>
+<li>A system variable is a variable that stores a setting for the current configuration of the MySQL server.</li>
+</ul>
+</li>
+<li><code>SHOW PROCESSLIST</code><ul>
+<li>a process is a connection to the database.</li>
+<li><code>KILL</code> </li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Configure the server:</p>
+<ul>
+<li>Edit the configuration file directly.<ul>
+<li>When MySQL starts, it reads the server configuration file and uses it to set system variables.</li>
+<li>The MySQL server only reads the configuration file when it starts. As a result, your changes won't go into effect until you restart the server.</li>
+</ul>
+</li>
+<li>Use a SET statement to set system variables.<ul>
+<li><code>SET GLOBAL var_name = var_value;</code></li>
+<li><code>SET [SESSION] var_name = var_value;</code></li>
+<li>The syntax for getting system variable:<ul>
+<li><code>@@GLOBAL.var_name</code></li>
+<li><code>@@[SESSION.]var_name</code></li>
+</ul>
+</li>
+<li>You can use the DEFAULT keyword to set the value of a variable to the default value that's compiled into MySQL.</li>
+<li>If you want to make these changes permanent, you can add them to the configuration file as described above.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Logging:</p>
+<ul>
+<li>System variables for enabling logging:<ul>
+<li><code>general_log</code>, <code>general_log_file = logname</code><ul>
+<li>Enables the general log with a default name of HOSTNAM.log, or specifies the name of the general log file.</li>
+</ul>
+</li>
+<li><code>log_error[=logname]</code><ul>
+<li>Enables the error log. If no name is specified, MySQL uses a name of HOSTNAME.err.</li>
+</ul>
+</li>
+<li><code>log_bin[=logname]</code><ul>
+<li>Enables the binary log. If no name is specified, MySQL uses a name of HOSTNAME. </li>
+<li>Since MySQL provides its own extensions (.index, .000001, .000002, etc.) for the binary log files, you don't need to specify an extension for the log name.</li>
+</ul>
+</li>
+<li><code>slow_query_log</code>, <code>slow_query_log_file=logname</code><ul>
+<li>Enables the slow query log with a default name of HOSTNAME-slow.log, or specifies the name of the slow log file.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Configure logging:<ul>
+<li><code>log_output[=target]</code><ul>
+<li>Sends the output for the general log and slow query log to a file (FILE), a table (TABLE), or nowhere (NONE).</li>
+<li>If your want to send the output to both a file and a table, you can separate the two targets with a comma (but no spaces).</li>
+</ul>
+</li>
+<li><code>log_warning[=level]</code><ul>
+<li>Determines what errors are logged.</li>
+<li>The default is 1, which logs aborted connections.</li>
+<li>To disable this option, set it to 0.</li>
+<li>To log aborted connections and access-denied errors, set this option to 2.</li>
+</ul>
+</li>
+<li><code>expire_logs_days[=days]</code><ul>
+<li>Deletes binary log files that are more than the specified number of days old.</li>
+<li>The default is 0, which means files aren't deleted.</li>
+</ul>
+</li>
+<li><code>max_binlog_size[=bytes]</code><ul>
+<li>Sets the maximum size of the binary log.</li>
+<li>The server starts a new log file when the binary log reaches its maximum size.</li>
+<li>The default is 1073741824(1GB)</li>
+</ul>
+</li>
+<li><code>long_query_time[=seconds]</code><ul>
+<li>Sets the number of seconds that defines a slow query. </li>
+<li>The default is 10.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Binary log<ul>
+<li>The index file is a text file, containing a list of all of numbered files that store the changes that have been made to the database.</li>
+<li>The numbered log files are binary files.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Privileges for working with data: </p>
+<ul>
+<li><code>SELECT</code></li>
+<li><code>INSERT</code> </li>
+<li><code>UPDATE</code></li>
+<li><code>DELETE</code> </li>
+<li><code>EXECUTE</code> - Execute a stroed procedure or function</li>
+</ul>
+<p>Privileges for modifying the database structure: </p>
+<ul>
+<li><code>CREATE</code> - Create a database or a table</li>
+<li><code>ALTER</code> - Alter a table</li>
+<li><code>DROP</code> - Drop a database or a table</li>
+<li><code>INDEX</code> - Create or drop an index</li>
+<li><code>CREATE VIEWS</code> - Create views</li>
+<li><code>CREATE ROUTINE</code> - Create a stored procedure or function</li>
+<li><code>ALTER ROUTINE</code> - Alter or drop a stored procedure or function</li>
+<li><code>TRIGGER</code> - Create or drop a trigger on a table</li>
+<li><code>EVENT</code> - Create, alter, drop, or view an event for a database</li>
+</ul>
+<p>Administrative privileges:</p>
+<ul>
+<li><code>CREATE USER</code> - Create new user accounts</li>
+<li><code>RELOAD</code> - Reload the tables that store the privileges for the users of the database. This refreshes these tables if they have been modified.</li>
+<li><code>SHOW DATABASES</code> - Show the names of all databases on the server</li>
+<li><code>SHUTDOWN</code> - Shut down the server</li>
+</ul>
+<p>Other privileges:</p>
+<ul>
+<li><code>ALL [PRIVILEGES]</code> - All privileges available at the specified level except the GRANT OPTION privilege.</li>
+<li><code>GRANT OPTION</code> - Allows a user to grant his or her privileges to other users.</li>
+<li><code>USAGE</code> - No privileges. It can be used to modify existing accounts without changing the privileges for that account.</li>
+</ul>
+<p>You can use <code>SHOW PRIVILEGES;</code> to see a list of available privileges and their definitions.</p>
+<hr>
+<ul>
+<li><code>CREATE USER username IDENTIFIED BY password</code></li>
+<li><code>CREATE USER joel@localhost IDENTIFIED BY 'sesame'</code></li>
+<li><code>CREATE USER jane IDENTIFIED BY 'sesame'</code></li>
+<li><code>CREATE USER jane@% IDENTIFIED BY 'sesame'</code></li>
+<li><code>RENAME USER username TO new_username</code></li>
+<li><code>RENAME USER joel@localhost TO joelmurach@localhost</code></li>
+<li><code>DROP USER username</code></li>
+<li><code>DROP USER joelmurach@localhost</code></li>
+<li><code>DROP USER jane</code></li>
+<li><code>DROP USER jane@%</code></li>
+</ul>
+<p>The username and hostname do not need to be quoted if they are legal as unquoted identifiers. </p>
+<p>Quotes are necessary to specify a username string containing special characters such as dash (-), or a hostname string containing special characters or wildcard characters such as a percent sign (%).</p>
+<p>You can use single quotation marks ('), double quotation marks ("), or backticks (`) to enclose a username or hostname.</p>
+<p>The syntax of the GRANT statement:</p>
+<div class="highlight"><pre><span></span><span class="k">GRANT</span> <span class="n">privilege_list</span>
+<span class="k">ON</span> <span class="p">[</span><span class="n">db_name</span><span class="p">.]</span><span class="k">table</span>
+<span class="k">TO</span> <span class="n">user1</span> <span class="p">[</span><span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password1&#39;</span><span class="p">]</span>
+    <span class="p">[,</span> <span class="n">user2</span> <span class="p">[</span><span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password2&#39;</span><span class="p">]]...</span>
+<span class="p">[</span><span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">]</span>
+</pre></div>
+
+
+<p>A statement that create a user with no privileges:</p>
+<div class="highlight"><pre><span></span><span class="k">GRANT</span> <span class="k">USAGE</span>
+<span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span>
+<span class="k">TO</span> <span class="n">joel</span><span class="o">@</span><span class="n">localhost</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;sesame&#39;</span>
+</pre></div>
+
+
+<p>A statement that creates a user with global privileges:</p>
+<div class="highlight"><pre><span></span><span class="k">GRANT</span> <span class="k">ALL</span>
+<span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span>
+<span class="k">TO</span> <span class="n">jim</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;supersecret&#39;</span>
+<span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span>
+</pre></div>
+
+
+<p>A statement that grants column privileges to a user:</p>
+<div class="highlight"><pre><span></span><span class="k">GRANT</span> <span class="k">SELECT</span> <span class="p">(</span><span class="n">vendor_name</span><span class="p">,</span> <span class="n">vendor_state</span><span class="p">,</span> <span class="n">vendor_zip_code</span><span class="p">),</span>
+    <span class="k">UPDATE</span> <span class="p">(</span><span class="n">vendor_address</span><span class="p">)</span>
+<span class="k">ON</span> <span class="n">ap</span><span class="p">.</span><span class="n">vendors</span> <span class="k">TO</span> <span class="n">joel</span><span class="o">@</span><span class="n">localhost</span>
+</pre></div>
+
+
+<p>You can use the <code>SHOW GRANTS</code> statement to display the privileges for a user: <code>SHOW GRANT [FOR USER]</code>.</p>
+<p>The syntax of the REVOKE statement for all privileges:</p>
+<div class="highlight"><pre><span></span><span class="k">REVOKE</span> <span class="k">ALL</span><span class="p">[</span> <span class="k">PRIVILEGES</span><span class="p">],</span> <span class="k">GRANT</span> <span class="k">OPTION</span>
+<span class="k">FROM</span> <span class="n">user1</span><span class="p">[,</span> <span class="n">user2</span><span class="p">]...</span>
+</pre></div>
+
+
+<p>The syntax of the REVOKE statement for specific privileges:</p>
+<div class="highlight"><pre><span></span><span class="k">REVOKE</span> <span class="n">privilege_list</span>
+<span class="k">ON</span> <span class="p">[</span><span class="n">db_name</span><span class="p">.]</span><span class="k">table</span>
+<span class="k">FROM</span> <span class="n">user1</span><span class="p">[,</span> <span class="n">user2</span><span class="p">]...</span>
+</pre></div>
+
+
+<p>To completely delete a user account, use the <code>DROP USER</code> statement.</p>
+<p>The syntax of the SET PASSWORD statement</p>
+<div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">PASSWORD</span> <span class="p">[</span><span class="k">FOR</span> <span class="k">user</span><span class="p">]</span> <span class="o">=</span> <span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>A GRANT statement that changes a user's password.</p>
+<div class="highlight"><pre><span></span><span class="k">GRANT</span> <span class="k">USAGE</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="n">johm</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;pa55word&#39;</span>
+</pre></div>
+
+
+<hr>
+<p>Backup a database:</p>
+<div class="highlight"><pre><span></span>mysqldump -uroot -p dbname &gt; /path/to/file
+mysqldump -uroot -p --databases dbname1 dbname2 &gt; /path/to/file
+mysqldump -uroot -p --all-databases &gt; /path/to/file
+</pre></div>
+
+
+<p>Common options for the mysqldump program:</p>
+<ul>
+<li>--databases</li>
+<li>--all-databases</li>
+<li>--single-transaction</li>
+<li>--routines</li>
+<li>--events</li>
+<li>--flush-logs</li>
+</ul>
+<p>Some advanced options for the mysqldump program</p>
+<ul>
+<li>--add-drop-table</li>
+<li>--add-locks</li>
+<li>--disable-keys</li>
+<li>--comments</li>
+<li>--quote-names</li>
+<li>--create-options</li>
+<li>--compact</li>
+<li>--compress</li>
+<li>--delete-master-logs</li>
+<li>--force</li>
+</ul>
+<hr>
+<p>Restore a database:</p>
+<div class="highlight"><pre><span></span>mysql -u root -p dbname &lt; /path/to/file
+mysql -u root -p &lt; /path/to/file
+mysqlbinlog  /path/to/file <span class="p">|</span> mysql -u root -p
+mysqlbinlog --database<span class="o">=</span>dbname /path/to/file <span class="p">|</span> mysql -u root -p
+</pre></div>
+
+
+<hr>
+<p>Import and export data:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">column_list</span>
+<span class="k">INTO</span> <span class="n">OUTFILE</span> <span class="n">file_path</span>
+<span class="p">[</span><span class="n">FIELDS</span> <span class="p">[</span><span class="n">TERMINATED</span> <span class="k">BY</span> <span class="n">string</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">ENCLOSED</span> <span class="k">BY</span> <span class="nb">char</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">ESCAPED</span> <span class="k">BY</span> <span class="nb">char</span><span class="p">]</span>
+<span class="k">FROM</span> <span class="k">table_name</span>
+<span class="p">[</span><span class="k">WHERE</span> <span class="n">search_condition</span><span class="p">]</span>
+<span class="p">[</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">order_by_list</span><span class="p">]</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">LOAD</span> <span class="k">DATA</span> <span class="n">INFILE</span> <span class="n">file_path</span>
+<span class="k">INTO</span> <span class="k">TABLE</span> <span class="k">table_name</span>
+<span class="p">[</span><span class="n">FIELDS</span> <span class="p">[</span><span class="n">TERMINATED</span> <span class="k">BY</span> <span class="n">string</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">ENCLOSED</span> <span class="k">BY</span> <span class="nb">char</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">ESCAPED</span> <span class="k">BY</span> <span class="nb">char</span><span class="p">]</span>
+</pre></div>
+
+
+<hr>
+<p>Check and repair tables</p>
+<div class="highlight"><pre><span></span><span class="k">CHECK</span> <span class="k">TABLE</span> <span class="n">table_list</span> <span class="n">option_list</span>
+<span class="n">REPAIR</span> <span class="k">TABLE</span> <span class="n">table_list</span> <span class="n">option_list</span>
+</pre></div>
+
+
+<hr>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/mysql-administration.html">posted at 11:23</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/databases.html" rel="tag">databases</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/mysql.html" class="tags">MySQL</a>
+                    &nbsp;<a href="/tag/mariadb.html" class="tags">MariaDB</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

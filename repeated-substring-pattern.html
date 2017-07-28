@@ -57,7 +57,7 @@
 <li>Output: True </li>
 <li>Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)</li>
 </ul>
-<p>Python Solution:</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">repeatedSubstringPattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -65,6 +65,29 @@
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">thirdMax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type nums: List[int]</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span> <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">origin_max</span> <span class="o">=</span> <span class="n">_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="n">_max</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">tmp</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                        <span class="n">tmp</span> <span class="o">=</span> <span class="n">num</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">tmp</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">tmp</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">origin_max</span>
+            <span class="n">_max</span> <span class="o">=</span> <span class="n">tmp</span>
+        <span class="k">return</span> <span class="n">_max</span>
 </pre></div>
 
 
@@ -91,7 +114,7 @@
 
                 <div class="info">
 				<a href="/repeated-substring-pattern.html">No.459</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/string.html" class="tags">String</a>

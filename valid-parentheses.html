@@ -41,7 +41,7 @@
 
                 <p>Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.</p>
 <p>The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.</p>
-<p>Python Solution:</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">isValid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -61,6 +61,26 @@
 </pre></div>
 
 
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">isValid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type s: str</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;)&#39;</span><span class="p">:</span> <span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="s1">&#39;]&#39;</span><span class="p">:</span> <span class="s1">&#39;[&#39;</span><span class="p">,</span> <span class="s1">&#39;}&#39;</span><span class="p">:</span> <span class="s1">&#39;{&#39;</span><span class="p">}</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">stack</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
+                <span class="n">_c</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">_c</span> <span class="o">!=</span> <span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]:</span> <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="n">stack</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
 <li>nothing to say</li>
@@ -70,7 +90,7 @@
 
                 <div class="info">
 				<a href="/valid-parentheses.html">No.20</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>

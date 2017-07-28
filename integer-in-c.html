@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Integer in C</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="C" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Oct 28, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/integer-in-c.html" rel="bookmark" title="Permanent Link to &quot;Integer in C&quot;">Integer in C</a>
+                </h2>
+
+                
+                
+
+                <h2>Integer Type Representation</h2>
+<p>The representation of a value for an object having integer type is the particular encoding of the value in the bit pattern contained in the storage allocated for the object.</p>
+<p><code>CHAR_BIT</code> in <code>limits.h</code> gives the number of bits in a byte, which is at least 8.</p>
+<h3>Unsigned integer</h3>
+<p><em>C requires that unsigned integer represents value with a pure binary system with an offset.</em> (This is a key point to understand C integer.)</p>
+<ul>
+<li><em>the right-most has the weight 2<sup>0</sup>.</em></li>
+<li><em>the next bit to the left has the weight 2<sup>1</sup> and so forth.</em></li>
+</ul>
+<p>By definition in C language:</p>
+<ul>
+<li>A computations involving unsigned operands can never overflow.</li>
+<li>A result that cannot be represented by the resulting unsigned integer type is reduced modulo the number that is one greater than the largest value that can be represented by the resulting type.</li>
+<li>For addition and multiplication, this is the same as pretending that there are additional high-order (most significant) bits appended to make sufficient room for the representation and then discarding these bits.</li>
+</ul>
+<p>When comparing unsigned integers, using <code>i &gt; UINT_MAX - j</code> instead of <code>i + j &gt; UINT_MAX</code>, using <code>i &lt; j</code> instead of <code>i - j &lt; 0</code>.</p>
+<h3>Signed integer</h3>
+<p>The C standard permits negative values to be represented as</p>
+<ul>
+<li>sign and magnitude: use high-bit to indicate the sign, 0 for positive, 1 for negative.</li>
+<li>one's complement: the sign bit is give the weight of -(2<sup>N-1</sup> - 1).</li>
+<li>two's complement: the sign bit is give the weight of -2<sup>N-1</sup>.</li>
+</ul>
+<p>Signed integer overflow is undefined behavoir in C.</p>
+<h3>other</h3>
+<p><code>char</code> could be either <code>signed char</code> or <code>unsigned char</code>, compiler has the latitude to choose.</p>
+<p><code>size_t</code> is unsigned integer type of the output of <code>sizeof</code> operator. Variables of type <code>size_of</code> are guaranteed to be sufficient precision to represent the size of an object. What's the mean of "the size of an object"?</p>
+<ul>
+<li>with <code>int a[10];</code>, the object <code>a</code> has the size of <code>10 * sizeof(int)</code>.</li>
+<li>the size of an object is the storage space it uses.</li>
+<li><code>int</code> may be not enough, <code>long long</code> may be too much and inefficient.</li>
+</ul>
+<h2>Integer Type Conversion</h2>
+<p>The rank of a signed integer type is greater than the rank of any signed integer type with less precision.</p>
+<p>The rank of any unsigned integer type is equal to the rank of the corresponding signed integer type.</p>
+<p><code>value preserving</code> rule:</p>
+<ol>
+<li>The value of the smaller type is converted to int.</li>
+<li>otherwise, it is converted to unsigned int.</li>
+</ol>
+<p>So, </p>
+<div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">u</span> <span class="o">=</span> <span class="n">UCHAR_MAX</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">~</span><span class="n">u</span><span class="p">;</span>
+<span class="c1">// u is promoted to int type, which is still 255.</span>
+<span class="c1">// then ~255 == -256, i will be -256</span>
+</pre></div>
+
+
+<p>Conversions of unsigned integer types to larger width is always safe and accomplished by zero-extending the bit pattern.
+For conversions of an unsigned integer type to a smaller width, the value is reduced modulo 2<sup>w</sup> where w is the width of the smaller type. This corresponds to truncating the high-order bytes.</p>
+<p>Conversions from signed integer to unsigned integer:</p>
+<ol>
+<li>Positive values are preserved if they are representable in the new unsigned type.</li>
+<li>Negative or overly large positive values are converted by repeatedly adding or substracting one more than the maximum value that cant be represented in the new unsigned type(2<sup>w</sup>) until the value is in the range of the new type.</li>
+</ol>
+<p>So, for two's complement representation(There are three types of representation for signed integer), the conversion rule is:
+<img alt="conversion from signed integer (two's complement representation) to unsigned integer" src="/images/conversion_unsigned_signed_x86.png"></p>
+<p>Coversions to signed integer types:</p>
+<ol>
+<li>When a value with arbitrary integer type is converted to a signed integer type, if the value can be represented in the new type, it is preserved.</li>
+<li>If the value can not be represented in the new type:<ol>
+<li>the result is <em>implementation-defined</em>.</li>
+<li>an <em>implementation-defined</em> signal is raised.</li>
+</ol>
+</li>
+</ol>
+<p><strong>Maybe I should never do any conversions.</strong></p>
+<h2>Integer Operations</h2>
+<p>Integer addition can result in an signed overflow or unsigned wraparound if the sum cannot be represented in the allocated bits.</p>
+<p>Let's say that we need to figure out the result of <code>-5 / 10</code>.</p>
+<p>C89, not totally (§3.3.5/6). It can be either <code>-5</code> or <code>5</code>, because <code>-5 / 10</code> can return <code>0</code> or <code>-1</code> (% is defined in terms of a linear equation <code>a = (a/b)*b + a%b</code>):</p>
+<ol>
+<li>When integers are divided and the division is inexact, if both operands are positive the result of the <code>/</code> operator is the largest integer less than the algebraic quotient and the result of the <code>%</code> operator is positive. </li>
+<li>If either operand is negative, whether the result of the <code>/</code> operator is the largest integer less than the algebraic quotient or the smallest integer greater than the algebraic quotient is implementation-defined, as is the sign of the result of the <code>%</code> operator. </li>
+<li>If the quotient <code>a/b</code> is representable, the expression <code>(a/b)*b + a%b</code> shall equal <code>a</code>.</li>
+</ol>
+<p>C99, yes (§6.5.5/6), the result must be -5:</p>
+<ol>
+<li>When integers are divided, the result of the <code>/</code> operator is the algebraic quotient with any fractional part discarded.88) If the quotient <code>a/b</code> is representable, the expression <code>(a/b)*b + a%b</code> shall equal <code>a</code>.  <sub>88) This is often called "truncation toward zero"</sub></li>
+</ol>
+<p>A division error is generated if:</p>
+<ol>
+<li>the divsor is zero.</li>
+<li>the quotient is too large for the designated register. (<code>INT_MIN / -1</code>, <code>LONG_MIN / -1L</code>)</li>
+</ol>
+<p>A division error results in a fault on interrupt vector 0.</p>
+<p>Bitwise shifts are undefined if the value of the right operand is:</p>
+<ul>
+<li>negative</li>
+<li>greater than or equal to the width of the left operand.</li>
+</ul>
+<p>for <code>E1 &lt;&lt; E2</code>:</p>
+<ul>
+<li>The result of <code>E1 &lt;&lt; E2</code> is <code>E1</code> left-shifted <code>E2</code> bit positions; vacated bits are filled with zeros.</li>
+<li>If <code>E1</code> is signed integer and not negative number, and <code>E1 * 2^E2</code> is representable in the result type, then that's the resulting value; otherwise the behavior is undefined.<ul>
+<li>if <code>E1</code> is negative, the behavior is undefinied.</li>
+</ul>
+</li>
+<li>If <code>E1</code> has unsigned integer type in the expression <code>E1 &lt;&lt; E2</code>, the result is <code>E1 * 2^E2</code>, reduced modulo with one more than the maximum value representable in the result type. C requires modulo behavior for unsigned integers.</li>
+</ul>
+<p>for <code>E1 &gt;&gt; E2</code>:</p>
+<ul>
+<li>If <code>E1</code> has an unsigned type or if <code>E1</code> has a signed type and a non-negative value, the value of the result is the integral part of the quotient <code>E1 / (2^E2)</code>.</li>
+<li>If <code>E1</code> has an signed type and a negative value, the resulting value is <em>implementation-defined</em> and may be<ul>
+<li>an arithmetic (signed) shift</li>
+<li>a logic (unsigned) shift</li>
+</ul>
+</li>
+</ul>
+<p><strong>To avoid undefined and implementation-defined behaviors, bitwise shift should only be used with unsigned integer operands</strong></p>
+<h2>String in C</h2>
+<p>A string consists of a contiguous sequence of characters terminated by and including the first null character.</p>
+<p>The length of a string is the number of the bytes preceding the null character.
+* <code>strlen()</code> can be used to determine the length of a null-terminated string but not the space available in an array.</p>
+<p>A character string literal is a sequence of zero or more characters enclosed in double quotes, as in <code>"XYZ"</code>; and a character string is offen used to initialize a char array.</p>
+<div class="highlight"><pre><span></span><span class="kt">char</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span> <span class="c1">//&quot;sizeof a / sizeof a[0]&quot; is 4; &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, 0.</span>
+<span class="kt">char</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span> <span class="c1">//&quot;sizeof a / sizeof a[0]&quot; is 2; &#39;a&#39;, &#39;b&#39;. </span>
+</pre></div>
+
+
+<p>In C, you can initialize a char array with a string literal whose length is larger than the size of the array, extra characters are simply ignored. But, in C++, you can't.</p>
+<p>The C standard uses the following philosophy for choosing chararcter types:</p>
+<ul>
+<li>signed or unsigned char<ul>
+<li>suitable for small integer values.</li>
+</ul>
+</li>
+<li>"plain" char<ul>
+<li>the type of each element of a string literal.</li>
+<li>used character data as opposed to integer data.</li>
+</ul>
+</li>
+</ul>
+<h2>END</h2>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/integer-in-c.html">posted at 20:19</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/c.html" class="tags">C</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

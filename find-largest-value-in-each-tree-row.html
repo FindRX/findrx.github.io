@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Find Largest Value in Each Tree Row</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Tree,Depth-First-Search,Breadth-First-Search" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/find-largest-value-in-each-tree-row.html" rel="bookmark" title="Permanent Link to &quot;Find Largest Value in Each Tree Row&quot;">Find Largest Value in Each Tree Row</a>
+                </h2>
+
+                
+                
+
+                <p>You need to find the largest value in each row of a binary tree.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><span class="n">Input</span><span class="o">:</span> 
+
+          <span class="mi">1</span>
+         <span class="o">/</span> <span class="o">\</span>
+        <span class="mi">3</span>   <span class="mi">2</span>
+       <span class="o">/</span> <span class="o">\</span>   <span class="o">\</span>  
+      <span class="mi">5</span>   <span class="mi">3</span>   <span class="mi">9</span> 
+
+<span class="n">Output</span><span class="o">:</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">9</span><span class="o">]</span>
+</pre></div>
+
+
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">largestValues</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type root: TreeNode</span>
+<span class="sd">        :rtype: List[int]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">def</span> <span class="nf">preorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">level</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span> <span class="k">return</span>
+            <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">):</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">stack</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">stack</span><span class="p">[</span><span class="n">level</span><span class="p">])</span>
+            <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">preorder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">stack</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li><code>level == len(stack)</code>, there are several similar problems.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/find-largest-value-in-each-tree-row/#/description">515. Find Largest Value in Each Tree Row</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/find-largest-value-in-each-tree-row.html">No.515</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

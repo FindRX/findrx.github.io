@@ -191,6 +191,55 @@
 </pre></div>
 
 
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">mergeKLists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lists</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type lists: List[ListNode]</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">gen</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+            <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">node</span>
+                <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">dummy</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">heapq</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">gen</span><span class="p">,</span> <span class="n">lists</span><span class="p">)):</span>
+            <span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">mergeKLists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lists</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type lists: List[ListNode]</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">heap</span> <span class="o">=</span> <span class="p">[(</span><span class="n">l</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lists</span> <span class="k">if</span> <span class="n">l</span><span class="p">]</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">dummy</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">heap</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+                <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="p">))</span>
+            <span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ol>
 <li>Two methods: <ol>
@@ -206,7 +255,7 @@
 
                 <div class="info">
 				<a href="/merge-k-sorted-lists.html">No.23</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>

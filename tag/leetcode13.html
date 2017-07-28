@@ -32,283 +32,310 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/word-pattern.html" rel="bookmark" title="Permanent Link to &quot;Word Pattern&quot;">Word Pattern</a>
+                    <a href="/reverse-string.html" rel="bookmark" title="Permanent Link to &quot;Reverse String&quot;">Reverse String</a>
                 </h2>
 
                 
                 
 
-                <p>Given a pattern and a string str, find if str follows the same pattern.</p>
-<p>Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.</p>
+                <p>Write a function that takes a string as input and returns the string reversed.</p>
+<p>Example:</p>
 <ul>
-<li>You may assume pattern contains only lowercase letters, and str contains lowercase letters …</li></ul>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/word-pattern.html">No.290</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                </div>
-		<a href="/word-pattern.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/unique-word-abbreviation.html" rel="bookmark" title="Permanent Link to &quot;Unique Word Abbreviation&quot;">Unique Word Abbreviation</a>
-                </h2>
-
-                
-                
-
-                <p>An abbreviation of a word follows the form <first letter><number><last letter>. Below are some examples of word abbreviations:</p>
-<ul>
-<li>it                      --&gt; it    (no abbreviation)</li>
-<li>d|o|g                   --&gt; d1g</li>
-<li>i|nternationalizatio|n  --&gt; i18n</li>
-<li>l|ocalizatio|n          --&gt; l10n</li>
+<li>Given s = "hello", return "olleh".</li>
 </ul>
-<p>Assume you have a dictionary and given a word, find whether its abbreviation is unique in the dictionary. A …</p>
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reverseString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type s: str</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span> <span class="nf">reverseString</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span> <span class="o">||</span> <span class="o">!*</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">l …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/unique-word-abbreviation.html">No.288</a>
+				<a href="/reverse-string.html">No.344</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
-                </div>
-		<a href="/unique-word-abbreviation.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/move-zeroes.html" rel="bookmark" title="Permanent Link to &quot;Move Zeroes&quot;">Move Zeroes</a>
-                </h2>
-
-                
-                
-
-                <p>Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.</p>
-<ul>
-<li>You must do this in-place without making a copy of the array.</li>
-<li>Minimize the total number of operations.</li>
-</ul>
-<p>For example, given nums = [0, 1, 0 …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/move-zeroes.html">No.283</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
                     &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
                 </div>
-		<a href="/move-zeroes.html#disqus_thread">Click to read and post comments</a>
+		<a href="/reverse-string.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/first-bad-version.html" rel="bookmark" title="Permanent Link to &quot;First Bad Version&quot;">First Bad Version</a>
+                    <a href="/power-of-four.html" rel="bookmark" title="Permanent Link to &quot;Power of Four&quot;">Power of Four</a>
                 </h2>
 
                 
                 
 
-                <p>You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.</p>
-<p>Suppose you have n …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/first-bad-version.html">No.278</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
-                </div>
-		<a href="/first-bad-version.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/paint-fence.html" rel="bookmark" title="Permanent Link to &quot;Paint Fence&quot;">Paint Fence</a>
-                </h2>
-
-                
-                
-
-                <p>There is a fence with n posts, each post can be painted with one of the k colors.</p>
-<p>You have to paint all the posts such that no more than two adjacent fence posts have the same color.</p>
-<p>Return the total number of ways you can paint the fence.</p>
-<p>Note …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/paint-fence.html">No.276</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
-                </div>
-		<a href="/paint-fence.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/closest-binary-search-tree-value.html" rel="bookmark" title="Permanent Link to &quot;Closest Binary Search Tree Value&quot;">Closest Binary Search Tree Value</a>
-                </h2>
-
-                
-                
-
-                <p>Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.</p>
+                <p>Given an integer (signed 32 bits), write a function to check whether it is a power of 4.</p>
+<p>Example:</p>
 <ul>
-<li>Given target value is a floating point.</li>
-<li>You are guaranteed to have only one unique value in the BST that is closest to the target.</li>
+<li>Given num = 16, return true. Given num = 5, return false.</li>
 </ul>
-<p>C Solution 1 …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/closest-binary-search-tree-value.html">No.270</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
-                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
-                </div>
-		<a href="/closest-binary-search-tree-value.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/missing-number.html" rel="bookmark" title="Permanent Link to &quot;Missing Number&quot;">Missing Number</a>
-                </h2>
-
-                
-                
-
-                <p>Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.</p>
-<p>For example,</p>
+<p>Follow up: </p>
 <ul>
-<li>Given nums = [0, 1, 3] return 2.</li>
+<li>Could you solve it without loops/recursion?</li>
 </ul>
-<p>Note:</p>
-<ul>
-<li>Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity …</li></ul>
+<p>C Solution:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfFour</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">num</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">num</span> <span class="o">&amp;</span> <span class="mh">0x55555555 …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/missing-number.html">No.268</a>
+				<a href="/power-of-four.html">No.342</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
                     &nbsp;<a href="/tag/math.html" class="tags">Math</a>
                     &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
                 </div>
-		<a href="/missing-number.html#disqus_thread">Click to read and post comments</a>
+		<a href="/power-of-four.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/palindrome-permutation.html" rel="bookmark" title="Permanent Link to &quot;Palindrome Permutation&quot;">Palindrome Permutation</a>
+                    <a href="/longest-substring-with-at-most-k-distinct-characters.html" rel="bookmark" title="Permanent Link to &quot;Longest Substring with At Most K Distinct Characters&quot;">Longest Substring with At Most K Distinct Characters</a>
                 </h2>
 
                 
                 
 
-                <p>Given a string, determine if a permutation of the string could form a palindrome.</p>
-<p>Example:</p>
-<ul>
-<li>"code" -&gt; False, "aab" -&gt; True, "carerac" -&gt; True.</li>
-</ul>
-<p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">canPermutePalindrome</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">flag</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(;</span> <span class="o">*</span><span class="n">s</span><span class="p">;</span> <span class="n">s</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">s</span><span class="p">])</span> <span class="p">{</span>
-            <span class="n">res</span><span class="o">--</span><span class="p">;</span>
-            <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">else</span> <span class="p">{</span>
-            <span class="n">res</span><span class="o">++</span><span class="p">;</span>
-            <span class="n">flag</span><span class="p">[</span><span class="o">*</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return …</span></pre></div>
+                <p>Given a string, find the length of the longest substring T that contains at most k distinct characters.</p>
+<p>For example, Given s = <code>“eceba”</code> and k = 2,</p>
+<p>T is <code>"ece"</code> which its length is 3.</p>
+<p>Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">lengthOfLongestSubstringKDistinct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type s: str</span>
+<span class="sd">        :type k: int</span>
+<span class="sd">        :rtype …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/palindrome-permutation.html">No.266</a>
+				<a href="/longest-substring-with-at-most-k-distinct-characters.html">No.340</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
                 </div>
-		<a href="/palindrome-permutation.html#disqus_thread">Click to read and post comments</a>
+		<a href="/longest-substring-with-at-most-k-distinct-characters.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/ugly-number-ii.html" rel="bookmark" title="Permanent Link to &quot;Ugly Number II&quot;">Ugly Number II</a>
+                    <a href="/nested-list-weight-sum.html" rel="bookmark" title="Permanent Link to &quot;Nested List Weight Sum&quot;">Nested List Weight Sum</a>
                 </h2>
 
                 
                 
 
-                <p>Write a program to find the n<sup>th</sup> ugly number.</p>
-<p>Ugly numbers are positive numbers whose prime factors only include <code>2</code>, <code>3</code>, <code>5</code>. For example, <code>1, 2, 3, 4, 5, 6, 8, 9, 10, 12</code> is the sequence of the first 10 ugly numbers.</p>
-<p>Note that 1 is typically treated …</p>
+                <p>Given a nested list of integers, return the sum of all integers in the list weighted by their depth.</p>
+<p>Each element is either an integer, or a list -- whose elements may also be integers or other lists.</p>
+<p>Example:</p>
+<ul>
+<li>Given the list [[1,1],2,[1,1]]</li>
+<li>return 10. (four 1's …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/ugly-number-ii.html">No.264</a>
+				<a href="/nested-list-weight-sum.html">No.339</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
-                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
-                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                </div>
+		<a href="/nested-list-weight-sum.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/house-robber-iii.html" rel="bookmark" title="Permanent Link to &quot;House Robber III&quot;">House Robber III</a>
+                </h2>
+
+                
+                
+
+                <p>The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that "all houses in this place forms a …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/house-robber-iii.html">No.337</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
                     &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
+                    &nbsp;<a href="/tag/perfect.html" class="tags">Perfect</a>
                 </div>
-		<a href="/ugly-number-ii.html#disqus_thread">Click to read and post comments</a>
+		<a href="/house-robber-iii.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/ugly-number.html" rel="bookmark" title="Permanent Link to &quot;Ugly Number&quot;">Ugly Number</a>
+                    <a href="/palindrome-pairs.html" rel="bookmark" title="Permanent Link to &quot;Palindrome Pairs&quot;">Palindrome Pairs</a>
                 </h2>
 
                 
                 
 
-                <p>Write a program to check whether a given number is an ugly number.</p>
-<p>Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.</p>
-<p>Note that 1 is typically treated …</p>
+                <p>Given a list of <strong>unique</strong> words, find all pairs of <strong>distinct</strong> indices <code>(i, j)</code> in the given list, so that the concatenation of the two words, i.e. <code>words[i] + words[j]</code> is a palindrome.</p>
+<p><strong>Example 1:</strong></p>
+<ul>
+<li>Given <code>words</code> = <code>["bat", "tab", "cat"]</code></li>
+<li>Return <code>[[0, 1], [1, 0]]</code></li>
+<li>The palindromes are …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/ugly-number.html">No.263</a>
+				<a href="/palindrome-pairs.html">No.336</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                    &nbsp;<a href="/tag/trie.html" class="tags">Trie</a>
+                </div>
+		<a href="/palindrome-pairs.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/largest-bst-subtree.html" rel="bookmark" title="Permanent Link to &quot;Largest BST Subtree&quot;">Largest BST Subtree</a>
+                </h2>
+
+                
+                
+
+                <p>Given a binary tree, find the largest subtree which is a Binary Search Tree (BST), where largest means subtree with largest number of nodes in it.</p>
+<p>Note: A subtree must include all of its descendants.</p>
+<p>Here's an example:</p>
+<div class="highlight"><pre><span></span>    10
+    / \
+   5  15
+  / \   \ 
+ 1   8   7
+</pre></div>
+
+
+<ul>
+<li>The Largest BST Subtree in this …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/largest-bst-subtree.html">No.333</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                </div>
+		<a href="/largest-bst-subtree.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/odd-even-linked-list.html" rel="bookmark" title="Permanent Link to &quot;Odd Even Linked List&quot;">Odd Even Linked List</a>
+                </h2>
+
+                
+                
+
+                <p>Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.</p>
+<ul>
+<li>You should try to do it in place. The program should run in O(1) space complexity and …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/odd-even-linked-list.html">No.328</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                </div>
+		<a href="/odd-even-linked-list.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/power-of-three.html" rel="bookmark" title="Permanent Link to &quot;Power of Three&quot;">Power of Three</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer, write a function to determine if it is a power of three.</p>
+<p>Follow up:
+* Could you do it without using any loop / recursion?</p>
+<p>C Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">isPowerOfThree</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">n</span> <span class="o">/=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>C Solution 2 …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/power-of-three.html">No.326</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
                     &nbsp;<a href="/tag/math.html" class="tags">Math</a>
                 </div>
-		<a href="/ugly-number.html#disqus_thread">Click to read and post comments</a>
+		<a href="/power-of-three.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/super-ugly-number.html" rel="bookmark" title="Permanent Link to &quot;Super Ugly Number&quot;">Super Ugly Number</a>
+                </h2>
+
+                
+                
+
+                <p>Write a program to find the n<sup>th</sup> super ugly number.</p>
+<p>Super ugly numbers are positive numbers whose all prime factors are in the given prime list primes of size k. </p>
+<ul>
+<li><code>1</code> is a super ugly number for any given primes.</li>
+<li>The given numbers in primes are in ascending order …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/super-ugly-number.html">No.313</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags selected">LeetCode</a>
+                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
+                    &nbsp;<a href="/tag/math.html" class="tags">Math</a>
+                </div>
+		<a href="/super-ugly-number.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -319,7 +346,7 @@
 
 
 
-                    <span>Page 13 of 27</span>
+                    <span>Page 13 of 29</span>
                 </div>
 
             <div class="clear"></div>

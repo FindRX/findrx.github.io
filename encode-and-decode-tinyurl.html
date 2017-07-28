@@ -41,7 +41,7 @@
 
                 <p>TinyURL is a URL shortening service where you enter a URL such as https://leetcode.com/problems/design-tinyurl and it returns a short URL such as http://tinyurl.com/4e9iAk.</p>
 <p>Design the encode and decode methods for the TinyURL service. There is no restriction on how your encode/decode algorithm should work. You just need to ensure that a URL can be encoded to a tiny URL and the tiny URL can be decoded to the original URL.</p>
-<p>Python Solution:</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Codec</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -81,6 +81,40 @@
 </pre></div>
 
 
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Codec</span><span class="p">:</span>
+    <span class="n">chars</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">codetourl</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">longUrl</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Encodes a URL to a shortened URL.</span>
+
+<span class="sd">        :type longUrl: str</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">Codec</span><span class="o">.</span><span class="n">chars</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">code</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">codetourl</span><span class="p">:</span> <span class="k">break</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">codetourl</span><span class="p">[</span><span class="n">code</span><span class="p">]</span> <span class="o">=</span> <span class="n">longUrl</span>
+        <span class="k">return</span> <span class="s1">&#39;http://tinyurl.com/&#39;</span> <span class="o">+</span> <span class="n">code</span>
+
+    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shortUrl</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Decodes a shortened URL to its original URL.</span>
+
+<span class="sd">        :type shortUrl: str</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">shortUrl</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">codetourl</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Your Codec object will be instantiated and called as such:</span>
+<span class="c1"># codec = Codec()</span>
+<span class="c1"># codec.decode(codec.encode(url))</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
 <li>https://discuss.leetcode.com/topic/81637/two-solutions-and-thoughts</li>
@@ -91,7 +125,7 @@
 
                 <div class="info">
 				<a href="/encode-and-decode-tinyurl.html">No.535</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>

@@ -73,6 +73,34 @@
 </pre></div>
 
 
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">removeNthFromEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :type n: int</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dummy</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">dummy</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">head</span> <span class="o">=</span> <span class="n">dummy</span>
+        <span class="k">while</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ol>
 <li>Dummy is necessary, in case that the head is the one need to delete. This is a corner case, with using dummy head, code is much more concise.</li>
@@ -83,7 +111,7 @@
 
                 <div class="info">
 				<a href="/remove-nth-node-from-end-of-list.html">No.19</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>

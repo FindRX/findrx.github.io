@@ -33,7 +33,7 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/the-null-point-and-zero.html" rel="bookmark" title="Permanent Link to &quot;The null Point and Zero&quot;">The null Point and Zero</a>
+                    <a href="/relation-between-null-pointer-and-integer-zero-in-c.html" rel="bookmark" title="Permanent Link to &quot;Relation between null pointer and integer zero in C&quot;">Relation between null pointer and integer zero in C</a>
                 </h2>
 
                 
@@ -47,25 +47,27 @@
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/the-null-point-and-zero.html">posted at 08:56</a>
+				<a href="/relation-between-null-pointer-and-integer-zero-in-c.html">posted at 08:56</a>
 
 
-                    &nbsp;&middot;&nbsp;<a href="/category/c.html" rel="tag">C</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/c.html" class="tags">C</a>
                 </div>
-		<a href="/the-null-point-and-zero.html#disqus_thread">Click to read and post comments</a>
+		<a href="/relation-between-null-pointer-and-integer-zero-in-c.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Feb 27, 2017</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/requests-session.html" rel="bookmark" title="Permanent Link to &quot;Requests: Session&quot;">Requests: Session</a>
+                    <a href="/requests-session-in-python.html" rel="bookmark" title="Permanent Link to &quot;Requests Session in Python&quot;">Requests Session in Python</a>
                 </h2>
 
                 
                 
 
                 <p>First, let's check what <code>requests.get('https://github.com')</code> does.</p>
-<p>From <code>__init__.py</code>, I get <code>from .api import request, get, head, post, patch, put, delete, options</code>.</p>
-<p>In <code>api.py</code>, <code>get</code> is defined as following:</p>
+<p>From <em>__init__.py</em>, I get <code>from .api import request, get, head, post, patch, put, delete, options</code>.</p>
+<p>In <em>api.py</em>, <code>get</code> is defined as following:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sessions</span>
 
 <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -74,23 +76,26 @@
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/requests-session.html">posted at 17:57</a>
+				<a href="/requests-session-in-python.html">posted at 17:57</a>
 
 
-                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">Python</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/python.html" class="tags">Python</a>
+                    &nbsp;<a href="/tag/code-reading.html" class="tags">Code-Reading</a>
                 </div>
-		<a href="/requests-session.html#disqus_thread">Click to read and post comments</a>
+		<a href="/requests-session-in-python.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Feb 01, 2017</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/python-pelican.html" rel="bookmark" title="Permanent Link to &quot;Python: Pelican&quot;">Python: Pelican</a>
+                    <a href="/pelican-in-python.html" rel="bookmark" title="Permanent Link to &quot;Pelican in Python&quot;">Pelican in Python</a>
                 </h2>
 
                 
                 
 
-                <p><code>/usr/local/bin/pelican</code>:</p>
+                <p><em>/usr/local/bin/pelican</em>:</p>
 <div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/python3.5</span>
 
 <span class="c1"># -*- coding: utf-8 -*-</span>
@@ -105,56 +110,32 @@
 </pre></div>
 
 
-<p><code>main()</code> is in <code>/usr/local/lib/python3.5/site-packages/pelican/__init__.py</code>.</p>
+<p><code>main()</code> is in <em>/usr/local/lib/python3.5/site-packages/pelican/__init__.py</em>.</p>
 <div class="highlight"><pre><span></span><span class="k">def …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/python-pelican.html">posted at 20:37</a>
+				<a href="/pelican-in-python.html">posted at 20:37</a>
 
 
-                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">Python</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
                     &nbsp;&middot;
+                    &nbsp;<a href="/tag/python.html" class="tags">Python</a>
                     &nbsp;<a href="/tag/code-reading.html" class="tags">Code-Reading</a>
                 </div>
-		<a href="/python-pelican.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 04, 2017</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/python-logging.html" rel="bookmark" title="Permanent Link to &quot;Python: Logging&quot;">Python: Logging</a>
-                </h2>
-
-                
-                
-
-                <p>Before using <code>logging.info</code> or something samiliar, you can configure <strong><em>logging</em></strong> or not.</p>
-<p>If you don't configure it manually, the default configuration will be used.</p>
-<h2>Let's check what happens when executing <code>logging.info</code> directly without any pre-configurations</h2>
-<p>There is a <strong><em>root</em></strong> object which will be used if no configration specified …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/python-logging.html">posted at 15:40</a>
-
-
-                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">Python</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/code-reading.html" class="tags">Code-Reading</a>
-                </div>
-		<a href="/python-logging.html#disqus_thread">Click to read and post comments</a>
+		<a href="/pelican-in-python.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Dec 31, 2016</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/python-regular-expression.html" rel="bookmark" title="Permanent Link to &quot;Python: Regular Expression&quot;">Python: Regular Expression</a>
+                    <a href="/regular-expression-in-python.html" rel="bookmark" title="Permanent Link to &quot;Regular Expression in Python&quot;">Regular Expression in Python</a>
                 </h2>
 
                 
                 
 
                 <h2>11 metacharacters</h2>
-<p>A complete list of the metacharacters: <strong>. ^ $ * + ? { } [ ] \ | ( )</strong>. <strong>11</strong> totally.</p>
+<p>A complete list of the metacharacters (<strong>11</strong> total): <strong><em>. ^ $ * + ? { } [ ] \ | ( )</em></strong></p>
 <ol>
 <li><code>[</code> and <code>]</code> is used for specifying a character class.<ul>
 <li>metacharacters are <strong>not active</strong> inside character classes.<ul>
@@ -163,38 +144,42 @@
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/python-regular-expression.html">posted at 21:05</a>
+				<a href="/regular-expression-in-python.html">posted at 21:05</a>
 
 
-                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">Python</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/python.html" class="tags">Python</a>
                 </div>
-		<a href="/python-regular-expression.html#disqus_thread">Click to read and post comments</a>
+		<a href="/regular-expression-in-python.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Dec 08, 2016</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/python-import.html" rel="bookmark" title="Permanent Link to &quot;Python: Import&quot;">Python: Import</a>
+                    <a href="/import-in-python.html" rel="bookmark" title="Permanent Link to &quot;Import in Python&quot;">Import in Python</a>
                 </h2>
 
                 
                 
 
-                <p>In both Python 3.X and 2.X, <em>from</em> statements can now use leading dots(".") to specify that they require modules located within the same package in which the statements appear in, instead of modules located elsewhere on the module import search path (called absolute imports).</p>
+                <p>In both Python 3.X and 2.X, <code>from</code> statements can now use leading dots(<code>.</code>) to specify that they require modules located within the same package in which the statements appear in, instead of modules located elsewhere on the module import search path (called <strong>absolute imports</strong>).</p>
 <p>In Python 3.X …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/python-import.html">posted at 23:12</a>
+				<a href="/import-in-python.html">posted at 23:12</a>
 
 
-                    &nbsp;&middot;&nbsp;<a href="/category/python.html" rel="tag">Python</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/python.html" class="tags">Python</a>
                 </div>
-		<a href="/python-import.html#disqus_thread">Click to read and post comments</a>
+		<a href="/import-in-python.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Oct 28, 2016</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/c-integer.html" rel="bookmark" title="Permanent Link to &quot;C: Integer&quot;">C: Integer</a>
+                    <a href="/integer-in-c.html" rel="bookmark" title="Permanent Link to &quot;Integer in C&quot;">Integer in C</a>
                 </h2>
 
                 
@@ -206,12 +191,14 @@
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/c-integer.html">posted at 20:19</a>
+				<a href="/integer-in-c.html">posted at 20:19</a>
 
 
-                    &nbsp;&middot;&nbsp;<a href="/category/c.html" rel="tag">C</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/c.html" class="tags">C</a>
                 </div>
-		<a href="/c-integer.html#disqus_thread">Click to read and post comments</a>
+		<a href="/integer-in-c.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Oct 27, 2016</h4>
 
             <article class="post">
@@ -231,14 +218,14 @@
 				<a href="/gnu-make.html">posted at 11:18</a>
 
 
-                    &nbsp;&middot;&nbsp;<a href="/category/gnu.html" rel="tag">GNU</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/tools.html" rel="tag">tools</a>
                 </div>
 		<a href="/gnu-make.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Sep 21, 2016</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/mysqlmariadb-administration.html" rel="bookmark" title="Permanent Link to &quot;MySQL/MariaDB Administration&quot;">MySQL/MariaDB Administration</a>
+                    <a href="/mysql-administration.html" rel="bookmark" title="Permanent Link to &quot;MySQL Administration&quot;">MySQL Administration</a>
                 </h2>
 
                 
@@ -274,20 +261,20 @@
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/mysqlmariadb-administration.html">posted at 11:23</a>
+				<a href="/mysql-administration.html">posted at 11:23</a>
 
 
-                    &nbsp;&middot;&nbsp;<a href="/category/database.html" rel="tag">Database</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/databases.html" rel="tag">databases</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/mysql.html" class="tags">MySQL</a>
                     &nbsp;<a href="/tag/mariadb.html" class="tags">MariaDB</a>
                 </div>
-		<a href="/mysqlmariadb-administration.html#disqus_thread">Click to read and post comments</a>
+		<a href="/mysql-administration.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jul 02, 2016</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/mysql-coding-syntax-and-examples.html" rel="bookmark" title="Permanent Link to &quot;MySQL Coding Syntax and Examples&quot;">MySQL Coding Syntax and Examples</a>
+                    <a href="/coding-syntax-and-examples-of-mysql.html" rel="bookmark" title="Permanent Link to &quot;Coding Syntax and Examples of MySQL&quot;">Coding Syntax and Examples of MySQL</a>
                 </h2>
 
                 
@@ -300,15 +287,38 @@
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/mysql-coding-syntax-and-examples.html">posted at 12:32</a>
+				<a href="/coding-syntax-and-examples-of-mysql.html">posted at 12:32</a>
 
 
-                    &nbsp;&middot;&nbsp;<a href="/category/database.html" rel="tag">Database</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/databases.html" rel="tag">databases</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/sql.html" class="tags">SQL</a>
                     &nbsp;<a href="/tag/mysql.html" class="tags">MySQL</a>
                 </div>
-		<a href="/mysql-coding-syntax-and-examples.html#disqus_thread">Click to read and post comments</a>
+		<a href="/coding-syntax-and-examples-of-mysql.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 23, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/data-structure-dynamic-programming.html" rel="bookmark" title="Permanent Link to &quot;Data Structure: Dynamic Programming&quot;">Data Structure: Dynamic Programming</a>
+                </h2>
+
+                
+                
+
+                <p>486 Predict the Winner (perfect)
+375 Guess Number Higher or Lower II (perfect)</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/data-structure-dynamic-programming.html">posted at 22:09</a>
+
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/data-structure.html" class="tags">Data-Structure</a>
+                </div>
+		<a href="/data-structure-dynamic-programming.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -318,7 +328,7 @@
 
 
 
-                    <span>Page 1 of 28</span>
+                    <span>Page 1 of 31</span>
                 </div>
 
             <div class="clear"></div>

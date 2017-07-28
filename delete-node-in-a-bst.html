@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Delete Node in a BST</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="LeetCode,Tree" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/delete-node-in-a-bst.html" rel="bookmark" title="Permanent Link to &quot;Delete Node in a BST&quot;">Delete Node in a BST</a>
+                </h2>
+
+                
+                
+
+                <p>Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return the root node reference (possibly updated) of the BST.</p>
+<p>Basically, the deletion can be divided into two stages:</p>
+<p>Search for a node to remove.
+If the node is found, delete the node.
+Note: Time complexity should be O(height of tree).</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>root = [5,3,6,2,4,null,7]
+key = 3
+
+    5
+   / \
+  3   6
+ / \   \
+2   4   7
+
+Given key to delete is 3. So we find the node with value 3 and delete it.
+
+One valid answer is [5,4,6,2,null,null,7], shown in the following BST.
+
+    5
+   / \
+  4   6
+ /     \
+2       7
+
+Another valid answer is [5,2,6,null,4,null,7].
+
+    5
+   / \
+  2   6
+   \   \
+    4   7
+</pre></div>
+
+
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">deleteNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type root: TreeNode</span>
+<span class="sd">        :type key: int</span>
+<span class="sd">        :rtype: TreeNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#find the target and its parent.</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span>
+        <span class="k">while</span> <span class="n">cur</span> <span class="ow">and</span> <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">!=</span> <span class="n">key</span><span class="p">:</span>
+            <span class="n">parent</span> <span class="o">=</span> <span class="n">cur</span>
+            <span class="k">if</span> <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">right</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">left</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cur</span><span class="p">:</span> <span class="k">return</span> <span class="n">root</span>
+
+        <span class="c1"># if the target is a leaf.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cur</span><span class="o">.</span><span class="n">left</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cur</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">parent</span><span class="p">:</span> <span class="k">return</span> 
+            <span class="k">if</span> <span class="n">parent</span><span class="o">.</span><span class="n">left</span> <span class="o">==</span> <span class="n">cur</span><span class="p">:</span>
+                <span class="n">parent</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">parent</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">root</span>
+
+        <span class="c1"># find the leaf.</span>
+        <span class="k">if</span> <span class="n">cur</span><span class="o">.</span><span class="n">left</span><span class="p">:</span> 
+            <span class="n">father</span> <span class="o">=</span> <span class="n">cur</span>
+            <span class="n">son</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">left</span>
+            <span class="k">while</span> <span class="n">son</span><span class="o">.</span><span class="n">right</span><span class="p">:</span> 
+                <span class="n">father</span> <span class="o">=</span> <span class="n">son</span>
+                <span class="n">son</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">right</span> 
+            <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">val</span>
+            <span class="k">if</span> <span class="n">father</span><span class="o">.</span><span class="n">left</span> <span class="o">==</span> <span class="n">son</span><span class="p">:</span>
+                <span class="n">father</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">left</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">father</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">left</span>
+            <span class="k">return</span> <span class="n">root</span>
+
+        <span class="n">father</span> <span class="o">=</span> <span class="n">cur</span>
+        <span class="n">son</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">right</span>
+        <span class="k">while</span> <span class="n">son</span><span class="o">.</span><span class="n">left</span><span class="p">:</span> 
+            <span class="n">father</span> <span class="o">=</span> <span class="n">son</span>
+            <span class="n">son</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">left</span>           
+        <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">val</span>
+        <span class="k">if</span> <span class="n">father</span><span class="o">.</span><span class="n">left</span> <span class="o">==</span> <span class="n">son</span><span class="p">:</span>
+            <span class="n">father</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">right</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">father</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">right</span>
+        <span class="k">return</span> <span class="n">root</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">deleteNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type root: TreeNode</span>
+<span class="sd">        :type key: int</span>
+<span class="sd">        :rtype: TreeNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span> <span class="k">return</span>
+        <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">:</span>
+            <span class="n">root</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">deleteNode</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">root</span>
+        <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
+            <span class="n">root</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">deleteNode</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">root</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span>
+        <span class="n">father</span> <span class="o">=</span> <span class="n">root</span>
+        <span class="n">son</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span>
+        <span class="k">while</span> <span class="n">son</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+            <span class="n">father</span> <span class="o">=</span> <span class="n">son</span>
+            <span class="n">son</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">right</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">val</span>
+        <span class="k">if</span> <span class="n">father</span><span class="o">.</span><span class="n">left</span> <span class="o">==</span> <span class="n">son</span><span class="p">:</span>
+            <span class="n">father</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">left</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">father</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">left</span>
+        <span class="k">return</span> <span class="n">root</span>
+</pre></div>
+
+
+<p>Python Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">deleteNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type root: TreeNode</span>
+<span class="sd">        :type key: int</span>
+<span class="sd">        :rtype: TreeNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span>
+        <span class="k">while</span> <span class="n">cur</span> <span class="ow">and</span> <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">!=</span> <span class="n">key</span><span class="p">:</span>
+            <span class="n">parent</span> <span class="o">=</span> <span class="n">cur</span>
+            <span class="k">if</span> <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">left</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">right</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cur</span><span class="p">:</span> <span class="k">return</span> <span class="n">root</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cur</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">parent</span><span class="p">:</span> <span class="k">return</span> <span class="n">cur</span><span class="o">.</span><span class="n">right</span>
+            <span class="k">if</span> <span class="n">parent</span><span class="o">.</span><span class="n">left</span> <span class="o">==</span> <span class="n">cur</span><span class="p">:</span>
+                <span class="n">parent</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">right</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">parent</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">right</span>
+            <span class="k">return</span> <span class="n">root</span>
+
+        <span class="n">father</span> <span class="o">=</span> <span class="n">cur</span>
+        <span class="n">son</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">left</span>
+        <span class="k">while</span> <span class="n">son</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+            <span class="n">father</span> <span class="o">=</span> <span class="n">son</span>
+            <span class="n">son</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">right</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">val</span>
+        <span class="k">if</span> <span class="n">father</span><span class="o">.</span><span class="n">left</span> <span class="o">==</span> <span class="n">son</span><span class="p">:</span>
+            <span class="n">father</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">left</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">father</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">son</span><span class="o">.</span><span class="n">left</span>
+        <span class="k">return</span> <span class="n">root</span>
+</pre></div>
+
+
+<p>Summary:</p>
+<ul>
+<li>when solving BST problem, merge BST's attribute and recursive.</li>
+</ul>
+<p>LeetCode: <a href="https://leetcode.com/problems/delete-node-in-a-bst/#/description">450. Delete Node in a BST</a></p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/delete-node-in-a-bst.html">No.450</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

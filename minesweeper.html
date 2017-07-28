@@ -107,7 +107,7 @@
 <li>The input board won't be a stage when game is over (some mines have been revealed).</li>
 <li>For simplicity, not mentioned rules should be ignored in this problem. For example, you don't need to reveal all the unrevealed mines when the game is over, consider any cases that you will win the game or flag any squares.</li>
 </ul>
-<p>Python Solution:</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">updateBoard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">click</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -158,6 +158,96 @@
 </pre></div>
 
 
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">updateBoard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">click</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type board: List[List[str]]</span>
+<span class="sd">        :type click: List[int]</span>
+<span class="sd">        :rtype: List[List[str]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">click</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="n">C</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">board</span>
+        <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;M&#39;</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span> 
+            <span class="k">return</span> <span class="n">board</span>
+        <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+            <span class="k">return</span> <span class="n">board</span>
+        <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span>
+            <span class="n">mines</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+                <span class="n">mines</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+                <span class="n">mines</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+                <span class="n">mines</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+                <span class="n">mines</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+                <span class="n">mines</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">C</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+                <span class="n">mines</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">C</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+                <span class="n">mines</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">C</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+                <span class="n">mines</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">mines</span><span class="p">:</span>
+                <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">mines</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">board</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateBoard</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateBoard</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateBoard</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateBoard</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateBoard</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateBoard</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateBoard</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateBoard</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">board</span>
+</pre></div>
+
+
+<p>Python Solution 3:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">updateBoard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">click</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type board: List[List[str]]</span>
+<span class="sd">        :type click: List[int]</span>
+<span class="sd">        :rtype: List[List[str]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">click</span>
+        <span class="n">R</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+            <span class="k">return</span> <span class="n">board</span>
+        <span class="n">mines</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">j</span><span class="p">:</span> <span class="k">continue</span>
+                <span class="n">_r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">i</span>
+                <span class="n">_c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">j</span>
+                <span class="k">if</span> <span class="n">_r</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">_r</span> <span class="o">&gt;</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">_c</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">_c</span> <span class="o">&gt;</span> <span class="n">C</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">_r</span><span class="p">][</span><span class="n">_c</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">:</span>
+                    <span class="n">mines</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">mines</span><span class="p">:</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">mines</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">board</span>
+        <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">j</span><span class="p">:</span> <span class="k">continue</span>
+                <span class="n">_r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">i</span>
+                <span class="n">_c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">j</span>
+                <span class="k">if</span> <span class="n">_r</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">_r</span> <span class="o">&gt;</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">_c</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">_c</span> <span class="o">&gt;</span> <span class="n">C</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">_r</span><span class="p">][</span><span class="n">_c</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">updateBoard</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="p">[</span><span class="n">_r</span><span class="p">,</span> <span class="n">_c</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">board</span>
+</pre></div>
+
+
 <p>Summary: </p>
 <ul>
 <li>The most difficult part of this problem is to understand the logic.</li>
@@ -167,7 +257,7 @@
 
                 <div class="info">
 				<a href="/minesweeper.html">No.529</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>

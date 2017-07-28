@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RuiOAIX's Records | Pelican in Python</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+
+    <meta name="keywords" content="Python,Code-Reading" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/tags">Tags</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">RuiOAIX's Records</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Feb 01, 2017</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/pelican-in-python.html" rel="bookmark" title="Permanent Link to &quot;Pelican in Python&quot;">Pelican in Python</a>
+                </h2>
+
+                
+                
+
+                <p><em>/usr/local/bin/pelican</em>:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/python3.5</span>
+
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">pelican</span> <span class="kn">import</span> <span class="n">main</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(-script\.pyw|\.exe)?$&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+
+
+<p><code>main()</code> is in <em>/usr/local/lib/python3.5/site-packages/pelican/__init__.py</em>.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parse_arguments</span><span class="p">()</span>
+    <span class="o">...</span>
+        <span class="n">pelican</span><span class="p">,</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">get_instance</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="o">...</span>
+            <span class="n">pelican</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="o">...</span>
+</pre></div>
+
+
+<p><code>pelican.run()</code> is in <em>/usr/local/lib/python3.5/site-packages/pelican/__init__.py</em>.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">generators</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;generate_context&#39;</span><span class="p">):</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">generate_context</span><span class="p">()</span>
+    <span class="o">...</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">generators</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;generate_output&#39;</span><span class="p">):</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">generate_output</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+
+
+<p>Normally, 3 generators are used:</p>
+<ul>
+<li><code>ArticlesGenerator</code></li>
+<li><code>PagesGenerator</code></li>
+<li><code>StaticGenerator</code></li>
+</ul>
+<p><code>ArticlesGenerator.generate_context()</code>:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_files</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;ARTICLE_PATHS&#39;</span><span class="p">],</span> <span class="n">exclude</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;ARTICLE_EXCLUDES&#39;</span><span class="p">]):</span> 
+            <span class="o">...</span>
+                <span class="n">article_or_draft</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">readers</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
+                    <span class="n">base_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">content_class</span><span class="o">=</span><span class="n">Article</span><span class="p">,</span>
+                    <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">,</span>
+                    <span class="n">preread_signal</span><span class="o">=</span><span class="n">signals</span><span class="o">.</span><span class="n">article_generator_preread</span><span class="p">,</span>
+                    <span class="n">preread_sender</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                    <span class="n">context_signal</span><span class="o">=</span><span class="n">signals</span><span class="o">.</span><span class="n">article_generator_context</span><span class="p">,</span>
+                    <span class="n">context_sender</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="o">...</span>
+            <span class="n">all_articles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">article_or_draft</span><span class="p">)</span>
+            <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">articles</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">translations</span> <span class="o">=</span> <span class="n">process_translations</span><span class="p">(</span>
+        <span class="n">all_articles</span><span class="p">,</span>
+        <span class="n">order_by</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;ARTICLE_ORDER_BY&#39;</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">drafts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">drafts_translations</span> <span class="o">=</span> \
+        <span class="n">process_translations</span><span class="p">(</span><span class="n">all_drafts</span><span class="p">)</span>
+    <span class="o">...</span>
+    <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">articles</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="p">[</span><span class="n">article</span><span class="o">.</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="s1">&#39;tags&#39;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">article</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="n">tag</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="s1">&#39;authors&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">authors</span><span class="p">[</span><span class="n">author</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">articles</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">attrgetter</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span>
+                    <span class="n">reverse</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;NEWEST_FIRST_ARCHIVES&#39;</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span>
+        <span class="n">reverse</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;REVERSE_CATEGORY_ORDER&#39;</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">authors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_update_context</span><span class="p">((</span><span class="s1">&#39;articles&#39;</span><span class="p">,</span> <span class="s1">&#39;dates&#39;</span><span class="p">,</span> <span class="s1">&#39;tags&#39;</span><span class="p">,</span> <span class="s1">&#39;categories&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;authors&#39;</span><span class="p">,</span> <span class="s1">&#39;related_posts&#39;</span><span class="p">,</span> <span class="s1">&#39;drafts&#39;</span><span class="p">))</span>
+    <span class="o">...</span>
+</pre></div>
+
+
+<p>Basically, <code>ArticlesGenerator.generate_context()</code> reads file and puts all the data into context.</p>
+<p><code>ArticlesGenerator.generate_output()</code>:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">generate_pages</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_pages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="n">write</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">writer</span><span class="o">.</span><span class="n">write_file</span><span class="p">,</span> <span class="n">relative_urls</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;RELATIVE_URLS&#39;</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">generate_articles</span><span class="p">(</span><span class="n">write</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">generate_period_archives</span><span class="p">(</span><span class="n">write</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">generate_tags</span><span class="p">(</span><span class="n">write</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">generate_categories</span><span class="p">(</span><span class="n">write</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_articles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">write</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">translations</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">articles</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">article</span><span class="o">.</span><span class="n">save_as</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">article</span><span class="o">.</span><span class="n">template</span><span class="p">),</span>
+              <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">,</span> <span class="n">article</span><span class="o">=</span><span class="n">article</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">article</span><span class="o">.</span><span class="n">category</span><span class="p">,</span>
+              <span class="n">override_output</span><span class="o">=</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="s1">&#39;override_save_as&#39;</span><span class="p">),</span>
+              <span class="n">blog</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p><code>write</code> is <code>Writer.write_file()</code> in <em>/usr/local/lib/python3.5/site-packages/pelican/writers.py</em>.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">write_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">relative_urls</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+               <span class="n">paginated</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">override_output</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">_write_file</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">localcontext</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">override</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">localcontext</span><span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="o">...</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_w</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">override</span><span class="o">=</span><span class="n">override</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="o">...</span>
+        <span class="k">if</span> <span class="n">paginated</span><span class="p">:</span>
+            <span class="o">...</span>
+            <span class="n">localcontext</span> <span class="o">=</span> <span class="n">_get_localcontext</span><span class="p">(</span> <span class="n">context</span><span class="p">,</span> <span class="n">page</span><span class="o">.</span><span class="n">save_as</span><span class="p">,</span> <span class="n">paginated_kwargs</span><span class="p">,</span> <span class="n">relative_urls</span><span class="p">)</span>
+            <span class="n">_write_file</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">localcontext</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_path</span><span class="p">,</span> <span class="n">page</span><span class="o">.</span><span class="n">save_as</span><span class="p">,</span> <span class="n">override_output</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+
+
+<p>Jobs done.</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/pelican-in-python.html">posted at 20:37</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/programming-languages.html" rel="tag">programming-languages</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/python.html" class="tags">Python</a>
+                    &nbsp;<a href="/tag/code-reading.html" class="tags">Code-Reading</a>
+                </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wait-at-will';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+				Try
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-97423681-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

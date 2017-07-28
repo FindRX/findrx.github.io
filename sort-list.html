@@ -133,6 +133,106 @@
 </pre></div>
 
 
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">sortList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">:</span> <span class="k">return</span> <span class="n">head</span>
+        <span class="n">slow</span><span class="p">,</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+            <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">fast</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sortList</span><span class="p">(</span><span class="n">slow</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
+        <span class="n">slow</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sortList</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">):</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">dummy</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">l1</span> <span class="ow">and</span> <span class="n">l2</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">l1</span><span class="o">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">l2</span><span class="o">.</span><span class="n">val</span><span class="p">:</span>
+                    <span class="n">cur</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">l1</span>
+                    <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="n">next</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">cur</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">l2</span>
+                    <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">l1</span> <span class="k">if</span> <span class="n">l1</span> <span class="k">else</span> <span class="n">l2</span>
+            <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">slow</span><span class="p">,</span> <span class="n">fast</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">sortList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">:</span> <span class="k">return</span> <span class="n">head</span>
+
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">while</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">dummy</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">dummy</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span>
+
+        <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">dummy</span>
+            <span class="k">while</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span> <span class="ow">and</span> <span class="n">i</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">cur</span>
+
+        <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">):</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">dummy</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">l1</span> <span class="ow">and</span> <span class="n">l2</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">l1</span><span class="o">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">l2</span><span class="o">.</span><span class="n">val</span><span class="p">:</span>
+                    <span class="n">cur</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">l1</span>
+                    <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="n">next</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">cur</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">l2</span>
+                    <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">l1</span> <span class="k">if</span> <span class="n">l1</span> <span class="k">else</span> <span class="n">l2</span>
+            <span class="k">while</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">cur</span>
+
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">:</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">dummy</span>
+            <span class="k">while</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+                <span class="n">l_head</span><span class="p">,</span> <span class="n">l_tail</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                <span class="n">r_head</span><span class="p">,</span> <span class="n">r_tail</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">l_tail</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                <span class="n">l_tail</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">r_tail</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">r_tail</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+                <span class="n">cur</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">l_head</span><span class="p">,</span> <span class="n">r_head</span><span class="p">)</span>
+                <span class="n">tail</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tmp</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">tail</span>
+            <span class="n">i</span> <span class="o">*=</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ol>
 <li>merge sort: from top to bottom, from bottom to top.</li>
@@ -144,7 +244,7 @@
 
                 <div class="info">
 				<a href="/sort-list.html">No.148</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>

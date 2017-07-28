@@ -116,6 +116,86 @@
 </pre></div>
 
 
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reverseKGroup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :type k: int</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">head</span>
+        <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">head</span><span class="p">):</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">while</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">cur</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">tmp</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tmp</span>
+            <span class="k">return</span> <span class="n">cur</span>
+        <span class="n">dummy</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">dummy</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">dummy</span>
+        <span class="k">while</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">cur</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">tail</span><span class="p">:</span> <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">tail</span><span class="p">:</span> <span class="k">break</span>
+            <span class="n">_next</span> <span class="o">=</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">tail</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span>
+            <span class="n">tail</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">_next</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">tail</span>
+        <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
+
+
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for singly-linked list.</span>
+<span class="c1"># class ListNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.next = None</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">reverseKGroup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type head: ListNode</span>
+<span class="sd">        :type k: int</span>
+<span class="sd">        :rtype: ListNode</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">head</span>
+        <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">head</span><span class="p">):</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">while</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">tmp</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">tmp</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">return</span> <span class="n">cur</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">while</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">cur</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">tail</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">tail</span><span class="p">:</span> <span class="k">break</span>
+            <span class="n">_next</span> <span class="o">=</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">tail</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span>
+            <span class="n">tail</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">_next</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">tail</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
+
+
 <p>Summary: </p>
 <ol>
 <li>Recursive is much more readable, but the space is not constant.</li>
@@ -127,7 +207,7 @@
 
                 <div class="info">
 				<a href="/reverse-nodes-in-k-group.html">No.25</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>

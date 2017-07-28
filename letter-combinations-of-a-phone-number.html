@@ -50,7 +50,7 @@
 <ul>
 <li>Although the above answer is in lexicographical order, your answer could be in any order you want.</li>
 </ul>
-<p>Python Solution:</p>
+<p>Python Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">letterCombinations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">digits</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -74,6 +74,39 @@
 </pre></div>
 
 
+<p>Python Solution 2:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">letterCombinations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">digits</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type digits: str</span>
+<span class="sd">        :rtype: List[str]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">digits</span><span class="p">:</span> <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">def</span> <span class="nf">recu</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cur</span><span class="p">))</span>
+                <span class="k">return</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">digits</span><span class="p">[</span><span class="n">s</span><span class="p">]]:</span>
+                <span class="n">cur</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+                <span class="n">recu</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+                <span class="n">cur</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;3&#39;</span><span class="p">:</span> <span class="s1">&#39;def&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;4&#39;</span><span class="p">:</span> <span class="s1">&#39;ghi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;5&#39;</span><span class="p">:</span> <span class="s1">&#39;jkl&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;6&#39;</span><span class="p">:</span> <span class="s1">&#39;mno&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;7&#39;</span><span class="p">:</span> <span class="s1">&#39;pqrs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;8&#39;</span><span class="p">:</span> <span class="s1">&#39;tuv&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;9&#39;</span><span class="p">:</span> <span class="s1">&#39;wxyz&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">recu</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+
+
 <p>Summary:</p>
 <ul>
 <li>permutation and combination are related to backtracking.</li>
@@ -83,7 +116,7 @@
 
                 <div class="info">
 				<a href="/letter-combinations-of-a-phone-number.html">No.17</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/backtracking.html" class="tags">Backtracking</a>

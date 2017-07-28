@@ -79,64 +79,6 @@ randomSet.getRandom();
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize your data structure here.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vals</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">=</span> <span class="p">{}</span>
-
-
-    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Inserts a value to the set. Returns true if the set did not already contain the specified element.</span>
-<span class="sd">        :type val: int</span>
-<span class="sd">        :rtype: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="bp">True</span>
-
-
-    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Removes a value from the set. Returns true if the set contained the specified element.</span>
-<span class="sd">        :type val: int</span>
-<span class="sd">        :rtype: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">[</span><span class="n">val</span><span class="p">]</span>
-        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">[</span><span class="n">val</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">pos</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">last</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">last</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">[</span><span class="n">last</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">True</span>
-
-
-
-    <span class="k">def</span> <span class="nf">getRandom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Get a random element from the set.</span>
-<span class="sd">        :rtype: int</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vals</span><span class="p">)</span>
-
-
-
-<span class="c1"># Your RandomizedSet object will be instantiated and called as such:</span>
-<span class="c1"># obj = RandomizedSet()</span>
-<span class="c1"># param_1 = obj.insert(val)</span>
-<span class="c1"># param_2 = obj.remove(val)</span>
-<span class="c1"># param_3 = obj.getRandom()</span>
-</pre></div>
-
-
-<p>OR</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RandomizedSet</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initialize your data structure here.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -146,8 +88,7 @@ randomSet.getRandom();
 <span class="sd">        :type val: int</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="bp">True</span>
@@ -158,8 +99,7 @@ randomSet.getRandom();
 <span class="sd">        :type val: int</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">[</span><span class="n">val</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">[</span><span class="n">ind</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ind</span>
@@ -199,7 +139,7 @@ randomSet.getRandom();
 
                 <div class="info">
 				<a href="/insert-delete-getrandom-o1.html">No.380</a>
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/array.html" class="tags">Array</a>

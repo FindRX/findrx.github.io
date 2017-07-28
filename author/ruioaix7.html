@@ -33,258 +33,338 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/largest-palindrome-product.html" rel="bookmark" title="Permanent Link to &quot;Largest Palindrome Product&quot;">Largest Palindrome Product</a>
+                    <a href="/minimum-absolute-difference-in-bst.html" rel="bookmark" title="Permanent Link to &quot;Minimum Absolute Difference in BST&quot;">Minimum Absolute Difference in BST</a>
                 </h2>
 
                 
                 
 
-                <p>Find the largest palindrome made from the product of two n-digit numbers.</p>
-<p>Since the result could be very large, you should return the largest palindrome mod 1337.</p>
-<p>Example:</p>
+                <p>Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.</p>
 <ul>
-<li>Input: 2</li>
-<li>Output: 987</li>
-<li>Explanation: 99 x 91 = 9009, 9009 % 1337 = 987</li>
-</ul>
-<p>Note:</p>
-<p>The range of n is [1,8].</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/largest-palindrome-product.html">No.479</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                </div>
-		<a href="/largest-palindrome-product.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/number-complement.html" rel="bookmark" title="Permanent Link to &quot;Number Complement&quot;">Number Complement</a>
-                </h2>
-
-                
-                
-
-                <p>Given a positive integer, output its complement number. The complement strategy is to flip the bits of its binary representation.</p>
-<ul>
-<li>The given integer is guaranteed to fit within the range of a 32-bit signed integer.</li>
-<li>You could assume no leading zero bit in the integer’s binary representation.</li>
-</ul>
-<p>Example 1 …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/number-complement.html">No.476</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
-                </div>
-		<a href="/number-complement.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/heaters.html" rel="bookmark" title="Permanent Link to &quot;Heaters&quot;">Heaters</a>
-                </h2>
-
-                
-                
-
-                <p>Winter is coming! Your first job during the contest is to design a standard heater with fixed warm radius to warm all the houses.</p>
-<p>Now, you are given positions of houses and heaters on a horizontal line, find out minimum radius of heaters so that all houses could be covered …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/heaters.html">No.475</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
-                </div>
-		<a href="/heaters.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/island-perimeter.html" rel="bookmark" title="Permanent Link to &quot;Island Perimeter&quot;">Island Perimeter</a>
-                </h2>
-
-                
-                
-
-                <p>You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells). The …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/island-perimeter.html">No.463</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                </div>
-		<a href="/island-perimeter.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/hamming-distance.html" rel="bookmark" title="Permanent Link to &quot;Hamming Distance&quot;">Hamming Distance</a>
-                </h2>
-
-                
-                
-
-                <p>The <a href="https://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</a> between two integers is the number of positions at which the corresponding bits are different.</p>
-<p>Given two integers <code>x</code> and <code>y</code>, calculate the Hamming distance.</p>
-<ul>
-<li>Note: <code>0 ≤ x, y &lt; 231</code>.</li>
+<li>There are at least two nodes in this BST.</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><span class="n">Input</span><span class="o">:</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<ul>
+<li>Input:</li>
+</ul>
+<div class="highlight"><pre><span></span>   1
+    \
+     3
+    /
+   2
+</pre></div>
 
-<span class="n">Output</span><span class="o">:</span> <span class="mi">2</span>
 
-<span class="n">Explanation</span><span class="o">:</span>
-<span class="mi">1</span>   <span class="o">(</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span><span class="o">)</span>
-<span class="mi">4</span>   <span class="o">(</span><span class="mi">0</span> <span class="mi">1 …</span></pre></div>
+<ul>
+<li>Output: 1</li>
+<li>Explanation: The minimum absolute difference is 1, which is the difference between 2 and 1 …</li></ul>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/hamming-distance.html">No.461</a>
+				<a href="/minimum-absolute-difference-in-bst.html">No.530</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/bit-manipulation.html" class="tags">Bit-Manipulation</a>
+                    &nbsp;<a href="/tag/binary-search-tree.html" class="tags">Binary-Search-Tree</a>
                 </div>
-		<a href="/hamming-distance.html#disqus_thread">Click to read and post comments</a>
+		<a href="/minimum-absolute-difference-in-bst.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/lfu-cache.html" rel="bookmark" title="Permanent Link to &quot;LFU Cache&quot;">LFU Cache</a>
+                    <a href="/minesweeper.html" rel="bookmark" title="Permanent Link to &quot;Minesweeper&quot;">Minesweeper</a>
                 </h2>
 
                 
                 
 
-                <p>Design and implement a data structure for <a href="https://en.wikipedia.org/wiki/Least_frequently_used">Least Frequently Used (LFU)</a> cache. It should support the following operations: get and put.</p>
-<ul>
-<li>get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.</li>
-<li>put(key, value) - Set or insert the …</li></ul>
+                <p>Let's play the minesweeper game (<a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)">Wikipedia</a>, <a href="http://minesweeperonline.com/">online game</a>)!</p>
+<p>You are given a 2D char matrix representing the game board. 'M' represents an unrevealed mine, 'E' represents an unrevealed empty square, 'B' represents a revealed blank square that has no adjacent (above, below, left, right, and all 4 diagonals) mines, digit …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/lfu-cache.html">No.460</a>
+				<a href="/minesweeper.html">No.529</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/design.html" class="tags">Design</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
                 </div>
-		<a href="/lfu-cache.html#disqus_thread">Click to read and post comments</a>
+		<a href="/minesweeper.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/repeated-substring-pattern.html" rel="bookmark" title="Permanent Link to &quot;Repeated Substring Pattern&quot;">Repeated Substring Pattern</a>
+                    <a href="/longest-uncommon-subsequence-i.html" rel="bookmark" title="Permanent Link to &quot;Longest Uncommon Subsequence I&quot;">Longest Uncommon Subsequence I</a>
                 </h2>
 
                 
                 
 
-                <p>Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.</p>
-<p>Example 1:</p>
-<ul>
-<li>Input: "abab" </li>
-<li>Output: True </li>
-<li>Explanation …</li></ul>
+                <p>Given a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subsequence is defined as the longest subsequence of one of these strings and this subsequence should not be any subsequence of the other strings.</p>
+<p>A subsequence is …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/repeated-substring-pattern.html">No.459</a>
+				<a href="/longest-uncommon-subsequence-i.html">No.521</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                    &nbsp;<a href="/tag/brainteaser.html" class="tags">Brainteaser</a>
+                </div>
+		<a href="/longest-uncommon-subsequence-i.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/detect-capital.html" rel="bookmark" title="Permanent Link to &quot;Detect Capital&quot;">Detect Capital</a>
+                </h2>
+
+                
+                
+
+                <p>Given a word, you need to judge whether the usage of capitals in it is right or not.</p>
+<ul>
+<li>The input will be a non-empty word consisting of uppercase and lowercase latin letters.</li>
+</ul>
+<p>We define the usage of capitals in a word to be right when one of the following cases …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/detect-capital.html">No.520</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/string.html" class="tags">String</a>
                 </div>
-		<a href="/repeated-substring-pattern.html#disqus_thread">Click to read and post comments</a>
+		<a href="/detect-capital.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/poor-pigs.html" rel="bookmark" title="Permanent Link to &quot;Poor Pigs&quot;">Poor Pigs</a>
+                    <a href="/longest-palindromic-subsequence.html" rel="bookmark" title="Permanent Link to &quot;Longest Palindromic Subsequence&quot;">Longest Palindromic Subsequence</a>
                 </h2>
 
                 
                 
 
-                <p>There are 1000 buckets, one and only one of them contains poison, the rest are filled with water. They all look the same. If a pig drinks that poison it will die within 15 minutes. What is the minimum amount of pigs you need to figure out which bucket contains …</p>
+                <p>Given a string s, find the longest palindromic subsequence's length in s. You may assume that the maximum length of s is 1000.</p>
+<p>Example 1:</p>
+<ul>
+<li>Input: "bbbab"</li>
+<li>Output: 4</li>
+<li>One possible longest palindromic subsequence is "bbbb".</li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Input: "cbbd"</li>
+<li>Output: 2</li>
+<li>One possible longest palindromic subsequence is "bb".</li>
+</ul>
+<p>C …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/poor-pigs.html">No.458</a>
+				<a href="/longest-palindromic-subsequence.html">No.516</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/brainteaser.html" class="tags">Brainteaser</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
                 </div>
-		<a href="/poor-pigs.html#disqus_thread">Click to read and post comments</a>
+		<a href="/longest-palindromic-subsequence.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/assign-cookies.html" rel="bookmark" title="Permanent Link to &quot;Assign Cookies&quot;">Assign Cookies</a>
+                    <a href="/find-largest-value-in-each-tree-row.html" rel="bookmark" title="Permanent Link to &quot;Find Largest Value in Each Tree Row&quot;">Find Largest Value in Each Tree Row</a>
                 </h2>
 
                 
                 
 
-                <p>Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie. Each child <em>i</em> has a greed factor <em>g<sub>i</sub></em>, which is the minimum size of a cookie that the child will be content with; and each …</p>
+                <p>You need to find the largest value in each row of a binary tree.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><span class="n">Input</span><span class="o">:</span> 
+
+          <span class="mi">1</span>
+         <span class="o">/</span> <span class="o">\</span>
+        <span class="mi">3</span>   <span class="mi">2</span>
+       <span class="o">/</span> <span class="o">\</span>   <span class="o">\</span>  
+      <span class="mi">5</span>   <span class="mi">3</span>   <span class="mi">9</span> 
+
+<span class="n">Output</span><span class="o">:</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">9</span><span class="o">]</span>
+</pre></div>
+
+
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/assign-cookies.html">No.455</a>
+				<a href="/find-largest-value-in-each-tree-row.html">No.515</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/greedy.html" class="tags">Greedy</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
                 </div>
-		<a href="/assign-cookies.html#disqus_thread">Click to read and post comments</a>
+		<a href="/find-largest-value-in-each-tree-row.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/4sum-ii.html" rel="bookmark" title="Permanent Link to &quot;4Sum II&quot;">4Sum II</a>
+                    <a href="/find-bottom-left-tree-value.html" rel="bookmark" title="Permanent Link to &quot;Find Bottom Left Tree Value&quot;">Find Bottom Left Tree Value</a>
                 </h2>
 
                 
                 
 
-                <p>Given four lists A, B, C, D of integer values, compute how many tuples (i, j, k, l) there are such that A[i] + B[j] + C[k] + D[l] is zero.</p>
-<p>To make problem a bit easier, all A, B, C, D have same length of N where 0 …</p>
+                <p>Given a binary tree, find the leftmost value in the last row of the tree.</p>
+<p>Example 1:</p>
+<div class="highlight"><pre><span></span><span class="n">Input</span><span class="o">:</span>
+
+    <span class="mi">2</span>
+   <span class="o">/</span> <span class="o">\</span>
+  <span class="mi">1</span>   <span class="mi">3</span>
+
+<span class="n">Output</span><span class="o">:</span>
+<span class="mi">1</span>
+</pre></div>
+
+
+<p>Example 2: </p>
+<div class="highlight"><pre><span></span><span class="n">Input</span><span class="o">:</span>
+
+        <span class="mi">1</span>
+       <span class="o">/</span> <span class="o">\</span>
+      <span class="mi">2</span>   <span class="mi">3</span>
+     <span class="sr">/   /</span> <span class="o">\</span>
+    <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>
+       <span class="o">/</span>
+      <span class="mi">7</span>
+
+<span class="n">Output</span><span class="o">:</span>
+<span class="mi">7</span>
+</pre></div>
+
+
+<p>Note: You may assume the tree (i.e., the given root node) is not NULL …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/4sum-ii.html">No.454</a>
+				<a href="/find-bottom-left-tree-value.html">No.513</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/binary-search.html" class="tags">Binary-Search</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
+                </div>
+		<a href="/find-bottom-left-tree-value.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/most-frequent-subtree-sum.html" rel="bookmark" title="Permanent Link to &quot;Most Frequent Subtree Sum&quot;">Most Frequent Subtree Sum</a>
+                </h2>
+
+                
+                
+
+                <p>Given the root of a tree, you are asked to find the most frequent subtree sum. The subtree sum of a node is defined as the sum of all the node values formed by the subtree rooted at that node (including the node itself). So what is the most frequent …</p>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/most-frequent-subtree-sum.html">No.508</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
                     &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
                 </div>
-		<a href="/4sum-ii.html#disqus_thread">Click to read and post comments</a>
+		<a href="/most-frequent-subtree-sum.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/relative-ranks.html" rel="bookmark" title="Permanent Link to &quot;Relative Ranks&quot;">Relative Ranks</a>
+                </h2>
+
+                
+                
+
+                <p>Given scores of N athletes, find their relative ranks and the people with the top three highest scores, who will be awarded medals: "Gold Medal", "Silver Medal" and "Bronze Medal".</p>
+<ul>
+<li>N is a positive integer and won't exceed 10,000.</li>
+<li>All the scores of athletes are guaranteed to be unique …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/relative-ranks.html">No.506</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                </div>
+		<a href="/relative-ranks.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/base-7.html" rel="bookmark" title="Permanent Link to &quot;Base 7&quot;">Base 7</a>
+                </h2>
+
+                
+                
+
+                <p>Given an integer, return its base 7 string representation.</p>
+<ul>
+<li>The input will be in range of [-1e7, 1e7].</li>
+</ul>
+<p>Example 1:</p>
+<ul>
+<li>Input: 100</li>
+<li>Output: "202"</li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Input: -7</li>
+<li>Output: "-10"</li>
+</ul>
+<p>Python Solution:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">convertToBase7</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type num: int</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="s2">&quot;0&quot;</span>
+        <span class="k">if …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/base-7.html">No.504</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                </div>
+		<a href="/base-7.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -295,7 +375,7 @@
 
 
 
-                    <span>Page 7 of 28</span>
+                    <span>Page 7 of 31</span>
                 </div>
 
             <div class="clear"></div>

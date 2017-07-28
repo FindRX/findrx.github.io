@@ -31,302 +31,316 @@
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/implement-strstr.html" rel="bookmark" title="Permanent Link to &quot;Implement strStr()&quot;">Implement strStr()</a>
+                    <a href="/symmetric-tree.html" rel="bookmark" title="Permanent Link to &quot;Symmetric Tree&quot;">Symmetric Tree</a>
                 </h2>
 
                 
                 
 
-                <p>Implement strStr().</p>
-<p>Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.</p>
-<p>C Solution 1:</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">strStr</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">haystack</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">needle</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">needle</span> <span class="o">||</span> <span class="o">!*</span><span class="n">needle</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">needle</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">haystack</span><span class="p">[</span><span class="n">res</span><span class="p">])</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="n">haystack</span><span class="p">[</span><span class="n">res</span><span class="p">])</span> <span class="p">{</span>
-            <span class="kt">char …</span></pre></div>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/implement-strstr.html">No.28</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
-                </div>
-		<a href="/implement-strstr.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/remove-element.html" rel="bookmark" title="Permanent Link to &quot;Remove Element&quot;">Remove Element</a>
-                </h2>
-
-                
-                
-
-                <p>Given an array and a value, remove all instances of that value in place and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
-<p>The order of elements can be changed. It doesn't matter what you leave beyond …</p>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/remove-element.html">No.27</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                </div>
-		<a href="/remove-element.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/remove-duplicates-from-sorted-array.html" rel="bookmark" title="Permanent Link to &quot;Remove Duplicates from Sorted Array&quot;">Remove Duplicates from Sorted Array</a>
-                </h2>
-
-                
-                
-
-                <p>Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
-<p>For example,</p>
+                <p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
 <ul>
-<li>Given input array nums = [1,1,2],</li>
-<li>Your function should …</li></ul>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/remove-duplicates-from-sorted-array.html">No.26</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/array.html" class="tags">Array</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-pointers</a>
-                </div>
-		<a href="/remove-duplicates-from-sorted-array.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/reverse-nodes-in-k-group.html" rel="bookmark" title="Permanent Link to &quot;Reverse Nodes in k-Group&quot;">Reverse Nodes in k-Group</a>
-                </h2>
-
-                
-                
-
-                <p>Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.</p>
-<ul>
-<li>k is a positive integer and is less than or equal to the length of the linked list. </li>
-<li>If the number of nodes is not a multiple of k then …</li></ul>
-                <div class="clear"></div>
-
-                <div class="info">
-				<a href="/reverse-nodes-in-k-group.html">No.25</a>
-
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                </div>
-		<a href="/reverse-nodes-in-k-group.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jan 01, 1970</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="/swap-nodes-in-pairs.html" rel="bookmark" title="Permanent Link to &quot;Swap Nodes in Pairs&quot;">Swap Nodes in Pairs</a>
-                </h2>
-
-                
-                
-
-                <p>Given a linked list, swap every two adjacent nodes and return its head.</p>
-<ul>
-<li>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.</li>
+<li>Bonus points if you could solve it both recursively and iteratively.</li>
 </ul>
-<p>Example:</p>
-<ul>
-<li>Given <code>1-&gt;2-&gt;3-&gt;4</code>, you should return the list as <code>2-&gt;1-&gt;4- …</code></li></ul>
+<p>For example, this binary tree [1,2,2,3,4,4,3] is symmetric:</p>
+<div class="highlight"><pre><span></span>    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+</pre></div>
+
+
+<p>But …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/swap-nodes-in-pairs.html">No.24</a>
+				<a href="/symmetric-tree.html">No.101</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/breadth-first-search.html" class="tags">Breadth-First-Search</a>
+                    &nbsp;<a href="/tag/try-again.html" class="tags">Try-Again</a>
                 </div>
-		<a href="/swap-nodes-in-pairs.html#disqus_thread">Click to read and post comments</a>
+		<a href="/symmetric-tree.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/merge-k-sorted-lists.html" rel="bookmark" title="Permanent Link to &quot;Merge K Sorted Lists&quot;">Merge K Sorted Lists</a>
+                    <a href="/same-tree.html" rel="bookmark" title="Permanent Link to &quot;Same Tree&quot;">Same Tree</a>
                 </h2>
 
                 
                 
 
-                <p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
+                <p>Given two binary trees, write a function to check if they are equal or not.</p>
+<p>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.</p>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/same-tree.html">No.100</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                </div>
+		<a href="/same-tree.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/recover-binary-search-tree.html" rel="bookmark" title="Permanent Link to &quot;Recover Binary Search Tree&quot;">Recover Binary Search Tree</a>
+                </h2>
+
+                
+                
+
+                <p>Two elements of a binary search tree (BST) are swapped by mistake.</p>
+<p>Recover the tree without changing its structure.</p>
+<p>Note:
+A solution using O(n) space is pretty straight forward. Could you devise a constant space solution?</p>
 <p>C Solution 1:</p>
 <div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span> <span class="o">**</span><span class="n">heap</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">top</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-    <span class="n">heap</span><span class="p">[(</span><span class="o">*</span><span class="n">top</span><span class="p">)</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="o">*</span><span class="n">top …</span></pre></div>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int val …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/merge-k-sorted-lists.html">No.23</a>
+				<a href="/recover-binary-search-tree.html">No.99</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
-                    &nbsp;<a href="/tag/heap.html" class="tags">Heap</a>
-                    &nbsp;<a href="/tag/divide-and-conquer.html" class="tags">Divide-and-Conquer</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
                 </div>
-		<a href="/merge-k-sorted-lists.html#disqus_thread">Click to read and post comments</a>
+		<a href="/recover-binary-search-tree.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/merge-two-sorted-lists.html" rel="bookmark" title="Permanent Link to &quot;Merge Two Sorted Lists&quot;">Merge Two Sorted Lists</a>
+                    <a href="/validate-binary-search-tree.html" rel="bookmark" title="Permanent Link to &quot;Validate Binary Search Tree&quot;">Validate Binary Search Tree</a>
                 </h2>
 
                 
                 
 
-                <p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+                <p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
+<p>Assume a BST is defined as follows:</p>
+<ul>
+<li>The left subtree of a node contains only nodes with keys less than the node's key.</li>
+<li>The right subtree of a node contains only nodes with keys greater than …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/validate-binary-search-tree.html">No.98</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/depth-first-search.html" class="tags">Depth-First-Search</a>
+                    &nbsp;<a href="/tag/perfect.html" class="tags">Perfect</a>
+                </div>
+		<a href="/validate-binary-search-tree.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/unique-binary-search-trees.html" rel="bookmark" title="Permanent Link to &quot;Unique Binary Search Trees&quot;">Unique Binary Search Trees</a>
+                </h2>
+
+                
+                
+
+                <p>Given n, how many structurally unique BST's (binary search trees) that store values 1...n?</p>
+<p>For example, Given n = 3, there are a total of 5 unique BST's.</p>
+<div class="highlight"><pre><span></span>   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+</pre></div>
+
+
 <p>C Solution:</p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * Definition for singly-linked list.</span>
-<span class="cm"> * struct ListNode {</span>
-<span class="cm"> *     int val;</span>
-<span class="cm"> *     struct ListNode *next;</span>
-<span class="cm"> * };</span>
-<span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="nf">mergeTwoLists</span><span class="p">(</span><span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">l1</span><span class="p">,</span> <span class="k">struct</span> <span class="n">ListNode</span><span class="o">*</span> <span class="n">l2 …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">numTrees</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if …</span></pre></div>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/merge-two-sorted-lists.html">No.21</a>
+				<a href="/unique-binary-search-trees.html">No.96</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
                 </div>
-		<a href="/merge-two-sorted-lists.html#disqus_thread">Click to read and post comments</a>
+		<a href="/unique-binary-search-trees.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/valid-parentheses.html" rel="bookmark" title="Permanent Link to &quot;Valid Parentheses&quot;">Valid Parentheses</a>
+                    <a href="/unique-binary-search-trees-ii.html" rel="bookmark" title="Permanent Link to &quot;Unique Binary Search Trees II&quot;">Unique Binary Search Trees II</a>
                 </h2>
 
                 
                 
 
-                <p>Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.</p>
-<p>The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.</p>
-<p>Python Solution:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">isValid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :type s: str</span>
-<span class="sd">        :rtype: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;(&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;{&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;[&#39;</span><span class="p">:</span> <span class="mi">3 …</span></pre></div>
+                <p>Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1...n.</p>
+<p>For example,</p>
+<p>Given n = 3, your program should return all 5 unique BST's shown below.</p>
+<div class="highlight"><pre><span></span>   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+</pre></div>
+
+
+<p>Python Solution 1 …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/valid-parentheses.html">No.20</a>
+				<a href="/unique-binary-search-trees-ii.html">No.95</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
+                    &nbsp;<a href="/tag/dynamic-programming.html" class="tags">Dynamic-Programming</a>
+                    &nbsp;<a href="/tag/another-solution.html" class="tags">Another-Solution</a>
+                </div>
+		<a href="/unique-binary-search-trees-ii.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/binary-tree-inorder-traversal.html" rel="bookmark" title="Permanent Link to &quot;Binary Tree Inorder Traversal&quot;">Binary Tree Inorder Traversal</a>
+                </h2>
+
+                
+                
+
+                <p>Given a binary tree, return the inorder traversal of its nodes' values.</p>
+<p>For example:
+Given binary tree [1,null,2,3],
+   1
+    \
+     2
+    /
+   3
+return [1,3,2].</p>
+<p>Note: Recursive solution is trivial, could you do it iteratively?</p>
+<p>Python Solution 1:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object …</span></pre></div>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/binary-tree-inorder-traversal.html">No.94</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/tree.html" class="tags">Tree</a>
                     &nbsp;<a href="/tag/stack.html" class="tags">Stack</a>
-                    &nbsp;<a href="/tag/string.html" class="tags">String</a>
+                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
+                    &nbsp;<a href="/tag/perfect.html" class="tags">Perfect</a>
                 </div>
-		<a href="/valid-parentheses.html#disqus_thread">Click to read and post comments</a>
+		<a href="/binary-tree-inorder-traversal.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/remove-nth-node-from-end-of-list.html" rel="bookmark" title="Permanent Link to &quot;Remove Nth Node From End of List&quot;">Remove Nth Node From End of List</a>
+                    <a href="/reverse-linked-list-ii.html" rel="bookmark" title="Permanent Link to &quot;Reverse Linked List II&quot;">Reverse Linked List II</a>
                 </h2>
 
                 
                 
 
-                <p>Given a linked list, remove the n<sup>th</sup> node from the end of list and return its head.</p>
+                <p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
 <ul>
-<li>Given n will always be valid.</li>
-<li>Try to do this in one pass.</li>
+<li>Given m, n satisfy the following condition: 1 ≤ m ≤ n ≤ length of list.</li>
 </ul>
-<p>Example:</p>
+<p>For example:</p>
 <ul>
-<li>Given linked list: <code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>, and <code>n = 2</code>.</li>
-<li>After removing the second node from the …</li></ul>
+<li>Given <code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</code>, <code>m = 2</code> and <code>n = 4</code>,</li>
+<li>return <code>1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</code>.</li>
+</ul>
+<p>C …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/remove-nth-node-from-end-of-list.html">No.19</a>
+				<a href="/reverse-linked-list-ii.html">No.92</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
-                    &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
                     &nbsp;<a href="/tag/linked-list.html" class="tags">Linked-List</a>
                 </div>
-		<a href="/remove-nth-node-from-end-of-list.html#disqus_thread">Click to read and post comments</a>
+		<a href="/reverse-linked-list-ii.html#disqus_thread">Click to read and post comments</a>
             </article>            <h4 class="date">Jan 01, 1970</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="/4sum.html" rel="bookmark" title="Permanent Link to &quot;4Sum&quot;">4Sum</a>
+                    <a href="/gray-code.html" rel="bookmark" title="Permanent Link to &quot;Gray Code&quot;">Gray Code</a>
                 </h2>
 
                 
                 
 
-                <p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.</p>
-<ul>
-<li>The solution set must not contain duplicate quadruplets.</li>
-</ul>
-<p>Example: </p>
-<ul>
-<li>Given array S = [1 …</li></ul>
+                <p>The gray code is a binary numeral system where two successive values differ in only one bit.</p>
+<p>Given a non-negative integer n representing the total number of bits in the code, print the sequence of gray code. A gray code sequence must begin with 0.</p>
+<p>For example, given n = 2 …</p>
                 <div class="clear"></div>
 
                 <div class="info">
-				<a href="/4sum.html">No.18</a>
+				<a href="/gray-code.html">No.89</a>
 
-                    &nbsp;&middot;&nbsp;<a href="/category/algorithm.html" rel="tag">Algorithm</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
+                    &nbsp;<a href="/tag/backtracking.html" class="tags">Backtracking</a>
+                </div>
+		<a href="/gray-code.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jan 01, 1970</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/merge-sorted-array.html" rel="bookmark" title="Permanent Link to &quot;Merge Sorted Array&quot;">Merge Sorted Array</a>
+                </h2>
+
+                
+                
+
+                <p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
+<p>Note:</p>
+<ul>
+<li>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are …</li></ul>
+                <div class="clear"></div>
+
+                <div class="info">
+				<a href="/merge-sorted-array.html">No.88</a>
+
+                    &nbsp;&middot;&nbsp;<a href="/category/dsa.html" rel="tag">DSA</a>
                     &nbsp;&middot;
                     &nbsp;<a href="/tag/leetcode.html" class="tags">LeetCode</a>
                     &nbsp;<a href="/tag/array.html" class="tags">Array</a>
                     &nbsp;<a href="/tag/two-pointers.html" class="tags">Two-Pointers</a>
-                    &nbsp;<a href="/tag/hash-table.html" class="tags">Hash-Table</a>
-                    &nbsp;<a href="/tag/k-sum.html" class="tags">K-Sum</a>
                 </div>
-		<a href="/4sum.html#disqus_thread">Click to read and post comments</a>
+		<a href="/merge-sorted-array.html#disqus_thread">Click to read and post comments</a>
             </article>
 
                 <div class="clear"></div>
@@ -337,7 +351,7 @@
 
 
 
-                    <span>Page 26 of 28</span>
+                    <span>Page 26 of 31</span>
                 </div>
 
             <div class="clear"></div>
