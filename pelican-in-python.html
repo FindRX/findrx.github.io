@@ -39,7 +39,19 @@
                 
                 
 
-                <p><em>/usr/local/bin/pelican</em>:</p>
+                <p>The idea of pelican is simple:
+1. two types of content: pages and articles.
+2. inside articles, there are plenty of metadata, e.g. title, date and tag.
+3. pelican analysis articles and pages, get all the those informations in memory.
+4. pelican use corresponding template to render those informations in memory.
+    1. e.g. page.html for pages, article.html for article
+    2. e.g. archives.html for archive of articles.
+    3. this means pelican can only handle pre-defined contracts.
+5. in conclusion: 
+    1. pelican gets variables form markdown files and setting file.
+    2. a lot of contracts have been made on theme structure and metadata.
+    3. pelican applys all these variables on theme templates and generate htmls.</p>
+<p><em>/usr/local/bin/pelican</em>:</p>
 <div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/python3.5</span>
 
 <span class="c1"># -*- coding: utf-8 -*-</span>
